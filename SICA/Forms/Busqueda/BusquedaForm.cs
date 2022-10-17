@@ -1,0 +1,187 @@
+﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json;
+using SICA.Forms;
+using SICA.Forms.Busqueda;
+using SimpleLogger;
+using System;
+using System.Data;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Web.Script.Serialization;
+using System.Windows.Forms;
+using static SICA.GlobalFunctions;
+
+namespace SICA
+{
+    public partial class BusquedaForm : Form
+    {
+        public BusquedaForm()
+        {
+            InitializeComponent();
+
+            //Form
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
+
+        private void BusquedaForm_Load(object sender, EventArgs e)
+        {
+            //tbUsuario.Text = Globals.Username;
+            //dtpFecha.Value = DateTime.Now;
+
+            btEdit.Visible = int2bool(Globals.auBusquedaEditar);
+            btHistorial.Visible = int2bool(Globals.auBusquedaHistorico);
+        }
+
+        private void btBuscar_Click(object sender, EventArgs e)
+        {
+            if (tbBusquedaLibre.Text.Trim() + tbCaja.Text.Trim() == "") // + tbUsuario.Text == "")
+            {
+                MessageBox.Show("Filtro Vacio");
+                return;
+            }
+
+            string fecha;
+
+            try
+            {
+                LoadingScreen.iniciarLoading();
+
+                if (cbFecha.Checked)
+                    fecha = dtpFecha.Value.ToString("yyyy-MM-dd");
+                else
+                    fecha = "";
+                DataTable dt = new DataTable("INVENTARIO_GENERAL");
+
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/buscar");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        token = Globals.Token,
+                        busquedalibre = tbBusquedaLibre.Text,
+                        numerocaja = tbCaja.Text,
+                        fecha = fecha
+                    });
+
+                    streamWriter.Write(json);
+                }
+
+                HttpWebResponse httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                        dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    }
+                }
+                LoadingScreen.cerrarLoading();
+                if (dt.Rows.Count > 0)
+                {
+                    dgvBusqueda.DataSource = dt;
+                    dgvBusqueda.Columns[0].Visible = false;
+                    dgvBusqueda.Columns["DESC_1"].Width = 250;
+                }
+                else
+                {
+                    MessageBox.Show("No hay coincidencias");
+                }
+            }
+            catch (WebException ex)
+            {
+                LoadingScreen.cerrarLoading();
+                if (!(ex.Response is null))
+                {
+                    using (var stream = ex.Response.GetResponseStream())
+                    using (var reader = new StreamReader(stream))
+                    {
+                        GlobalFunctions.casoError(ex, "btBuscar_Click\n" + reader.ReadToEnd());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LoadingScreen.cerrarLoading();
+                GlobalFunctions.casoError(ex, "btBuscar_Click");
+            }
+        }
+
+        private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                this.btBuscar_Click(sender, e);
+            }
+        }
+
+        private void btExcel_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.ExportarDataGridViewCSV(dgvBusqueda, null);
+        }
+
+        private void dgvBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if (dgvBusqueda.SelectedCells.Count == 1)
+                {
+                    Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+                    HistoricoForm vHistorico = new HistoricoForm();
+                    vHistorico.Show();
+                }
+            }
+        }
+
+        private void dgvBusqueda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void cbFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbFecha.Checked)
+            {
+                dtpFecha.Enabled = true;
+            }
+            else
+            {
+                dtpFecha.Enabled = false;
+            }
+        }
+
+        private void btEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvBusqueda.SelectedCells.Count == 1)
+            {
+                Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+                EditarForm ef = new EditarForm();
+                ef.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el documento a editar");
+            }
+        }
+
+        private void btHistorial_Click(object sender, EventArgs e)
+        {
+            if (dgvBusqueda.SelectedCells.Count == 1)
+            {
+                Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+                HistoricoForm vHistorico = new HistoricoForm();
+                vHistorico.Show();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el documento para ver el historial");
+            }
+        }
+    }
+}
