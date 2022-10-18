@@ -25,6 +25,7 @@ namespace SICA.Forms.Recibir
         {
             try
             {
+                GlobalFunctions.UltimaActividad();
                 LoadingScreen.iniciarLoading();
                 //Lista Departamento
                 DataTable dt = new DataTable("Lista Departamento");
@@ -143,6 +144,7 @@ namespace SICA.Forms.Recibir
 
         private void btRegistrar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             int pagare = 0, expediente = 0;
             if (cmbCodDepartamento.Text != "")
@@ -264,6 +266,7 @@ namespace SICA.Forms.Recibir
 
         private void cbNumeroCaja_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbNumeroCaja.Checked)
             {
                 tbNumeroCaja.Visible = true;
@@ -276,6 +279,7 @@ namespace SICA.Forms.Recibir
 
         private void cbFecha_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbFecha.Checked)
             {
                 dtpDesde.Visible = true;
@@ -290,6 +294,7 @@ namespace SICA.Forms.Recibir
 
         private void cbDescripcion2_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbDescripcion2.Checked)
             {
                 tbDescripcion2.Visible = true;
@@ -302,6 +307,7 @@ namespace SICA.Forms.Recibir
 
         private void cbDescripcion3_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbDescripcion3.Checked)
             {
                 tbDescripcion3.Visible = true;
@@ -314,6 +320,7 @@ namespace SICA.Forms.Recibir
 
         private void cbDescripcion4_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbDescripcion4.Checked)
             {
                 tbDescripcion4.Visible = true;
@@ -326,6 +333,7 @@ namespace SICA.Forms.Recibir
 
         private void cbDescripcion5_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbDescripcion5.Checked)
             {
                 tbDescripcion5.Visible = true;
@@ -338,6 +346,7 @@ namespace SICA.Forms.Recibir
 
         private void cmbDescripcion1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if ((cmbDescripcion1.SelectedItem as DataRowView)["ID_DESCRIPCION1"].ToString() == Globals.IdExpediente.ToString())
             {
                 cmbExpediente.Text = "SI";

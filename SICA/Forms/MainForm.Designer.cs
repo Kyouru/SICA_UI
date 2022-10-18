@@ -53,6 +53,9 @@
             this.pnMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tmUltimaActividad = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbTiempoSesion = new System.Windows.Forms.Label();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icMain)).BeginInit();
             this.pnTop.SuspendLayout();
@@ -331,6 +334,8 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.MidnightBlue;
+            this.pnTop.Controls.Add(this.lbTiempoSesion);
+            this.pnTop.Controls.Add(this.label2);
             this.pnTop.Controls.Add(this.btActualizar);
             this.pnTop.Controls.Add(this.lbEstado);
             this.pnTop.Controls.Add(this.panel2);
@@ -464,6 +469,34 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tmUltimaActividad
+            // 
+            this.tmUltimaActividad.Enabled = true;
+            this.tmUltimaActividad.Interval = 1000;
+            this.tmUltimaActividad.Tick += new System.EventHandler(this.tmUltimaActividad_Tick);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(690, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Tiempo Restante:";
+            // 
+            // lbTiempoSesion
+            // 
+            this.lbTiempoSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTiempoSesion.AutoSize = true;
+            this.lbTiempoSesion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbTiempoSesion.Location = new System.Drawing.Point(787, 10);
+            this.lbTiempoSesion.Name = "lbTiempoSesion";
+            this.lbTiempoSesion.Size = new System.Drawing.Size(34, 13);
+            this.lbTiempoSesion.TabIndex = 44;
+            this.lbTiempoSesion.Text = "00:00";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,6 +544,9 @@
         private FontAwesome.Sharp.IconButton btBoveda;
         private FontAwesome.Sharp.IconButton btDocuClass;
         private FontAwesome.Sharp.IconButton btMantenimiento;
+        private System.Windows.Forms.Timer tmUltimaActividad;
+        private System.Windows.Forms.Label lbTiempoSesion;
+        private System.Windows.Forms.Label label2;
     }
 }
 

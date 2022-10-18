@@ -18,13 +18,15 @@ namespace SICA.Forms.Busqueda
     {
         public HistoricoMovimiento()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
         private void HistoricoMovimiento_Load(object sender, EventArgs e)
         {
-            try {
-
+            try 
+            {
+                GlobalFunctions.UltimaActividad();
                 DataTable dt = new DataTable("Historico Movimiento");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/historicomovimiento");

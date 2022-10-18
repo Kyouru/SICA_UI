@@ -50,6 +50,9 @@ namespace SICA.Clases
         public int auImportarActivas { get; set; } = 0;
         public int auImportarPasivas { get; set; } = 0;
         public int auMantenimiento { get; set; } = 0;
+        public int auMantenimientoCuenta { get; set; } = 0;
+        public int auMantenimientoCredito { get; set; } = 0;
+        public int auMantenimientoSocio { get; set; } = 0;
         public int auNivel { get; set; } = 0;
         public string Token { get; set; } = String.Empty;
 

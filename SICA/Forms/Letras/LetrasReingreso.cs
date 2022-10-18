@@ -97,6 +97,7 @@ namespace SICA.Forms.Letras
 
         private void btRecibir_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 Globals.TipoSeleccionarUsuario = 0;
@@ -118,6 +119,7 @@ namespace SICA.Forms.Letras
         }
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 if (!Conexion.conectar())
@@ -155,6 +157,7 @@ namespace SICA.Forms.Letras
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
     }

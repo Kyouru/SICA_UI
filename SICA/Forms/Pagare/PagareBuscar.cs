@@ -18,16 +18,19 @@ namespace SICA.Forms.Pagare
     {
         public PagareBuscar()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             try
             {
                 LoadingScreen.iniciarLoading();

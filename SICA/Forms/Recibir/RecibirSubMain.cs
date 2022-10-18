@@ -19,6 +19,7 @@ namespace SICA.Forms.Recibir
         private Form currentChildForm;
         public RecibirSubMain()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
             topBorderBtn = new Panel();
@@ -53,6 +54,7 @@ namespace SICA.Forms.Recibir
         {
             if (senderBtn != null)
             {
+                GlobalFunctions.UltimaActividad();
                 DisableButton();
                 //Button
                 currentBtn = (IconButton)senderBtn;

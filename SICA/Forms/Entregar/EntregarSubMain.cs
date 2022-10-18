@@ -19,6 +19,7 @@ namespace SICA.Forms.Entregar
         private Form currentChildForm;
         public EntregarSubMain()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
             topBorderBtn = new Panel();

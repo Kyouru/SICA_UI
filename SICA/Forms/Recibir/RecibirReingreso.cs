@@ -14,6 +14,7 @@ namespace SICA.Forms.Recibir
         readonly string tipo_carrito = Globals.strRecibirReingreso;
         public RecibirReingreso()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
@@ -33,6 +34,7 @@ namespace SICA.Forms.Recibir
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string strSQL = "";
 
             try
@@ -97,6 +99,7 @@ namespace SICA.Forms.Recibir
 
         private void btRecibir_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 /*Globals.TipoSeleccionarUsuario = 0;
@@ -119,6 +122,7 @@ namespace SICA.Forms.Recibir
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
@@ -129,7 +133,7 @@ namespace SICA.Forms.Recibir
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
-
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 LoadingScreen.iniciarLoading();
@@ -191,6 +195,7 @@ namespace SICA.Forms.Recibir
         }
         private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 this.btBuscar_Click(sender, e);
@@ -198,11 +203,13 @@ namespace SICA.Forms.Recibir
         }
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(tipo_carrito);
             btBuscar_Click(sender, e);
         }

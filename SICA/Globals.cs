@@ -8,9 +8,12 @@ namespace SICA
     {
         public static Int32 loginsuccess = 0;
         public static string lastSQL = "";
+        public static Int32 SesionDuracion = 10;
+        public static Int32 SesionAlerta = 3;
+        public static DateTime UltimaActividad = DateTime.Now;
 
-        public static string api = "http://sica.kyouru.com/api/";
-        //public static string api = "https://localhost:5001/api/";
+        //public static string api = "http://sica.kyouru.com/api/";
+        public static string api = "https://localhost:5001/api/";
         public static String ExportarPath = Application.StartupPath + "\\Exportar\\";
         public static String strQueryArea = "";
 
@@ -117,6 +120,12 @@ namespace SICA
         public static string auImportarActivas = "0";
         public static string auImportarPasivas = "0";
         public static string auMantenimiento = "0";
+        public static string auMantenimientoSocio = "0";
+        public static string auMantenimientoCuenta = "0";
+        public static string auMantenimientoCredito = "0";
+        public static string auReporte = "0";
+        public static string auReportePrestado = "0";
+        public static string auReporteNoCustodiado = "0";
         public static string auNivel = "0";
     }
 }

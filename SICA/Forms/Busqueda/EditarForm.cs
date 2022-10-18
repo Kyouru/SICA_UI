@@ -20,11 +20,13 @@ namespace SICA.Forms.Busqueda
 
         public EditarForm()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
         private void cbFecha_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbFecha.Checked)
             {
                 lbDesde.Visible = true;
@@ -45,6 +47,7 @@ namespace SICA.Forms.Busqueda
         {
             try
             {
+                GlobalFunctions.UltimaActividad();
                 LoadingScreen.iniciarLoading();
                 //Lista Departamento
                 DataTable dt = new DataTable("Lista Departamento");
@@ -234,6 +237,7 @@ namespace SICA.Forms.Busqueda
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             bool correcto = true;
             if (tbCaja.Text == "")
             {

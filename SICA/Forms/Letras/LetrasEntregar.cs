@@ -17,6 +17,7 @@ namespace SICA.Forms.Letras
 
         public LetrasEntregar()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
@@ -36,6 +37,7 @@ namespace SICA.Forms.Letras
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string strSQL = "";
 
             try
@@ -82,6 +84,7 @@ namespace SICA.Forms.Letras
 
         private void btEntregar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 Globals.TipoSeleccionarUsuario = 1;
@@ -98,6 +101,7 @@ namespace SICA.Forms.Letras
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
@@ -107,6 +111,7 @@ namespace SICA.Forms.Letras
         }
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 if (!Conexion.conectar())
@@ -138,6 +143,7 @@ namespace SICA.Forms.Letras
         }
         private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 this.btBuscar_Click(sender, e);
@@ -145,11 +151,13 @@ namespace SICA.Forms.Letras
         }
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(tipo_carrito);
             btBuscar_Click(sender, e);
         }

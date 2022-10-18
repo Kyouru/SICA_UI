@@ -16,6 +16,7 @@ namespace SICA.Forms.Entregar
 
         public EntregarDocumento()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
@@ -37,6 +38,7 @@ namespace SICA.Forms.Entregar
         private void btBuscar_Click(object sender, EventArgs e)
         {
 
+            GlobalFunctions.UltimaActividad();
             LoadingScreen.iniciarLoading();
             int entransito = 0;
             if (cbTransito.Checked)
@@ -99,6 +101,7 @@ namespace SICA.Forms.Entregar
             }
             catch (Exception ex)
             {
+                LoadingScreen.cerrarLoading();
                 GlobalFunctions.casoError(ex, "Error Entregar Buscar Documento");
                 return;
             }
@@ -106,6 +109,7 @@ namespace SICA.Forms.Entregar
 
         private void btEntregar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 Globals.TipoSeleccionarUsuario = 0;
@@ -227,12 +231,14 @@ namespace SICA.Forms.Entregar
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             //GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 this.btBuscar_Click(sender, e);
@@ -241,6 +247,7 @@ namespace SICA.Forms.Entregar
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(tipo_carrito);
             actualizarCantidad(0);
             btBuscar_Click(sender, e);
@@ -248,6 +255,7 @@ namespace SICA.Forms.Entregar
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 LoadingScreen.iniciarLoading();

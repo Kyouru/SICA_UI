@@ -22,6 +22,7 @@ namespace SICA.Forms.Pagare
 
         public PagareRecibir()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
@@ -41,11 +42,13 @@ namespace SICA.Forms.Pagare
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string strSQL = "";
 
             try
@@ -96,6 +99,7 @@ namespace SICA.Forms.Pagare
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 if (dgv.SelectedRows.Count == 1)
@@ -108,12 +112,14 @@ namespace SICA.Forms.Pagare
 
         private void btIngresoManual_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             PagareManual pagareManual = new PagareManual();
             pagareManual.ShowDialog();
         }
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
@@ -124,12 +130,14 @@ namespace SICA.Forms.Pagare
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(Globals.strPagareRecibir);
             btActualizar_Click(sender, e);
         }
 
         private void btSiguiente_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 Globals.TipoSeleccionarUsuario = 0;
@@ -166,6 +174,7 @@ namespace SICA.Forms.Pagare
 
         private void btBuscarCargo_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             Boolean valido = true;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Libro de Excel|*.xlsx;*.xls|All files (*.*)|*.*";

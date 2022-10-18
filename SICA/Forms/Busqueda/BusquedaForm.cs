@@ -18,6 +18,7 @@ namespace SICA
     {
         public BusquedaForm()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
             //Form
@@ -29,6 +30,7 @@ namespace SICA
 
         private void BusquedaForm_Load(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             //tbUsuario.Text = Globals.Username;
             //dtpFecha.Value = DateTime.Now;
 
@@ -38,6 +40,7 @@ namespace SICA
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (tbBusquedaLibre.Text.Trim() + tbCaja.Text.Trim() == "") // + tbUsuario.Text == "")
             {
                 MessageBox.Show("Filtro Vacio");
@@ -115,6 +118,7 @@ namespace SICA
 
         private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 this.btBuscar_Click(sender, e);
@@ -123,11 +127,13 @@ namespace SICA
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDataGridViewCSV(dgvBusqueda, null);
         }
 
         private void dgvBusqueda_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 if (dgvBusqueda.SelectedCells.Count == 1)
@@ -146,6 +152,7 @@ namespace SICA
 
         private void cbFecha_CheckedChanged(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (cbFecha.Checked)
             {
                 dtpFecha.Enabled = true;
@@ -158,6 +165,7 @@ namespace SICA
 
         private void btEdit_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (dgvBusqueda.SelectedCells.Count == 1)
             {
                 Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
@@ -172,6 +180,7 @@ namespace SICA
 
         private void btHistorial_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (dgvBusqueda.SelectedCells.Count == 1)
             {
                 Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());

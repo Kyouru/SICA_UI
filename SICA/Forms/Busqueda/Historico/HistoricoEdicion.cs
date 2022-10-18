@@ -18,6 +18,7 @@ namespace SICA.Forms.Busqueda.Historico
     {
         public HistoricoEdicion()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
@@ -25,7 +26,7 @@ namespace SICA.Forms.Busqueda.Historico
         {
             try
             {
-
+                GlobalFunctions.UltimaActividad();
                 DataTable dt = new DataTable("Historico Edicion");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/historicoedicion");

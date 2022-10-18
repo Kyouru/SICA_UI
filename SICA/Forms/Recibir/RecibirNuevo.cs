@@ -16,6 +16,7 @@ namespace SICA.Forms.Recibir
     {
         public RecibirNuevo()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
             btIngresoManual.Visible = int2bool(Globals.auRecibirManual);
@@ -23,6 +24,7 @@ namespace SICA.Forms.Recibir
 
         private void btBuscarCargo_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             Boolean valido = true;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Libro de Excel|*.xlsx;*.xls|All files (*.*)|*.*";
@@ -152,11 +154,11 @@ namespace SICA.Forms.Recibir
                                 switch (col)
                                 {
                                     case 1:
-                                        if (!cellText.Equals("NUMERO DE CAJA IRON MOUNTAIN"))
+                                        if (!cellText.Equals("NUMERO DE CAJA"))
                                         {
 
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rNUMERO DE CAJA IRON MOUNTAIN");
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rNUMERO DE CAJA");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
@@ -481,6 +483,7 @@ namespace SICA.Forms.Recibir
 
         private void btCargarValido_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             Globals.TipoSeleccionarUsuario = 0;
             SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
             suf.ShowDialog();

@@ -17,6 +17,7 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Drawing;
+using System.Net.Mail;
 
 namespace SICA
 {
@@ -906,6 +907,9 @@ namespace SICA
                     Globals.auImportarActivas = usuario.auImportarActivas.ToString();
                     Globals.auImportarPasivas = usuario.auImportarPasivas.ToString();
                     Globals.auMantenimiento = usuario.auMantenimiento.ToString();
+                    Globals.auMantenimientoCuenta = usuario.auMantenimientoCuenta.ToString();
+                    Globals.auMantenimientoCredito = usuario.auMantenimientoCredito.ToString();
+                    Globals.auMantenimientoSocio = usuario.auMantenimientoSocio.ToString();
 
                     Globals.auNivel = usuario.auNivel.ToString();
                     Globals.Username = username;
@@ -1015,6 +1019,11 @@ namespace SICA
             return dt;
         }
 
+        public static void UltimaActividad()
+        {
+            Globals.UltimaActividad = DateTime.Now;
+        }
+
         public static bool RecibirCarrito(string observacion, string tipocarrito)
         {
             string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -1110,6 +1119,18 @@ namespace SICA
             {
                 LoadingScreen.cerrarLoading();
                 GlobalFunctions.casoError(ex, "Recibir Carrito " + tipocarrito);
+                return false;
+            }
+        }
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                MailAddress mail = new MailAddress(email);
+                return true;
+            }
+            catch
+            {
                 return false;
             }
         }

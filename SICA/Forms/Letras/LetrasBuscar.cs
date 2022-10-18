@@ -14,11 +14,13 @@ namespace SICA.Forms.Letras
     {
         public LetrasBuscar()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string strSQL = "";
             LoadingScreen.iniciarLoading();
             strSQL = "SELECT SOCIO, NOMBRE, SOLICITUD, N_LIQ, NUMERO, TO_CHAR(F_GIRO, 'dd/MM/yyyy') AS F_GIRO, TO_CHAR(F_VENCIMIENTO, 'dd/MM/yyyy') AS F_VENCIMIENTO, IMPORTE, ACEPTANTE, MD, NOMBRE_ESTADO";
@@ -67,6 +69,7 @@ namespace SICA.Forms.Letras
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
             //GlobalFunctions.ExportarDGV(dgv, null);
             
@@ -74,6 +77,7 @@ namespace SICA.Forms.Letras
 
         private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 this.btBuscar_Click(sender, e);

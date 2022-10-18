@@ -16,11 +16,13 @@ namespace SICA.Forms.Letras
 
         public LetrasNuevo()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
         private void btBuscarCargo_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Libro de Excel|*.xlsx;*.xls|All files (*.*)|*.*";
             ofd.CheckFileExists = true;
@@ -60,6 +62,7 @@ namespace SICA.Forms.Letras
 
         private void btCargar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             try
             {
                 string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observación (opcional):", "Observación", "");

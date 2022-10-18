@@ -20,6 +20,7 @@ namespace SICA.Forms.Recibir
         readonly string tipo_carrito = Globals.strRecibirConfirmar;
         public RecibirConfirmar()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
@@ -39,6 +40,7 @@ namespace SICA.Forms.Recibir
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             try
             {
                 LoadingScreen.iniciarLoading();
@@ -101,11 +103,13 @@ namespace SICA.Forms.Recibir
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
@@ -116,12 +120,14 @@ namespace SICA.Forms.Recibir
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(tipo_carrito);
             btActualizar_Click(sender, e);
         }
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 LoadingScreen.iniciarLoading();
@@ -185,7 +191,7 @@ namespace SICA.Forms.Recibir
 
         private void btSiguiente_Click(object sender, EventArgs e)
         {
-
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");

@@ -56,6 +56,7 @@ namespace SICA.Forms.Letras
         {
             if (senderBtn != null)
             {
+                GlobalFunctions.UltimaActividad();
                 DisableButton();
                 //Button
                 currentBtn = (IconButton)senderBtn;

@@ -18,11 +18,13 @@ namespace SICA.Forms.Pagare
     {
         public PagareManual()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
 
         private void btRegistrar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             if (tbSolicitudSISGO.Text != "")

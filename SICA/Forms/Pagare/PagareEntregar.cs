@@ -22,12 +22,14 @@ namespace SICA.Forms.Pagare
 
         public PagareEntregar()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
         }
         public void actualizarCantidad(int cantidad = -1)
         {
+            GlobalFunctions.UltimaActividad();
             if (cantidad >= 0)
             {
                 cantidadcarrito = cantidad;
@@ -41,6 +43,7 @@ namespace SICA.Forms.Pagare
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             string strSQL = "";
 
             try
@@ -105,11 +108,13 @@ namespace SICA.Forms.Pagare
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
@@ -120,12 +125,14 @@ namespace SICA.Forms.Pagare
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(Globals.strPagareEntregar);
             btBuscar_Click(sender, e);
         }
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 if (dgv.SelectedRows.Count == 1)
@@ -139,6 +146,7 @@ namespace SICA.Forms.Pagare
         private void btEntregar_Click(object sender, EventArgs e)
         {
 
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 Globals.TipoSeleccionarUsuario = 0;

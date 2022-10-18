@@ -5,6 +5,7 @@ using SICA.Forms.DocuClass;
 using SICA.Forms.Entregar;
 using SICA.Forms.IronMountain;
 using SICA.Forms.Letras;
+using SICA.Forms.Mantenimiento;
 using SICA.Forms.Pagare;
 using SICA.Forms.Recibir;
 using System;
@@ -257,7 +258,28 @@ namespace SICA
         private void btMantenimiento_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new ImportarSISGO());
+            OpenChildForm(new MantenimientoSubMain());
+        }
+
+        private void tmUltimaActividad_Tick(object sender, EventArgs e)
+        {
+            TimeSpan diff;
+            diff = Globals.UltimaActividad.AddMinutes(Globals.SesionDuracion).Subtract(DateTime.Now);
+            lbTiempoSesion.Text = diff.ToString("mm':'ss");
+            if (DateTime.Now.Subtract(Globals.UltimaActividad).TotalMinutes > Globals.SesionDuracion)
+            {
+                tmUltimaActividad.Enabled = false;
+                this.Close();
+                //MessageBox.Show("cerrar");
+            }
+            else if (DateTime.Now.Subtract(Globals.UltimaActividad).TotalMinutes > Globals.SesionDuracion - Globals.SesionAlerta)
+            {
+                lbTiempoSesion.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbTiempoSesion.ForeColor = Color.White;
+            }
         }
     }
 }

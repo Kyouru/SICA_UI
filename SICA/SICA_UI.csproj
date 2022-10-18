@@ -373,6 +373,30 @@
     <Compile Include="Forms\ImportarSISGO.Designer.cs">
       <DependentUpon>ImportarSISGO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaModificar.Designer.cs">
+      <DependentUpon>CuentaModificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaNueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaNueva.Designer.cs">
+      <DependentUpon>CuentaNueva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoSocio.Designer.cs">
+      <DependentUpon>MantenimientoSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoCuenta.Designer.cs">
+      <DependentUpon>MantenimientoCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Mantenimiento\MantenimientoCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -628,6 +652,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportarSISGO.resx">
       <DependentUpon>ImportarSISGO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\Cuenta\CuentaModificar.resx">
+      <DependentUpon>CuentaModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\Cuenta\CuentaNueva.resx">
+      <DependentUpon>CuentaNueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoSocio.resx">
+      <DependentUpon>MantenimientoSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoCuenta.resx">
+      <DependentUpon>MantenimientoCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoCredito.resx">
       <DependentUpon>MantenimientoCredito.cs</DependentUpon>

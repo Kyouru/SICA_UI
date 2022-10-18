@@ -15,6 +15,7 @@ namespace SICA.Forms.Entregar
         
         public EntregarExpediente()
         {
+            GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
@@ -34,6 +35,7 @@ namespace SICA.Forms.Entregar
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             LoadingScreen.iniciarLoading();
             int entransito = 0;
             if (cbTransito.Checked)
@@ -112,6 +114,7 @@ namespace SICA.Forms.Entregar
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (dgv.SelectedRows.Count == 1)
             {
                 GlobalFunctions.AgregarCarrito(dgv.SelectedRows[0].Cells[0].Value.ToString(), "0", dgv.SelectedRows[0].Cells["CAJA"].Value.ToString(), tipo_carrito);
@@ -127,6 +130,7 @@ namespace SICA.Forms.Entregar
 
         private void btEntregar_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 Globals.TipoSeleccionarUsuario = 0;
@@ -239,6 +243,7 @@ namespace SICA.Forms.Entregar
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
@@ -249,12 +254,14 @@ namespace SICA.Forms.Entregar
 
         private void btExcel_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             //GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(tipo_carrito);
             btBuscar_Click(sender, e);
         }
@@ -262,6 +269,7 @@ namespace SICA.Forms.Entregar
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
 
+            GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 LoadingScreen.iniciarLoading();
