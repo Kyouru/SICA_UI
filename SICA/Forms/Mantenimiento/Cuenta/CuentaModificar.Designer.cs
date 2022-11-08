@@ -91,6 +91,7 @@ namespace SICA.Forms.Recibir
             // 
             // cmbArea
             // 
+            this.cmbArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbArea.FormattingEnabled = true;
             this.cmbArea.Location = new System.Drawing.Point(198, 47);
             this.cmbArea.Name = "cmbArea";
