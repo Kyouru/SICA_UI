@@ -56,9 +56,11 @@ namespace SICA.Forms.Busqueda.Historico
 
                 if (dt.Rows.Count == 0)
                     return;
-
+                
                 dgv.DataSource = dt;
-
+                dgv.AutoResizeColumns();
+                dgv.Columns[0].Width = 0;
+                
             }
             catch (WebException ex)
             {

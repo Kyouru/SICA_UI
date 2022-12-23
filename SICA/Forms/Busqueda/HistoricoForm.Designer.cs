@@ -108,6 +108,7 @@
             this.Controls.Add(this.pnSubMain);
             this.Controls.Add(this.btEditar);
             this.Name = "HistoricoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistoricoForm";
             this.Load += new System.EventHandler(this.HistoricoForm_Load);
             this.ResumeLayout(false);

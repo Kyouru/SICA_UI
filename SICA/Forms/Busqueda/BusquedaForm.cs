@@ -43,6 +43,7 @@ namespace SICA
             GlobalFunctions.UltimaActividad();
             if (tbBusquedaLibre.Text.Trim() + tbCaja.Text.Trim() == "") // + tbUsuario.Text == "")
             {
+                dgvBusqueda.DataSource = null;
                 MessageBox.Show("Filtro Vacio");
                 return;
             }
@@ -89,11 +90,14 @@ namespace SICA
                 if (dt.Rows.Count > 0)
                 {
                     dgvBusqueda.DataSource = dt;
+                    dgvBusqueda.AutoResizeColumns();
                     dgvBusqueda.Columns[0].Visible = false;
-                    dgvBusqueda.Columns["DESC_1"].Width = 250;
+                    //Formatos
+                    //dgvBusqueda.Columns["DESC_1"].Width = 250;
                 }
                 else
                 {
+                    dgvBusqueda.DataSource = null;
                     MessageBox.Show("No hay coincidencias");
                 }
             }
@@ -170,7 +174,8 @@ namespace SICA
             {
                 Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
                 EditarForm ef = new EditarForm();
-                ef.ShowDialog();
+                ef.ShowDialog(this);
+                btBuscar_Click(sender, e);
             }
             else
             {

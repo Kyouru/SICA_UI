@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,6 +44,7 @@
             this.cbFecha = new System.Windows.Forms.CheckBox();
             this.btEdit = new FontAwesome.Sharp.IconButton();
             this.btHistorial = new FontAwesome.Sharp.IconButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBusqueda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,6 +145,7 @@
             this.btExcel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btExcel.Size = new System.Drawing.Size(48, 38);
             this.btExcel.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.btExcel, "Exportar Excel");
             this.btExcel.UseVisualStyleBackColor = true;
             this.btExcel.Click += new System.EventHandler(this.btExcel_Click);
             // 
@@ -159,6 +162,7 @@
             this.btBuscar.Name = "btBuscar";
             this.btBuscar.Size = new System.Drawing.Size(48, 38);
             this.btBuscar.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btBuscar, "Buscar");
             this.btBuscar.UseVisualStyleBackColor = true;
             this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
             // 
@@ -210,6 +214,7 @@
             this.btEdit.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.btEdit.Size = new System.Drawing.Size(48, 38);
             this.btEdit.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.btEdit, "Editar");
             this.btEdit.UseVisualStyleBackColor = true;
             this.btEdit.Visible = false;
             this.btEdit.Click += new System.EventHandler(this.btEdit_Click);
@@ -227,6 +232,7 @@
             this.btHistorial.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.btHistorial.Size = new System.Drawing.Size(48, 38);
             this.btHistorial.TabIndex = 20;
+            this.toolTip1.SetToolTip(this.btHistorial, "Histórico");
             this.btHistorial.UseVisualStyleBackColor = true;
             this.btHistorial.Click += new System.EventHandler(this.btHistorial_Click);
             // 
@@ -270,5 +276,6 @@
         private System.Windows.Forms.CheckBox cbFecha;
         private FontAwesome.Sharp.IconButton btEdit;
         private FontAwesome.Sharp.IconButton btHistorial;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
