@@ -41,7 +41,7 @@ namespace SICA.Forms.Recibir
                     string json = new JavaScriptSerializer().Serialize(new
                     {
                         token = Globals.Token,
-                        tiposeleccionarusuario = 3
+                        tiposeleccionarusuario = 1
                     });
 
                     streamWriter.Write(json);

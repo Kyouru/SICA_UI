@@ -90,18 +90,14 @@
     <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
     </Reference>
-    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.4.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Access.Dao, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Access.Dao.15.0.4420.1017\lib\net20\Microsoft.Office.Interop.Access.Dao.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
@@ -116,6 +112,8 @@
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.21.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.21.6.1\lib\net462\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
@@ -182,8 +180,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
@@ -265,6 +263,7 @@
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -278,10 +277,12 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\UserData.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Forms\Boveda\BovedaGuardarCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,6 +368,12 @@
     <Compile Include="Forms\CarritoForm.Designer.cs">
       <DependentUpon>CarritoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Entregar\EntregarMasivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Entregar\EntregarMasivo.Designer.cs">
+      <DependentUpon>EntregarMasivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ImportarSISGO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -438,12 +445,6 @@
     </Compile>
     <Compile Include="Forms\DataManager\DataManagerArmar.Designer.cs">
       <DependentUpon>DataManagerArmar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DataManager\DataManagerCargo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DataManager\DataManagerCargo.Designer.cs">
-      <DependentUpon>DataManagerCargo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DataManager\DataManagerEntregar.cs">
       <SubType>Form</SubType>
@@ -548,6 +549,48 @@
     <Compile Include="Forms\Pagare\PagareSubMain.Designer.cs">
       <DependentUpon>PagareSubMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Pendiente\PendienteRegularizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pendiente\PendienteRegularizar.Designer.cs">
+      <DependentUpon>PendienteRegularizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pendiente\PendienteSubMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pendiente\PendienteSubMain.Designer.cs">
+      <DependentUpon>PendienteSubMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prestar\PrestarRecibir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prestar\PrestarRecibir.Designer.cs">
+      <DependentUpon>PrestarRecibir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prestar\PrestarPrestar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prestar\PrestarPrestar.Designer.cs">
+      <DependentUpon>PrestarPrestar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prestar\PrestarSubMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prestar\PrestarSubMain.Designer.cs">
+      <DependentUpon>PrestarSubMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Recibir\RecibirPendiente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Recibir\RecibirPendiente.Designer.cs">
+      <DependentUpon>RecibirPendiente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Recibir\RecibirOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Recibir\RecibirOK.Designer.cs">
+      <DependentUpon>RecibirOK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Recibir\RecibirConfirmar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -583,6 +626,18 @@
     </Compile>
     <Compile Include="Forms\CambiarPasswordForm.Designer.cs">
       <DependentUpon>CambiarPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reporte\ReporteCajas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reporte\ReporteCajas.Designer.cs">
+      <DependentUpon>ReporteCajas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reporte\ReporteSubMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reporte\ReporteSubMain.Designer.cs">
+      <DependentUpon>ReporteSubMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SeleccionarUsuarioForm.cs">
       <SubType>Form</SubType>
@@ -650,6 +705,9 @@
     <EmbeddedResource Include="Forms\DocuClass\DocuClassValidar.resx">
       <DependentUpon>DocuClassValidar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Entregar\EntregarMasivo.resx">
+      <DependentUpon>EntregarMasivo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportarSISGO.resx">
       <DependentUpon>ImportarSISGO.cs</DependentUpon>
     </EmbeddedResource>
@@ -685,9 +743,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataManager\DataManagerArmar.resx">
       <DependentUpon>DataManagerArmar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DataManager\DataManagerCargo.resx">
-      <DependentUpon>DataManagerCargo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataManager\DataManagerEntregar.resx">
       <DependentUpon>DataManagerEntregar.cs</DependentUpon>
@@ -746,6 +801,27 @@
     <EmbeddedResource Include="Forms\Pagare\PagareSubMain.resx">
       <DependentUpon>PagareSubMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pendiente\PendienteRegularizar.resx">
+      <DependentUpon>PendienteRegularizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pendiente\PendienteSubMain.resx">
+      <DependentUpon>PendienteSubMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prestar\PrestarRecibir.resx">
+      <DependentUpon>PrestarRecibir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prestar\PrestarPrestar.resx">
+      <DependentUpon>PrestarPrestar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prestar\PrestarSubMain.resx">
+      <DependentUpon>PrestarSubMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Recibir\RecibirPendiente.resx">
+      <DependentUpon>RecibirPendiente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Recibir\RecibirOK.resx">
+      <DependentUpon>RecibirOK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Recibir\RecibirConfirmar.resx">
       <DependentUpon>RecibirConfirmar.cs</DependentUpon>
     </EmbeddedResource>
@@ -763,6 +839,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CambiarPasswordForm.resx">
       <DependentUpon>CambiarPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reporte\ReporteCajas.resx">
+      <DependentUpon>ReporteCajas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reporte\ReporteSubMain.resx">
+      <DependentUpon>ReporteSubMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SeleccionarUsuarioForm.resx">
       <DependentUpon>SeleccionarUsuarioForm.cs</DependentUpon>
@@ -855,10 +937,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
-    <Error Condition="!Exists('..\packages\Fody.6.6.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.6.3\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.6.6.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.6.4\build\Fody.targets'))" />
   </Target>
-  <Import Project="..\packages\Fody.6.6.3\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.3\build\Fody.targets')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
+  <Import Project="..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.4\build\Fody.targets')" />
 </Project>

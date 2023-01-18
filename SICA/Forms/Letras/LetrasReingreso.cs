@@ -100,7 +100,7 @@ namespace SICA.Forms.Letras
             GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
-                Globals.TipoSeleccionarUsuario = 0;
+                Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                 suf.ShowDialog();
                 if (Globals.IdUsernameSelect > 0)

@@ -55,6 +55,7 @@ namespace SICA.Forms
                     dgvCarrito.Columns[0].Visible = false;
                 }
                 LoadingScreen.cerrarLoading();
+                this.Activate();
             }
             catch (WebException ex)
             {

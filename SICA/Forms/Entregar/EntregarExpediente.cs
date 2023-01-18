@@ -11,7 +11,7 @@ namespace SICA.Forms.Entregar
     public partial class EntregarExpediente : Form
     {
         int cantidadcarrito = 0;
-        readonly string tipo_carrito = Globals.strEntregarExpediente;
+        readonly string tipo_carrito = Globals.strMoverExpediente;
         
         public EntregarExpediente()
         {
@@ -133,7 +133,7 @@ namespace SICA.Forms.Entregar
             GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
-                Globals.TipoSeleccionarUsuario = 0;
+                Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                 suf.ShowDialog();
                 if (Globals.IdUsernameSelect > 0)

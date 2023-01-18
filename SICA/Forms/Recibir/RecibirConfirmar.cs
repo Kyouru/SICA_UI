@@ -17,7 +17,7 @@ namespace SICA.Forms.Recibir
     public partial class RecibirConfirmar : Form
     {
         int cantidadcarrito = 0;
-        readonly string tipo_carrito = Globals.strRecibirConfirmar;
+        readonly string tipo_carrito = Globals.strValijaConfirmar;
         public RecibirConfirmar()
         {
             GlobalFunctions.UltimaActividad();

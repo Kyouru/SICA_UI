@@ -134,7 +134,7 @@ namespace SICA.Forms.IronMountain
         private void btCargo_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new DataManagerCargo());
+            //OpenChildForm(new DataManagerCargo());
         }
     }
 

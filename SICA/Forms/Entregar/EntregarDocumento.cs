@@ -12,7 +12,7 @@ namespace SICA.Forms.Entregar
     public partial class EntregarDocumento : Form
     {
         int cantidadcarrito = 0;
-        readonly string tipo_carrito = Globals.strEntregarDocumento;
+        readonly string tipo_carrito = Globals.strMoverDocumento;
 
         public EntregarDocumento()
         {
@@ -40,11 +40,6 @@ namespace SICA.Forms.Entregar
 
             GlobalFunctions.UltimaActividad();
             LoadingScreen.iniciarLoading();
-            int entransito = 0;
-            if (cbTransito.Checked)
-            {
-                entransito = 1;
-            }
 
             try
             {
@@ -59,9 +54,7 @@ namespace SICA.Forms.Entregar
                     string json = new JavaScriptSerializer().Serialize(new
                     {
                         token = Globals.Token,
-                        busquedalibre = tbBusquedaLibre.Text,
-                        expediente = 0,
-                        entransito = entransito
+                        busquedalibre = tbBusquedaLibre.Text
                     });
 
                     streamWriter.Write(json);
@@ -112,7 +105,7 @@ namespace SICA.Forms.Entregar
             GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
-                Globals.TipoSeleccionarUsuario = 0;
+                Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                 suf.ShowDialog();
                 if (Globals.IdUsernameSelect > 0)
@@ -129,12 +122,11 @@ namespace SICA.Forms.Entregar
                         string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         if (dt.Rows.Count > 0)
                         {
-                            bool confirmar = Globals.EntregarConfirmacion;
                             HttpWebRequest httpWebRequest;
                             HttpWebResponse httpResponse;
                             foreach (DataRow row in dt.Rows)
                             {
-                                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/recibirentregar");
+                                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
                                 httpWebRequest.ContentType = "application/json";
                                 httpWebRequest.Method = "POST";
 
@@ -143,13 +135,10 @@ namespace SICA.Forms.Entregar
                                     string json = new JavaScriptSerializer().Serialize(new
                                     {
                                         token = Globals.Token,
-                                        idaux = Globals.IdUsernameSelect,
                                         idinventario = row["ID"].ToString(),
-                                        idareaentrega = Globals.IdArea,
-                                        idarearecibe = Globals.IdAreaSelect,
+                                        idubicacionrecibe = Globals.IdAreaSelect,
                                         fecha = fecha,
-                                        observacion = observacion,
-                                        confirmar = confirmar
+                                        observacion = observacion
                                     });
 
                                     streamWriter.Write(json);

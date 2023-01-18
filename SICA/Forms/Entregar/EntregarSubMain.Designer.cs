@@ -30,32 +30,42 @@
         {
             this.pnTop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnSubMain = new System.Windows.Forms.Panel();
             this.btDocumento = new FontAwesome.Sharp.IconButton();
             this.btExpediente = new FontAwesome.Sharp.IconButton();
-            this.pnSubMain = new System.Windows.Forms.Panel();
+            this.btMasivo = new FontAwesome.Sharp.IconButton();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.pnTop.Controls.Add(this.panel1);
-            this.pnTop.Controls.Add(this.btDocumento);
+            this.pnTop.Controls.Add(this.btMasivo);
             this.pnTop.Controls.Add(this.btExpediente);
+            this.pnTop.Controls.Add(this.btDocumento);
+            this.pnTop.Controls.Add(this.panel1);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
-            this.pnTop.Size = new System.Drawing.Size(1048, 45);
+            this.pnTop.Size = new System.Drawing.Size(1048, 44);
             this.pnTop.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(280, 44);
+            this.panel1.Location = new System.Drawing.Point(0, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(768, 1);
+            this.panel1.Size = new System.Drawing.Size(1048, 1);
             this.panel1.TabIndex = 8;
+            // 
+            // pnSubMain
+            // 
+            this.pnSubMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSubMain.Location = new System.Drawing.Point(0, 44);
+            this.pnSubMain.Name = "pnSubMain";
+            this.pnSubMain.Size = new System.Drawing.Size(1048, 564);
+            this.pnSubMain.TabIndex = 1;
             // 
             // btDocumento
             // 
@@ -63,19 +73,18 @@
             this.btDocumento.Dock = System.Windows.Forms.DockStyle.Left;
             this.btDocumento.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btDocumento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDocumento.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btDocumento.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDocumento.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btDocumento.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btDocumento.IconColor = System.Drawing.Color.Gainsboro;
+            this.btDocumento.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btDocumento.IconSize = 30;
             this.btDocumento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDocumento.Location = new System.Drawing.Point(140, 0);
+            this.btDocumento.Location = new System.Drawing.Point(0, 0);
             this.btDocumento.Name = "btDocumento";
             this.btDocumento.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btDocumento.Rotation = 0D;
-            this.btDocumento.Size = new System.Drawing.Size(140, 45);
-            this.btDocumento.TabIndex = 5;
+            this.btDocumento.Size = new System.Drawing.Size(140, 43);
+            this.btDocumento.TabIndex = 10;
             this.btDocumento.Text = "Documentos";
             this.btDocumento.UseVisualStyleBackColor = false;
             this.btDocumento.Click += new System.EventHandler(this.btDocumento_Click);
@@ -86,30 +95,43 @@
             this.btExpediente.Dock = System.Windows.Forms.DockStyle.Left;
             this.btExpediente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btExpediente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btExpediente.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btExpediente.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btExpediente.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btExpediente.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btExpediente.IconColor = System.Drawing.Color.Gainsboro;
+            this.btExpediente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btExpediente.IconSize = 30;
             this.btExpediente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btExpediente.Location = new System.Drawing.Point(0, 0);
+            this.btExpediente.Location = new System.Drawing.Point(140, 0);
             this.btExpediente.Name = "btExpediente";
             this.btExpediente.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btExpediente.Rotation = 0D;
-            this.btExpediente.Size = new System.Drawing.Size(140, 45);
-            this.btExpediente.TabIndex = 4;
+            this.btExpediente.Size = new System.Drawing.Size(140, 43);
+            this.btExpediente.TabIndex = 11;
             this.btExpediente.Text = "Expedientes";
             this.btExpediente.UseVisualStyleBackColor = false;
-            this.btExpediente.Click += new System.EventHandler(this.btBusqueda_Click);
+            this.btExpediente.Visible = false;
             // 
-            // pnSubMain
+            // btMasivo
             // 
-            this.pnSubMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnSubMain.Location = new System.Drawing.Point(0, 45);
-            this.pnSubMain.Name = "pnSubMain";
-            this.pnSubMain.Size = new System.Drawing.Size(1048, 563);
-            this.pnSubMain.TabIndex = 1;
+            this.btMasivo.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btMasivo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btMasivo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btMasivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMasivo.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMasivo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btMasivo.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btMasivo.IconColor = System.Drawing.Color.Gainsboro;
+            this.btMasivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btMasivo.IconSize = 30;
+            this.btMasivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btMasivo.Location = new System.Drawing.Point(280, 0);
+            this.btMasivo.Name = "btMasivo";
+            this.btMasivo.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btMasivo.Size = new System.Drawing.Size(140, 43);
+            this.btMasivo.TabIndex = 12;
+            this.btMasivo.Text = "Masivo";
+            this.btMasivo.UseVisualStyleBackColor = false;
+            this.btMasivo.Click += new System.EventHandler(this.btMasivo_Click);
             // 
             // EntregarSubMain
             // 
@@ -129,9 +151,10 @@
         #endregion
 
         private System.Windows.Forms.Panel pnTop;
-        private FontAwesome.Sharp.IconButton btExpediente;
-        private FontAwesome.Sharp.IconButton btDocumento;
         private System.Windows.Forms.Panel pnSubMain;
         private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btMasivo;
+        private FontAwesome.Sharp.IconButton btExpediente;
+        private FontAwesome.Sharp.IconButton btDocumento;
     }
 }

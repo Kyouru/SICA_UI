@@ -12,8 +12,8 @@ namespace SICA
         public static Int32 SesionAlerta = 3;
         public static DateTime UltimaActividad = DateTime.Now;
 
-        public static string api = "http://sica.kyouru.com/api/";
-        //public static string api = "http://localhost:5000/api/";
+        //public static string api = "http://sica.kyouru.com/api/";
+        public static string api = "http://localhost:5000/api/";
         public static String ExportarPath = Application.StartupPath + "\\Exportar\\";
         public static String strQueryArea = "";
 
@@ -55,14 +55,16 @@ namespace SICA
         public static String strIronMountainEnviar = "IM_ENVIAR";
         public static String strIronMountainEntregar = "IM_ENTREGAR";
 
-        public static String strRecibirReingreso = "RECIBIR_REINGRESO";
-        public static String strRecibirConfirmar = "RECIBIR_CONFIRMAR";
+        public static String strValijaReingreso = "VALIJA_REINGRESO";
+        public static String strValijaConfirmar = "VALIJA_CONFIRMAR";
+        public static String strValijaOK = "VALIJA_OK";
+        public static String strValijaPendiente = "VALIJA_PENDIENTE";
 
-        public static String strEntregarExpediente = "ENTREGAR_EXP";
-        public static String strEntregarDocumento = "ENTREGAR_DOC";
-        public static String strEntregarPagare = "ENTREGAR_PAG";
-        public static String strEntregarPagareSinDesembolsar = "ENTREGAR_PAG_SIN";
-        public static String strEntregarEsctado = "PRESTADO";
+        public static String strMoverExpediente = "MOVER_EXP";
+        public static String strMoverDocumento = "MOVER_DOC";
+        public static String strMoverPagare = "MOVER_PAG";
+        public static String strMoverPagareSinDesembolsar = "MOVER_PAG_SIN";
+        public static String strMoverEstado = "PRESTADO";
 
         public static String strBovedaRetirarDOC = "BOVEDA_RETIRAR_DOC";
         public static String strBovedaGuardarDOC = "BOVEDA_GUARDAR_DOC";
@@ -87,14 +89,15 @@ namespace SICA
         public static string auBusqueda = "0";
         public static string auBusquedaHistorico = "0";
         public static string auBusquedaEditar = "0";
-        public static string auEntregar = "0";
-        public static string auEntregarExpediente = "0";
-        public static string auEntregarDocumento = "0";
-        public static string auRecibir = "0";
-        public static string auRecibirNuevo = "0";
-        public static string auRecibirReingreso = "0";
-        public static string auRecibirConfirmar = "0";
-        public static string auRecibirManual = "0";
+        public static string auMover = "0";
+        public static string auMoverExpediente = "0";
+        public static string auMoverDocumento = "0";
+        public static string auMoverMasivo = "0";
+        public static string auValija = "0";
+        public static string auValijaNuevo = "0";
+        public static string auValijaReingreso = "0";
+        public static string auValijaConfirmar = "0";
+        public static string auValijaManual = "0";
         public static string auPagare = "0";
         public static string auPagareBuscar = "0";
         public static string auPagareRecibir = "0";
@@ -124,8 +127,14 @@ namespace SICA
         public static string auMantenimientoCuenta = "0";
         public static string auMantenimientoCredito = "0";
         public static string auReporte = "0";
+        public static string auReporteCajas = "0";
         public static string auReportePrestado = "0";
         public static string auReporteNoCustodiado = "0";
+        public static string auPendiente = "0";
+        public static string auPendienteRegularizar = "0";
+        public static string auPrestar = "0";
+        public static string auPrestarPrestar = "0";
+        public static string auPrestarRecibir = "0";
         public static string auNivel = "0";
     }
 }

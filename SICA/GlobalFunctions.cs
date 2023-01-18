@@ -116,7 +116,6 @@ namespace SICA
             ExportarDataGridViewExcel(dgv, fileName);
             //ExportarDataGridViewCSV(dgv, fileName);
         }
-
         public static void ExportarDataGridViewExcel(DataGridView dgv, string fileName)
         {
 
@@ -874,14 +873,15 @@ namespace SICA
                     Globals.auBusqueda = usuario.auBusqueda.ToString();
                     Globals.auBusquedaHistorico = usuario.auBusquedaHistorico.ToString();
                     Globals.auBusquedaEditar = usuario.auBusquedaEditar.ToString();
-                    Globals.auEntregar = usuario.auEntregar.ToString();
-                    Globals.auEntregarExpediente = usuario.auEntregarExpediente.ToString();
-                    Globals.auEntregarDocumento = usuario.auEntregarDocumento.ToString();
-                    Globals.auRecibir = usuario.auRecibir.ToString();
-                    Globals.auRecibirNuevo = usuario.auRecibirNuevo.ToString();
-                    Globals.auRecibirReingreso = usuario.auRecibirReingreso.ToString();
-                    Globals.auRecibirConfirmar = usuario.auRecibirConfirmar.ToString();
-                    Globals.auRecibirManual = usuario.auRecibirManual.ToString();
+                    Globals.auMover = usuario.auMover.ToString();
+                    Globals.auMoverExpediente = usuario.auMoverExpediente.ToString();
+                    Globals.auMoverDocumento = usuario.auMoverDocumento.ToString();
+                    Globals.auMoverMasivo = usuario.auMoverMasivo.ToString();
+                    Globals.auValija = usuario.auValija.ToString();
+                    Globals.auValijaNuevo = usuario.auValijaNuevo.ToString();
+                    Globals.auValijaReingreso = usuario.auValijaReingreso.ToString();
+                    Globals.auValijaConfirmar = usuario.auValijaConfirmar.ToString();
+                    Globals.auValijaManual = usuario.auValijaManual.ToString();
                     Globals.auPagare = usuario.auPagare.ToString();
                     Globals.auPagareBuscar = usuario.auPagareBuscar.ToString();
                     Globals.auPagareRecibir = usuario.auPagareRecibir.ToString();
@@ -910,6 +910,13 @@ namespace SICA
                     Globals.auMantenimientoCuenta = usuario.auMantenimientoCuenta.ToString();
                     Globals.auMantenimientoCredito = usuario.auMantenimientoCredito.ToString();
                     Globals.auMantenimientoSocio = usuario.auMantenimientoSocio.ToString();
+                    Globals.auPendiente = usuario.auPendiente.ToString();
+                    Globals.auPendienteRegularizar = usuario.auPendienteRegularizar.ToString();
+                    Globals.auReporte = usuario.auReporte.ToString();
+                    Globals.auReporteCajas = usuario.auReporteCajas.ToString();
+                    Globals.auPrestar = usuario.auPrestar.ToString();
+                    Globals.auPrestarPrestar = usuario.auPrestarPrestar.ToString();
+                    Globals.auPrestarRecibir = usuario.auPrestarRecibir.ToString();
 
                     Globals.auNivel = usuario.auNivel.ToString();
                     Globals.Username = username;

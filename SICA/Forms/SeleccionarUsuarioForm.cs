@@ -21,7 +21,7 @@ namespace SICA.Forms
         private void SeleccionarUsuarioForm_Load(object sender, EventArgs e)
         {
             Globals.IdUsernameSelect = -1;
-            Globals.EntregarConfirmacion = true;
+            //Globals.EntregarConfirmacion = true;
             try
             {
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarios");
@@ -34,6 +34,7 @@ namespace SICA.Forms
                     {
                         token = Globals.Token,
                         tiposeleccionarusuario = Globals.TipoSeleccionarUsuario
+                        //1: Externos
                     });
 
                     streamWriter.Write(json);
@@ -49,26 +50,6 @@ namespace SICA.Forms
                     }
                 }
 
-                DataTable dt = new DataTable("AREA");
-                dt.Columns.Add("ID_AREA");
-                dt.Columns.Add("NOMBRE_AREA");
-                List<int> idareas = new List<int>();
-                foreach(DataRow row in dtUsuarios.Rows)
-                {
-                    int idarea = Int32.Parse(row["ID_AREA"].ToString());
-                    if (!idareas.Contains(idarea))
-                    {
-                        DataRow row2 = dt.NewRow();
-                        idareas.Add(idarea);
-                        row2["ID_AREA"] = idarea;
-                        row2["NOMBRE_AREA"] = row["NOMBRE_AREA"].ToString();
-                        dt.Rows.Add(row2);
-                    }
-                }
-
-                cmbArea.DataSource = dt;
-                cmbArea.ValueMember = "ID_AREA";
-                cmbArea.DisplayMember = "NOMBRE_AREA";
 
             }
             catch (WebException ex)
@@ -96,7 +77,6 @@ namespace SICA.Forms
             {
                 Globals.IdUsernameSelect = Int32.Parse((cmbUsuario.SelectedItem as DataRowView)["ID_USUARIO"].ToString());
                 Globals.UsernameSelect = cmbUsuario.Text.Trim();
-                Globals.IdAreaSelect = Int32.Parse((cmbArea.SelectedItem as DataRowView)["ID_AREA"].ToString());
                 this.Close();
             }
             else
@@ -111,41 +91,5 @@ namespace SICA.Forms
                 e.KeyChar -= (char)32;
         }
 
-        private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbArea.SelectedIndex >= 0)
-            {
-                try
-                {
-                    DataTable dt = new DataTable("USUARIO");
-                    dt.Columns.Add("ID_USUARIO");
-                    dt.Columns.Add("NOMBRE_USUARIO");
-                    foreach (DataRow row in dtUsuarios.Rows)
-                    {
-                        int idarea = Int32.Parse(row["ID_AREA"].ToString());
-                        if (Int32.Parse((cmbArea.SelectedItem as DataRowView)["ID_AREA"].ToString()) == idarea)
-                        {
-                            DataRow row2 = dt.NewRow();
-                            row2["ID_USUARIO"] = row["ID_USUARIO"].ToString();
-                            row2["NOMBRE_USUARIO"] = row["NOMBRE_USUARIO"].ToString();
-                            dt.Rows.Add(row2);
-                        }
-                    }
-
-                    cmbUsuario.DataSource = dt;
-                    cmbUsuario.ValueMember = "ID_USUARIO";
-                    cmbUsuario.DisplayMember = "NOMBRE_USUARIO";
-                }
-                catch (Exception ex)
-                {
-                    LoadingScreen.cerrarLoading();
-                    GlobalFunctions.casoError(ex, "Error Selecionar Usuario Usuarios");
-                }
-            }
-            else
-            {
-                cmbUsuario.DataSource = null;
-            }
-        }
     }
 }

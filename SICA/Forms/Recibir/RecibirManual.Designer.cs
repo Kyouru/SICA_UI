@@ -29,462 +29,420 @@ namespace SICA.Forms.Recibir
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbNumeroCaja = new System.Windows.Forms.TextBox();
-            this.cbNumeroCaja = new System.Windows.Forms.CheckBox();
-            this.cbFecha = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbDescripcion1 = new System.Windows.Forms.CheckBox();
+            this.btGuadar = new FontAwesome.Sharp.IconButton();
+            this.cbClasificacion = new System.Windows.Forms.CheckBox();
+            this.cbProducto = new System.Windows.Forms.CheckBox();
+            this.cbCentroCosto = new System.Windows.Forms.CheckBox();
+            this.cmbProducto = new System.Windows.Forms.ComboBox();
+            this.cmbCentroCosto = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbObservacion = new System.Windows.Forms.TextBox();
+            this.cmbClasificacion = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbNombreSocio = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbDescripcion2 = new System.Windows.Forms.CheckBox();
-            this.tbDescripcion2 = new System.Windows.Forms.TextBox();
-            this.lbDescripcion2 = new System.Windows.Forms.Label();
-            this.cbDescripcion3 = new System.Windows.Forms.CheckBox();
-            this.tbDescripcion3 = new System.Windows.Forms.TextBox();
-            this.lbDescripcion3 = new System.Windows.Forms.Label();
-            this.cbCodDocumento = new System.Windows.Forms.CheckBox();
-            this.cbCodDepartamento = new System.Windows.Forms.CheckBox();
-            this.cmbCodDocumento = new System.Windows.Forms.ComboBox();
-            this.cmbCodDepartamento = new System.Windows.Forms.ComboBox();
-            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
-            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
-            this.cbDescripcion4 = new System.Windows.Forms.CheckBox();
-            this.tbDescripcion4 = new System.Windows.Forms.TextBox();
-            this.lbDescripcion4 = new System.Windows.Forms.Label();
-            this.cbDescripcion5 = new System.Windows.Forms.CheckBox();
-            this.tbDescripcion5 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cmbDescripcion1 = new System.Windows.Forms.ComboBox();
-            this.btRegistrar = new FontAwesome.Sharp.IconButton();
-            this.lbPagare = new System.Windows.Forms.Label();
-            this.cmbPagare = new System.Windows.Forms.ComboBox();
-            this.cmbExpediente = new System.Windows.Forms.ComboBox();
-            this.lbExpediente = new System.Windows.Forms.Label();
+            this.tbCodigoSocio = new System.Windows.Forms.TextBox();
+            this.btValidarSolicitud = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbNumeroSolicitud = new System.Windows.Forms.TextBox();
+            this.cmbDetalle = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbHasta = new System.Windows.Forms.Label();
+            this.lbDesde = new System.Windows.Forms.Label();
+            this.cmbDocumento = new System.Windows.Forms.ComboBox();
+            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbFecha = new System.Windows.Forms.CheckBox();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbCaja = new System.Windows.Forms.TextBox();
+            this.cbPagare = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label2
+            // btGuadar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(40, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 22);
-            this.label2.TabIndex = 47;
-            this.label2.Text = "Numero de Caja:";
+            this.btGuadar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGuadar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGuadar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btGuadar.IconColor = System.Drawing.Color.Black;
+            this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btGuadar.IconSize = 16;
+            this.btGuadar.Location = new System.Drawing.Point(220, 527);
+            this.btGuadar.Name = "btGuadar";
+            this.btGuadar.Size = new System.Drawing.Size(119, 32);
+            this.btGuadar.TabIndex = 142;
+            this.btGuadar.Text = "Guardar";
+            this.btGuadar.UseVisualStyleBackColor = true;
+            this.btGuadar.Click += new System.EventHandler(this.btGuardar_Click);
             // 
-            // label1
+            // cbClasificacion
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(40, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 22);
-            this.label1.TabIndex = 48;
-            this.label1.Text = "Codigo Departamento:";
+            this.cbClasificacion.AutoSize = true;
+            this.cbClasificacion.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbClasificacion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbClasificacion.Location = new System.Drawing.Point(23, 318);
+            this.cbClasificacion.Name = "cbClasificacion";
+            this.cbClasificacion.Size = new System.Drawing.Size(136, 26);
+            this.cbClasificacion.TabIndex = 141;
+            this.cbClasificacion.Text = "Clasificacion";
+            this.cbClasificacion.UseVisualStyleBackColor = true;
+            this.cbClasificacion.CheckedChanged += new System.EventHandler(this.cbClasificacion_CheckedChanged);
             // 
-            // label3
+            // cbProducto
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(40, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 22);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "Codigo Documento:";
+            this.cbProducto.AutoSize = true;
+            this.cbProducto.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbProducto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbProducto.Location = new System.Drawing.Point(23, 439);
+            this.cbProducto.Name = "cbProducto";
+            this.cbProducto.Size = new System.Drawing.Size(106, 26);
+            this.cbProducto.TabIndex = 140;
+            this.cbProducto.Text = "Producto";
+            this.cbProducto.UseVisualStyleBackColor = true;
+            this.cbProducto.CheckedChanged += new System.EventHandler(this.cbProducto_CheckedChanged);
             // 
-            // tbNumeroCaja
+            // cbCentroCosto
             // 
-            this.tbNumeroCaja.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbNumeroCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumeroCaja.Location = new System.Drawing.Point(258, 9);
-            this.tbNumeroCaja.Name = "tbNumeroCaja";
-            this.tbNumeroCaja.Size = new System.Drawing.Size(179, 24);
-            this.tbNumeroCaja.TabIndex = 2;
-            this.tbNumeroCaja.Visible = false;
+            this.cbCentroCosto.AutoSize = true;
+            this.cbCentroCosto.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbCentroCosto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbCentroCosto.Location = new System.Drawing.Point(23, 408);
+            this.cbCentroCosto.Name = "cbCentroCosto";
+            this.cbCentroCosto.Size = new System.Drawing.Size(142, 26);
+            this.cbCentroCosto.TabIndex = 139;
+            this.cbCentroCosto.Text = "Centro Costo";
+            this.cbCentroCosto.UseVisualStyleBackColor = true;
+            this.cbCentroCosto.CheckedChanged += new System.EventHandler(this.cbCentroCosto_CheckedChanged);
             // 
-            // cbNumeroCaja
+            // cmbProducto
             // 
-            this.cbNumeroCaja.AutoSize = true;
-            this.cbNumeroCaja.Location = new System.Drawing.Point(19, 16);
-            this.cbNumeroCaja.Name = "cbNumeroCaja";
-            this.cbNumeroCaja.Size = new System.Drawing.Size(15, 14);
-            this.cbNumeroCaja.TabIndex = 52;
-            this.cbNumeroCaja.UseVisualStyleBackColor = true;
-            this.cbNumeroCaja.CheckedChanged += new System.EventHandler(this.cbNumeroCaja_CheckedChanged);
+            this.cmbProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbProducto.FormattingEnabled = true;
+            this.cmbProducto.Location = new System.Drawing.Point(220, 440);
+            this.cmbProducto.Name = "cmbProducto";
+            this.cmbProducto.Size = new System.Drawing.Size(188, 26);
+            this.cmbProducto.TabIndex = 138;
             // 
-            // cbFecha
+            // cmbCentroCosto
             // 
-            this.cbFecha.AutoSize = true;
-            this.cbFecha.Location = new System.Drawing.Point(19, 118);
-            this.cbFecha.Name = "cbFecha";
-            this.cbFecha.Size = new System.Drawing.Size(15, 14);
-            this.cbFecha.TabIndex = 58;
-            this.cbFecha.UseVisualStyleBackColor = true;
-            this.cbFecha.CheckedChanged += new System.EventHandler(this.cbFecha_CheckedChanged);
+            this.cmbCentroCosto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCentroCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbCentroCosto.FormattingEnabled = true;
+            this.cmbCentroCosto.Location = new System.Drawing.Point(220, 408);
+            this.cmbCentroCosto.Name = "cmbCentroCosto";
+            this.cmbCentroCosto.Size = new System.Drawing.Size(284, 26);
+            this.cmbCentroCosto.TabIndex = 137;
             // 
-            // label4
+            // label9
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(40, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 22);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "Fecha Desde:";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(19, 367);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(122, 22);
+            this.label9.TabIndex = 136;
+            this.label9.Text = "Observacion:";
             // 
-            // label5
+            // tbObservacion
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(40, 129);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 22);
-            this.label5.TabIndex = 59;
-            this.label5.Text = "Fecha Hasta:";
+            this.tbObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbObservacion.Location = new System.Drawing.Point(220, 351);
+            this.tbObservacion.Multiline = true;
+            this.tbObservacion.Name = "tbObservacion";
+            this.tbObservacion.Size = new System.Drawing.Size(310, 51);
+            this.tbObservacion.TabIndex = 135;
             // 
-            // cbDescripcion1
+            // cmbClasificacion
             // 
-            this.cbDescripcion1.AutoSize = true;
-            this.cbDescripcion1.Checked = true;
-            this.cbDescripcion1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDescripcion1.Enabled = false;
-            this.cbDescripcion1.Location = new System.Drawing.Point(19, 166);
-            this.cbDescripcion1.Name = "cbDescripcion1";
-            this.cbDescripcion1.Size = new System.Drawing.Size(15, 14);
-            this.cbDescripcion1.TabIndex = 64;
-            this.cbDescripcion1.UseVisualStyleBackColor = true;
+            this.cmbClasificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbClasificacion.FormattingEnabled = true;
+            this.cmbClasificacion.Location = new System.Drawing.Point(220, 319);
+            this.cmbClasificacion.Name = "cmbClasificacion";
+            this.cmbClasificacion.Size = new System.Drawing.Size(188, 26);
+            this.cmbClasificacion.TabIndex = 134;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(18, 277);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 22);
+            this.label7.TabIndex = 133;
+            this.label7.Text = "Nombre Socio:";
+            // 
+            // tbNombreSocio
+            // 
+            this.tbNombreSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombreSocio.Location = new System.Drawing.Point(220, 260);
+            this.tbNombreSocio.Multiline = true;
+            this.tbNombreSocio.Name = "tbNombreSocio";
+            this.tbNombreSocio.Size = new System.Drawing.Size(310, 53);
+            this.tbNombreSocio.TabIndex = 132;
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(414, 230);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 24);
+            this.button1.TabIndex = 131;
+            this.button1.Text = "Validar";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(40, 159);
+            this.label6.Location = new System.Drawing.Point(18, 230);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 22);
-            this.label6.TabIndex = 62;
-            this.label6.Text = "Descripción 1:";
+            this.label6.Size = new System.Drawing.Size(131, 22);
+            this.label6.TabIndex = 130;
+            this.label6.Text = "Codigo Socio:";
             // 
-            // cbDescripcion2
+            // tbCodigoSocio
             // 
-            this.cbDescripcion2.AutoSize = true;
-            this.cbDescripcion2.Checked = true;
-            this.cbDescripcion2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDescripcion2.Location = new System.Drawing.Point(19, 196);
-            this.cbDescripcion2.Name = "cbDescripcion2";
-            this.cbDescripcion2.Size = new System.Drawing.Size(15, 14);
-            this.cbDescripcion2.TabIndex = 67;
-            this.cbDescripcion2.UseVisualStyleBackColor = true;
-            this.cbDescripcion2.CheckedChanged += new System.EventHandler(this.cbDescripcion2_CheckedChanged);
+            this.tbCodigoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCodigoSocio.Location = new System.Drawing.Point(220, 230);
+            this.tbCodigoSocio.Name = "tbCodigoSocio";
+            this.tbCodigoSocio.Size = new System.Drawing.Size(188, 24);
+            this.tbCodigoSocio.TabIndex = 129;
             // 
-            // tbDescripcion2
+            // btValidarSolicitud
             // 
-            this.tbDescripcion2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDescripcion2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescripcion2.Location = new System.Drawing.Point(258, 189);
-            this.tbDescripcion2.Name = "tbDescripcion2";
-            this.tbDescripcion2.Size = new System.Drawing.Size(389, 24);
-            this.tbDescripcion2.TabIndex = 8;
+            this.btValidarSolicitud.Enabled = false;
+            this.btValidarSolicitud.Location = new System.Drawing.Point(414, 200);
+            this.btValidarSolicitud.Name = "btValidarSolicitud";
+            this.btValidarSolicitud.Size = new System.Drawing.Size(74, 24);
+            this.btValidarSolicitud.TabIndex = 128;
+            this.btValidarSolicitud.Text = "Validar";
+            this.btValidarSolicitud.UseVisualStyleBackColor = true;
             // 
-            // lbDescripcion2
+            // label5
             // 
-            this.lbDescripcion2.AutoSize = true;
-            this.lbDescripcion2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescripcion2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbDescripcion2.Location = new System.Drawing.Point(40, 189);
-            this.lbDescripcion2.Name = "lbDescripcion2";
-            this.lbDescripcion2.Size = new System.Drawing.Size(132, 22);
-            this.lbDescripcion2.TabIndex = 65;
-            this.lbDescripcion2.Text = "Descripción 2:";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(18, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 22);
+            this.label5.TabIndex = 127;
+            this.label5.Text = "Numero Solicitud:";
             // 
-            // cbDescripcion3
+            // tbNumeroSolicitud
             // 
-            this.cbDescripcion3.AutoSize = true;
-            this.cbDescripcion3.Checked = true;
-            this.cbDescripcion3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDescripcion3.Location = new System.Drawing.Point(19, 226);
-            this.cbDescripcion3.Name = "cbDescripcion3";
-            this.cbDescripcion3.Size = new System.Drawing.Size(15, 14);
-            this.cbDescripcion3.TabIndex = 70;
-            this.cbDescripcion3.UseVisualStyleBackColor = true;
-            this.cbDescripcion3.CheckedChanged += new System.EventHandler(this.cbDescripcion3_CheckedChanged);
+            this.tbNumeroSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNumeroSolicitud.Location = new System.Drawing.Point(220, 200);
+            this.tbNumeroSolicitud.Name = "tbNumeroSolicitud";
+            this.tbNumeroSolicitud.Size = new System.Drawing.Size(188, 24);
+            this.tbNumeroSolicitud.TabIndex = 126;
             // 
-            // tbDescripcion3
+            // cmbDetalle
             // 
-            this.tbDescripcion3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDescripcion3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescripcion3.Location = new System.Drawing.Point(258, 219);
-            this.tbDescripcion3.Name = "tbDescripcion3";
-            this.tbDescripcion3.Size = new System.Drawing.Size(389, 24);
-            this.tbDescripcion3.TabIndex = 9;
+            this.cmbDetalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbDetalle.FormattingEnabled = true;
+            this.cmbDetalle.Location = new System.Drawing.Point(220, 108);
+            this.cmbDetalle.Name = "cmbDetalle";
+            this.cmbDetalle.Size = new System.Drawing.Size(284, 26);
+            this.cmbDetalle.TabIndex = 125;
             // 
-            // lbDescripcion3
+            // label4
             // 
-            this.lbDescripcion3.AutoSize = true;
-            this.lbDescripcion3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescripcion3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbDescripcion3.Location = new System.Drawing.Point(40, 219);
-            this.lbDescripcion3.Name = "lbDescripcion3";
-            this.lbDescripcion3.Size = new System.Drawing.Size(132, 22);
-            this.lbDescripcion3.TabIndex = 68;
-            this.lbDescripcion3.Text = "Descripción 3:";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(18, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 22);
+            this.label4.TabIndex = 124;
+            this.label4.Text = "Cod. Detalle:";
             // 
-            // cbCodDocumento
+            // lbHasta
             // 
-            this.cbCodDocumento.AutoSize = true;
-            this.cbCodDocumento.Checked = true;
-            this.cbCodDocumento.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbCodDocumento.Enabled = false;
-            this.cbCodDocumento.Location = new System.Drawing.Point(19, 76);
-            this.cbCodDocumento.Name = "cbCodDocumento";
-            this.cbCodDocumento.Size = new System.Drawing.Size(15, 14);
-            this.cbCodDocumento.TabIndex = 72;
-            this.cbCodDocumento.UseVisualStyleBackColor = true;
+            this.lbHasta.AutoSize = true;
+            this.lbHasta.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHasta.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbHasta.Location = new System.Drawing.Point(128, 172);
+            this.lbHasta.Name = "lbHasta";
+            this.lbHasta.Size = new System.Drawing.Size(63, 22);
+            this.lbHasta.TabIndex = 123;
+            this.lbHasta.Text = "Hasta:";
+            this.lbHasta.Visible = false;
             // 
-            // cbCodDepartamento
+            // lbDesde
             // 
-            this.cbCodDepartamento.AutoSize = true;
-            this.cbCodDepartamento.Checked = true;
-            this.cbCodDepartamento.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbCodDepartamento.Enabled = false;
-            this.cbCodDepartamento.Location = new System.Drawing.Point(19, 46);
-            this.cbCodDepartamento.Name = "cbCodDepartamento";
-            this.cbCodDepartamento.Size = new System.Drawing.Size(15, 14);
-            this.cbCodDepartamento.TabIndex = 71;
-            this.cbCodDepartamento.UseVisualStyleBackColor = true;
+            this.lbDesde.AutoSize = true;
+            this.lbDesde.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDesde.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbDesde.Location = new System.Drawing.Point(128, 142);
+            this.lbDesde.Name = "lbDesde";
+            this.lbDesde.Size = new System.Drawing.Size(72, 22);
+            this.lbDesde.TabIndex = 122;
+            this.lbDesde.Text = "Desde:";
+            this.lbDesde.Visible = false;
             // 
-            // cmbCodDocumento
+            // cmbDocumento
             // 
-            this.cmbCodDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCodDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCodDocumento.FormattingEnabled = true;
-            this.cmbCodDocumento.Location = new System.Drawing.Point(258, 68);
-            this.cmbCodDocumento.Name = "cmbCodDocumento";
-            this.cmbCodDocumento.Size = new System.Drawing.Size(296, 26);
-            this.cmbCodDocumento.TabIndex = 4;
+            this.cmbDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbDocumento.FormattingEnabled = true;
+            this.cmbDocumento.Location = new System.Drawing.Point(220, 76);
+            this.cmbDocumento.Name = "cmbDocumento";
+            this.cmbDocumento.Size = new System.Drawing.Size(284, 26);
+            this.cmbDocumento.TabIndex = 121;
+            this.cmbDocumento.SelectedIndexChanged += new System.EventHandler(this.cmbDocumento_SelectedIndexChanged);
             // 
-            // cmbCodDepartamento
+            // cmbDepartamento
             // 
-            this.cmbCodDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCodDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCodDepartamento.FormattingEnabled = true;
-            this.cmbCodDepartamento.Location = new System.Drawing.Point(258, 38);
-            this.cmbCodDepartamento.Name = "cmbCodDepartamento";
-            this.cmbCodDepartamento.Size = new System.Drawing.Size(296, 26);
-            this.cmbCodDepartamento.TabIndex = 3;
+            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbDepartamento.FormattingEnabled = true;
+            this.cmbDepartamento.Location = new System.Drawing.Point(220, 44);
+            this.cmbDepartamento.Name = "cmbDepartamento";
+            this.cmbDepartamento.Size = new System.Drawing.Size(284, 26);
+            this.cmbDepartamento.TabIndex = 120;
+            this.cmbDepartamento.SelectedIndexChanged += new System.EventHandler(this.cmbDepartamento_SelectedIndexChanged);
             // 
-            // dtpDesde
+            // dtpFechaHasta
             // 
-            this.dtpDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(258, 99);
-            this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(113, 24);
-            this.dtpDesde.TabIndex = 5;
-            this.dtpDesde.Visible = false;
+            this.dtpFechaHasta.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(220, 170);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(119, 24);
+            this.dtpFechaHasta.TabIndex = 119;
+            this.dtpFechaHasta.Visible = false;
             // 
-            // dtpHasta
+            // label3
             // 
-            this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(258, 129);
-            this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(113, 24);
-            this.dtpHasta.TabIndex = 6;
-            this.dtpHasta.Visible = false;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(18, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(159, 22);
+            this.label3.TabIndex = 118;
+            this.label3.Text = "Cod. Documento:";
             // 
-            // cbDescripcion4
+            // label2
             // 
-            this.cbDescripcion4.AutoSize = true;
-            this.cbDescripcion4.Checked = true;
-            this.cbDescripcion4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDescripcion4.Location = new System.Drawing.Point(19, 256);
-            this.cbDescripcion4.Name = "cbDescripcion4";
-            this.cbDescripcion4.Size = new System.Drawing.Size(15, 14);
-            this.cbDescripcion4.TabIndex = 80;
-            this.cbDescripcion4.UseVisualStyleBackColor = true;
-            this.cbDescripcion4.CheckedChanged += new System.EventHandler(this.cbDescripcion4_CheckedChanged);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(19, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 22);
+            this.label2.TabIndex = 117;
+            this.label2.Text = "Cod. Departamento:";
             // 
-            // tbDescripcion4
+            // cbFecha
             // 
-            this.tbDescripcion4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDescripcion4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescripcion4.Location = new System.Drawing.Point(258, 249);
-            this.tbDescripcion4.Name = "tbDescripcion4";
-            this.tbDescripcion4.Size = new System.Drawing.Size(389, 24);
-            this.tbDescripcion4.TabIndex = 10;
+            this.cbFecha.AutoSize = true;
+            this.cbFecha.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFecha.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbFecha.Location = new System.Drawing.Point(22, 153);
+            this.cbFecha.Name = "cbFecha";
+            this.cbFecha.Size = new System.Drawing.Size(82, 26);
+            this.cbFecha.TabIndex = 116;
+            this.cbFecha.Text = "Fecha";
+            this.cbFecha.UseVisualStyleBackColor = true;
+            this.cbFecha.CheckedChanged += new System.EventHandler(this.cbFecha_CheckedChanged);
             // 
-            // lbDescripcion4
+            // dtpFechaDesde
             // 
-            this.lbDescripcion4.AutoSize = true;
-            this.lbDescripcion4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescripcion4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbDescripcion4.Location = new System.Drawing.Point(40, 249);
-            this.lbDescripcion4.Name = "lbDescripcion4";
-            this.lbDescripcion4.Size = new System.Drawing.Size(132, 22);
-            this.lbDescripcion4.TabIndex = 78;
-            this.lbDescripcion4.Text = "Descripción 4:";
+            this.dtpFechaDesde.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(220, 140);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(119, 24);
+            this.dtpFechaDesde.TabIndex = 115;
+            this.dtpFechaDesde.Visible = false;
             // 
-            // cbDescripcion5
+            // label1
             // 
-            this.cbDescripcion5.AutoSize = true;
-            this.cbDescripcion5.Checked = true;
-            this.cbDescripcion5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDescripcion5.Location = new System.Drawing.Point(19, 286);
-            this.cbDescripcion5.Name = "cbDescripcion5";
-            this.cbDescripcion5.Size = new System.Drawing.Size(15, 14);
-            this.cbDescripcion5.TabIndex = 83;
-            this.cbDescripcion5.UseVisualStyleBackColor = true;
-            this.cbDescripcion5.CheckedChanged += new System.EventHandler(this.cbDescripcion5_CheckedChanged);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(18, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 22);
+            this.label1.TabIndex = 114;
+            this.label1.Text = "Caja:";
             // 
-            // tbDescripcion5
+            // tbCaja
             // 
-            this.tbDescripcion5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDescripcion5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescripcion5.Location = new System.Drawing.Point(258, 279);
-            this.tbDescripcion5.Name = "tbDescripcion5";
-            this.tbDescripcion5.Size = new System.Drawing.Size(389, 24);
-            this.tbDescripcion5.TabIndex = 11;
+            this.tbCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCaja.Location = new System.Drawing.Point(220, 14);
+            this.tbCaja.Name = "tbCaja";
+            this.tbCaja.Size = new System.Drawing.Size(188, 24);
+            this.tbCaja.TabIndex = 113;
             // 
-            // label10
+            // cbPagare
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(40, 279);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(132, 22);
-            this.label10.TabIndex = 81;
-            this.label10.Text = "Descripción 5:";
-            // 
-            // cmbDescripcion1
-            // 
-            this.cmbDescripcion1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDescripcion1.FormattingEnabled = true;
-            this.cmbDescripcion1.Location = new System.Drawing.Point(258, 158);
-            this.cmbDescripcion1.Name = "cmbDescripcion1";
-            this.cmbDescripcion1.Size = new System.Drawing.Size(389, 26);
-            this.cmbDescripcion1.TabIndex = 7;
-            this.cmbDescripcion1.SelectedIndexChanged += new System.EventHandler(this.cmbDescripcion1_SelectedIndexChanged);
-            // 
-            // btRegistrar
-            // 
-            this.btRegistrar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRegistrar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btRegistrar.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btRegistrar.IconColor = System.Drawing.Color.Black;
-            this.btRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btRegistrar.IconSize = 16;
-            this.btRegistrar.Location = new System.Drawing.Point(224, 346);
-            this.btRegistrar.Name = "btRegistrar";
-            this.btRegistrar.Size = new System.Drawing.Size(217, 32);
-            this.btRegistrar.TabIndex = 14;
-            this.btRegistrar.Text = "Registrar";
-            this.btRegistrar.UseVisualStyleBackColor = true;
-            this.btRegistrar.Click += new System.EventHandler(this.btRegistrar_Click);
-            // 
-            // lbPagare
-            // 
-            this.lbPagare.AutoSize = true;
-            this.lbPagare.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPagare.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbPagare.Location = new System.Drawing.Point(327, 309);
-            this.lbPagare.Name = "lbPagare";
-            this.lbPagare.Size = new System.Drawing.Size(76, 22);
-            this.lbPagare.TabIndex = 86;
-            this.lbPagare.Text = "Pagaré:";
-            // 
-            // cmbPagare
-            // 
-            this.cmbPagare.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPagare.FormattingEnabled = true;
-            this.cmbPagare.Items.AddRange(new object[] {
-            "SI",
-            "NO"});
-            this.cmbPagare.Location = new System.Drawing.Point(420, 309);
-            this.cmbPagare.Name = "cmbPagare";
-            this.cmbPagare.Size = new System.Drawing.Size(68, 26);
-            this.cmbPagare.TabIndex = 12;
-            this.cmbPagare.Text = "NO";
-            // 
-            // cmbExpediente
-            // 
-            this.cmbExpediente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbExpediente.FormattingEnabled = true;
-            this.cmbExpediente.Items.AddRange(new object[] {
-            "SI",
-            "NO"});
-            this.cmbExpediente.Location = new System.Drawing.Point(241, 309);
-            this.cmbExpediente.Name = "cmbExpediente";
-            this.cmbExpediente.Size = new System.Drawing.Size(68, 26);
-            this.cmbExpediente.TabIndex = 13;
-            this.cmbExpediente.Text = "NO";
-            // 
-            // lbExpediente
-            // 
-            this.lbExpediente.AutoSize = true;
-            this.lbExpediente.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExpediente.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbExpediente.Location = new System.Drawing.Point(113, 309);
-            this.lbExpediente.Name = "lbExpediente";
-            this.lbExpediente.Size = new System.Drawing.Size(111, 22);
-            this.lbExpediente.TabIndex = 88;
-            this.lbExpediente.Text = "Expediente:";
+            this.cbPagare.AutoSize = true;
+            this.cbPagare.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPagare.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbPagare.Location = new System.Drawing.Point(23, 488);
+            this.cbPagare.Name = "cbPagare";
+            this.cbPagare.Size = new System.Drawing.Size(90, 26);
+            this.cbPagare.TabIndex = 143;
+            this.cbPagare.Text = "Pagare";
+            this.cbPagare.UseVisualStyleBackColor = true;
             // 
             // RecibirManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(664, 390);
-            this.Controls.Add(this.cmbExpediente);
-            this.Controls.Add(this.lbExpediente);
-            this.Controls.Add(this.cmbPagare);
-            this.Controls.Add(this.lbPagare);
-            this.Controls.Add(this.btRegistrar);
-            this.Controls.Add(this.cmbDescripcion1);
-            this.Controls.Add(this.cbDescripcion5);
-            this.Controls.Add(this.tbDescripcion5);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.cbDescripcion4);
-            this.Controls.Add(this.tbDescripcion4);
-            this.Controls.Add(this.lbDescripcion4);
-            this.Controls.Add(this.dtpHasta);
-            this.Controls.Add(this.dtpDesde);
-            this.Controls.Add(this.cmbCodDepartamento);
-            this.Controls.Add(this.cmbCodDocumento);
-            this.Controls.Add(this.cbCodDocumento);
-            this.Controls.Add(this.cbCodDepartamento);
-            this.Controls.Add(this.cbDescripcion3);
-            this.Controls.Add(this.tbDescripcion3);
-            this.Controls.Add(this.lbDescripcion3);
-            this.Controls.Add(this.cbDescripcion2);
-            this.Controls.Add(this.tbDescripcion2);
-            this.Controls.Add(this.lbDescripcion2);
-            this.Controls.Add(this.cbDescripcion1);
+            this.ClientSize = new System.Drawing.Size(549, 571);
+            this.Controls.Add(this.cbPagare);
+            this.Controls.Add(this.btGuadar);
+            this.Controls.Add(this.cbClasificacion);
+            this.Controls.Add(this.cbProducto);
+            this.Controls.Add(this.cbCentroCosto);
+            this.Controls.Add(this.cmbProducto);
+            this.Controls.Add(this.cmbCentroCosto);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.tbObservacion);
+            this.Controls.Add(this.cmbClasificacion);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tbNombreSocio);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.tbCodigoSocio);
+            this.Controls.Add(this.btValidarSolicitud);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbFecha);
+            this.Controls.Add(this.tbNumeroSolicitud);
+            this.Controls.Add(this.cmbDetalle);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbNumeroCaja);
-            this.Controls.Add(this.tbNumeroCaja);
+            this.Controls.Add(this.lbHasta);
+            this.Controls.Add(this.lbDesde);
+            this.Controls.Add(this.cmbDocumento);
+            this.Controls.Add(this.cmbDepartamento);
+            this.Controls.Add(this.dtpFechaHasta);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbFecha);
+            this.Controls.Add(this.dtpFechaDesde);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbCaja);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RecibirManual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RecibirManual";
+            this.Text = "Recibir Documento";
             this.Load += new System.EventHandler(this.RecibirManual_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -493,39 +451,36 @@ namespace SICA.Forms.Recibir
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbNumeroCaja;
-        private System.Windows.Forms.CheckBox cbNumeroCaja;
-        private System.Windows.Forms.CheckBox cbFecha;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox cbDescripcion1;
+        private FontAwesome.Sharp.IconButton btGuadar;
+        private System.Windows.Forms.CheckBox cbClasificacion;
+        private System.Windows.Forms.CheckBox cbProducto;
+        private System.Windows.Forms.CheckBox cbCentroCosto;
+        private System.Windows.Forms.ComboBox cmbProducto;
+        private System.Windows.Forms.ComboBox cmbCentroCosto;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbObservacion;
+        private System.Windows.Forms.ComboBox cmbClasificacion;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbNombreSocio;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox cbDescripcion2;
-        private System.Windows.Forms.TextBox tbDescripcion2;
-        private System.Windows.Forms.Label lbDescripcion2;
-        private System.Windows.Forms.CheckBox cbDescripcion3;
-        private System.Windows.Forms.TextBox tbDescripcion3;
-        private System.Windows.Forms.Label lbDescripcion3;
-        private System.Windows.Forms.CheckBox cbCodDocumento;
-        private System.Windows.Forms.CheckBox cbCodDepartamento;
-        private System.Windows.Forms.ComboBox cmbCodDocumento;
-        private System.Windows.Forms.ComboBox cmbCodDepartamento;
-        private System.Windows.Forms.DateTimePicker dtpDesde;
-        private System.Windows.Forms.DateTimePicker dtpHasta;
-        private System.Windows.Forms.CheckBox cbDescripcion4;
-        private System.Windows.Forms.TextBox tbDescripcion4;
-        private System.Windows.Forms.Label lbDescripcion4;
-        private System.Windows.Forms.CheckBox cbDescripcion5;
-        private System.Windows.Forms.TextBox tbDescripcion5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cmbDescripcion1;
-        private FontAwesome.Sharp.IconButton btRegistrar;
-        private System.Windows.Forms.Label lbPagare;
-        private System.Windows.Forms.ComboBox cmbPagare;
-        private System.Windows.Forms.ComboBox cmbExpediente;
-        private System.Windows.Forms.Label lbExpediente;
+        private System.Windows.Forms.TextBox tbCodigoSocio;
+        private System.Windows.Forms.Button btValidarSolicitud;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbNumeroSolicitud;
+        private System.Windows.Forms.ComboBox cmbDetalle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbHasta;
+        private System.Windows.Forms.Label lbDesde;
+        private System.Windows.Forms.ComboBox cmbDocumento;
+        private System.Windows.Forms.ComboBox cmbDepartamento;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox cbFecha;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbCaja;
+        private System.Windows.Forms.CheckBox cbPagare;
     }
 }

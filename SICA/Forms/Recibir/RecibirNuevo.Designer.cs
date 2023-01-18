@@ -96,15 +96,14 @@
             // 
             this.btBuscarCargo.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
             this.btBuscarCargo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscarCargo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btBuscarCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btBuscarCargo.ForeColor = System.Drawing.Color.Gainsboro;
             this.btBuscarCargo.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btBuscarCargo.IconColor = System.Drawing.Color.Black;
+            this.btBuscarCargo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btBuscarCargo.IconSize = 16;
             this.btBuscarCargo.Location = new System.Drawing.Point(12, 12);
             this.btBuscarCargo.Name = "btBuscarCargo";
-            this.btBuscarCargo.Rotation = 0D;
             this.btBuscarCargo.Size = new System.Drawing.Size(217, 32);
             this.btBuscarCargo.TabIndex = 30;
             this.btBuscarCargo.Text = "Buscar Cargo Nuevo";
@@ -115,15 +114,14 @@
             // 
             this.btIngresoManual.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
             this.btIngresoManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btIngresoManual.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btIngresoManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btIngresoManual.ForeColor = System.Drawing.Color.Gainsboro;
             this.btIngresoManual.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btIngresoManual.IconColor = System.Drawing.Color.Black;
+            this.btIngresoManual.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btIngresoManual.IconSize = 16;
             this.btIngresoManual.Location = new System.Drawing.Point(807, 12);
             this.btIngresoManual.Name = "btIngresoManual";
-            this.btIngresoManual.Rotation = 0D;
             this.btIngresoManual.Size = new System.Drawing.Size(217, 32);
             this.btIngresoManual.TabIndex = 30;
             this.btIngresoManual.Text = "Ingreso Manual";
@@ -134,18 +132,17 @@
             // 
             this.btCargarValido.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
             this.btCargarValido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCargarValido.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btCargarValido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCargarValido.ForeColor = System.Drawing.Color.Gainsboro;
             this.btCargarValido.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btCargarValido.IconColor = System.Drawing.Color.Black;
+            this.btCargarValido.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btCargarValido.IconSize = 16;
             this.btCargarValido.Location = new System.Drawing.Point(235, 12);
             this.btCargarValido.Name = "btCargarValido";
-            this.btCargarValido.Rotation = 0D;
             this.btCargarValido.Size = new System.Drawing.Size(217, 32);
             this.btCargarValido.TabIndex = 28;
-            this.btCargarValido.Text = "Cargar Información Valida";
+            this.btCargarValido.Text = "Cargar Información Válida";
             this.btCargarValido.UseVisualStyleBackColor = true;
             this.btCargarValido.Visible = false;
             this.btCargarValido.Click += new System.EventHandler(this.btCargarValido_Click);

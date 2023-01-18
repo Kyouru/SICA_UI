@@ -42,7 +42,6 @@
             this.btBuscar = new FontAwesome.Sharp.IconButton();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.pnBottom = new System.Windows.Forms.Panel();
-            this.cbTransito = new System.Windows.Forms.CheckBox();
             this.pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.pnBottom.SuspendLayout();
@@ -51,7 +50,6 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.pnTop.Controls.Add(this.cbTransito);
             this.pnTop.Controls.Add(this.label2);
             this.pnTop.Controls.Add(this.tbBusquedaLibre);
             this.pnTop.Controls.Add(this.btLimpiarCarrito);
@@ -233,17 +231,6 @@
             this.pnBottom.Size = new System.Drawing.Size(1048, 561);
             this.pnBottom.TabIndex = 46;
             // 
-            // cbTransito
-            // 
-            this.cbTransito.AutoSize = true;
-            this.cbTransito.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cbTransito.Location = new System.Drawing.Point(564, 15);
-            this.cbTransito.Name = "cbTransito";
-            this.cbTransito.Size = new System.Drawing.Size(80, 17);
-            this.cbTransito.TabIndex = 47;
-            this.cbTransito.Text = "En Transito";
-            this.cbTransito.UseVisualStyleBackColor = true;
-            // 
             // EntregarDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +262,5 @@
         private System.Windows.Forms.TextBox tbBusquedaLibre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnBottom;
-        private System.Windows.Forms.CheckBox cbTransito;
     }
 }

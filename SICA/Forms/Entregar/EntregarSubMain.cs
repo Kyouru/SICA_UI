@@ -26,8 +26,8 @@ namespace SICA.Forms.Entregar
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btExpediente.Visible = int2bool(Globals.auEntregarExpediente);
-            btDocumento.Visible = int2bool(Globals.auEntregarDocumento);
+            btExpediente.Visible = int2bool(Globals.auMoverExpediente);
+            btDocumento.Visible = int2bool(Globals.auMoverDocumento);
         }
         private void OpenChildForm(Form childForm)
         {
@@ -97,17 +97,16 @@ namespace SICA.Forms.Entregar
             public static Color color6 = Color.FromArgb(24, 161, 251);
         }
 
-        private void btBusqueda_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new EntregarExpediente());
-        }
-
         private void btDocumento_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
             OpenChildForm(new EntregarDocumento());
         }
 
+        private void btMasivo_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new EntregarMasivo());
+        }
     }
 }

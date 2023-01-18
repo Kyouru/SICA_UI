@@ -31,8 +31,8 @@
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btConfirmar = new FontAwesome.Sharp.IconButton();
-            this.btReingreso = new FontAwesome.Sharp.IconButton();
+            this.btPendiente = new FontAwesome.Sharp.IconButton();
+            this.btOK = new FontAwesome.Sharp.IconButton();
             this.btNuevo = new FontAwesome.Sharp.IconButton();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
@@ -50,8 +50,8 @@
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.pnTop.Controls.Add(this.panel1);
-            this.pnTop.Controls.Add(this.btConfirmar);
-            this.pnTop.Controls.Add(this.btReingreso);
+            this.pnTop.Controls.Add(this.btPendiente);
+            this.pnTop.Controls.Add(this.btOK);
             this.pnTop.Controls.Add(this.btNuevo);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
@@ -68,49 +68,49 @@
             this.panel1.Size = new System.Drawing.Size(628, 1);
             this.panel1.TabIndex = 8;
             // 
-            // btConfirmar
+            // btPendiente
             // 
-            this.btConfirmar.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btConfirmar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btConfirmar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btConfirmar.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btConfirmar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btConfirmar.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btConfirmar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btConfirmar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btConfirmar.IconSize = 30;
-            this.btConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btConfirmar.Location = new System.Drawing.Point(280, 0);
-            this.btConfirmar.Name = "btConfirmar";
-            this.btConfirmar.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btConfirmar.Size = new System.Drawing.Size(140, 45);
-            this.btConfirmar.TabIndex = 9;
-            this.btConfirmar.Text = "Confirmar";
-            this.btConfirmar.UseVisualStyleBackColor = false;
-            this.btConfirmar.Click += new System.EventHandler(this.btConfirmar_Click);
+            this.btPendiente.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btPendiente.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btPendiente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btPendiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPendiente.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPendiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btPendiente.IconColor = System.Drawing.Color.Gainsboro;
+            this.btPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btPendiente.IconSize = 30;
+            this.btPendiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPendiente.Location = new System.Drawing.Point(280, 0);
+            this.btPendiente.Name = "btPendiente";
+            this.btPendiente.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btPendiente.Size = new System.Drawing.Size(140, 45);
+            this.btPendiente.TabIndex = 9;
+            this.btPendiente.Text = "Pendiente";
+            this.btPendiente.UseVisualStyleBackColor = false;
+            this.btPendiente.Click += new System.EventHandler(this.btPendiente_Click);
             // 
-            // btReingreso
+            // btOK
             // 
-            this.btReingreso.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btReingreso.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btReingreso.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btReingreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btReingreso.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btReingreso.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btReingreso.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btReingreso.IconColor = System.Drawing.Color.Gainsboro;
-            this.btReingreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btReingreso.IconSize = 30;
-            this.btReingreso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btReingreso.Location = new System.Drawing.Point(140, 0);
-            this.btReingreso.Name = "btReingreso";
-            this.btReingreso.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btReingreso.Size = new System.Drawing.Size(140, 45);
-            this.btReingreso.TabIndex = 5;
-            this.btReingreso.Text = "Reingreso";
-            this.btReingreso.UseVisualStyleBackColor = false;
-            this.btReingreso.Click += new System.EventHandler(this.btReingreso_Click);
+            this.btOK.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btOK.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btOK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btOK.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btOK.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btOK.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btOK.IconColor = System.Drawing.Color.Gainsboro;
+            this.btOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btOK.IconSize = 30;
+            this.btOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btOK.Location = new System.Drawing.Point(140, 0);
+            this.btOK.Name = "btOK";
+            this.btOK.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btOK.Size = new System.Drawing.Size(140, 45);
+            this.btOK.TabIndex = 5;
+            this.btOK.Text = "OK";
+            this.btOK.UseVisualStyleBackColor = false;
+            this.btOK.Click += new System.EventHandler(this.btOK_Click);
             // 
             // btNuevo
             // 
@@ -155,8 +155,8 @@
         private System.Windows.Forms.Panel pnSubMain;
         private System.Windows.Forms.Panel pnTop;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btReingreso;
+        private FontAwesome.Sharp.IconButton btOK;
         private FontAwesome.Sharp.IconButton btNuevo;
-        private FontAwesome.Sharp.IconButton btConfirmar;
+        private FontAwesome.Sharp.IconButton btPendiente;
     }
 }

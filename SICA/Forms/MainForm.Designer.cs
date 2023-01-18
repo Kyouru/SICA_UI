@@ -32,19 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnLeft = new System.Windows.Forms.Panel();
             this.btMantenimiento = new FontAwesome.Sharp.IconButton();
-            this.btBoveda = new FontAwesome.Sharp.IconButton();
-            this.btDocuClass = new FontAwesome.Sharp.IconButton();
-            this.btImportar = new FontAwesome.Sharp.IconButton();
-            this.btIronMountain = new FontAwesome.Sharp.IconButton();
-            this.btLetra = new FontAwesome.Sharp.IconButton();
-            this.btPagare = new FontAwesome.Sharp.IconButton();
-            this.btRecibir = new FontAwesome.Sharp.IconButton();
-            this.btEntregar = new FontAwesome.Sharp.IconButton();
+            this.btReporte = new FontAwesome.Sharp.IconButton();
+            this.btPrestar = new FontAwesome.Sharp.IconButton();
+            this.btMover = new FontAwesome.Sharp.IconButton();
+            this.btValija = new FontAwesome.Sharp.IconButton();
+            this.btPendiente = new FontAwesome.Sharp.IconButton();
             this.btBusqueda = new FontAwesome.Sharp.IconButton();
             this.icMain = new FontAwesome.Sharp.IconPictureBox();
             this.pnTop = new System.Windows.Forms.Panel();
-            this.btActualizar = new FontAwesome.Sharp.IconButton();
-            this.lbEstado = new System.Windows.Forms.Label();
+            this.lbTiempoSesion = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbUsuario = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,10 +49,7 @@
             this.btCerrar = new FontAwesome.Sharp.IconButton();
             this.pnMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tmUltimaActividad = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbTiempoSesion = new System.Windows.Forms.Label();
             this.pnLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icMain)).BeginInit();
             this.pnTop.SuspendLayout();
@@ -65,14 +59,11 @@
             // pnLeft
             // 
             this.pnLeft.Controls.Add(this.btMantenimiento);
-            this.pnLeft.Controls.Add(this.btBoveda);
-            this.pnLeft.Controls.Add(this.btDocuClass);
-            this.pnLeft.Controls.Add(this.btImportar);
-            this.pnLeft.Controls.Add(this.btIronMountain);
-            this.pnLeft.Controls.Add(this.btLetra);
-            this.pnLeft.Controls.Add(this.btPagare);
-            this.pnLeft.Controls.Add(this.btRecibir);
-            this.pnLeft.Controls.Add(this.btEntregar);
+            this.pnLeft.Controls.Add(this.btReporte);
+            this.pnLeft.Controls.Add(this.btPrestar);
+            this.pnLeft.Controls.Add(this.btMover);
+            this.pnLeft.Controls.Add(this.btValija);
+            this.pnLeft.Controls.Add(this.btPendiente);
             this.pnLeft.Controls.Add(this.btBusqueda);
             this.pnLeft.Controls.Add(this.icMain);
             this.pnLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -86,217 +77,151 @@
             this.btMantenimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.btMantenimiento.FlatAppearance.BorderSize = 0;
             this.btMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMantenimiento.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMantenimiento.Font = new System.Drawing.Font("Arial", 15.75F);
             this.btMantenimiento.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btMantenimiento.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
             this.btMantenimiento.IconColor = System.Drawing.Color.Gainsboro;
             this.btMantenimiento.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btMantenimiento.IconSize = 30;
             this.btMantenimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMantenimiento.Location = new System.Drawing.Point(0, 619);
+            this.btMantenimiento.Location = new System.Drawing.Point(0, 436);
             this.btMantenimiento.Name = "btMantenimiento";
             this.btMantenimiento.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btMantenimiento.Size = new System.Drawing.Size(200, 61);
-            this.btMantenimiento.TabIndex = 25;
-            this.btMantenimiento.Text = " Mantenimiento";
+            this.btMantenimiento.TabIndex = 6;
+            this.btMantenimiento.Text = "Mantenimiento";
             this.btMantenimiento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btMantenimiento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btMantenimiento.UseVisualStyleBackColor = true;
             this.btMantenimiento.Visible = false;
             this.btMantenimiento.Click += new System.EventHandler(this.btMantenimiento_Click);
             // 
-            // btBoveda
+            // btReporte
             // 
-            this.btBoveda.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btBoveda.FlatAppearance.BorderSize = 0;
-            this.btBoveda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBoveda.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBoveda.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btBoveda.IconChar = FontAwesome.Sharp.IconChar.Archive;
-            this.btBoveda.IconColor = System.Drawing.Color.Gainsboro;
-            this.btBoveda.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btBoveda.IconSize = 30;
-            this.btBoveda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btBoveda.Location = new System.Drawing.Point(0, 558);
-            this.btBoveda.Name = "btBoveda";
-            this.btBoveda.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btBoveda.Size = new System.Drawing.Size(200, 61);
-            this.btBoveda.TabIndex = 24;
-            this.btBoveda.Text = " Boveda";
-            this.btBoveda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btBoveda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btBoveda.UseVisualStyleBackColor = true;
-            this.btBoveda.Click += new System.EventHandler(this.btBoveda_Click);
+            this.btReporte.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btReporte.FlatAppearance.BorderSize = 0;
+            this.btReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReporte.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btReporte.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btReporte.IconChar = FontAwesome.Sharp.IconChar.ChartPie;
+            this.btReporte.IconColor = System.Drawing.Color.Gainsboro;
+            this.btReporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btReporte.IconSize = 30;
+            this.btReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btReporte.Location = new System.Drawing.Point(0, 375);
+            this.btReporte.Name = "btReporte";
+            this.btReporte.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btReporte.Size = new System.Drawing.Size(200, 61);
+            this.btReporte.TabIndex = 5;
+            this.btReporte.Text = "Reporte";
+            this.btReporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btReporte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btReporte.UseVisualStyleBackColor = true;
+            this.btReporte.Visible = false;
+            this.btReporte.Click += new System.EventHandler(this.btReporte_Click);
             // 
-            // btDocuClass
+            // btPrestar
             // 
-            this.btDocuClass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btDocuClass.FlatAppearance.BorderSize = 0;
-            this.btDocuClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDocuClass.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDocuClass.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btDocuClass.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btDocuClass.IconColor = System.Drawing.Color.Gainsboro;
-            this.btDocuClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btDocuClass.IconSize = 30;
-            this.btDocuClass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDocuClass.Location = new System.Drawing.Point(0, 497);
-            this.btDocuClass.Name = "btDocuClass";
-            this.btDocuClass.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btDocuClass.Size = new System.Drawing.Size(200, 61);
-            this.btDocuClass.TabIndex = 23;
-            this.btDocuClass.Text = " DocuClass";
-            this.btDocuClass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDocuClass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btDocuClass.UseVisualStyleBackColor = true;
-            this.btDocuClass.Visible = false;
-            this.btDocuClass.Click += new System.EventHandler(this.btDocuClass_Click);
+            this.btPrestar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btPrestar.FlatAppearance.BorderSize = 0;
+            this.btPrestar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPrestar.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btPrestar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btPrestar.IconChar = FontAwesome.Sharp.IconChar.Cat;
+            this.btPrestar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btPrestar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btPrestar.IconSize = 30;
+            this.btPrestar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPrestar.Location = new System.Drawing.Point(0, 314);
+            this.btPrestar.Name = "btPrestar";
+            this.btPrestar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btPrestar.Size = new System.Drawing.Size(200, 61);
+            this.btPrestar.TabIndex = 4;
+            this.btPrestar.Text = "Prestar";
+            this.btPrestar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPrestar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btPrestar.UseVisualStyleBackColor = true;
+            this.btPrestar.Visible = false;
+            this.btPrestar.Click += new System.EventHandler(this.btPrestar_Click);
             // 
-            // btImportar
+            // btMover
             // 
-            this.btImportar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btImportar.FlatAppearance.BorderSize = 0;
-            this.btImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btImportar.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImportar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btImportar.IconChar = FontAwesome.Sharp.IconChar.FileImport;
-            this.btImportar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btImportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btImportar.IconSize = 30;
-            this.btImportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btImportar.Location = new System.Drawing.Point(0, 436);
-            this.btImportar.Name = "btImportar";
-            this.btImportar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btImportar.Size = new System.Drawing.Size(200, 61);
-            this.btImportar.TabIndex = 20;
-            this.btImportar.Text = " Importar";
-            this.btImportar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btImportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btImportar.UseVisualStyleBackColor = true;
-            this.btImportar.Visible = false;
-            this.btImportar.Click += new System.EventHandler(this.btImportar_Click);
+            this.btMover.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btMover.FlatAppearance.BorderSize = 0;
+            this.btMover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMover.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btMover.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btMover.IconChar = FontAwesome.Sharp.IconChar.LuggageCart;
+            this.btMover.IconColor = System.Drawing.Color.Gainsboro;
+            this.btMover.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btMover.IconSize = 30;
+            this.btMover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btMover.Location = new System.Drawing.Point(0, 253);
+            this.btMover.Name = "btMover";
+            this.btMover.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btMover.Size = new System.Drawing.Size(200, 61);
+            this.btMover.TabIndex = 3;
+            this.btMover.Text = "Mover";
+            this.btMover.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btMover.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btMover.UseVisualStyleBackColor = true;
+            this.btMover.Visible = false;
+            this.btMover.Click += new System.EventHandler(this.btMover_Click);
             // 
-            // btIronMountain
+            // btValija
             // 
-            this.btIronMountain.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btIronMountain.FlatAppearance.BorderSize = 0;
-            this.btIronMountain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btIronMountain.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btIronMountain.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btIronMountain.IconChar = FontAwesome.Sharp.IconChar.Mountain;
-            this.btIronMountain.IconColor = System.Drawing.Color.Gainsboro;
-            this.btIronMountain.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btIronMountain.IconSize = 30;
-            this.btIronMountain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btIronMountain.Location = new System.Drawing.Point(0, 375);
-            this.btIronMountain.Name = "btIronMountain";
-            this.btIronMountain.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btIronMountain.Size = new System.Drawing.Size(200, 61);
-            this.btIronMountain.TabIndex = 13;
-            this.btIronMountain.Text = " Iron Mountain";
-            this.btIronMountain.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btIronMountain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btIronMountain.UseVisualStyleBackColor = true;
-            this.btIronMountain.Click += new System.EventHandler(this.btIronMountain_Click);
+            this.btValija.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btValija.FlatAppearance.BorderSize = 0;
+            this.btValija.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btValija.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btValija.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btValija.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.btValija.IconColor = System.Drawing.Color.Gainsboro;
+            this.btValija.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btValija.IconSize = 30;
+            this.btValija.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btValija.Location = new System.Drawing.Point(0, 192);
+            this.btValija.Name = "btValija";
+            this.btValija.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btValija.Size = new System.Drawing.Size(200, 61);
+            this.btValija.TabIndex = 2;
+            this.btValija.Text = "Valija";
+            this.btValija.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btValija.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btValija.UseVisualStyleBackColor = true;
+            this.btValija.Visible = false;
+            this.btValija.Click += new System.EventHandler(this.btValija_Click);
             // 
-            // btLetra
+            // btPendiente
             // 
-            this.btLetra.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btLetra.FlatAppearance.BorderSize = 0;
-            this.btLetra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLetra.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLetra.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btLetra.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckAlt;
-            this.btLetra.IconColor = System.Drawing.Color.Gainsboro;
-            this.btLetra.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btLetra.IconSize = 30;
-            this.btLetra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btLetra.Location = new System.Drawing.Point(0, 314);
-            this.btLetra.Name = "btLetra";
-            this.btLetra.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btLetra.Size = new System.Drawing.Size(200, 61);
-            this.btLetra.TabIndex = 12;
-            this.btLetra.Text = " Letra";
-            this.btLetra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btLetra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btLetra.UseVisualStyleBackColor = true;
-            this.btLetra.Click += new System.EventHandler(this.btLetras_Click);
-            // 
-            // btPagare
-            // 
-            this.btPagare.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btPagare.FlatAppearance.BorderSize = 0;
-            this.btPagare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btPagare.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPagare.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btPagare.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
-            this.btPagare.IconColor = System.Drawing.Color.Gainsboro;
-            this.btPagare.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btPagare.IconSize = 30;
-            this.btPagare.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btPagare.Location = new System.Drawing.Point(0, 253);
-            this.btPagare.Name = "btPagare";
-            this.btPagare.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btPagare.Size = new System.Drawing.Size(200, 61);
-            this.btPagare.TabIndex = 11;
-            this.btPagare.Text = " Pagare";
-            this.btPagare.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btPagare.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btPagare.UseVisualStyleBackColor = true;
-            this.btPagare.Click += new System.EventHandler(this.btPagare_Click);
-            // 
-            // btRecibir
-            // 
-            this.btRecibir.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btRecibir.FlatAppearance.BorderSize = 0;
-            this.btRecibir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRecibir.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRecibir.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btRecibir.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
-            this.btRecibir.IconColor = System.Drawing.Color.Gainsboro;
-            this.btRecibir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btRecibir.IconSize = 30;
-            this.btRecibir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btRecibir.Location = new System.Drawing.Point(0, 192);
-            this.btRecibir.Name = "btRecibir";
-            this.btRecibir.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btRecibir.Size = new System.Drawing.Size(200, 61);
-            this.btRecibir.TabIndex = 5;
-            this.btRecibir.Text = " Recibir";
-            this.btRecibir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btRecibir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btRecibir.UseVisualStyleBackColor = true;
-            this.btRecibir.Click += new System.EventHandler(this.btRecibir_Click);
-            // 
-            // btEntregar
-            // 
-            this.btEntregar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btEntregar.FlatAppearance.BorderSize = 0;
-            this.btEntregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btEntregar.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEntregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btEntregar.IconChar = FontAwesome.Sharp.IconChar.FileUpload;
-            this.btEntregar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btEntregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btEntregar.IconSize = 30;
-            this.btEntregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btEntregar.Location = new System.Drawing.Point(0, 131);
-            this.btEntregar.Name = "btEntregar";
-            this.btEntregar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btEntregar.Size = new System.Drawing.Size(200, 61);
-            this.btEntregar.TabIndex = 4;
-            this.btEntregar.Text = " Entregar";
-            this.btEntregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btEntregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btEntregar.UseVisualStyleBackColor = true;
-            this.btEntregar.Click += new System.EventHandler(this.btEntregar_Click);
+            this.btPendiente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btPendiente.FlatAppearance.BorderSize = 0;
+            this.btPendiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPendiente.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btPendiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btPendiente.IconChar = FontAwesome.Sharp.IconChar.CheckDouble;
+            this.btPendiente.IconColor = System.Drawing.Color.Gainsboro;
+            this.btPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btPendiente.IconSize = 30;
+            this.btPendiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPendiente.Location = new System.Drawing.Point(0, 131);
+            this.btPendiente.Name = "btPendiente";
+            this.btPendiente.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btPendiente.Size = new System.Drawing.Size(200, 61);
+            this.btPendiente.TabIndex = 1;
+            this.btPendiente.Text = "Pendiente";
+            this.btPendiente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPendiente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btPendiente.UseVisualStyleBackColor = true;
+            this.btPendiente.Visible = false;
+            this.btPendiente.Click += new System.EventHandler(this.btPendiente_Click);
             // 
             // btBusqueda
             // 
             this.btBusqueda.Dock = System.Windows.Forms.DockStyle.Top;
             this.btBusqueda.FlatAppearance.BorderSize = 0;
             this.btBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBusqueda.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBusqueda.Font = new System.Drawing.Font("Arial", 15.75F);
             this.btBusqueda.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btBusqueda.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.btBusqueda.IconColor = System.Drawing.Color.Gainsboro;
@@ -307,11 +232,12 @@
             this.btBusqueda.Name = "btBusqueda";
             this.btBusqueda.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btBusqueda.Size = new System.Drawing.Size(200, 61);
-            this.btBusqueda.TabIndex = 3;
-            this.btBusqueda.Text = " Busqueda";
+            this.btBusqueda.TabIndex = 0;
+            this.btBusqueda.Text = "Busqueda";
             this.btBusqueda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btBusqueda.UseVisualStyleBackColor = true;
+            this.btBusqueda.Visible = false;
             this.btBusqueda.Click += new System.EventHandler(this.btBusqueda_Click);
             // 
             // icMain
@@ -336,8 +262,6 @@
             this.pnTop.BackColor = System.Drawing.Color.MidnightBlue;
             this.pnTop.Controls.Add(this.lbTiempoSesion);
             this.pnTop.Controls.Add(this.label2);
-            this.pnTop.Controls.Add(this.btActualizar);
-            this.pnTop.Controls.Add(this.lbEstado);
             this.pnTop.Controls.Add(this.panel2);
             this.pnTop.Controls.Add(this.lbUsuario);
             this.pnTop.Controls.Add(this.label1);
@@ -350,31 +274,27 @@
             this.pnTop.TabIndex = 1;
             this.pnTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnTop_MouseDown);
             // 
-            // btActualizar
+            // lbTiempoSesion
             // 
-            this.btActualizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btActualizar.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
-            this.btActualizar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btActualizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btActualizar.IconSize = 20;
-            this.btActualizar.Location = new System.Drawing.Point(6, 3);
-            this.btActualizar.Name = "btActualizar";
-            this.btActualizar.Size = new System.Drawing.Size(34, 28);
-            this.btActualizar.TabIndex = 42;
-            this.btActualizar.UseVisualStyleBackColor = true;
-            this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
+            this.lbTiempoSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTiempoSesion.AutoSize = true;
+            this.lbTiempoSesion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbTiempoSesion.Location = new System.Drawing.Point(787, 10);
+            this.lbTiempoSesion.Name = "lbTiempoSesion";
+            this.lbTiempoSesion.Size = new System.Drawing.Size(34, 13);
+            this.lbTiempoSesion.TabIndex = 44;
+            this.lbTiempoSesion.Text = "00:00";
             // 
-            // lbEstado
+            // label2
             // 
-            this.lbEstado.AutoSize = true;
-            this.lbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEstado.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbEstado.Location = new System.Drawing.Point(48, 8);
-            this.lbEstado.Name = "lbEstado";
-            this.lbEstado.Size = new System.Drawing.Size(0, 18);
-            this.lbEstado.TabIndex = 9;
-            this.lbEstado.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbEstado_MouseDown);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(690, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Tiempo Restante:";
             // 
             // panel2
             // 
@@ -464,38 +384,11 @@
             this.panel1.Size = new System.Drawing.Size(5, 746);
             this.panel1.TabIndex = 12;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // tmUltimaActividad
             // 
             this.tmUltimaActividad.Enabled = true;
             this.tmUltimaActividad.Interval = 1000;
             this.tmUltimaActividad.Tick += new System.EventHandler(this.tmUltimaActividad_Tick);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(690, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Tiempo Restante:";
-            // 
-            // lbTiempoSesion
-            // 
-            this.lbTiempoSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTiempoSesion.AutoSize = true;
-            this.lbTiempoSesion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbTiempoSesion.Location = new System.Drawing.Point(787, 10);
-            this.lbTiempoSesion.Name = "lbTiempoSesion";
-            this.lbTiempoSesion.Size = new System.Drawing.Size(34, 13);
-            this.lbTiempoSesion.TabIndex = 44;
-            this.lbTiempoSesion.Text = "00:00";
             // 
             // MainForm
             // 
@@ -527,26 +420,20 @@
         private FontAwesome.Sharp.IconPictureBox icMain;
         private FontAwesome.Sharp.IconButton btMinimizar;
         private FontAwesome.Sharp.IconButton btCerrar;
-        private FontAwesome.Sharp.IconButton btEntregar;
-        private FontAwesome.Sharp.IconButton btRecibir;
-        private FontAwesome.Sharp.IconButton btBusqueda;
         private System.Windows.Forms.Label lbUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbEstado;
-        private System.Windows.Forms.Timer timer1;
-        private FontAwesome.Sharp.IconButton btActualizar;
-        private FontAwesome.Sharp.IconButton btIronMountain;
-        private FontAwesome.Sharp.IconButton btLetra;
-        private FontAwesome.Sharp.IconButton btPagare;
-        private FontAwesome.Sharp.IconButton btImportar;
-        private FontAwesome.Sharp.IconButton btBoveda;
-        private FontAwesome.Sharp.IconButton btDocuClass;
-        private FontAwesome.Sharp.IconButton btMantenimiento;
         private System.Windows.Forms.Timer tmUltimaActividad;
         private System.Windows.Forms.Label lbTiempoSesion;
         private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton btPendiente;
+        private FontAwesome.Sharp.IconButton btBusqueda;
+        private FontAwesome.Sharp.IconButton btValija;
+        private FontAwesome.Sharp.IconButton btMover;
+        private FontAwesome.Sharp.IconButton btMantenimiento;
+        private FontAwesome.Sharp.IconButton btReporte;
+        private FontAwesome.Sharp.IconButton btPrestar;
     }
 }
 

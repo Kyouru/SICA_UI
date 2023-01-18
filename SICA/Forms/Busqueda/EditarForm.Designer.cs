@@ -38,7 +38,6 @@ namespace SICA.Forms.Busqueda
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.cmbDepartamento = new System.Windows.Forms.ComboBox();
             this.cmbDocumento = new System.Windows.Forms.ComboBox();
-            this.btGuardar = new System.Windows.Forms.Button();
             this.lbDesde = new System.Windows.Forms.Label();
             this.lbHasta = new System.Windows.Forms.Label();
             this.cmbDetalle = new System.Windows.Forms.ComboBox();
@@ -59,6 +58,7 @@ namespace SICA.Forms.Busqueda
             this.cbCentroCosto = new System.Windows.Forms.CheckBox();
             this.cbProducto = new System.Windows.Forms.CheckBox();
             this.cbClasificacion = new System.Windows.Forms.CheckBox();
+            this.btGuadar = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // cbFecha
@@ -158,16 +158,6 @@ namespace SICA.Forms.Busqueda
             this.cmbDocumento.Size = new System.Drawing.Size(284, 26);
             this.cmbDocumento.TabIndex = 38;
             this.cmbDocumento.SelectedIndexChanged += new System.EventHandler(this.cmbDocumento_SelectedIndexChanged);
-            // 
-            // btGuardar
-            // 
-            this.btGuardar.Location = new System.Drawing.Point(218, 485);
-            this.btGuardar.Name = "btGuardar";
-            this.btGuardar.Size = new System.Drawing.Size(114, 35);
-            this.btGuardar.TabIndex = 39;
-            this.btGuardar.Text = "Guardar";
-            this.btGuardar.UseVisualStyleBackColor = true;
-            this.btGuardar.Click += new System.EventHandler(this.btGuardar_Click);
             // 
             // lbDesde
             // 
@@ -381,12 +371,31 @@ namespace SICA.Forms.Busqueda
             this.cbClasificacion.UseVisualStyleBackColor = true;
             this.cbClasificacion.CheckedChanged += new System.EventHandler(this.cbClasificacion_CheckedChanged);
             // 
+            // btGuadar
+            // 
+            this.btGuadar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGuadar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGuadar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btGuadar.IconColor = System.Drawing.Color.Black;
+            this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btGuadar.IconSize = 16;
+            this.btGuadar.Location = new System.Drawing.Point(215, 487);
+            this.btGuadar.Name = "btGuadar";
+            this.btGuadar.Size = new System.Drawing.Size(119, 32);
+            this.btGuadar.TabIndex = 112;
+            this.btGuadar.Text = "Guardar";
+            this.btGuadar.UseVisualStyleBackColor = true;
+            this.btGuadar.Click += new System.EventHandler(this.btGuardar_Click);
+            // 
             // EditarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(551, 532);
+            this.ClientSize = new System.Drawing.Size(549, 531);
+            this.Controls.Add(this.btGuadar);
             this.Controls.Add(this.cbClasificacion);
             this.Controls.Add(this.cbProducto);
             this.Controls.Add(this.cbCentroCosto);
@@ -407,7 +416,6 @@ namespace SICA.Forms.Busqueda
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbHasta);
             this.Controls.Add(this.lbDesde);
-            this.Controls.Add(this.btGuardar);
             this.Controls.Add(this.cmbDocumento);
             this.Controls.Add(this.cmbDepartamento);
             this.Controls.Add(this.dtpFechaHasta);
@@ -420,7 +428,7 @@ namespace SICA.Forms.Busqueda
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EditarForm";
+            this.Text = "Editar Documento";
             this.Load += new System.EventHandler(this.EditarForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -438,7 +446,6 @@ namespace SICA.Forms.Busqueda
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private System.Windows.Forms.ComboBox cmbDepartamento;
         private System.Windows.Forms.ComboBox cmbDocumento;
-        private System.Windows.Forms.Button btGuardar;
         private System.Windows.Forms.Label lbDesde;
         private System.Windows.Forms.Label lbHasta;
         private System.Windows.Forms.ComboBox cmbDetalle;
@@ -459,5 +466,6 @@ namespace SICA.Forms.Busqueda
         private System.Windows.Forms.CheckBox cbCentroCosto;
         private System.Windows.Forms.CheckBox cbProducto;
         private System.Windows.Forms.CheckBox cbClasificacion;
+        private FontAwesome.Sharp.IconButton btGuadar;
     }
 }

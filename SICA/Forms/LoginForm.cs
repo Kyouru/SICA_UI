@@ -78,7 +78,11 @@ namespace SICA
                 {
                     bool ingreso = GlobalFunctions.obtenerToken(tbUsername.Text, tbPassword.Text);
                     if (ingreso)
+                    {
+                        tbUsername.Text = "";
+                        tbPassword.Text = "";
                         this.Close();
+                    }
                 }
                 catch (WebException ex)
                 {

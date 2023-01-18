@@ -2,9 +2,11 @@
 using Microsoft.Office.Interop.Excel;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -19,13 +21,12 @@ namespace SICA.Forms.Recibir
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
-            btIngresoManual.Visible = int2bool(Globals.auRecibirManual);
+            btIngresoManual.Visible = int2bool(Globals.auValijaManual);
         }
 
         private void btBuscarCargo_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            Boolean valido = true;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Libro de Excel|*.xlsx;*.xls|All files (*.*)|*.*";
             ofd.CheckFileExists = true;
@@ -33,6 +34,10 @@ namespace SICA.Forms.Recibir
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 LoadingScreen.iniciarLoading();
+                Workbook xlWorkBook = null;
+                Worksheet xlWorkSheet = null;
+                Range range = null;
+                Microsoft.Office.Interop.Excel.Application xlApp = null;
                 try
                 {
                     if (!File.Exists(ofd.FileName))
@@ -41,10 +46,6 @@ namespace SICA.Forms.Recibir
                     FileInfo fi = new FileInfo(ofd.FileName);
                     long filesize = fi.Length;
 
-                    Microsoft.Office.Interop.Excel.Application xlApp;
-                    Workbook xlWorkBook;
-                    Worksheet xlWorkSheet;
-                    Range range;
                     var misValue = Type.Missing;
 
                     // abrir el documento 
@@ -61,30 +62,35 @@ namespace SICA.Forms.Recibir
                     range = xlWorkSheet.UsedRange;
 
                     int rows = range.Rows.Count;
-                    //int cols = range.Columns.Count;
-                    int cols = 12;
-
+                    List<string> concat = new List<string>();
                     System.Data.DataTable dt = new System.Data.DataTable();
                     dt.Columns.Add("STATUS");
-                    dt.Columns.Add("NUMERO CAJA");
-                    dt.Columns.Add("CODIGO DEPARTAMENTO");
-                    dt.Columns.Add("CODIGO DOCUMENTO");
+                    dt.Columns.Add("NUMERO SOLICITUD");
+                    dt.Columns.Add("CODIGO SOCIO");
+                    dt.Columns.Add("NOMBRE SOCIO");
+                    dt.Columns.Add("PRODUCTO");
+                    dt.Columns.Add("DEPARTAMENTO");
+                    dt.Columns.Add("DOCUMENTO");
+                    dt.Columns.Add("DETALLE");
+                    dt.Columns.Add("CLASIFICACION");
+                    dt.Columns.Add("CENTRO COSTO");
                     dt.Columns.Add("FECHA DESDE");
                     dt.Columns.Add("FECHA HASTA");
-                    dt.Columns.Add("DESCRIPCION 1");
-                    dt.Columns.Add("DESCRIPCION 2");
-                    dt.Columns.Add("DESCRIPCION 3");
-                    dt.Columns.Add("DESCRIPCION 4");
-                    dt.Columns.Add("DESCRIPCION 5");
-                    dt.Columns.Add("EXPEDIENTE");
-                    dt.Columns.Add("PAGARE");
-                    dt.Columns.Add("ID DEPARTAMENTO");
-                    dt.Columns.Add("ID DOCUMENTO");
+                    dt.Columns.Add("OBSERVACION");
+                    dt.Columns.Add("IDDEPARTAMENTO");
+                    dt.Columns.Add("IDDOCUMENTO");
+                    dt.Columns.Add("IDDETALLE");
+                    dt.Columns.Add("IDCLASIFICACION");
+                    dt.Columns.Add("IDPRODUCTO");
+                    dt.Columns.Add("IDCENTROCOSTO");
 
-                    //Lista Departamento
-                    System.Data.DataTable dtdep = new System.Data.DataTable("Lista Departamento");
+                    int cols = 12;
+                    //int cols = 12;
+                    /*
+                    //Listas Concatenada
+                    System.Data.DataTable dtconcat = new System.Data.DataTable("Lista Concat");
 
-                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadepartamento");
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaconcat");
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
 
@@ -104,15 +110,15 @@ namespace SICA.Forms.Recibir
                         using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                         {
                             string result = streamReader.ReadToEnd();
-                            dtdep = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            dtconcat = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
                         }
                     }
                     //
 
-                    //
-                    System.Data.DataTable dtdoc = new System.Data.DataTable("Lista Documento");
+                    //Lista Clasificacion
+                    System.Data.DataTable dtclasi = new System.Data.DataTable("Lista Clasificacion");
 
-                    httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadocumento");
+                    httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaclasificacion");
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
 
@@ -132,20 +138,92 @@ namespace SICA.Forms.Recibir
                         using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                         {
                             string result = streamReader.ReadToEnd();
-                            dtdoc = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            dtclasi = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
                         }
                     }
                     //
 
-                    string concat = "";
+                    //Lista Producto
+                    System.Data.DataTable dtprod = new System.Data.DataTable("Lista Produccion");
+
+                    httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaproduccion");
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            token = Globals.Token
+                        });
+
+                        streamWriter.Write(json);
+                    }
+
+                    httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    if (httpResponse.StatusCode == HttpStatusCode.OK)
+                    {
+                        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                        {
+                            string result = streamReader.ReadToEnd();
+                            dtprod = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                        }
+                    }
+                    //
+
+                    //Lista Centro Costo
+                    System.Data.DataTable dtccosto = new System.Data.DataTable("Lista Centro Costo");
+
+                    httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listacentrocosto");
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            token = Globals.Token
+                        });
+
+                        streamWriter.Write(json);
+                    }
+
+                    httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    if (httpResponse.StatusCode == HttpStatusCode.OK)
+                    {
+                        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                        {
+                            string result = streamReader.ReadToEnd();
+                            dtccosto = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                        }
+                    }
+                    */
+                    //
+                    //DataRow foundRow;
+                    Boolean archivovalido = true;
                     for (int row = 1; row <= rows; row++)
                     {
-                        concat = "";
+                        if (xlWorkSheet.Cells[row, 1].Text +
+                            xlWorkSheet.Cells[row, 2].Text +
+                            xlWorkSheet.Cells[row, 3].Text +
+                            xlWorkSheet.Cells[row, 4].Text +
+                            xlWorkSheet.Cells[row, 5].Text +
+                            xlWorkSheet.Cells[row, 6].Text +
+                            xlWorkSheet.Cells[row, 7].Text +
+                            xlWorkSheet.Cells[row, 8].Text +
+                            xlWorkSheet.Cells[row, 9].Text == "")
+                        {
+                            break;
+                        }
+                        string dep = "", doc = "", det = "", cla = "", prod = "", ccosto = "", codigosocio = "", nombresocio = "", numerosolicitud = "";
+                        //int iddep = -1, iddoc = -1, iddet = -1, idcla = -1, idprod = -1, idccosto = -1;
+                        Boolean valido = true;
                         DataRow newrow = dt.NewRow();
                         for (int col = 1; col <= cols; col++)
                         {
                             // lectura como cadena
                             string cellText = xlWorkSheet.Cells[row, col].Text;
+                            //pagare = false;
                             //cellText = Convert.ToString(cellText);
                             //cellText = cellText.Replace("'", ""); // Comillas simples no pueden pasar en el Texto
 
@@ -154,124 +232,148 @@ namespace SICA.Forms.Recibir
                                 switch (col)
                                 {
                                     case 1:
-                                        if (!cellText.Equals("NUMERO DE CAJA"))
+                                        if (!cellText.Equals("NUMERO SOLICITUD"))
                                         {
 
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rNUMERO DE CAJA");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : NUMERO SOLICITUD");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 2:
-                                        if (!cellText.Equals("CODIGO DEPARTAMENTO"))
+                                        if (!cellText.Equals("CODIGO SOCIO"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rCODIGO DEPARTAMENTO");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : CODIGO SOCIO");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 3:
-                                        if (!cellText.Equals("CODIGO DOCUMENTO"))
+                                        if (!cellText.Equals("NOMBRE SOCIO"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rCODIGO DOCUMENTO");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : NOMBRE SOCIO");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 4:
-                                        if (!cellText.Equals("FECHA DESDE"))
+                                        if (!cellText.Equals("PRODUCTO"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rFECHA DESDE");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : PRODUCTO");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 5:
-                                        if (!cellText.Equals("FECHA HASTA"))
+                                        if (!cellText.Equals("DEPARTAMENTO"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rFECHA HASTA");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : DEPARTAMENTO");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 6:
-                                        if (!cellText.Equals("DESCRIPCION 1"))
+                                        if (!cellText.Equals("DOCUMENTO"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rDESCRIPCION 1");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : DOCUMENTO");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 7:
-                                        if (!cellText.Equals("DESCRIPCION 2"))
+                                        if (!cellText.Equals("DETALLE"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rDESCRIPCION 2");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : DETALLE");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 8:
-                                        if (!cellText.Equals("DESCRIPCION 3"))
+                                        if (!cellText.Equals("CLASIFICACION"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rDESCRIPCION 3");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : CLASIFICACION");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 9:
-                                        if (!cellText.Equals("DESCRIPCION 4"))
+                                        if (!cellText.Equals("CENTRO COSTO"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rDESCRIPCION 4");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : CENTRO COSTO");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 10:
-                                        if (!cellText.Equals("DESCRIPCION 5"))
+                                        if (!cellText.Equals("FECHA DESDE"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rDESCRIPCION 5");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : FECHA DESDE");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 11:
-                                        if (!cellText.Equals("EXPEDIENTE"))
+                                        if (!cellText.Equals("FECHA HASTA"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rEXPEDIENTE");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : FECHA HASTA");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                     case 12:
-                                        if (!cellText.Equals("PAGARE"))
+                                        if (!cellText.Equals("OBSERVACION"))
                                         {
                                             GlobalFunctions.cerrarExcel(xlWorkBook, xlWorkSheet, xlApp);
-                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\rPAGARE");
+                                            LoadingScreen.cerrarLoading();
+                                            MessageBox.Show("Error Cabecera de la Plantilla\rColumna: " + col + "\r" + cellText + " : OBSERVACION");
                                             row = 100000;
                                             col = 100000;
                                             valido = false;
+                                            archivovalido = false;
                                         }
                                         break;
                                 }
@@ -280,166 +382,265 @@ namespace SICA.Forms.Recibir
                             {
                                 //newrow[0] es para el status
                                 newrow[col] = cellText;
-
                                 switch (col)
                                 {
+                                    case 1:
+                                        numerosolicitud = cellText;
+                                        break;
                                     case 2:
-                                        if (cellText == "")
-                                        {
-                                            valido = false;
-                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Codigo Departamento Vacío;";
-                                        }
-                                        else
-                                        {
-                                            bool existe = false;
-                                            foreach (DataRow dtrow in dtdep.Rows)
-                                            {
-                                                if (dtrow["NOMBRE_DEPARTAMENTO"].ToString() == cellText)
-                                                {
-                                                    existe = true;
-                                                    newrow[13] = dtrow["ID_DEPARTAMENTO"].ToString();
-                                                    concat += dtrow["NOMBRE_DEPARTAMENTO"].ToString() + ";";
-                                                    break;
-                                                }
-                                            }
-                                            if (!existe)
-                                            {
-                                                valido = false;
-                                                newrow["STATUS"] = newrow["STATUS"].ToString() + "Codigo Departamento No es Valido;";
-                                            }
-                                        }
+                                        codigosocio = cellText;
                                         break;
                                     case 3:
-                                        if (cellText == "")
-                                        {
-                                            valido = false;
-                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Codigo Documento Vacío;";
-                                        }
-                                        else
-                                        {
-                                            bool existe = false;
-                                            foreach (DataRow dtrow in dtdoc.Rows)
-                                            {
-                                                if (dtrow["NOMBRE_DOCUMENTO"].ToString() == cellText)
-                                                {
-                                                    existe = true;
-                                                    newrow[14] = dtrow["ID_DOCUMENTO"].ToString();
-                                                    concat += dtrow["NOMBRE_DOCUMENTO"].ToString() + ";";
-                                                    break;
-                                                }
-                                            }
-                                            if (!existe)
-                                            {
-                                                valido = false;
-                                                newrow["STATUS"] = newrow["STATUS"].ToString() + "Codigo Documento No es Valido;";
-                                            }
-                                        }
+                                        nombresocio = cellText;
                                         break;
                                     case 4:
-                                        if (cellText != "" && !GlobalFunctions.IsDate(newrow["FECHA DESDE"].ToString()))
+                                        if (cellText == "")
                                         {
-                                            valido = false;
-                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Fecha Desde Invalida;";
-                                        }
-                                        else if (cellText == "")
-                                        {
-                                            concat += ";";
+                                            //
                                         }
                                         else
                                         {
-                                            concat += DateTime.ParseExact(newrow["FECHA DESDE"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd") + ";";
-                                            newrow["FECHA DESDE"] = DateTime.ParseExact(newrow["FECHA DESDE"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                                            /*
+                                            foundRow = dtprod.Rows.Find(cellText);
+
+                                            if (foundRow != null)
+                                            {
+                                                //existe
+                                                idprod = Int32.Parse(foundRow["ID_PRODUCCION"].ToString());
+                                            }
+                                            else
+                                            {
+                                                newrow["STATUS"] = newrow["STATUS"].ToString() + "Produccion no existe;";
+                                                valido = false;
+                                            }
+                                            */
+                                            prod = cellText;
                                         }
                                         break;
                                     case 5:
-                                        if (cellText != "" && !GlobalFunctions.IsDate(newrow["FECHA HASTA"].ToString()))
+                                        if (cellText == "")
                                         {
                                             valido = false;
-                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Fecha Hasta Invalida;";
-                                        }
-                                        else if (cellText == "")
-                                        {
-                                            concat += ";";
+                                            archivovalido = false;
+                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Departamento Vacío;";
                                         }
                                         else
                                         {
-                                            concat += DateTime.ParseExact(newrow["FECHA HASTA"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd") + ";";
-                                            newrow["FECHA HASTA"] = DateTime.ParseExact(newrow["FECHA HASTA"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                                            dep = cellText;
                                         }
                                         break;
                                     case 6:
                                         if (cellText == "")
                                         {
                                             valido = false;
-                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Descripcion 1 Vacío;";
+                                            archivovalido = false;
+                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Documento Vacío;";
                                         }
                                         else
                                         {
-                                            concat += cellText + ";";
+                                            doc = cellText;
                                         }
                                         break;
                                     case 7:
                                         if (cellText == "")
                                         {
                                             valido = false;
-                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Descripcion 2 Vacío;";
+                                            archivovalido = false;
+                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Detalle Vacío;";
                                         }
                                         else
                                         {
-                                            concat += cellText + ";";
+                                            det = cellText;
                                         }
                                         break;
                                     case 8:
-                                        concat += cellText + ";";
+                                        if (cellText == "")
+                                        {
+                                            //
+                                        }
+                                        else
+                                        {
+                                            /*
+                                            foundRow = dtclasi.Rows.Find(cellText);
+                                            if (foundRow != null)
+                                            {
+                                                //existe
+                                                idcla = Int32.Parse(foundRow["ID_CLASIFICACION"].ToString());
+                                            }
+                                            else
+                                            {
+                                                newrow["STATUS"] = newrow["STATUS"].ToString() + "Clasificacion no existe;";
+                                                valido = false;
+                                                archivovalido = false;
+                                            }
+                                            */
+                                            cla = cellText;
+                                        }
                                         break;
                                     case 9:
-                                        concat += cellText + ";";
+                                        if (cellText == "")
+                                        {
+                                            //
+                                        }
+                                        else
+                                        {
+                                            /*
+                                            foundRow = dtccosto.Rows.Find(cellText);
+
+                                            if (foundRow != null)
+                                            {
+                                                //existe
+                                                idccosto = Int32.Parse(foundRow["ID_CENTRO_COSTO"].ToString());
+                                            }
+                                            else
+                                            {
+                                                newrow["STATUS"] = newrow["STATUS"].ToString() + "Centro Costo no existe;";
+                                                valido = false;
+                                                archivovalido = false;
+                                            }
+                                            */
+                                            ccosto = cellText;
+                                        }
                                         break;
                                     case 10:
-                                        concat += cellText + ";";
+                                        if (cellText != "" && !GlobalFunctions.IsDate(newrow["FECHA DESDE"].ToString()))
+                                        {
+                                            valido = false;
+                                            archivovalido = false;
+                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Fecha Desde Invalida;";
+                                        }
+                                        else if (cellText == "")
+                                        {
+                                            //concat += ";";
+                                        }
+                                        else
+                                        {
+                                            //concat += DateTime.ParseExact(newrow["FECHA DESDE"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd") + ";";
+                                            newrow["FECHA DESDE"] = DateTime.ParseExact(newrow["FECHA DESDE"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                                        }
+                                        break;
+                                    case 11:
+                                        if (cellText != "" && !GlobalFunctions.IsDate(newrow["FECHA HASTA"].ToString()))
+                                        {
+                                            valido = false;
+                                            archivovalido = false;
+                                            newrow["STATUS"] = newrow["STATUS"].ToString() + "Fecha Hasta Invalida;";
+                                        }
+                                        else if (cellText == "")
+                                        {
+                                            //concat += ";";
+                                        }
+                                        else
+                                        {
+                                            //concat += DateTime.ParseExact(newrow["FECHA HASTA"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd") + ";";
+                                            newrow["FECHA HASTA"] = DateTime.ParseExact(newrow["FECHA HASTA"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                                        }
                                         break;
                                 }
-                                if (valido)
+                                //dep - doc - det
+                                /*
+                                foundRow = dtconcat.Rows.Find(dep + doc + det);
+
+                                if (foundRow != null)
                                 {
-                                    newrow["STATUS"] = "OK";
+                                    //existe
+                                    string[] strids = foundRow["ID"].ToString().Split(';');
+                                    iddep = Int32.Parse(strids[0]);
+                                    iddoc = Int32.Parse(strids[1]);
+                                    iddet = Int32.Parse(strids[2]);
+                                }
+                                else
+                                {
+                                    newrow["STATUS"] = newrow["STATUS"].ToString() + "Combinacion Departamento-Documento-Detalle no Existe;";
+                                    valido = false;
+                                }
+                                */
+                            }
+                        }
+
+                        //row == 1 Cabecera
+                        if (valido && row > 1)
+                        {
+                            /*
+                            if (expediente)
+                            {
+                                dep = "NEGOCIOS";
+                                doc = "EXPEDIENTE";
+                                det = "EXPEDIENTE";
+                                newrow["DEPARTAMENTO"] = "NEGOCIOS";
+                                newrow["DOCUMENTO"] = "EXPEDIENTE";
+                                newrow["DETALLE"] = "EXPEDIENTE";
+                            }*/
+                            //validar duplicado en Plantilla
+                            string concatenado = dep + doc + det + cla + prod + ccosto + codigosocio + nombresocio + numerosolicitud + newrow["FECHA DESDE"] + newrow["FECHA HASTA"];
+                            int encontrado = concat.IndexOf(concatenado);
+                            if (encontrado > -1)
+                            {
+                                valido = false;
+                                archivovalido = false;
+                                newrow["STATUS"] = "Error Duplicado en Excel;";
+                            }
+                            concat.Add(concatenado);
+
+                            //validar duplicado en BD
+                            if (valido)
+                            {
+                                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/validar");
+                                httpWebRequest.ContentType = "application/json";
+                                httpWebRequest.Method = "POST";
+                                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                                {
+                                    string json = new JavaScriptSerializer().Serialize(new
+                                    {
+                                        token = Globals.Token,
+                                        strdepartamento = dep,
+                                        strdocumento = doc,
+                                        strdetalle = det,
+                                        strclasificacion = cla,
+                                        strproducto = prod,
+                                        strcentrocosto = ccosto,
+                                        codigosocio = codigosocio,
+                                        nombresocio = nombresocio,
+                                        numerosolicitud = numerosolicitud,
+                                        fechadesde = newrow["FECHA DESDE"],
+                                        fechahasta = newrow["FECHA HASTA"]
+                                    });
+
+                                    streamWriter.Write(json);
+                                }
+
+                                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                                {
+                                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                                    {
+                                        string result = streamReader.ReadToEnd();
+                                        if (!result.Contains("Error"))
+                                        {
+                                            string[] ids = result.Split(';');
+                                            newrow["IDDEPARTAMENTO"] = ids[0];
+                                            newrow["IDDOCUMENTO"] = ids[1];
+                                            newrow["IDDETALLE"] = ids[2];
+                                            newrow["IDCLASIFICACION"] = ids[3];
+                                            newrow["IDPRODUCTO"] = ids[4];
+                                            newrow["IDCENTROCOSTO"] = ids[5];
+                                            newrow["STATUS"] = "OK";
+                                        }
+                                        else
+                                        {
+                                            valido = false;
+                                            archivovalido = false;
+                                            newrow["STATUS"] = result;
+                                        }
+                                    }
                                 }
                             }
                         }
-                        //row == 1 Cabecera
-                        if (row > 1)
+                        if(row > 1)
                         {
-                            //validar duplicado
-
-                            httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/duplicado");
-                            httpWebRequest.ContentType = "application/json";
-                            httpWebRequest.Method = "POST";
-                            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                            {
-                                string json = new JavaScriptSerializer().Serialize(new
-                                {
-                                    token = Globals.Token,
-                                    concat = concat
-                                });
-
-                                streamWriter.Write(json);
-                            }
-
-                            httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                            if (httpResponse.StatusCode == HttpStatusCode.OK)
-                            {
-                                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                                {
-                                    string result = streamReader.ReadToEnd();
-                                    if (!(Int32.Parse(result) == 0))
-                                    {
-                                        newrow["STATUS"] = "DUPLICADO";
-                                    }
-                                    dt.Rows.Add(newrow);
-                                }
-                            }
+                            dt.Rows.Add(newrow);
                         }
                     }
-
 
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(range);
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet);
@@ -449,20 +650,32 @@ namespace SICA.Forms.Recibir
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
 
 
+                    dgv.Columns.Clear();
                     dgv.DataSource = dt;
 
+                    dgv.Columns["IDDEPARTAMENTO"].Visible = false;
+                    dgv.Columns["IDDOCUMENTO"].Visible = false;
+                    dgv.Columns["IDDETALLE"].Visible = false;
+                    dgv.Columns["IDCLASIFICACION"].Visible = false;
+                    dgv.Columns["IDPRODUCTO"].Visible = false;
+                    dgv.Columns["IDCENTROCOSTO"].Visible = false;
                     //dgv.Columns[0].Visible = false;
                     dgv.ClearSelection();
 
-                    if (valido)
+                    if (archivovalido)
                     {
                         btCargarValido.Visible = true;
                     }
-                    btCargarValido.Visible = true;
                     LoadingScreen.cerrarLoading();
                 }
                 catch (WebException ex)
                 {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(range);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet);
+                    xlWorkBook.Close(0);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook);
+                    xlApp.Quit();
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
                     LoadingScreen.cerrarLoading();
                     if (!(ex.Response is null))
                     {
@@ -475,6 +688,12 @@ namespace SICA.Forms.Recibir
                 }
                 catch (Exception ex)
                 {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(range);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet);
+                    xlWorkBook.Close(0);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook);
+                    xlApp.Quit();
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
                     LoadingScreen.cerrarLoading();
                     GlobalFunctions.casoError(ex, "Error Buscar Cargo");
                 }
@@ -484,7 +703,7 @@ namespace SICA.Forms.Recibir
         private void btCargarValido_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            Globals.TipoSeleccionarUsuario = 0;
+            Globals.TipoSeleccionarUsuario = 1;
             SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
             suf.ShowDialog();
             if (Globals.IdUsernameSelect > 0)
@@ -494,7 +713,6 @@ namespace SICA.Forms.Recibir
                 LoadingScreen.iniciarLoading();
 
                 string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                int pagare, expediente;
 
                 try
                 {
@@ -503,24 +721,6 @@ namespace SICA.Forms.Recibir
                         if (row.Cells["STATUS"].Value.ToString() != "OK")
                         {
                             continue;
-                        }
-
-                        if (row.Cells["PAGARE"].Value.ToString() == "SI")
-                        {
-                            pagare = 1;
-                        }
-                        else
-                        {
-                            pagare = 0;
-                        }
-
-                        if (row.Cells["EXPEDIENTE"].Value.ToString() == "SI")
-                        {
-                            expediente = 1;
-                        }
-                        else
-                        {
-                            expediente = 0;
                         }
 
                         HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/agregar");
@@ -535,22 +735,20 @@ namespace SICA.Forms.Recibir
                                 idaux = Globals.IdUsernameSelect,
                                 idareaentrega = Globals.IdAreaSelect,
                                 idarearecibe = Globals.IdArea,
-                                idinventario = Globals.IdInventario,
-                                iddocumento = row.Cells["ID DOCUMENTO"].Value.ToString(),
-                                iddepartamento = row.Cells["ID DEPARTAMENTO"].Value.ToString(),
-                                nomdocumento = row.Cells["CODIGO DOCUMENTO"].Value.ToString(),
-                                nomdepartamento = row.Cells["CODIGO DEPARTAMENTO"].Value.ToString(),
-                                numerocaja = row.Cells["NUMERO CAJA"].Value.ToString(),
+                                idubicacionentrega = 2, //Usuario Externo
+                                idubicacionrecibe = 8, //Valija
+                                iddocumento = row.Cells["IDDOCUMENTO"].Value.ToString(),
+                                iddepartamento = row.Cells["IDDEPARTAMENTO"].Value.ToString(),
+                                iddetalle = row.Cells["IDDETALLE"].Value.ToString(),
+                                idcentrocosto = row.Cells["IDCENTROCOSTO"].Value.ToString(),
+                                idclasificacion = row.Cells["IDCLASIFICACION"].Value.ToString(),
+                                idproducto = row.Cells["IDPRODUCTO"].Value.ToString(),
                                 fecha = fecha,
                                 fechadesde = row.Cells["FECHA DESDE"].Value.ToString(),
                                 fechahasta = row.Cells["FECHA HASTA"].Value.ToString(),
-                                descripcion1 = GlobalFunctions.lCadena(row.Cells["DESCRIPCION 1"].Value.ToString()),
-                                descripcion2 = GlobalFunctions.lCadena(row.Cells["DESCRIPCION 2"].Value.ToString()),
-                                descripcion3 = GlobalFunctions.lCadena(row.Cells["DESCRIPCION 3"].Value.ToString()),
-                                descripcion4 = GlobalFunctions.lCadena(row.Cells["DESCRIPCION 4"].Value.ToString()),
-                                descripcion5 = GlobalFunctions.lCadena(row.Cells["DESCRIPCION 5"].Value.ToString()),
-                                expediente = expediente,
-                                pagare = pagare,
+                                codigosocio = GlobalFunctions.lCadena(row.Cells["CODIGO SOCIO"].Value.ToString()),
+                                nombresocio = GlobalFunctions.lCadena(row.Cells["NOMBRE SOCIO"].Value.ToString()),
+                                numerosolicitud = GlobalFunctions.lCadena(row.Cells["NUMERO SOLICITUD"].Value.ToString()),
                                 observacion = GlobalFunctions.lCadena(observacion)
                             });
 

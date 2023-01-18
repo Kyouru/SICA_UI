@@ -11,7 +11,7 @@ namespace SICA.Forms.Recibir
     public partial class RecibirReingreso : Form
     {
         int cantidadcarrito = 0;
-        readonly string tipo_carrito = Globals.strRecibirReingreso;
+        readonly string tipo_carrito = Globals.strValijaReingreso;
         public RecibirReingreso()
         {
             GlobalFunctions.UltimaActividad();

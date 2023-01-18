@@ -8,11 +8,14 @@ using SICA.Forms.Letras;
 using SICA.Forms.Mantenimiento;
 using SICA.Forms.Pagare;
 using SICA.Forms.Recibir;
+using SICA.Forms.Pendiente;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static SICA.GlobalFunctions;
+using SICA.Forms.Reporte;
+using SICA.Forms.Prestar;
 
 namespace SICA
 {
@@ -161,13 +164,13 @@ namespace SICA
             OpenChildForm(new BusquedaForm());
         }
 
-        private void btRecibir_Click(object sender, EventArgs e)
+        private void btValija_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
             OpenChildForm(new RecibirSubMain());
         }
 
-        private void btEntregar_Click(object sender, EventArgs e)
+        private void btMover_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
             OpenChildForm(new EntregarSubMain());
@@ -187,22 +190,24 @@ namespace SICA
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            timer1_Tick(sender, e);
+            //timer1_Tick(sender, e);
             GlobalFunctions.limpiarTodoCarrito();
-            btBusqueda.Visible = int2bool(Globals.auBusqueda);
-            btBoveda.Visible = int2bool(Globals.auBoveda);
-            btEntregar.Visible = int2bool(Globals.auEntregar);
-            btRecibir.Visible = int2bool(Globals.auRecibir);
-            btPagare.Visible = int2bool(Globals.auPagare);
-            btLetra.Visible = int2bool(Globals.auLetra);
-            btIronMountain.Visible = int2bool(Globals.auIronMountain);
-            btImportar.Visible = int2bool(Globals.auImportar);
+            //btBoveda.Visible = int2bool(Globals.auBoveda);
+            //btPagare.Visible = int2bool(Globals.auPagare);
+            //btLetra.Visible = int2bool(Globals.auLetra);
+            //btIronMountain.Visible = int2bool(Globals.auIronMountain);
+            //btImportar.Visible = int2bool(Globals.auImportar);
             btMantenimiento.Visible = int2bool(Globals.auMantenimiento);
-            //btDocuClass.Visible = false;
+            btReporte.Visible = int2bool(Globals.auReporte);
+            btPrestar.Visible = int2bool(Globals.auPrestar);
+            btMover.Visible = int2bool(Globals.auMover);
+            btValija.Visible = int2bool(Globals.auValija);
+            btBusqueda.Visible = int2bool(Globals.auBusqueda);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            /*
             int n = GlobalFunctions.pendienteConfirmarRecepcion();
             if (n == 0)
             {
@@ -218,11 +223,12 @@ namespace SICA
             {
                 timer1.Enabled = false;
             }
+            */
         }
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
-            timer1_Tick(sender, e);
+            //timer1_Tick(sender, e);
         }
 
         private void icMain_Click(object sender, EventArgs e)
@@ -280,6 +286,25 @@ namespace SICA
             {
                 lbTiempoSesion.ForeColor = Color.White;
             }
+        }
+
+        private void btPendiente_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            OpenChildForm(new PendienteSubMain());
+        }
+
+        private void btReporte_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            OpenChildForm(new ReporteSubMain());
+        }
+
+        private void btPrestar_Click(object sender, EventArgs e)
+        {
+
+            ActivateButton(sender, RGBColors.color1);
+            OpenChildForm(new PrestarSubMain());
         }
     }
 }
