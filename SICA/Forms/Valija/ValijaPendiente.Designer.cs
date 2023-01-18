@@ -162,7 +162,7 @@
             this.Controls.Add(this.pnBottom);
             this.Controls.Add(this.pnTop);
             this.Name = "RecibirPendiente";
-            this.Text = "RecibirConfirmar";
+            this.Text = "ValijaConfirmar";
             this.pnBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.pnTop.ResumeLayout(false);

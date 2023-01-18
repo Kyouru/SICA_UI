@@ -68,7 +68,7 @@
             this.btGenerar.UseVisualStyleBackColor = true;
             this.btGenerar.Click += new System.EventHandler(this.btGenerar_Click);
             // 
-            // IronMountainCargo
+            // ReporteCajas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,8 +77,8 @@
             this.Controls.Add(this.btGenerar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbCargoCajas);
-            this.Name = "IronMountainCargo";
-            this.Text = "IronMountainCargo";
+            this.Name = "ReporteCajas";
+            this.Text = "ReporteCajas";
             this.ResumeLayout(false);
             this.PerformLayout();
 

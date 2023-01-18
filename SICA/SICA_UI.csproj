@@ -368,11 +368,11 @@
     <Compile Include="Forms\CarritoForm.Designer.cs">
       <DependentUpon>CarritoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarMasivo.cs">
+    <Compile Include="Forms\Mover\MoverMasivo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarMasivo.Designer.cs">
-      <DependentUpon>EntregarMasivo.cs</DependentUpon>
+    <Compile Include="Forms\Mover\MoverMasivo.Designer.cs">
+      <DependentUpon>MoverMasivo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ImportarSISGO.cs">
       <SubType>Form</SubType>
@@ -476,23 +476,23 @@
     <Compile Include="Forms\DataManager\DataManagerSubMain.Designer.cs">
       <DependentUpon>DataManagerSubMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarDocumento.cs">
+    <Compile Include="Forms\Mover\MoverDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarDocumento.Designer.cs">
-      <DependentUpon>EntregarDocumento.cs</DependentUpon>
+    <Compile Include="Forms\Mover\MoverDocumento.Designer.cs">
+      <DependentUpon>MoverDocumento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarExpediente.cs">
+    <Compile Include="Forms\Mover\MoverExpediente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarExpediente.Designer.cs">
-      <DependentUpon>EntregarExpediente.cs</DependentUpon>
+    <Compile Include="Forms\Mover\MoverExpediente.Designer.cs">
+      <DependentUpon>MoverExpediente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarSubMain.cs">
+    <Compile Include="Forms\Mover\MoverSubMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Entregar\EntregarSubMain.Designer.cs">
-      <DependentUpon>EntregarSubMain.cs</DependentUpon>
+    <Compile Include="Forms\Mover\MoverSubMain.Designer.cs">
+      <DependentUpon>MoverSubMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Letras\LetrasBuscar.cs">
       <SubType>Form</SubType>
@@ -579,47 +579,47 @@
     <Compile Include="Forms\Prestar\PrestarSubMain.Designer.cs">
       <DependentUpon>PrestarSubMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirPendiente.cs">
+    <Compile Include="Forms\Valija\ValijaConfirmar.Designer.cs">
+      <DependentUpon>ValijaConfirmar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Valija\ValijaManual.Designer.cs">
+      <DependentUpon>ValijaManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Valija\ValijaOK.Designer.cs">
+      <DependentUpon>ValijaOK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Valija\ValijaPendiente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirPendiente.Designer.cs">
-      <DependentUpon>RecibirPendiente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Recibir\RecibirOK.cs">
+    <Compile Include="Forms\Valija\ValijaOK.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirOK.Designer.cs">
-      <DependentUpon>RecibirOK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Recibir\RecibirConfirmar.cs">
+    <Compile Include="Forms\Valija\ValijaConfirmar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirConfirmar.Designer.cs">
-      <DependentUpon>RecibirConfirmar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Recibir\RecibirManual.cs">
+    <Compile Include="Forms\Valija\ValijaManual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirManual.Designer.cs">
-      <DependentUpon>RecibirManual.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Recibir\RecibirNuevo.cs">
+    <Compile Include="Forms\Valija\ValijaNuevo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirNuevo.Designer.cs">
-      <DependentUpon>RecibirNuevo.cs</DependentUpon>
+    <Compile Include="Forms\Valija\ValijaNuevo.Designer.cs">
+      <DependentUpon>ValijaNuevo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirReingreso.cs">
+    <Compile Include="Forms\Valija\ValijaPendiente.Designer.cs">
+      <DependentUpon>ValijaPendiente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Valija\ValijaReingreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirReingreso.Designer.cs">
-      <DependentUpon>RecibirReingreso.cs</DependentUpon>
+    <Compile Include="Forms\Valija\ValijaReingreso.Designer.cs">
+      <DependentUpon>ValijaReingreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirSubMain.cs">
+    <Compile Include="Forms\Valija\ValijaSubMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Recibir\RecibirSubMain.Designer.cs">
-      <DependentUpon>RecibirSubMain.cs</DependentUpon>
+    <Compile Include="Forms\Valija\ValijaSubMain.Designer.cs">
+      <DependentUpon>ValijaSubMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CambiarPasswordForm.cs">
       <SubType>Form</SubType>
@@ -705,8 +705,8 @@
     <EmbeddedResource Include="Forms\DocuClass\DocuClassValidar.resx">
       <DependentUpon>DocuClassValidar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Entregar\EntregarMasivo.resx">
-      <DependentUpon>EntregarMasivo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mover\MoverMasivo.resx">
+      <DependentUpon>MoverMasivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportarSISGO.resx">
       <DependentUpon>ImportarSISGO.cs</DependentUpon>
@@ -759,14 +759,14 @@
     <EmbeddedResource Include="Forms\DataManager\DataManagerSubMain.resx">
       <DependentUpon>DataManagerSubMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Entregar\EntregarDocumento.resx">
-      <DependentUpon>EntregarDocumento.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mover\MoverDocumento.resx">
+      <DependentUpon>MoverDocumento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Entregar\EntregarExpediente.resx">
-      <DependentUpon>EntregarExpediente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mover\MoverExpediente.resx">
+      <DependentUpon>MoverExpediente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Entregar\EntregarSubMain.resx">
-      <DependentUpon>EntregarSubMain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mover\MoverSubMain.resx">
+      <DependentUpon>MoverSubMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Letras\LetrasBuscar.resx">
       <DependentUpon>LetrasBuscar.cs</DependentUpon>
@@ -816,26 +816,26 @@
     <EmbeddedResource Include="Forms\Prestar\PrestarSubMain.resx">
       <DependentUpon>PrestarSubMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirPendiente.resx">
-      <DependentUpon>RecibirPendiente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaConfirmar.resx">
+      <DependentUpon>ValijaConfirmar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirOK.resx">
-      <DependentUpon>RecibirOK.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaManual.resx">
+      <DependentUpon>ValijaManual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirConfirmar.resx">
-      <DependentUpon>RecibirConfirmar.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaNuevo.resx">
+      <DependentUpon>ValijaNuevo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirManual.resx">
-      <DependentUpon>RecibirManual.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaOK.resx">
+      <DependentUpon>ValijaOK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirNuevo.resx">
-      <DependentUpon>RecibirNuevo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaPendiente.resx">
+      <DependentUpon>ValijaPendiente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirReingreso.resx">
-      <DependentUpon>RecibirReingreso.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaReingreso.resx">
+      <DependentUpon>ValijaReingreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Recibir\RecibirSubMain.resx">
-      <DependentUpon>RecibirSubMain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaSubMain.resx">
+      <DependentUpon>ValijaSubMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CambiarPasswordForm.resx">
       <DependentUpon>CambiarPasswordForm.cs</DependentUpon>

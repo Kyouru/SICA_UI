@@ -1,6 +1,6 @@
 ﻿namespace SICA.Forms.Entregar
 {
-    partial class EntregarSubMain
+    partial class MoverSubMain
     {
         /// <summary>
         /// Required designer variable.

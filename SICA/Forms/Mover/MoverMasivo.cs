@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace SICA.Forms.Entregar
 {
-    public partial class EntregarMasivo : Form
+    public partial class MoverMasivo : Form
     {
 
-        public EntregarMasivo()
+        public MoverMasivo()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();

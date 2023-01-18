@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Data;
 using System.IO;
@@ -9,19 +8,18 @@ using System.Windows.Forms;
 
 namespace SICA.Forms.Entregar
 {
-    public partial class EntregarDocumento : Form
+    public partial class MoverExpediente : Form
     {
         int cantidadcarrito = 0;
-        readonly string tipo_carrito = Globals.strMoverDocumento;
-
-        public EntregarDocumento()
+        readonly string tipo_carrito = Globals.strMoverExpediente;
+        
+        public MoverExpediente()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
             Globals.CarritoSeleccionado = tipo_carrito;
             actualizarCantidad();
         }
-
         public void actualizarCantidad(int cantidad = -1)
         {
             if (cantidad >= 0)
@@ -37,13 +35,16 @@ namespace SICA.Forms.Entregar
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
-
             GlobalFunctions.UltimaActividad();
             LoadingScreen.iniciarLoading();
-
+            int entransito = 0;
+            if (cbTransito.Checked)
+            {
+                entransito = 1;
+            }
             try
             {
-                DataTable dt = new DataTable("ENTREGAR_DOCUMENTO");
+                DataTable dt = new DataTable("ENTREGAR_EXPEDIENTE");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/buscar");
                 httpWebRequest.ContentType = "application/json";
@@ -54,7 +55,9 @@ namespace SICA.Forms.Entregar
                     string json = new JavaScriptSerializer().Serialize(new
                     {
                         token = Globals.Token,
-                        busquedalibre = tbBusquedaLibre.Text
+                        busquedalibre = tbBusquedaLibre.Text,
+                        expediente = 1,
+                        entransito = entransito
                     });
 
                     streamWriter.Write(json);
@@ -77,7 +80,9 @@ namespace SICA.Forms.Entregar
                     dgv.DataSource = dt;
                     dgv.Columns[0].Visible = false;
                     dgv.ClearSelection();
+
                 }
+
                 LoadingScreen.cerrarLoading();
             }
             catch (WebException ex)
@@ -88,15 +93,38 @@ namespace SICA.Forms.Entregar
                     using (var stream = ex.Response.GetResponseStream())
                     using (var reader = new StreamReader(stream))
                     {
-                        GlobalFunctions.casoError(ex, "Error Entregar Buscar Documento\n" + reader.ReadToEnd());
+                        GlobalFunctions.casoError(ex, "Error Entregar Buscar Expediente\n" + reader.ReadToEnd());
                     }
                 }
             }
             catch (Exception ex)
             {
                 LoadingScreen.cerrarLoading();
-                GlobalFunctions.casoError(ex, "Error Entregar Buscar Documento");
-                return;
+                GlobalFunctions.casoError(ex, "Error Entregar Buscar Expediente");
+            }
+        }
+
+        private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                this.btBuscar_Click(sender, e);
+            }
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            if (dgv.SelectedRows.Count == 1)
+            {
+                GlobalFunctions.AgregarCarrito(dgv.SelectedRows[0].Cells[0].Value.ToString(), "0", dgv.SelectedRows[0].Cells["CAJA"].Value.ToString(), tipo_carrito);
+                actualizarCantidad(cantidadcarrito + 1);
+                foreach (DataGridViewRow row in dgv.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                        dgv.Rows.Remove(row);
+                }
+                //btBuscar_Click(sender, e);
             }
         }
 
@@ -111,7 +139,7 @@ namespace SICA.Forms.Entregar
                 if (Globals.IdUsernameSelect > 0)
                 {
                     string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
-                    Globals.NombreCargo = "CARGO DE DOCUMENTOS";
+                    Globals.NombreCargo = "CARGO DE EXPEDIENTES";
 
                     try
                     {
@@ -122,6 +150,7 @@ namespace SICA.Forms.Entregar
                         string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         if (dt.Rows.Count > 0)
                         {
+                            bool confirmar = Globals.EntregarConfirmacion;
                             HttpWebRequest httpWebRequest;
                             HttpWebResponse httpResponse;
                             foreach (DataRow row in dt.Rows)
@@ -135,10 +164,13 @@ namespace SICA.Forms.Entregar
                                     string json = new JavaScriptSerializer().Serialize(new
                                     {
                                         token = Globals.Token,
+                                        idaux = Globals.IdUsernameSelect,
                                         idinventario = row["ID"].ToString(),
-                                        idubicacionrecibe = Globals.IdAreaSelect,
+                                        idareaentrega = Globals.IdArea,
+                                        idarearecibe = Globals.IdAreaSelect,
                                         fecha = fecha,
-                                        observacion = observacion
+                                        observacion = observacion,
+                                        confirmar = confirmar
                                     });
 
                                     streamWriter.Write(json);
@@ -184,7 +216,7 @@ namespace SICA.Forms.Entregar
                         else
                         {
                             LoadingScreen.cerrarLoading();
-                            MessageBox.Show("No hay Documentos en el Carrito " + tipo_carrito);
+                            MessageBox.Show("No hay Expediente en el Carrito " + tipo_carrito);
                         }
                     }
                     catch (WebException ex)
@@ -195,25 +227,27 @@ namespace SICA.Forms.Entregar
                             using (var stream = ex.Response.GetResponseStream())
                             using (var reader = new StreamReader(stream))
                             {
-                                GlobalFunctions.casoError(ex, "Entregar Carrito Documentos\n" + reader.ReadToEnd());
+                                GlobalFunctions.casoError(ex, "Entregar Carrito\n" + reader.ReadToEnd());
                             }
                         }
                     }
                     catch (Exception ex)
                     {
                         LoadingScreen.cerrarLoading();
-                        GlobalFunctions.casoError(ex, "Entregar Carrito Documentos\n" + tipo_carrito);
+                        GlobalFunctions.casoError(ex, "Entregar Carrito\n" + tipo_carrito);
                     }
+
                 }
             }
         }
 
         private void btVerCarrito_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
                 CarritoForm vCarrito = new CarritoForm();
-                vCarrito.ShowDialog();
+                vCarrito.ShowDialog(this);
                 btBuscar_Click(sender, e);
             }
         }
@@ -225,25 +259,16 @@ namespace SICA.Forms.Entregar
             GlobalFunctions.ExportarDGV(dgv, null);
         }
 
-        private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
-        {
-            GlobalFunctions.UltimaActividad();
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
-            {
-                this.btBuscar_Click(sender, e);
-            }
-        }
-
         private void btLimpiarCarrito_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
             GlobalFunctions.LimpiarCarrito(tipo_carrito);
-            actualizarCantidad(0);
             btBuscar_Click(sender, e);
         }
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
         {
+
             GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
@@ -274,6 +299,7 @@ namespace SICA.Forms.Entregar
                         {
                             ++cantidadcarrito;
                         }
+
                     }
 
                     actualizarCantidad(cantidadcarrito);
@@ -300,9 +326,14 @@ namespace SICA.Forms.Entregar
                 {
                     LoadingScreen.cerrarLoading();
                     GlobalFunctions.casoError(ex, "Error Entregar Agregar");
-                    return;
                 }
             }
+
+        }
+
+        private void cbTransito_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

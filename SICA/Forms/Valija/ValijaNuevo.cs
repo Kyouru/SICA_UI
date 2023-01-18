@@ -12,11 +12,11 @@ using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using static SICA.GlobalFunctions;
 
-namespace SICA.Forms.Recibir
+namespace SICA.Forms.Valija
 {
-    public partial class RecibirNuevo : Form
+    public partial class ValijaNuevo : Form
     {
-        public RecibirNuevo()
+        public ValijaNuevo()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
@@ -792,8 +792,8 @@ namespace SICA.Forms.Recibir
 
         private void btIngresoManual_Click(object sender, EventArgs e)
         {
-            RecibirManual recibirManual = new RecibirManual();
-            recibirManual.ShowDialog();
+            ValijaManual valijaManual = new ValijaManual();
+            valijaManual.ShowDialog();
         }
 
     }

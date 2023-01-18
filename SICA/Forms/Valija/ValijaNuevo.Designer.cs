@@ -1,6 +1,6 @@
-﻿namespace SICA.Forms.Entregar
+﻿namespace SICA.Forms.Valija
 {
-    partial class EntregarMasivo
+    partial class ValijaNuevo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btBuscarCargo = new FontAwesome.Sharp.IconButton();
+            this.btIngresoManual = new FontAwesome.Sharp.IconButton();
             this.btCargarValido = new FontAwesome.Sharp.IconButton();
-            this.btExcel = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -48,23 +48,23 @@
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.GridColor = System.Drawing.Color.Gainsboro;
@@ -73,24 +73,24 @@
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgv.RowHeadersVisible = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1048, 555);
-            this.dgv.TabIndex = 30;
+            this.dgv.TabIndex = 26;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btExcel);
             this.panel1.Controls.Add(this.btBuscarCargo);
+            this.panel1.Controls.Add(this.btIngresoManual);
             this.panel1.Controls.Add(this.btCargarValido);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1048, 53);
-            this.panel1.TabIndex = 31;
+            this.panel1.TabIndex = 29;
             // 
             // btBuscarCargo
             // 
@@ -106,9 +106,27 @@
             this.btBuscarCargo.Name = "btBuscarCargo";
             this.btBuscarCargo.Size = new System.Drawing.Size(217, 32);
             this.btBuscarCargo.TabIndex = 30;
-            this.btBuscarCargo.Text = "Buscar Cargo Masivo";
+            this.btBuscarCargo.Text = "Buscar Cargo Nuevo";
             this.btBuscarCargo.UseVisualStyleBackColor = true;
             this.btBuscarCargo.Click += new System.EventHandler(this.btBuscarCargo_Click);
+            // 
+            // btIngresoManual
+            // 
+            this.btIngresoManual.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btIngresoManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btIngresoManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btIngresoManual.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btIngresoManual.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btIngresoManual.IconColor = System.Drawing.Color.Black;
+            this.btIngresoManual.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btIngresoManual.IconSize = 16;
+            this.btIngresoManual.Location = new System.Drawing.Point(807, 12);
+            this.btIngresoManual.Name = "btIngresoManual";
+            this.btIngresoManual.Size = new System.Drawing.Size(217, 32);
+            this.btIngresoManual.TabIndex = 30;
+            this.btIngresoManual.Text = "Ingreso Manual";
+            this.btIngresoManual.UseVisualStyleBackColor = true;
+            this.btIngresoManual.Click += new System.EventHandler(this.btIngresoManual_Click);
             // 
             // btCargarValido
             // 
@@ -124,29 +142,12 @@
             this.btCargarValido.Name = "btCargarValido";
             this.btCargarValido.Size = new System.Drawing.Size(217, 32);
             this.btCargarValido.TabIndex = 28;
-            this.btCargarValido.Text = "Procesar";
+            this.btCargarValido.Text = "Cargar Información Válida";
             this.btCargarValido.UseVisualStyleBackColor = true;
             this.btCargarValido.Visible = false;
             this.btCargarValido.Click += new System.EventHandler(this.btCargarValido_Click);
             // 
-            // btExcel
-            // 
-            this.btExcel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btExcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
-            this.btExcel.IconColor = System.Drawing.Color.Gainsboro;
-            this.btExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btExcel.IconSize = 30;
-            this.btExcel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btExcel.Location = new System.Drawing.Point(908, 9);
-            this.btExcel.Name = "btExcel";
-            this.btExcel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btExcel.Size = new System.Drawing.Size(48, 38);
-            this.btExcel.TabIndex = 31;
-            this.btExcel.UseVisualStyleBackColor = true;
-            this.btExcel.Click += new System.EventHandler(this.btExcel_Click);
-            // 
-            // EntregarMasivo
+            // ValijaNuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -154,8 +155,8 @@
             this.ClientSize = new System.Drawing.Size(1048, 608);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.panel1);
-            this.Name = "EntregarMasivo";
-            this.Text = "EntregarDocumento";
+            this.Name = "ValijaNuevo";
+            this.Text = "ValijaNuevo";
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -163,11 +164,10 @@
         }
 
         #endregion
-
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btBuscarCargo;
         private FontAwesome.Sharp.IconButton btCargarValido;
-        private FontAwesome.Sharp.IconButton btExcel;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btIngresoManual;
+        private FontAwesome.Sharp.IconButton btBuscarCargo;
     }
 }

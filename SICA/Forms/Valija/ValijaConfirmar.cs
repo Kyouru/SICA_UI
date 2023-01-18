@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-namespace SICA.Forms.Recibir
+namespace SICA.Forms.Valija
 {
-    public partial class RecibirConfirmar : Form
+    public partial class ValijaConfirmar : Form
     {
         int cantidadcarrito = 0;
         readonly string tipo_carrito = Globals.strValijaConfirmar;
-        public RecibirConfirmar()
+        public ValijaConfirmar()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();

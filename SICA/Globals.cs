@@ -12,8 +12,8 @@ namespace SICA
         public static Int32 SesionAlerta = 3;
         public static DateTime UltimaActividad = DateTime.Now;
 
-        //public static string api = "http://sica.kyouru.com/api/";
-        public static string api = "http://localhost:5000/api/";
+        public static string api = "http://sica.kyouru.com/api/";
+        //public static string api = "http://localhost:5000/api/";
         public static String ExportarPath = Application.StartupPath + "\\Exportar\\";
         public static String strQueryArea = "";
 
@@ -82,6 +82,9 @@ namespace SICA
 
         public static String strLetrasReingreso = "LETRAS_REINGRESO";
         public static String strLetrasEntregar = "LETRAS_ENTREGAR";
+
+        public static String strPrestarPrestar = "PRESTAR_PRESTAR";
+        public static String strPrestarRecibir = "PRESTAR_RECIBIR";
 
         public static String strSeleccionarUsuario = "";
 

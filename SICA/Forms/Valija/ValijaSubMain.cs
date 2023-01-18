@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using SICA.Forms.Valija;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SICA.GlobalFunctions;
 
-namespace SICA.Forms.Entregar
+namespace SICA.Forms.Recibir
 {
-    public partial class EntregarSubMain : Form
+    public partial class ValijaSubMain : Form
     {
         private IconButton currentBtn;
         private Panel topBorderBtn;
         private Form currentChildForm;
-        public EntregarSubMain()
+        public ValijaSubMain()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
@@ -26,8 +27,9 @@ namespace SICA.Forms.Entregar
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btExpediente.Visible = int2bool(Globals.auMoverExpediente);
-            btDocumento.Visible = int2bool(Globals.auMoverDocumento);
+            btNuevo.Visible = int2bool(Globals.auValijaNuevo);
+            btOK.Visible = int2bool(Globals.auValijaReingreso);
+            btPendiente.Visible = int2bool(Globals.auValijaConfirmar);
         }
         private void OpenChildForm(Form childForm)
         {
@@ -53,6 +55,7 @@ namespace SICA.Forms.Entregar
         {
             if (senderBtn != null)
             {
+                GlobalFunctions.UltimaActividad();
                 DisableButton();
                 //Button
                 currentBtn = (IconButton)senderBtn;
@@ -97,16 +100,27 @@ namespace SICA.Forms.Entregar
             public static Color color6 = Color.FromArgb(24, 161, 251);
         }
 
-        private void btDocumento_Click(object sender, EventArgs e)
+        private void btNuevo_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new EntregarDocumento());
+            OpenChildForm(new ValijaNuevo());
         }
 
-        private void btMasivo_Click(object sender, EventArgs e)
+        private void RecibirSubMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btOK_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new EntregarMasivo());
+            OpenChildForm(new RecibirOK());
+        }
+
+        private void btPendiente_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new RecibirPendiente());
         }
     }
 }

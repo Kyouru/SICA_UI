@@ -1,6 +1,6 @@
-﻿namespace SICA.Forms.Recibir
+﻿namespace SICA.Forms.Entregar
 {
-    partial class RecibirReingreso
+    partial class MoverDocumento
     {
         /// <summary>
         /// Required designer variable.
@@ -31,73 +31,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnBottom = new System.Windows.Forms.Panel();
-            this.dgv = new System.Windows.Forms.DataGridView();
             this.pnTop = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tbBusquedaLibre = new System.Windows.Forms.TextBox();
             this.btLimpiarCarrito = new FontAwesome.Sharp.IconButton();
             this.btVerCarrito = new FontAwesome.Sharp.IconButton();
-            this.btRecibir = new FontAwesome.Sharp.IconButton();
+            this.btEntregar = new FontAwesome.Sharp.IconButton();
             this.lbCantidad = new System.Windows.Forms.Label();
             this.btExcel = new FontAwesome.Sharp.IconButton();
             this.btBuscar = new FontAwesome.Sharp.IconButton();
-            this.pnBottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.pnBottom = new System.Windows.Forms.Panel();
             this.pnTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.pnBottom.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnBottom
-            // 
-            this.pnBottom.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnBottom.Controls.Add(this.dgv);
-            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnBottom.Location = new System.Drawing.Point(0, 47);
-            this.pnBottom.Name = "pnBottom";
-            this.pnBottom.Size = new System.Drawing.Size(1048, 561);
-            this.pnBottom.TabIndex = 48;
-            // 
-            // dgv
-            // 
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.AllowUserToResizeRows = false;
-            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.EnableHeadersVisualStyles = false;
-            this.dgv.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgv.Location = new System.Drawing.Point(0, 0);
-            this.dgv.Name = "dgv";
-            this.dgv.ReadOnly = true;
-            this.dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgv.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1048, 561);
-            this.dgv.TabIndex = 25;
-            this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
             // 
             // pnTop
             // 
@@ -106,7 +54,7 @@
             this.pnTop.Controls.Add(this.tbBusquedaLibre);
             this.pnTop.Controls.Add(this.btLimpiarCarrito);
             this.pnTop.Controls.Add(this.btVerCarrito);
-            this.pnTop.Controls.Add(this.btRecibir);
+            this.pnTop.Controls.Add(this.btEntregar);
             this.pnTop.Controls.Add(this.lbCantidad);
             this.pnTop.Controls.Add(this.btExcel);
             this.pnTop.Controls.Add(this.btBuscar);
@@ -114,7 +62,7 @@
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 47);
-            this.pnTop.TabIndex = 47;
+            this.pnTop.TabIndex = 45;
             // 
             // label2
             // 
@@ -171,22 +119,22 @@
             this.btVerCarrito.UseVisualStyleBackColor = true;
             this.btVerCarrito.Click += new System.EventHandler(this.btVerCarrito_Click);
             // 
-            // btRecibir
+            // btEntregar
             // 
-            this.btRecibir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btRecibir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRecibir.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRecibir.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
-            this.btRecibir.IconColor = System.Drawing.Color.Gainsboro;
-            this.btRecibir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btRecibir.IconSize = 30;
-            this.btRecibir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btRecibir.Location = new System.Drawing.Point(890, 5);
-            this.btRecibir.Name = "btRecibir";
-            this.btRecibir.Size = new System.Drawing.Size(48, 38);
-            this.btRecibir.TabIndex = 43;
-            this.btRecibir.UseVisualStyleBackColor = true;
-            this.btRecibir.Click += new System.EventHandler(this.btRecibir_Click);
+            this.btEntregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btEntregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEntregar.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEntregar.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.btEntregar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btEntregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btEntregar.IconSize = 30;
+            this.btEntregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btEntregar.Location = new System.Drawing.Point(890, 5);
+            this.btEntregar.Name = "btEntregar";
+            this.btEntregar.Size = new System.Drawing.Size(48, 38);
+            this.btEntregar.TabIndex = 43;
+            this.btEntregar.UseVisualStyleBackColor = true;
+            this.btEntregar.Click += new System.EventHandler(this.btEntregar_Click);
             // 
             // lbCantidad
             // 
@@ -231,7 +179,59 @@
             this.btBuscar.UseVisualStyleBackColor = true;
             this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
             // 
-            // RecibirReingreso
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToResizeRows = false;
+            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.EnableHeadersVisualStyles = false;
+            this.dgv.GridColor = System.Drawing.Color.Gainsboro;
+            this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv.RowHeadersVisible = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(1048, 561);
+            this.dgv.TabIndex = 25;
+            this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
+            // 
+            // pnBottom
+            // 
+            this.pnBottom.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnBottom.Controls.Add(this.dgv);
+            this.pnBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnBottom.Location = new System.Drawing.Point(0, 47);
+            this.pnBottom.Name = "pnBottom";
+            this.pnBottom.Size = new System.Drawing.Size(1048, 561);
+            this.pnBottom.TabIndex = 46;
+            // 
+            // EntregarDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -239,28 +239,28 @@
             this.ClientSize = new System.Drawing.Size(1048, 608);
             this.Controls.Add(this.pnBottom);
             this.Controls.Add(this.pnTop);
-            this.Name = "RecibirReingreso";
-            this.Text = "RecibirReingreso";
-            this.pnBottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.Name = "EntregarDocumento";
+            this.Text = "EntregarDocumento";
             this.pnTop.ResumeLayout(false);
             this.pnTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.pnBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnBottom;
-        private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Panel pnTop;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbBusquedaLibre;
+        private System.Windows.Forms.DataGridView dgv;
         private FontAwesome.Sharp.IconButton btLimpiarCarrito;
-        private FontAwesome.Sharp.IconButton btVerCarrito;
-        private FontAwesome.Sharp.IconButton btRecibir;
-        private System.Windows.Forms.Label lbCantidad;
+        private FontAwesome.Sharp.IconButton btEntregar;
         private FontAwesome.Sharp.IconButton btExcel;
         private FontAwesome.Sharp.IconButton btBuscar;
+        private System.Windows.Forms.Label lbCantidad;
+        private FontAwesome.Sharp.IconButton btVerCarrito;
+        private System.Windows.Forms.TextBox tbBusquedaLibre;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnBottom;
     }
 }

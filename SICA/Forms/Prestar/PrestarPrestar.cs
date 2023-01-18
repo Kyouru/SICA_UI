@@ -12,7 +12,7 @@ namespace SICA.Forms.Prestar
     public partial class PrestarPrestar : Form
     {
         int cantidadcarrito = 0;
-        readonly string tipo_carrito = Globals.strMoverDocumento;
+        readonly string tipo_carrito = Globals.strPrestarPrestar;
 
         public PrestarPrestar()
         {
@@ -43,9 +43,9 @@ namespace SICA.Forms.Prestar
 
             try
             {
-                DataTable dt = new DataTable("ENTREGAR_DOCUMENTO");
+                DataTable dt = new DataTable("PRESTAR_PRESTAR");
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/buscar");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Prestar/buscarprestar");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -88,14 +88,14 @@ namespace SICA.Forms.Prestar
                     using (var stream = ex.Response.GetResponseStream())
                     using (var reader = new StreamReader(stream))
                     {
-                        GlobalFunctions.casoError(ex, "Error Entregar Buscar Documento\n" + reader.ReadToEnd());
+                        GlobalFunctions.casoError(ex, "Error Prestar Prestar\n" + reader.ReadToEnd());
                     }
                 }
             }
             catch (Exception ex)
             {
                 LoadingScreen.cerrarLoading();
-                GlobalFunctions.casoError(ex, "Error Entregar Buscar Documento");
+                GlobalFunctions.casoError(ex, "Error Prestar Prestar");
                 return;
             }
         }
@@ -119,38 +119,36 @@ namespace SICA.Forms.Prestar
 
                         DataTable dt = GlobalFunctions.ObtenerCarrito(tipo_carrito);
 
-                        string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         if (dt.Rows.Count > 0)
                         {
+
+                            string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                             HttpWebRequest httpWebRequest;
                             HttpWebResponse httpResponse;
-                            foreach (DataRow row in dt.Rows)
+                            httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Prestar/prestar");
+                            httpWebRequest.ContentType = "application/json";
+                            httpWebRequest.Method = "POST";
+
+                            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
-                                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
-                                httpWebRequest.ContentType = "application/json";
-                                httpWebRequest.Method = "POST";
-
-                                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                                string json = new JavaScriptSerializer().Serialize(new
                                 {
-                                    string json = new JavaScriptSerializer().Serialize(new
-                                    {
-                                        token = Globals.Token,
-                                        idinventario = row["ID"].ToString(),
-                                        idubicacionrecibe = Globals.IdAreaSelect,
-                                        fecha = fecha,
-                                        observacion = observacion
-                                    });
+                                    token = Globals.Token,
+                                    idusuariorecibe = Globals.IdUsernameSelect,
+                                    tipocarrito = tipo_carrito,
+                                    fecha = fecha,
+                                    observacion = observacion
+                                });
 
-                                    streamWriter.Write(json);
-                                }
+                                streamWriter.Write(json);
+                            }
 
-                                httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                            httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                            if (httpResponse.StatusCode == HttpStatusCode.OK)
+                            {
+                                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                                 {
-                                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                                    {
-                                        string result = streamReader.ReadToEnd();
-                                    }
+                                    string result = streamReader.ReadToEnd();
                                 }
                             }
 
@@ -195,14 +193,14 @@ namespace SICA.Forms.Prestar
                             using (var stream = ex.Response.GetResponseStream())
                             using (var reader = new StreamReader(stream))
                             {
-                                GlobalFunctions.casoError(ex, "Entregar Carrito Documentos\n" + reader.ReadToEnd());
+                                GlobalFunctions.casoError(ex, "Erro Prestar Prestar Carrito Documentos\n" + reader.ReadToEnd());
                             }
                         }
                     }
                     catch (Exception ex)
                     {
                         LoadingScreen.cerrarLoading();
-                        GlobalFunctions.casoError(ex, "Entregar Carrito Documentos\n" + tipo_carrito);
+                        GlobalFunctions.casoError(ex, "Erro Prestar Prestar Carrito Documentos\n" + tipo_carrito);
                     }
                 }
             }
@@ -292,14 +290,14 @@ namespace SICA.Forms.Prestar
                         using (var stream = ex.Response.GetResponseStream())
                         using (var reader = new StreamReader(stream))
                         {
-                            GlobalFunctions.casoError(ex, "Error Entregar Agregar\n" + reader.ReadToEnd());
+                            GlobalFunctions.casoError(ex, "Error Prestar Agregar\n" + reader.ReadToEnd());
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     LoadingScreen.cerrarLoading();
-                    GlobalFunctions.casoError(ex, "Error Entregar Agregar");
+                    GlobalFunctions.casoError(ex, "Error Prestar Agregar");
                     return;
                 }
             }

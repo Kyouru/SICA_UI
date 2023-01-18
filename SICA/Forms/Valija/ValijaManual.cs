@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-namespace SICA.Forms.Recibir
+namespace SICA.Forms.Valija
 {
-    public partial class RecibirManual : Form
+    public partial class ValijaManual : Form
     {
         private bool deshabilitarActualizacionDocumento = false;
         private bool deshabilitarActualizacionDetalle = false;
 
-        public RecibirManual()
+        public ValijaManual()
         {
             InitializeComponent();
         }

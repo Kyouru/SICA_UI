@@ -1,7 +1,7 @@
 ﻿
-namespace SICA.Forms.Recibir
+namespace SICA.Forms.Valija
 {
-    partial class RecibirManual
+    partial class ValijaManual
     {
         /// <summary>
         /// Required designer variable.
@@ -402,7 +402,7 @@ namespace SICA.Forms.Recibir
             this.cbPagare.Text = "Pagare";
             this.cbPagare.UseVisualStyleBackColor = true;
             // 
-            // RecibirManual
+            // ValijaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -440,9 +440,9 @@ namespace SICA.Forms.Recibir
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbCaja);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "RecibirManual";
+            this.Name = "ValijaManual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Recibir Documento";
+            this.Text = "Valija Documento";
             this.Load += new System.EventHandler(this.RecibirManual_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

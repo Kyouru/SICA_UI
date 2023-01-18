@@ -167,13 +167,13 @@ namespace SICA
         private void btValija_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new RecibirSubMain());
+            OpenChildForm(new ValijaSubMain());
         }
 
         private void btMover_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new EntregarSubMain());
+            OpenChildForm(new MoverSubMain());
         }
 
         private void btIronMountain_Click(object sender, EventArgs e)
@@ -201,6 +201,7 @@ namespace SICA
             btReporte.Visible = int2bool(Globals.auReporte);
             btPrestar.Visible = int2bool(Globals.auPrestar);
             btMover.Visible = int2bool(Globals.auMover);
+            btPendiente.Visible = int2bool(Globals.auPendiente);
             btValija.Visible = int2bool(Globals.auValija);
             btBusqueda.Visible = int2bool(Globals.auBusqueda);
         }

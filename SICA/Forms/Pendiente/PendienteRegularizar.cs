@@ -127,9 +127,9 @@ namespace SICA.Forms.Pendiente
 
                     dgcdet.HeaderText = "DETALLE_PEN";
                     dgcdet.Name = "DETALLE_PEN";
-                    
                     dgv.Columns.Add(dgcdet);
-                    dgv.Columns["DETALLE_PEN"].Width = 130;
+                    dgv.Columns["DETALLE_PEN"].Width = 200;
+                    //dgv.Columns["DETALLE_PEN"].ReadOnly = false;
 
                     dgcban.HeaderText = "BANCA";
                     dgcban.Name = "BANCA";
@@ -312,9 +312,12 @@ namespace SICA.Forms.Pendiente
             ComboBox cb = e.Control as ComboBox;
             if (cb != null)
             {
-                if (cb.Name == "DETALLE_PEN")
+                if (dgv.CurrentCell.ColumnIndex == 18)
                 {
-                    cb.DropDownStyle = ComboBoxStyle.DropDown;
+                    if (dgv[dgv.CurrentCell.ColumnIndex - 1, dgv.CurrentCell.RowIndex].Value.ToString() == "OTROS")
+                    {
+                        cb.DropDownStyle = ComboBoxStyle.DropDown;
+                    }
                 }
             }
         }

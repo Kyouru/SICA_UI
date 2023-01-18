@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SICA.GlobalFunctions;
 
-namespace SICA.Forms.Recibir
+namespace SICA.Forms.Entregar
 {
-    public partial class RecibirSubMain : Form
+    public partial class MoverSubMain : Form
     {
         private IconButton currentBtn;
         private Panel topBorderBtn;
         private Form currentChildForm;
-        public RecibirSubMain()
+        public MoverSubMain()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
@@ -26,9 +26,8 @@ namespace SICA.Forms.Recibir
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btNuevo.Visible = int2bool(Globals.auValijaNuevo);
-            btOK.Visible = int2bool(Globals.auValijaReingreso);
-            btPendiente.Visible = int2bool(Globals.auValijaConfirmar);
+            btExpediente.Visible = int2bool(Globals.auMoverExpediente);
+            btDocumento.Visible = int2bool(Globals.auMoverDocumento);
         }
         private void OpenChildForm(Form childForm)
         {
@@ -54,7 +53,6 @@ namespace SICA.Forms.Recibir
         {
             if (senderBtn != null)
             {
-                GlobalFunctions.UltimaActividad();
                 DisableButton();
                 //Button
                 currentBtn = (IconButton)senderBtn;
@@ -99,39 +97,16 @@ namespace SICA.Forms.Recibir
             public static Color color6 = Color.FromArgb(24, 161, 251);
         }
 
-        private void btNuevo_Click(object sender, EventArgs e)
+        private void btDocumento_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirNuevo());
+            OpenChildForm(new MoverDocumento());
         }
 
-        private void btReingreso_Click(object sender, EventArgs e)
+        private void btMasivo_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirReingreso());
-        }
-
-        private void btConfirmar_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirConfirmar());
-        }
-
-        private void RecibirSubMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btOK_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirOK());
-        }
-
-        private void btPendiente_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirPendiente());
+            OpenChildForm(new MoverMasivo());
         }
     }
 }
