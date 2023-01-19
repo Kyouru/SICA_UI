@@ -127,9 +127,10 @@ namespace SICA.Forms.Pendiente
 
                     dgcdet.HeaderText = "DETALLE_PEN";
                     dgcdet.Name = "DETALLE_PEN";
+                    dgcdet.ReadOnly = false;
                     dgv.Columns.Add(dgcdet);
                     dgv.Columns["DETALLE_PEN"].Width = 200;
-                    //dgv.Columns["DETALLE_PEN"].ReadOnly = false;
+                    dgv.Columns["DETALLE_PEN"].ReadOnly = false;
 
                     dgcban.HeaderText = "BANCA";
                     dgcban.Name = "BANCA";
@@ -318,6 +319,28 @@ namespace SICA.Forms.Pendiente
                     {
                         cb.DropDownStyle = ComboBoxStyle.DropDown;
                     }
+                }
+            }
+        }
+
+        private void PendienteRegularizar_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            // Check if the column is the combobox column
+            if (e.ColumnIndex == 18)
+            {
+                DataGridViewComboBoxCell cboCell = (DataGridViewComboBoxCell)dgv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string value = cboCell.EditedFormattedValue.ToString();
+                // Check if the entered value is in the data source
+                if (!cboCell.Items.Contains(value))
+                {
+                    // Add the value to the data source
+                    cboCell.Items.Add(value);
+                    cboCell.Value = value;
                 }
             }
         }

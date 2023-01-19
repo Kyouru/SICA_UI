@@ -92,6 +92,7 @@
             this.dgv.Size = new System.Drawing.Size(1048, 558);
             this.dgv.TabIndex = 25;
             this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_CellEnter);
+            this.dgv.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_CellValidating);
             this.dgv.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_EditingControlShowing);
             // 
             // pnTop
@@ -164,7 +165,8 @@
             this.Controls.Add(this.pnBottom);
             this.Controls.Add(this.pnTop);
             this.Name = "PendienteRegularizar";
-            this.Text = "MantenimientoCredito";
+            this.Text = "PendienteRegularizar";
+            this.Load += new System.EventHandler(this.PendienteRegularizar_Load);
             this.pnBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.pnTop.ResumeLayout(false);
