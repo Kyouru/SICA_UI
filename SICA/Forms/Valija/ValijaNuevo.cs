@@ -733,8 +733,6 @@ namespace SICA.Forms.Valija
                             {
                                 token = Globals.Token,
                                 idaux = Globals.IdUsernameSelect,
-                                idareaentrega = Globals.IdAreaSelect,
-                                idarearecibe = Globals.IdArea,
                                 idubicacionentrega = 2, //Usuario Externo
                                 idubicacionrecibe = 8, //Valija
                                 iddocumento = row.Cells["IDDOCUMENTO"].Value.ToString(),

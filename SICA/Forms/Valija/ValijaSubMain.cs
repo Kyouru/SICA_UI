@@ -28,8 +28,8 @@ namespace SICA.Forms.Recibir
             pnTop.Controls.Add(topBorderBtn);
 
             btNuevo.Visible = int2bool(Globals.auValijaNuevo);
-            btOK.Visible = int2bool(Globals.auValijaReingreso);
-            btPendiente.Visible = int2bool(Globals.auValijaConfirmar);
+            btValija.Visible = int2bool(Globals.auValijaReingreso);
+            //btPendiente.Visible = int2bool(Globals.auValijaConfirmar);
         }
         private void OpenChildForm(Form childForm)
         {
@@ -114,13 +114,19 @@ namespace SICA.Forms.Recibir
         private void btOK_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirOK());
+            OpenChildForm(new ValijaValija());
         }
 
         private void btPendiente_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new RecibirPendiente());
+            OpenChildForm(new ValijaPendiente());
+        }
+
+        private void btTransicion_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new ValijaTransicion());
         }
     }
 }

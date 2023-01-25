@@ -30,8 +30,9 @@ namespace SICA.Forms.Mantenimiento
 
             btSocio.Visible = int2bool(Globals.auMantenimientoSocio);
             btCredito.Visible = int2bool(Globals.auMantenimientoCredito);
-            btCuenta.Visible = int2bool(Globals.auMantenimientoCuenta);
+            btUsuarioExterno.Visible = int2bool(Globals.auMantenimientoUsuarioExterno);
         }
+
         private void OpenChildForm(Form childForm)
         {
             //open only form
@@ -68,6 +69,7 @@ namespace SICA.Forms.Mantenimiento
                 //currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 //currentBtn.ImageAlign = ContentAlignment.MiddleRight;
 
+                topBorderBtn.Size = new Size(currentBtn.Width, 3);
                 topBorderBtn.BackColor = color;
                 topBorderBtn.Location = new Point(currentBtn.Location.X, 0);
                 topBorderBtn.Visible = true;
@@ -113,10 +115,10 @@ namespace SICA.Forms.Mantenimiento
             OpenChildForm(new MantenimientoCredito());
         }
 
-        private void btCuenta_Click(object sender, EventArgs e)
+        private void btUsuarioExterno_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new MantenimientoCuenta());
+            OpenChildForm(new MantenimientoUsuarioExterno());
         }
     }
 }

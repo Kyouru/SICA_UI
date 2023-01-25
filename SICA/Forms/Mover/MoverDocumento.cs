@@ -105,10 +105,10 @@ namespace SICA.Forms.Entregar
             GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
-                Globals.TipoSeleccionarUsuario = 1;
-                SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
+                Globals.TipoSeleccionarUbicacion = 1;
+                SeleccionarUbicacionForm suf = new SeleccionarUbicacionForm();
                 suf.ShowDialog();
-                if (Globals.IdUsernameSelect > 0)
+                if (Globals.IdUbicacionSelect > 0)
                 {
                     string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
                     Globals.NombreCargo = "CARGO DE DOCUMENTOS";
@@ -136,7 +136,8 @@ namespace SICA.Forms.Entregar
                                     {
                                         token = Globals.Token,
                                         idinventario = row["ID"].ToString(),
-                                        idubicacionrecibe = Globals.IdAreaSelect,
+                                        idestado = 1, //Custodiado
+                                        idubicacionrecibe = Globals.IdUbicacionSelect,
                                         fecha = fecha,
                                         observacion = observacion
                                     });

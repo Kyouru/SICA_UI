@@ -270,7 +270,7 @@
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(5, 0);
             this.pnTop.Name = "pnTop";
-            this.pnTop.Size = new System.Drawing.Size(1129, 34);
+            this.pnTop.Size = new System.Drawing.Size(1229, 34);
             this.pnTop.TabIndex = 1;
             this.pnTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnTop_MouseDown);
             // 
@@ -279,7 +279,7 @@
             this.lbTiempoSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTiempoSesion.AutoSize = true;
             this.lbTiempoSesion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbTiempoSesion.Location = new System.Drawing.Point(787, 10);
+            this.lbTiempoSesion.Location = new System.Drawing.Point(887, 10);
             this.lbTiempoSesion.Name = "lbTiempoSesion";
             this.lbTiempoSesion.Size = new System.Drawing.Size(34, 13);
             this.lbTiempoSesion.TabIndex = 44;
@@ -290,7 +290,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(690, 10);
+            this.label2.Location = new System.Drawing.Point(790, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 43;
@@ -302,7 +302,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1129, 5);
+            this.panel2.Size = new System.Drawing.Size(1229, 5);
             this.panel2.TabIndex = 8;
             // 
             // lbUsuario
@@ -310,7 +310,7 @@
             this.lbUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbUsuario.AutoSize = true;
             this.lbUsuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbUsuario.Location = new System.Drawing.Point(902, 10);
+            this.lbUsuario.Location = new System.Drawing.Point(1002, 10);
             this.lbUsuario.Name = "lbUsuario";
             this.lbUsuario.Size = new System.Drawing.Size(109, 13);
             this.lbUsuario.TabIndex = 7;
@@ -322,7 +322,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(850, 10);
+            this.label1.Location = new System.Drawing.Point(950, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 6;
@@ -339,7 +339,7 @@
             this.btMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btMinimizar.IconSize = 24;
             this.btMinimizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btMinimizar.Location = new System.Drawing.Point(1076, 0);
+            this.btMinimizar.Location = new System.Drawing.Point(1176, 0);
             this.btMinimizar.Margin = new System.Windows.Forms.Padding(0);
             this.btMinimizar.Name = "btMinimizar";
             this.btMinimizar.Size = new System.Drawing.Size(26, 23);
@@ -357,7 +357,7 @@
             this.btCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btCerrar.IconSize = 24;
             this.btCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btCerrar.Location = new System.Drawing.Point(1102, 0);
+            this.btCerrar.Location = new System.Drawing.Point(1202, 0);
             this.btCerrar.Margin = new System.Windows.Forms.Padding(0);
             this.btCerrar.Name = "btCerrar";
             this.btCerrar.Size = new System.Drawing.Size(26, 23);
@@ -372,7 +372,7 @@
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMain.Location = new System.Drawing.Point(200, 0);
             this.pnMain.Name = "pnMain";
-            this.pnMain.Size = new System.Drawing.Size(1134, 746);
+            this.pnMain.Size = new System.Drawing.Size(1234, 746);
             this.pnMain.TabIndex = 2;
             // 
             // panel1
@@ -395,7 +395,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ClientSize = new System.Drawing.Size(1334, 746);
+            this.ClientSize = new System.Drawing.Size(1434, 746);
             this.Controls.Add(this.pnMain);
             this.Controls.Add(this.pnLeft);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

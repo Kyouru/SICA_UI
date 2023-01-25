@@ -93,6 +93,7 @@
             this.dgv.TabIndex = 25;
             this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_CellEnter);
             this.dgv.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_CellValidating);
+            this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             this.dgv.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_EditingControlShowing);
             // 
             // pnTop

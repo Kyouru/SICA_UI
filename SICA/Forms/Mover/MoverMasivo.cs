@@ -386,8 +386,8 @@ namespace SICA.Forms.Entregar
         private void btCargarValido_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            string observacion = "";
-            //string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
+            //string observacion = "";
+            string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
 
             LoadingScreen.iniciarLoading();
 
@@ -411,9 +411,8 @@ namespace SICA.Forms.Entregar
                         string json = new JavaScriptSerializer().Serialize(new
                         {
                             token = Globals.Token,
-                            idarearecibe = Globals.IdArea,
                             idinventario = row.Cells["ID"].Value.ToString(),
-                            idubicacionentrega = row.Cells["ID_UBICACIONORIGEN"].Value.ToString(),
+                            idestado = 1, //Custodiado
                             idubicacionrecibe = row.Cells["ID_UBICACIONDESTINO"].Value.ToString(),
                             fecha = fecha,
                             observacion = GlobalFunctions.lCadena(observacion)
@@ -431,6 +430,7 @@ namespace SICA.Forms.Entregar
                         }
                     }
                 }
+
                 LoadingScreen.cerrarLoading();
 
                 MessageBox.Show("Proceso Finalizado");

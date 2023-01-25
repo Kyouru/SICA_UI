@@ -30,10 +30,10 @@
         {
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btPendiente = new FontAwesome.Sharp.IconButton();
-            this.btOK = new FontAwesome.Sharp.IconButton();
+            this.btTransicion = new FontAwesome.Sharp.IconButton();
+            this.btValija = new FontAwesome.Sharp.IconButton();
             this.btNuevo = new FontAwesome.Sharp.IconButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,68 +49,59 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.pnTop.Controls.Add(this.panel1);
-            this.pnTop.Controls.Add(this.btPendiente);
-            this.pnTop.Controls.Add(this.btOK);
+            this.pnTop.Controls.Add(this.btTransicion);
+            this.pnTop.Controls.Add(this.btValija);
             this.pnTop.Controls.Add(this.btNuevo);
+            this.pnTop.Controls.Add(this.panel1);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 45);
             this.pnTop.TabIndex = 2;
             // 
-            // panel1
+            // btTransicion
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(420, 44);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 1);
-            this.panel1.TabIndex = 8;
+            this.btTransicion.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btTransicion.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btTransicion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btTransicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btTransicion.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btTransicion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btTransicion.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btTransicion.IconColor = System.Drawing.Color.Gainsboro;
+            this.btTransicion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btTransicion.IconSize = 30;
+            this.btTransicion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btTransicion.Location = new System.Drawing.Point(280, 0);
+            this.btTransicion.Name = "btTransicion";
+            this.btTransicion.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btTransicion.Size = new System.Drawing.Size(140, 44);
+            this.btTransicion.TabIndex = 10;
+            this.btTransicion.Text = "Transicion";
+            this.btTransicion.UseVisualStyleBackColor = false;
+            this.btTransicion.Click += new System.EventHandler(this.btTransicion_Click);
             // 
-            // btPendiente
+            // btValija
             // 
-            this.btPendiente.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btPendiente.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btPendiente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btPendiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btPendiente.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPendiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btPendiente.IconColor = System.Drawing.Color.Gainsboro;
-            this.btPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btPendiente.IconSize = 30;
-            this.btPendiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btPendiente.Location = new System.Drawing.Point(280, 0);
-            this.btPendiente.Name = "btPendiente";
-            this.btPendiente.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btPendiente.Size = new System.Drawing.Size(140, 45);
-            this.btPendiente.TabIndex = 9;
-            this.btPendiente.Text = "Pendiente";
-            this.btPendiente.UseVisualStyleBackColor = false;
-            this.btPendiente.Click += new System.EventHandler(this.btPendiente_Click);
-            // 
-            // btOK
-            // 
-            this.btOK.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btOK.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btOK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btOK.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btOK.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btOK.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btOK.IconColor = System.Drawing.Color.Gainsboro;
-            this.btOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btOK.IconSize = 30;
-            this.btOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btOK.Location = new System.Drawing.Point(140, 0);
-            this.btOK.Name = "btOK";
-            this.btOK.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btOK.Size = new System.Drawing.Size(140, 45);
-            this.btOK.TabIndex = 5;
-            this.btOK.Text = "OK";
-            this.btOK.UseVisualStyleBackColor = false;
-            this.btOK.Click += new System.EventHandler(this.btOK_Click);
+            this.btValija.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btValija.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btValija.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btValija.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btValija.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btValija.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btValija.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btValija.IconColor = System.Drawing.Color.Gainsboro;
+            this.btValija.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btValija.IconSize = 30;
+            this.btValija.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btValija.Location = new System.Drawing.Point(140, 0);
+            this.btValija.Name = "btValija";
+            this.btValija.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btValija.Size = new System.Drawing.Size(140, 44);
+            this.btValija.TabIndex = 5;
+            this.btValija.Text = "Valija";
+            this.btValija.UseVisualStyleBackColor = false;
+            this.btValija.Click += new System.EventHandler(this.btOK_Click);
             // 
             // btNuevo
             // 
@@ -128,13 +119,22 @@
             this.btNuevo.Location = new System.Drawing.Point(0, 0);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btNuevo.Size = new System.Drawing.Size(140, 45);
+            this.btNuevo.Size = new System.Drawing.Size(140, 44);
             this.btNuevo.TabIndex = 4;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
             this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
-            // RecibirSubMain
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 44);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1048, 1);
+            this.panel1.TabIndex = 8;
+            // 
+            // ValijaSubMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +142,7 @@
             this.ClientSize = new System.Drawing.Size(1048, 608);
             this.Controls.Add(this.pnSubMain);
             this.Controls.Add(this.pnTop);
-            this.Name = "RecibirSubMain";
+            this.Name = "ValijaSubMain";
             this.Text = "RecibirSubMain";
             this.Load += new System.EventHandler(this.RecibirSubMain_Load);
             this.pnTop.ResumeLayout(false);
@@ -155,8 +155,8 @@
         private System.Windows.Forms.Panel pnSubMain;
         private System.Windows.Forms.Panel pnTop;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btOK;
+        private FontAwesome.Sharp.IconButton btValija;
         private FontAwesome.Sharp.IconButton btNuevo;
-        private FontAwesome.Sharp.IconButton btPendiente;
+        private FontAwesome.Sharp.IconButton btTransicion;
     }
 }

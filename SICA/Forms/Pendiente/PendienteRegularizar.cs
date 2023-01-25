@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -145,6 +146,10 @@ namespace SICA.Forms.Pendiente
 
                     foreach (DataGridViewRow row in dgv.Rows)
                     {
+                        if (!dgcdet.Items.Contains(row.Cells["PEN_DETALLE"].Value))
+                        {
+                            dgcdet.Items.Add(row.Cells["PEN_DETALLE"].Value);
+                        }
                         row.Cells["PENDIENTE"].Value = row.Cells["PEN_NOMBRE"].Value;
                         row.Cells["DETALLE_PEN"].Value = row.Cells["PEN_DETALLE"].Value;
                         row.Cells["BANCA"].Value = row.Cells["PEN_BANCA"].Value;
@@ -184,14 +189,8 @@ namespace SICA.Forms.Pendiente
                 foreach (DataGridViewRow row in dgv.Rows)
                 {
                     bool pendienteok = false, modificado = false;
+                    int ubicacionrecibe = 8;
                     string concat = "";
-                    if (!(row.Cells["OK"].Value is null))
-                    {
-                        if (bool.Parse(row.Cells["OK"].Value.ToString()) == true)
-                        {
-                            pendienteok = true;
-                        }
-                    }
                     concat = row.Cells["CAJA"].Value.ToString() + row.Cells["CODIGO_SOCIO"].Value.ToString() + row.Cells["NOMBRE_SOCIO"].Value.ToString();
                     concat += row.Cells["NUMEROSOLICITUD"].Value.ToString() + row.Cells["DESDE"].Value.ToString() + row.Cells["HASTA"].Value.ToString();
                     concat += row.Cells["PENDIENTE"].Value.ToString() + row.Cells["DETALLE_PEN"].Value.ToString() + row.Cells["BANCA"].Value.ToString();
@@ -199,9 +198,19 @@ namespace SICA.Forms.Pendiente
                     if (row.Cells["CONCAT"].Value.ToString() != concat)
                     {
                         modificado = true;
+                        ubicacionrecibe = 9;
                     }
 
-                    if (modificado || pendienteok )
+                    if (!(row.Cells["OK"].Value is null))
+                    {
+                        if (bool.Parse(row.Cells["OK"].Value.ToString()) == true)
+                        {
+                            pendienteok = true;
+                            ubicacionrecibe = 7; //Transicion 7
+                        }
+                    }
+
+                    if (modificado || pendienteok)
                     {
                         LoadingScreen.iniciarLoading();
                         existe = true;
@@ -235,8 +244,8 @@ namespace SICA.Forms.Pendiente
                                 fecha = fecha,
                                 pendienteok = pendienteok,
                                 modificado = modificado,
-                                idubicacionentrega = 9,
-                                idubicacionrecibe = 8,
+                                idubicacionentrega = 9, //PENDIENTE
+                                idubicacionrecibe = ubicacionrecibe,  //TRANSICION 7 o PENDIENTE 9
                                 idinventario = row.Cells["ID"].Value.ToString(),
                                 numerocaja = row.Cells["CAJA"].Value.ToString(),
                                 codigosocio = row.Cells["CODIGO_SOCIO"].Value.ToString(),
@@ -266,8 +275,9 @@ namespace SICA.Forms.Pendiente
                 {
                     LoadingScreen.cerrarLoading();
                     //dgv.DataSource = null;
-                    //btActualizar_Click(sender, e);
+                    dgv.Columns.Clear();
                     MessageBox.Show("Proceso Finalizado");
+                    btActualizar_Click(sender, e);
                 }
                 else
                 {
@@ -343,6 +353,11 @@ namespace SICA.Forms.Pendiente
                     cboCell.Value = value;
                 }
             }
+        }
+
+        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            return;
         }
     }
 }

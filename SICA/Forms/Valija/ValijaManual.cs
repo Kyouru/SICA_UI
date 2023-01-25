@@ -91,11 +91,6 @@ namespace SICA.Forms.Valija
             bool correcto = true;
             string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            if (tbCaja.Text == "")
-            {
-                MessageBox.Show("Numero de Caja Vacio");
-                correcto = false;
-            }
             if (cmbDepartamento.SelectedIndex == -1)
             {
                 MessageBox.Show("Departamento Invalido");

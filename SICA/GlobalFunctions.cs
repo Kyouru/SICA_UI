@@ -220,7 +220,7 @@ namespace SICA
                 xlApp.ScreenUpdating = false;
 
 
-                xlWorkSheet.Name = "Mica1";
+                xlWorkSheet.Name = "Hoja1";
 
                 int offset = 1;
                 if (nombre_cargo != "" && cabecera)
@@ -907,7 +907,7 @@ namespace SICA
                     Globals.auImportarActivas = usuario.auImportarActivas.ToString();
                     Globals.auImportarPasivas = usuario.auImportarPasivas.ToString();
                     Globals.auMantenimiento = usuario.auMantenimiento.ToString();
-                    Globals.auMantenimientoCuenta = usuario.auMantenimientoCuenta.ToString();
+                    Globals.auMantenimientoUsuarioExterno = usuario.auMantenimientoUsuarioExterno.ToString();
                     Globals.auMantenimientoCredito = usuario.auMantenimientoCredito.ToString();
                     Globals.auMantenimientoSocio = usuario.auMantenimientoSocio.ToString();
                     Globals.auPendiente = usuario.auPendiente.ToString();

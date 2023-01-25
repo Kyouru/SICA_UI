@@ -1,6 +1,6 @@
-﻿namespace SICA.Forms.Recibir
+﻿namespace SICA.Forms.Valija
 {
-    partial class RecibirPendiente
+    partial class ValijaPendiente
     {
         /// <summary>
         /// Required designer variable.

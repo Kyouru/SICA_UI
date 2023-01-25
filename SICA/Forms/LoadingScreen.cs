@@ -97,6 +97,21 @@ namespace SICA.Forms
                     screenLoading.Close();
                 }
             }
+            else
+            {
+                Thread.Sleep(1000);
+                if (screenLoading != null)
+                {
+                    if (screenLoading.InvokeRequired)
+                    {
+                        screenLoading.Invoke(new MethodInvoker(cerrarLoading));
+                    }
+                    else
+                    {
+                        screenLoading.Close();
+                    }
+                }
+            }
         }
     }
 }

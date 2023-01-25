@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Clowd.Squirrel.2.9.42\build\Clowd.Squirrel.props" Condition="Exists('..\packages\Clowd.Squirrel.2.9.42\build\Clowd.Squirrel.props')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -114,6 +115,12 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="SharpCompress, Version=0.31.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.31.0\lib\net461\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="SquirrelLib, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5a523ff9c49fd93d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Clowd.Squirrel.2.9.42\lib\net461\SquirrelLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
@@ -245,6 +252,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -262,6 +272,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -380,17 +391,17 @@
     <Compile Include="Forms\ImportarSISGO.Designer.cs">
       <DependentUpon>ImportarSISGO.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaModificar.cs">
+    <Compile Include="Forms\Mantenimiento\UsuarioExterno\UsuarioExternoModificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaModificar.Designer.cs">
-      <DependentUpon>CuentaModificar.cs</DependentUpon>
+    <Compile Include="Forms\Mantenimiento\UsuarioExterno\UsuarioExternoModificar.Designer.cs">
+      <DependentUpon>UsuarioExternoModificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaNueva.cs">
+    <Compile Include="Forms\Mantenimiento\UsuarioExterno\UsuarioExternoNueva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mantenimiento\Cuenta\CuentaNueva.Designer.cs">
-      <DependentUpon>CuentaNueva.cs</DependentUpon>
+    <Compile Include="Forms\Mantenimiento\UsuarioExterno\UsuarioExternoNueva.Designer.cs">
+      <DependentUpon>UsuarioExternoNueva.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mantenimiento\MantenimientoSocio.cs">
       <SubType>Form</SubType>
@@ -398,11 +409,11 @@
     <Compile Include="Forms\Mantenimiento\MantenimientoSocio.Designer.cs">
       <DependentUpon>MantenimientoSocio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mantenimiento\MantenimientoCuenta.cs">
+    <Compile Include="Forms\Mantenimiento\MantenimientoUsuarioExterno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mantenimiento\MantenimientoCuenta.Designer.cs">
-      <DependentUpon>MantenimientoCuenta.cs</DependentUpon>
+    <Compile Include="Forms\Mantenimiento\MantenimientoUsuarioExterno.Designer.cs">
+      <DependentUpon>MantenimientoUsuarioExterno.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mantenimiento\MantenimientoCredito.cs">
       <SubType>Form</SubType>
@@ -579,19 +590,31 @@
     <Compile Include="Forms\Prestar\PrestarSubMain.Designer.cs">
       <DependentUpon>PrestarSubMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SeleccionarUbicacionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SeleccionarUbicacionForm.Designer.cs">
+      <DependentUpon>SeleccionarUbicacionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Valija\ValijaConfirmar.Designer.cs">
       <DependentUpon>ValijaConfirmar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Valija\ValijaManual.Designer.cs">
       <DependentUpon>ValijaManual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Valija\ValijaOK.Designer.cs">
-      <DependentUpon>ValijaOK.cs</DependentUpon>
+    <Compile Include="Forms\Valija\ValijaValija.Designer.cs">
+      <DependentUpon>ValijaValija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Valija\ValijaTransicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Valija\ValijaTransicion.Designer.cs">
+      <DependentUpon>ValijaTransicion.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Valija\ValijaPendiente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Valija\ValijaOK.cs">
+    <Compile Include="Forms\Valija\ValijaValija.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Valija\ValijaConfirmar.cs">
@@ -711,17 +734,17 @@
     <EmbeddedResource Include="Forms\ImportarSISGO.resx">
       <DependentUpon>ImportarSISGO.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Mantenimiento\Cuenta\CuentaModificar.resx">
-      <DependentUpon>CuentaModificar.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mantenimiento\UsuarioExterno\UsuarioExternoModificar.resx">
+      <DependentUpon>UsuarioExternoModificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Mantenimiento\Cuenta\CuentaNueva.resx">
-      <DependentUpon>CuentaNueva.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mantenimiento\UsuarioExterno\UsuarioExternoNueva.resx">
+      <DependentUpon>UsuarioExternoNueva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoSocio.resx">
       <DependentUpon>MantenimientoSocio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoCuenta.resx">
-      <DependentUpon>MantenimientoCuenta.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoUsuarioExterno.resx">
+      <DependentUpon>MantenimientoUsuarioExterno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoCredito.resx">
       <DependentUpon>MantenimientoCredito.cs</DependentUpon>
@@ -816,6 +839,9 @@
     <EmbeddedResource Include="Forms\Prestar\PrestarSubMain.resx">
       <DependentUpon>PrestarSubMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SeleccionarUbicacionForm.resx">
+      <DependentUpon>SeleccionarUbicacionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Valija\ValijaConfirmar.resx">
       <DependentUpon>ValijaConfirmar.cs</DependentUpon>
     </EmbeddedResource>
@@ -825,8 +851,11 @@
     <EmbeddedResource Include="Forms\Valija\ValijaNuevo.resx">
       <DependentUpon>ValijaNuevo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Valija\ValijaOK.resx">
-      <DependentUpon>ValijaOK.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Valija\ValijaValija.resx">
+      <DependentUpon>ValijaValija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Valija\ValijaTransicion.resx">
+      <DependentUpon>ValijaTransicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Valija\ValijaPendiente.resx">
       <DependentUpon>ValijaPendiente.cs</DependentUpon>
@@ -940,6 +969,7 @@
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.6.6.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.6.4\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Clowd.Squirrel.2.9.42\build\Clowd.Squirrel.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Clowd.Squirrel.2.9.42\build\Clowd.Squirrel.props'))" />
   </Target>
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
   <Import Project="..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.4\build\Fody.targets')" />

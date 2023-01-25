@@ -12,8 +12,8 @@ namespace SICA
         public static Int32 SesionAlerta = 3;
         public static DateTime UltimaActividad = DateTime.Now;
 
-        public static string api = "http://sica.kyouru.com/api/";
-        //public static string api = "http://localhost:5000/api/";
+        //public static string api = "http://sica.kyouru.com/api/";
+        public static string api = "http://localhost:5000/api/";
         public static String ExportarPath = Application.StartupPath + "\\Exportar\\";
         public static String strQueryArea = "";
 
@@ -23,12 +23,15 @@ namespace SICA
         public static String NombreCargo = "";
 
         public static Int32 TipoSeleccionarUsuario = -1;
+        public static Int32 TipoSeleccionarUbicacion = -1;
         public static Int32 IdArea = -1;
         public static Int32 IdInventario = -1;
         public static Int32 IdUsername = -1;
         public static String Username = "";
 
         public static Int32 IdAreaSelect = -1;
+        public static Int32 IdUbicacionSelect = -1;
+        public static String UbicacionSelect = "";
         public static Int32 IdUsernameSelect = -1;
         public static String UsernameSelect = "";
         public static bool EntregarConfirmacion = true;
@@ -127,7 +130,7 @@ namespace SICA
         public static string auImportarPasivas = "0";
         public static string auMantenimiento = "0";
         public static string auMantenimientoSocio = "0";
-        public static string auMantenimientoCuenta = "0";
+        public static string auMantenimientoUsuarioExterno = "0";
         public static string auMantenimientoCredito = "0";
         public static string auReporte = "0";
         public static string auReporteCajas = "0";

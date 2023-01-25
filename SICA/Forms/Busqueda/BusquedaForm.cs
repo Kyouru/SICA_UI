@@ -8,6 +8,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Web;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using static SICA.GlobalFunctions;
@@ -195,6 +196,142 @@ namespace SICA
             else
             {
                 MessageBox.Show("Seleccione el documento para ver el historial");
+            }
+        }
+
+        private void btPrestar_Click(object sender, EventArgs e)
+        {
+            if (dgvBusqueda.SelectedCells.Count == 1)
+            {
+                Globals.TipoSeleccionarUsuario = 1;
+                SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
+                suf.ShowDialog();
+                if (Globals.IdUsernameSelect > 0)
+                {
+                    try
+                    {
+                        string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
+
+                        string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                        var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
+                        httpWebRequest.ContentType = "application/json";
+                        httpWebRequest.Method = "POST";
+                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                        {
+                            string json = new JavaScriptSerializer().Serialize(new
+                            {
+                                token = Globals.Token,
+                                idrecibe = Globals.IdUsernameSelect,
+                                idestado = 2, //Prestado
+                                idinventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString()),
+                                idubicacionrecibe = 2, //USUARIO_EXTERNO
+                                fecha = fecha,
+                                observacion = observacion
+                            });
+
+                            streamWriter.Write(json);
+                        }
+
+                        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                        if (httpResponse.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                            {
+                                string result = streamReader.ReadToEnd();
+                                MessageBox.Show("Entregado");
+                                btBuscar_Click(sender, e);
+                            }
+                        }
+                    }
+
+                    catch (WebException ex)
+                    {
+                        LoadingScreen.cerrarLoading();
+                        if (!(ex.Response is null))
+                        {
+                            using (var stream = ex.Response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
+                            {
+                                GlobalFunctions.casoError(ex, "Entregar Documento\n" + reader.ReadToEnd());
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LoadingScreen.cerrarLoading();
+                        GlobalFunctions.casoError(ex, "Entregar Documento\n");
+                    }
+                }
+            }
+        }
+
+        private void btRecibir_Click(object sender, EventArgs e)
+        {
+            if (dgvBusqueda.SelectedCells.Count == 1)
+            {
+                try
+                {
+                    Globals.TipoSeleccionarUbicacion = 1;
+                    SeleccionarUbicacionForm suf = new SeleccionarUbicacionForm();
+                    suf.ShowDialog();
+                    if (Globals.IdUbicacionSelect > 0)
+                    {
+                        string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
+
+                        string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                        var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/ValijaMover");
+                        httpWebRequest.ContentType = "application/json";
+                        httpWebRequest.Method = "POST";
+
+                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                        {
+                            string json = new JavaScriptSerializer().Serialize(new
+                            {
+                                token = Globals.Token,
+                                idrecibe = Globals.IdUsernameSelect,
+                                idestado = 1, //Custodiado
+                                idinventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString()),
+                                idubicacionrecibe = Globals.IdUbicacionSelect,
+                                fecha = fecha,
+                                observacion = observacion
+                            });
+
+                            streamWriter.Write(json);
+                        }
+
+                        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                        if (httpResponse.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                            {
+                                string result = streamReader.ReadToEnd();
+                                MessageBox.Show("Recibido");
+                                btBuscar_Click(sender, e);
+                            }
+                        }
+                    }
+                    
+                }
+
+                catch (WebException ex)
+                {
+                    LoadingScreen.cerrarLoading();
+                    if (!(ex.Response is null))
+                    {
+                        using (var stream = ex.Response.GetResponseStream())
+                        using (var reader = new StreamReader(stream))
+                        {
+                            GlobalFunctions.casoError(ex, "Entregar Documento\n" + reader.ReadToEnd());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LoadingScreen.cerrarLoading();
+                    GlobalFunctions.casoError(ex, "Entregar Documento\n");
+                }
             }
         }
     }

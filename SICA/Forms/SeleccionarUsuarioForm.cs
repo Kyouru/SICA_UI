@@ -24,7 +24,7 @@ namespace SICA.Forms
             //Globals.EntregarConfirmacion = true;
             try
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarios");
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarioexterno");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -47,9 +47,11 @@ namespace SICA.Forms
                     {
                         string result = streamReader.ReadToEnd();
                         dtUsuarios = JsonConvert.DeserializeObject<DataTable>(result);
+                        cmbUsuario.DataSource = dtUsuarios;
+                        cmbUsuario.ValueMember = "ID_USUARIO_EXTERNO";
+                        cmbUsuario.DisplayMember = "NOMBRE_USUARIO_EXTERNO";
                     }
                 }
-
 
             }
             catch (WebException ex)
@@ -75,7 +77,7 @@ namespace SICA.Forms
         {
             if (cmbUsuario.SelectedIndex >= 0)
             {
-                Globals.IdUsernameSelect = Int32.Parse((cmbUsuario.SelectedItem as DataRowView)["ID_USUARIO"].ToString());
+                Globals.IdUsernameSelect = Int32.Parse((cmbUsuario.SelectedItem as DataRowView)["ID_USUARIO_EXTERNO"].ToString());
                 Globals.UsernameSelect = cmbUsuario.Text.Trim();
                 this.Close();
             }

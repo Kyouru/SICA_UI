@@ -166,6 +166,7 @@ namespace SICA.Forms.Entregar
                                         token = Globals.Token,
                                         idaux = Globals.IdUsernameSelect,
                                         idinventario = row["ID"].ToString(),
+                                        idestado = 1, //Custodiado
                                         idareaentrega = Globals.IdArea,
                                         idarearecibe = Globals.IdAreaSelect,
                                         fecha = fecha,

@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-namespace SICA.Forms.Recibir
+namespace SICA.Forms.Valija
 {
-    public partial class RecibirPendiente : Form
+    public partial class ValijaPendiente : Form
     {
-        public RecibirPendiente()
+        public ValijaPendiente()
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
@@ -39,7 +39,8 @@ namespace SICA.Forms.Recibir
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        token = Globals.Token,
+                        idubicacion = 8
                     });
 
                     streamWriter.Write(json);
@@ -78,14 +79,14 @@ namespace SICA.Forms.Recibir
                     using (var stream = ex.Response.GetResponseStream())
                     using (var reader = new StreamReader(stream))
                     {
-                        GlobalFunctions.casoError(ex, "Error Buscar Confirmaciones Pendientes\n" + reader.ReadToEnd());
+                        GlobalFunctions.casoError(ex, "Error Buscar Valija Pendientes\n" + reader.ReadToEnd());
                     }
                 }
             }
             catch (Exception ex)
             {
                 LoadingScreen.cerrarLoading();
-                GlobalFunctions.casoError(ex, "Error Buscar Confirmaciones Pendientes");
+                GlobalFunctions.casoError(ex, "Error Buscar Valija Pendientes");
             }
         }
 
@@ -120,8 +121,9 @@ namespace SICA.Forms.Recibir
                                 string json = new JavaScriptSerializer().Serialize(new
                                 {
                                     token = Globals.Token,
-                                    idubicacionentrega = 8,
-                                    idubicacionrecibe = 9,
+                                    //idubicacionentrega = 8, //VALIJA
+                                    idubicacionrecibe = 9,  //PENDIENTE
+                                    idestado = 1, //Custodiado
                                     fecha = fecha,
                                     idinventario = row.Cells["ID"].Value.ToString()
                                 });

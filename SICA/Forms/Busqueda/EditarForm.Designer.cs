@@ -29,37 +29,88 @@ namespace SICA.Forms.Busqueda
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbFecha = new System.Windows.Forms.CheckBox();
-            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbCaja = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
+            this.btGuadar = new FontAwesome.Sharp.IconButton();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.cbFecha = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
-            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
             this.cmbDocumento = new System.Windows.Forms.ComboBox();
             this.lbDesde = new System.Windows.Forms.Label();
             this.lbHasta = new System.Windows.Forms.Label();
-            this.cmbDetalle = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cmbDetalle = new System.Windows.Forms.ComboBox();
             this.tbNumeroSolicitud = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btValidarSolicitud = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.tbCodigoSocio = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbNombreSocio = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.cmbClasificacion = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.tbObservacion = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.cmbCentroCosto = new System.Windows.Forms.ComboBox();
             this.cmbProducto = new System.Windows.Forms.ComboBox();
             this.cbCentroCosto = new System.Windows.Forms.CheckBox();
             this.cbProducto = new System.Windows.Forms.CheckBox();
             this.cbClasificacion = new System.Windows.Forms.CheckBox();
-            this.btGuadar = new FontAwesome.Sharp.IconButton();
+            this.tbCaja = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(17, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 22);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Cod. Departamento:";
+            // 
+            // cmbDepartamento
+            // 
+            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbDepartamento.FormattingEnabled = true;
+            this.cmbDepartamento.Location = new System.Drawing.Point(218, 47);
+            this.cmbDepartamento.Name = "cmbDepartamento";
+            this.cmbDepartamento.Size = new System.Drawing.Size(284, 26);
+            this.cmbDepartamento.TabIndex = 37;
+            this.cmbDepartamento.SelectedIndexChanged += new System.EventHandler(this.cmbDepartamento_SelectedIndexChanged);
+            // 
+            // btGuadar
+            // 
+            this.btGuadar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGuadar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGuadar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btGuadar.IconColor = System.Drawing.Color.Black;
+            this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btGuadar.IconSize = 16;
+            this.btGuadar.Location = new System.Drawing.Point(215, 487);
+            this.btGuadar.Name = "btGuadar";
+            this.btGuadar.Size = new System.Drawing.Size(119, 32);
+            this.btGuadar.TabIndex = 112;
+            this.btGuadar.Text = "Guardar";
+            this.btGuadar.UseVisualStyleBackColor = true;
+            this.btGuadar.Click += new System.EventHandler(this.btGuardar_Click);
+            // 
+            // dtpFechaDesde
+            // 
+            this.dtpFechaDesde.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(218, 143);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(119, 24);
+            this.dtpFechaDesde.TabIndex = 21;
+            this.dtpFechaDesde.Visible = false;
             // 
             // cbFecha
             // 
@@ -73,47 +124,6 @@ namespace SICA.Forms.Busqueda
             this.cbFecha.Text = "Fecha";
             this.cbFecha.UseVisualStyleBackColor = true;
             this.cbFecha.CheckedChanged += new System.EventHandler(this.cbFecha_CheckedChanged);
-            // 
-            // dtpFechaDesde
-            // 
-            this.dtpFechaDesde.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaDesde.Location = new System.Drawing.Point(218, 143);
-            this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(119, 24);
-            this.dtpFechaDesde.TabIndex = 21;
-            this.dtpFechaDesde.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(16, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 22);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Caja:";
-            // 
-            // tbCaja
-            // 
-            this.tbCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCaja.Location = new System.Drawing.Point(218, 17);
-            this.tbCaja.Name = "tbCaja";
-            this.tbCaja.Size = new System.Drawing.Size(188, 24);
-            this.tbCaja.TabIndex = 19;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(17, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 22);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Cod. Departamento:";
             // 
             // label3
             // 
@@ -136,17 +146,6 @@ namespace SICA.Forms.Busqueda
             this.dtpFechaHasta.Size = new System.Drawing.Size(119, 24);
             this.dtpFechaHasta.TabIndex = 32;
             this.dtpFechaHasta.Visible = false;
-            // 
-            // cmbDepartamento
-            // 
-            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Location = new System.Drawing.Point(218, 47);
-            this.cmbDepartamento.Name = "cmbDepartamento";
-            this.cmbDepartamento.Size = new System.Drawing.Size(284, 26);
-            this.cmbDepartamento.TabIndex = 37;
-            this.cmbDepartamento.SelectedIndexChanged += new System.EventHandler(this.cmbDepartamento_SelectedIndexChanged);
             // 
             // cmbDocumento
             // 
@@ -183,16 +182,6 @@ namespace SICA.Forms.Busqueda
             this.lbHasta.Text = "Hasta:";
             this.lbHasta.Visible = false;
             // 
-            // cmbDetalle
-            // 
-            this.cmbDetalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.cmbDetalle.FormattingEnabled = true;
-            this.cmbDetalle.Location = new System.Drawing.Point(218, 111);
-            this.cmbDetalle.Name = "cmbDetalle";
-            this.cmbDetalle.Size = new System.Drawing.Size(284, 26);
-            this.cmbDetalle.TabIndex = 92;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -203,6 +192,24 @@ namespace SICA.Forms.Busqueda
             this.label4.Size = new System.Drawing.Size(120, 22);
             this.label4.TabIndex = 91;
             this.label4.Text = "Cod. Detalle:";
+            // 
+            // cmbDetalle
+            // 
+            this.cmbDetalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cmbDetalle.FormattingEnabled = true;
+            this.cmbDetalle.Location = new System.Drawing.Point(218, 111);
+            this.cmbDetalle.Name = "cmbDetalle";
+            this.cmbDetalle.Size = new System.Drawing.Size(284, 26);
+            this.cmbDetalle.TabIndex = 92;
+            // 
+            // tbNumeroSolicitud
+            // 
+            this.tbNumeroSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNumeroSolicitud.Location = new System.Drawing.Point(218, 203);
+            this.tbNumeroSolicitud.Name = "tbNumeroSolicitud";
+            this.tbNumeroSolicitud.Size = new System.Drawing.Size(188, 24);
+            this.tbNumeroSolicitud.TabIndex = 93;
             // 
             // label5
             // 
@@ -215,14 +222,6 @@ namespace SICA.Forms.Busqueda
             this.label5.TabIndex = 94;
             this.label5.Text = "Numero Solicitud:";
             // 
-            // tbNumeroSolicitud
-            // 
-            this.tbNumeroSolicitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumeroSolicitud.Location = new System.Drawing.Point(218, 203);
-            this.tbNumeroSolicitud.Name = "tbNumeroSolicitud";
-            this.tbNumeroSolicitud.Size = new System.Drawing.Size(188, 24);
-            this.tbNumeroSolicitud.TabIndex = 93;
-            // 
             // btValidarSolicitud
             // 
             this.btValidarSolicitud.Enabled = false;
@@ -233,15 +232,13 @@ namespace SICA.Forms.Busqueda
             this.btValidarSolicitud.Text = "Validar";
             this.btValidarSolicitud.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // tbCodigoSocio
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(412, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 24);
-            this.button1.TabIndex = 98;
-            this.button1.Text = "Validar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tbCodigoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCodigoSocio.Location = new System.Drawing.Point(218, 233);
+            this.tbCodigoSocio.Name = "tbCodigoSocio";
+            this.tbCodigoSocio.Size = new System.Drawing.Size(188, 24);
+            this.tbCodigoSocio.TabIndex = 96;
             // 
             // label6
             // 
@@ -254,13 +251,24 @@ namespace SICA.Forms.Busqueda
             this.label6.TabIndex = 97;
             this.label6.Text = "Codigo Socio:";
             // 
-            // tbCodigoSocio
+            // button1
             // 
-            this.tbCodigoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCodigoSocio.Location = new System.Drawing.Point(218, 233);
-            this.tbCodigoSocio.Name = "tbCodigoSocio";
-            this.tbCodigoSocio.Size = new System.Drawing.Size(188, 24);
-            this.tbCodigoSocio.TabIndex = 96;
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(412, 233);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 24);
+            this.button1.TabIndex = 98;
+            this.button1.Text = "Validar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // tbNombreSocio
+            // 
+            this.tbNombreSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombreSocio.Location = new System.Drawing.Point(218, 263);
+            this.tbNombreSocio.Multiline = true;
+            this.tbNombreSocio.Name = "tbNombreSocio";
+            this.tbNombreSocio.Size = new System.Drawing.Size(310, 53);
+            this.tbNombreSocio.TabIndex = 99;
             // 
             // label7
             // 
@@ -273,15 +281,6 @@ namespace SICA.Forms.Busqueda
             this.label7.TabIndex = 100;
             this.label7.Text = "Nombre Socio:";
             // 
-            // tbNombreSocio
-            // 
-            this.tbNombreSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNombreSocio.Location = new System.Drawing.Point(218, 263);
-            this.tbNombreSocio.Multiline = true;
-            this.tbNombreSocio.Name = "tbNombreSocio";
-            this.tbNombreSocio.Size = new System.Drawing.Size(310, 53);
-            this.tbNombreSocio.TabIndex = 99;
-            // 
             // cmbClasificacion
             // 
             this.cmbClasificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -291,6 +290,15 @@ namespace SICA.Forms.Busqueda
             this.cmbClasificacion.Name = "cmbClasificacion";
             this.cmbClasificacion.Size = new System.Drawing.Size(188, 26);
             this.cmbClasificacion.TabIndex = 102;
+            // 
+            // tbObservacion
+            // 
+            this.tbObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbObservacion.Location = new System.Drawing.Point(218, 354);
+            this.tbObservacion.Multiline = true;
+            this.tbObservacion.Name = "tbObservacion";
+            this.tbObservacion.Size = new System.Drawing.Size(310, 51);
+            this.tbObservacion.TabIndex = 103;
             // 
             // label9
             // 
@@ -302,15 +310,6 @@ namespace SICA.Forms.Busqueda
             this.label9.Size = new System.Drawing.Size(122, 22);
             this.label9.TabIndex = 104;
             this.label9.Text = "Observacion:";
-            // 
-            // tbObservacion
-            // 
-            this.tbObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbObservacion.Location = new System.Drawing.Point(218, 354);
-            this.tbObservacion.Multiline = true;
-            this.tbObservacion.Name = "tbObservacion";
-            this.tbObservacion.Size = new System.Drawing.Size(310, 51);
-            this.tbObservacion.TabIndex = 103;
             // 
             // cmbCentroCosto
             // 
@@ -371,23 +370,24 @@ namespace SICA.Forms.Busqueda
             this.cbClasificacion.UseVisualStyleBackColor = true;
             this.cbClasificacion.CheckedChanged += new System.EventHandler(this.cbClasificacion_CheckedChanged);
             // 
-            // btGuadar
+            // tbCaja
             // 
-            this.btGuadar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btGuadar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btGuadar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btGuadar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btGuadar.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btGuadar.IconColor = System.Drawing.Color.Black;
-            this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btGuadar.IconSize = 16;
-            this.btGuadar.Location = new System.Drawing.Point(215, 487);
-            this.btGuadar.Name = "btGuadar";
-            this.btGuadar.Size = new System.Drawing.Size(119, 32);
-            this.btGuadar.TabIndex = 112;
-            this.btGuadar.Text = "Guardar";
-            this.btGuadar.UseVisualStyleBackColor = true;
-            this.btGuadar.Click += new System.EventHandler(this.btGuardar_Click);
+            this.tbCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCaja.Location = new System.Drawing.Point(218, 17);
+            this.tbCaja.Name = "tbCaja";
+            this.tbCaja.Size = new System.Drawing.Size(188, 24);
+            this.tbCaja.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(16, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 22);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Caja:";
             // 
             // EditarForm
             // 
@@ -436,36 +436,35 @@ namespace SICA.Forms.Busqueda
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox cbFecha;
-        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbCaja;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbDepartamento;
+        private FontAwesome.Sharp.IconButton btGuadar;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
+        private System.Windows.Forms.CheckBox cbFecha;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
-        private System.Windows.Forms.ComboBox cmbDepartamento;
         private System.Windows.Forms.ComboBox cmbDocumento;
         private System.Windows.Forms.Label lbDesde;
         private System.Windows.Forms.Label lbHasta;
-        private System.Windows.Forms.ComboBox cmbDetalle;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbDetalle;
         private System.Windows.Forms.TextBox tbNumeroSolicitud;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btValidarSolicitud;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbCodigoSocio;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tbNombreSocio;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbClasificacion;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbObservacion;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbCentroCosto;
         private System.Windows.Forms.ComboBox cmbProducto;
         private System.Windows.Forms.CheckBox cbCentroCosto;
         private System.Windows.Forms.CheckBox cbProducto;
         private System.Windows.Forms.CheckBox cbClasificacion;
-        private FontAwesome.Sharp.IconButton btGuadar;
+        private System.Windows.Forms.TextBox tbCaja;
+        private System.Windows.Forms.Label label1;
     }
 }

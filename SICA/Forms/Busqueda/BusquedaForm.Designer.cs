@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.tbBusquedaLibre = new System.Windows.Forms.TextBox();
             this.dgvBusqueda = new System.Windows.Forms.DataGridView();
@@ -45,6 +45,8 @@
             this.btEdit = new FontAwesome.Sharp.IconButton();
             this.btHistorial = new FontAwesome.Sharp.IconButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btPrestar = new FontAwesome.Sharp.IconButton();
+            this.btRecibir = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBusqueda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,23 +82,23 @@
             this.dgvBusqueda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.dgvBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvBusqueda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBusqueda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBusqueda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBusqueda.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBusqueda.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvBusqueda.EnableHeadersVisualStyles = false;
             this.dgvBusqueda.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvBusqueda.Location = new System.Drawing.Point(12, 46);
@@ -104,11 +106,11 @@
             this.dgvBusqueda.ReadOnly = true;
             this.dgvBusqueda.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvBusqueda.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBusqueda.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvBusqueda.Size = new System.Drawing.Size(1087, 547);
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBusqueda.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvBusqueda.Size = new System.Drawing.Size(1192, 547);
             this.dgvBusqueda.TabIndex = 6;
             this.dgvBusqueda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBusqueda_CellDoubleClick);
             this.dgvBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvBusqueda_KeyDown);
@@ -236,12 +238,48 @@
             this.btHistorial.UseVisualStyleBackColor = true;
             this.btHistorial.Click += new System.EventHandler(this.btHistorial_Click);
             // 
+            // btPrestar
+            // 
+            this.btPrestar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btPrestar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPrestar.IconChar = FontAwesome.Sharp.IconChar.ArrowUp;
+            this.btPrestar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btPrestar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btPrestar.IconSize = 30;
+            this.btPrestar.Location = new System.Drawing.Point(1112, 2);
+            this.btPrestar.Name = "btPrestar";
+            this.btPrestar.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btPrestar.Size = new System.Drawing.Size(48, 38);
+            this.btPrestar.TabIndex = 21;
+            this.toolTip1.SetToolTip(this.btPrestar, "Histórico");
+            this.btPrestar.UseVisualStyleBackColor = true;
+            this.btPrestar.Click += new System.EventHandler(this.btPrestar_Click);
+            // 
+            // btRecibir
+            // 
+            this.btRecibir.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btRecibir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRecibir.IconChar = FontAwesome.Sharp.IconChar.ArrowDown;
+            this.btRecibir.IconColor = System.Drawing.Color.Gainsboro;
+            this.btRecibir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btRecibir.IconSize = 30;
+            this.btRecibir.Location = new System.Drawing.Point(1166, 2);
+            this.btRecibir.Name = "btRecibir";
+            this.btRecibir.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btRecibir.Size = new System.Drawing.Size(48, 38);
+            this.btRecibir.TabIndex = 22;
+            this.toolTip1.SetToolTip(this.btRecibir, "Histórico");
+            this.btRecibir.UseVisualStyleBackColor = true;
+            this.btRecibir.Click += new System.EventHandler(this.btRecibir_Click);
+            // 
             // BusquedaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1111, 605);
+            this.ClientSize = new System.Drawing.Size(1216, 605);
+            this.Controls.Add(this.btRecibir);
+            this.Controls.Add(this.btPrestar);
             this.Controls.Add(this.btHistorial);
             this.Controls.Add(this.btEdit);
             this.Controls.Add(this.cbFecha);
@@ -277,5 +315,7 @@
         private FontAwesome.Sharp.IconButton btEdit;
         private FontAwesome.Sharp.IconButton btHistorial;
         private System.Windows.Forms.ToolTip toolTip1;
+        private FontAwesome.Sharp.IconButton btPrestar;
+        private FontAwesome.Sharp.IconButton btRecibir;
     }
 }
