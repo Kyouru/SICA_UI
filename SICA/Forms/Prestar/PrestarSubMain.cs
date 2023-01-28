@@ -28,7 +28,7 @@ namespace SICA.Forms.Prestar
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btPrestar.Visible = int2bool(Globals.auPendienteRegularizar);
+            btPrestar.Visible = int2bool(Globals.PendienteRegularizar);
         }
         private void OpenChildForm(Form childForm)
         {

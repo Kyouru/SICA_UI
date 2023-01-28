@@ -21,7 +21,7 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
-            btIngresoManual.Visible = int2bool(Globals.auValijaManual);
+            btIngresoManual.Visible = int2bool(Globals.ValijaManual);
         }
 
         private void btBuscarCargo_Click(object sender, EventArgs e)
@@ -588,11 +588,11 @@ namespace SICA.Forms.Valija
                                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/validar");
                                 httpWebRequest.ContentType = "application/json";
                                 httpWebRequest.Method = "POST";
+                                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
                                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                                 {
                                     string json = new JavaScriptSerializer().Serialize(new
                                     {
-                                        token = Globals.Token,
                                         strdepartamento = dep,
                                         strdocumento = doc,
                                         strdetalle = det,
@@ -726,12 +726,12 @@ namespace SICA.Forms.Valija
                         HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/agregar");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idaux = Globals.IdUsernameSelect,
                                 idubicacionentrega = 2, //Usuario Externo
                                 idubicacionrecibe = 8, //Valija
@@ -790,6 +790,7 @@ namespace SICA.Forms.Valija
 
         private void btIngresoManual_Click(object sender, EventArgs e)
         {
+            GlobalFunctions.UltimaActividad();
             ValijaManual valijaManual = new ValijaManual();
             valijaManual.ShowDialog();
         }

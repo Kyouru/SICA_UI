@@ -26,12 +26,12 @@ namespace SICA.Forms
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaubicacion");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tiposeleccionarubicacion = Globals.TipoSeleccionarUbicacion
                         //1: Externos
                     });

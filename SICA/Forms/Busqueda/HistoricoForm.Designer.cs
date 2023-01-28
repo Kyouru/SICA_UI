@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btEditar = new System.Windows.Forms.Button();
             this.pnSubMain = new System.Windows.Forms.Panel();
+            this.bnHistorico = new FontAwesome.Sharp.IconButton();
             this.btMovimiento = new FontAwesome.Sharp.IconButton();
             this.btHistoricoEdicion = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
-            // 
-            // btEditar
-            // 
-            this.btEditar.Location = new System.Drawing.Point(985, 1);
-            this.btEditar.Name = "btEditar";
-            this.btEditar.Size = new System.Drawing.Size(114, 35);
-            this.btEditar.TabIndex = 32;
-            this.btEditar.Text = "Editar";
-            this.btEditar.UseVisualStyleBackColor = true;
-            this.btEditar.Click += new System.EventHandler(this.btEditar_Click);
             // 
             // pnSubMain
             // 
@@ -52,6 +42,28 @@
             this.pnSubMain.Name = "pnSubMain";
             this.pnSubMain.Size = new System.Drawing.Size(1111, 563);
             this.pnSubMain.TabIndex = 36;
+            // 
+            // bnHistorico
+            // 
+            this.bnHistorico.BackColor = System.Drawing.Color.MidnightBlue;
+            this.bnHistorico.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bnHistorico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bnHistorico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bnHistorico.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bnHistorico.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.bnHistorico.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.bnHistorico.IconColor = System.Drawing.Color.Gainsboro;
+            this.bnHistorico.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bnHistorico.IconSize = 30;
+            this.bnHistorico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bnHistorico.Location = new System.Drawing.Point(0, 0);
+            this.bnHistorico.Name = "bnHistorico";
+            this.bnHistorico.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.bnHistorico.Size = new System.Drawing.Size(251, 42);
+            this.bnHistorico.TabIndex = 40;
+            this.bnHistorico.Text = "Historico";
+            this.bnHistorico.UseVisualStyleBackColor = false;
+            this.bnHistorico.Click += new System.EventHandler(this.bnHistorico_Click);
             // 
             // btMovimiento
             // 
@@ -66,11 +78,11 @@
             this.btMovimiento.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btMovimiento.IconSize = 30;
             this.btMovimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMovimiento.Location = new System.Drawing.Point(0, 0);
+            this.btMovimiento.Location = new System.Drawing.Point(251, 0);
             this.btMovimiento.Name = "btMovimiento";
             this.btMovimiento.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.btMovimiento.Size = new System.Drawing.Size(251, 42);
-            this.btMovimiento.TabIndex = 38;
+            this.btMovimiento.TabIndex = 41;
             this.btMovimiento.Text = "Historico Movimientos";
             this.btMovimiento.UseVisualStyleBackColor = false;
             this.btMovimiento.Click += new System.EventHandler(this.btMovimiento_Click);
@@ -88,11 +100,11 @@
             this.btHistoricoEdicion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btHistoricoEdicion.IconSize = 30;
             this.btHistoricoEdicion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btHistoricoEdicion.Location = new System.Drawing.Point(251, 0);
+            this.btHistoricoEdicion.Location = new System.Drawing.Point(502, 0);
             this.btHistoricoEdicion.Name = "btHistoricoEdicion";
             this.btHistoricoEdicion.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.btHistoricoEdicion.Size = new System.Drawing.Size(229, 42);
-            this.btHistoricoEdicion.TabIndex = 39;
+            this.btHistoricoEdicion.TabIndex = 42;
             this.btHistoricoEdicion.Text = "Historico Edicion";
             this.btHistoricoEdicion.UseVisualStyleBackColor = false;
             this.btHistoricoEdicion.Click += new System.EventHandler(this.btHistoricoEdicion_Click);
@@ -105,8 +117,8 @@
             this.ClientSize = new System.Drawing.Size(1111, 605);
             this.Controls.Add(this.btHistoricoEdicion);
             this.Controls.Add(this.btMovimiento);
+            this.Controls.Add(this.bnHistorico);
             this.Controls.Add(this.pnSubMain);
-            this.Controls.Add(this.btEditar);
             this.Name = "HistoricoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistoricoForm";
@@ -116,8 +128,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btEditar;
         private System.Windows.Forms.Panel pnSubMain;
+        private FontAwesome.Sharp.IconButton bnHistorico;
         private FontAwesome.Sharp.IconButton btMovimiento;
         private FontAwesome.Sharp.IconButton btHistoricoEdicion;
     }

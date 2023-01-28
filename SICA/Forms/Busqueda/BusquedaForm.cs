@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SICA.Forms;
 using SICA.Forms.Busqueda;
 using SimpleLogger;
@@ -21,6 +22,7 @@ namespace SICA
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
+            dgvBusqueda.DoubleBuffered(true);
 
             //Form
             this.Text = string.Empty;
@@ -32,11 +34,9 @@ namespace SICA
         private void BusquedaForm_Load(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            //tbUsuario.Text = Globals.Username;
-            //dtpFecha.Value = DateTime.Now;
 
-            btEdit.Visible = int2bool(Globals.auBusquedaEditar);
-            btHistorial.Visible = int2bool(Globals.auBusquedaHistorico);
+            btEdit.Visible = int2bool(Globals.BusquedaEditar);
+            btHistorial.Visible = int2bool(Globals.BusquedaHistorico);
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
@@ -64,12 +64,12 @@ namespace SICA
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/buscar");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         busquedalibre = tbBusquedaLibre.Text,
                         numerocaja = tbCaja.Text,
                         fecha = fecha
@@ -133,7 +133,14 @@ namespace SICA
         private void btExcel_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            GlobalFunctions.ExportarDataGridViewCSV(dgvBusqueda, null);
+            if (dgvBusqueda.Rows.Count > 0)
+            {
+                GlobalFunctions.ExportarDataGridViewCSV(dgvBusqueda, null);
+            }
+            else
+            {
+                MessageBox.Show("No hay Registros");
+            }
         }
 
         private void dgvBusqueda_KeyDown(object sender, KeyEventArgs e)
@@ -141,9 +148,9 @@ namespace SICA
             GlobalFunctions.UltimaActividad();
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
-                if (dgvBusqueda.SelectedCells.Count == 1)
+                if (dgvBusqueda.SelectedRows.Count == 1)
                 {
-                    Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+                    Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedRows[0].Index].Cells["ID"].Value.ToString());
                     HistoricoForm vHistorico = new HistoricoForm();
                     vHistorico.Show();
                 }
@@ -171,12 +178,18 @@ namespace SICA
         private void btEdit_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            if (dgvBusqueda.SelectedCells.Count == 1)
+            if (dgvBusqueda.SelectedRows.Count == 1)
             {
-                Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
+                int selectedrow = dgvBusqueda.SelectedRows[0].Index;
+                Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[selectedrow].Cells["ID"].Value.ToString());
                 EditarForm ef = new EditarForm();
                 ef.ShowDialog(this);
                 btBuscar_Click(sender, e);
+                if (!Globals.cerrando)
+                {
+                    dgvBusqueda.ClearSelection();
+                    dgvBusqueda.Rows[selectedrow].Selected = true;
+                }
             }
             else
             {
@@ -187,7 +200,7 @@ namespace SICA
         private void btHistorial_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            if (dgvBusqueda.SelectedCells.Count == 1)
+            if (dgvBusqueda.SelectedRows.Count == 1)
             {
                 Globals.IdInventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString());
                 HistoricoForm vHistorico = new HistoricoForm();
@@ -201,7 +214,7 @@ namespace SICA
 
         private void btPrestar_Click(object sender, EventArgs e)
         {
-            if (dgvBusqueda.SelectedCells.Count == 1)
+            if (dgvBusqueda.SelectedRows.Count == 1)
             {
                 Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
@@ -210,6 +223,7 @@ namespace SICA
                 {
                     try
                     {
+                        int selectedrow = dgvBusqueda.SelectedRows[0].Index;
                         string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
 
                         string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -217,14 +231,14 @@ namespace SICA
                         var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idrecibe = Globals.IdUsernameSelect,
                                 idestado = 2, //Prestado
-                                idinventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString()),
+                                idinventario = Int32.Parse(dgvBusqueda.Rows[selectedrow].Cells["ID"].Value.ToString()),
                                 idubicacionrecibe = 2, //USUARIO_EXTERNO
                                 fecha = fecha,
                                 observacion = observacion
@@ -241,6 +255,8 @@ namespace SICA
                                 string result = streamReader.ReadToEnd();
                                 MessageBox.Show("Entregado");
                                 btBuscar_Click(sender, e);
+                                dgvBusqueda.ClearSelection();
+                                dgvBusqueda.Rows[selectedrow].Selected = true;
                             }
                         }
                     }
@@ -253,22 +269,26 @@ namespace SICA
                             using (var stream = ex.Response.GetResponseStream())
                             using (var reader = new StreamReader(stream))
                             {
-                                GlobalFunctions.casoError(ex, "Entregar Documento\n" + reader.ReadToEnd());
+                                GlobalFunctions.casoError(ex, "Prestar Documento\n" + reader.ReadToEnd());
                             }
                         }
                     }
                     catch (Exception ex)
                     {
                         LoadingScreen.cerrarLoading();
-                        GlobalFunctions.casoError(ex, "Entregar Documento\n");
+                        GlobalFunctions.casoError(ex, "Prestar Documento\n");
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro");
             }
         }
 
         private void btRecibir_Click(object sender, EventArgs e)
         {
-            if (dgvBusqueda.SelectedCells.Count == 1)
+            if (dgvBusqueda.SelectedRows.Count == 1)
             {
                 try
                 {
@@ -277,22 +297,23 @@ namespace SICA
                     suf.ShowDialog();
                     if (Globals.IdUbicacionSelect > 0)
                     {
+                        int selectedrow = dgvBusqueda.SelectedRows[0].Index;
                         string observacion = Microsoft.VisualBasic.Interaction.InputBox("Escriba una observacion (opcional):", "Observación", "");
 
                         string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                        var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/ValijaMover");
+                        var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/recibir");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idrecibe = Globals.IdUsernameSelect,
                                 idestado = 1, //Custodiado
-                                idinventario = Int32.Parse(dgvBusqueda.Rows[dgvBusqueda.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString()),
+                                idinventario = Int32.Parse(dgvBusqueda.Rows[selectedrow].Cells["ID"].Value.ToString()),
                                 idubicacionrecibe = Globals.IdUbicacionSelect,
                                 fecha = fecha,
                                 observacion = observacion
@@ -309,6 +330,8 @@ namespace SICA
                                 string result = streamReader.ReadToEnd();
                                 MessageBox.Show("Recibido");
                                 btBuscar_Click(sender, e);
+                                dgvBusqueda.ClearSelection();
+                                dgvBusqueda.Rows[selectedrow].Selected = true;
                             }
                         }
                     }
@@ -323,15 +346,19 @@ namespace SICA
                         using (var stream = ex.Response.GetResponseStream())
                         using (var reader = new StreamReader(stream))
                         {
-                            GlobalFunctions.casoError(ex, "Entregar Documento\n" + reader.ReadToEnd());
+                            GlobalFunctions.casoError(ex, "Recibir Documento\n" + reader.ReadToEnd());
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     LoadingScreen.cerrarLoading();
-                    GlobalFunctions.casoError(ex, "Entregar Documento\n");
+                    GlobalFunctions.casoError(ex, "Recibir Documento\n");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro");
             }
         }
     }

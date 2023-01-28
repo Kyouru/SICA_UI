@@ -57,9 +57,8 @@ namespace SICA.Forms.Valija
             this.label2 = new System.Windows.Forms.Label();
             this.cbFecha = new System.Windows.Forms.CheckBox();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.tbCaja = new System.Windows.Forms.TextBox();
-            this.cbPagare = new System.Windows.Forms.CheckBox();
+            this.cbCaja = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btGuadar
@@ -72,7 +71,7 @@ namespace SICA.Forms.Valija
             this.btGuadar.IconColor = System.Drawing.Color.Black;
             this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btGuadar.IconSize = 16;
-            this.btGuadar.Location = new System.Drawing.Point(220, 527);
+            this.btGuadar.Location = new System.Drawing.Point(220, 488);
             this.btGuadar.Name = "btGuadar";
             this.btGuadar.Size = new System.Drawing.Size(119, 32);
             this.btGuadar.TabIndex = 142;
@@ -128,6 +127,7 @@ namespace SICA.Forms.Valija
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(188, 26);
             this.cmbProducto.TabIndex = 138;
+            this.cmbProducto.Visible = false;
             // 
             // cmbCentroCosto
             // 
@@ -138,6 +138,7 @@ namespace SICA.Forms.Valija
             this.cmbCentroCosto.Name = "cmbCentroCosto";
             this.cmbCentroCosto.Size = new System.Drawing.Size(284, 26);
             this.cmbCentroCosto.TabIndex = 137;
+            this.cmbCentroCosto.Visible = false;
             // 
             // label9
             // 
@@ -168,6 +169,7 @@ namespace SICA.Forms.Valija
             this.cmbClasificacion.Name = "cmbClasificacion";
             this.cmbClasificacion.Size = new System.Drawing.Size(188, 26);
             this.cmbClasificacion.TabIndex = 134;
+            this.cmbClasificacion.Visible = false;
             // 
             // label7
             // 
@@ -371,17 +373,6 @@ namespace SICA.Forms.Valija
             this.dtpFechaDesde.TabIndex = 115;
             this.dtpFechaDesde.Visible = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(18, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 22);
-            this.label1.TabIndex = 114;
-            this.label1.Text = "Caja:";
-            // 
             // tbCaja
             // 
             this.tbCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -389,26 +380,27 @@ namespace SICA.Forms.Valija
             this.tbCaja.Name = "tbCaja";
             this.tbCaja.Size = new System.Drawing.Size(188, 24);
             this.tbCaja.TabIndex = 113;
+            this.tbCaja.Visible = false;
             // 
-            // cbPagare
+            // cbCaja
             // 
-            this.cbPagare.AutoSize = true;
-            this.cbPagare.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPagare.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cbPagare.Location = new System.Drawing.Point(23, 488);
-            this.cbPagare.Name = "cbPagare";
-            this.cbPagare.Size = new System.Drawing.Size(90, 26);
-            this.cbPagare.TabIndex = 143;
-            this.cbPagare.Text = "Pagare";
-            this.cbPagare.UseVisualStyleBackColor = true;
+            this.cbCaja.AutoSize = true;
+            this.cbCaja.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbCaja.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbCaja.Location = new System.Drawing.Point(19, 14);
+            this.cbCaja.Name = "cbCaja";
+            this.cbCaja.Size = new System.Drawing.Size(72, 26);
+            this.cbCaja.TabIndex = 143;
+            this.cbCaja.Text = "Caja:";
+            this.cbCaja.UseVisualStyleBackColor = true;
             // 
             // ValijaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(549, 571);
-            this.Controls.Add(this.cbPagare);
+            this.ClientSize = new System.Drawing.Size(549, 535);
+            this.Controls.Add(this.cbCaja);
             this.Controls.Add(this.btGuadar);
             this.Controls.Add(this.cbClasificacion);
             this.Controls.Add(this.cbProducto);
@@ -437,7 +429,6 @@ namespace SICA.Forms.Valija
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbFecha);
             this.Controls.Add(this.dtpFechaDesde);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tbCaja);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ValijaManual";
@@ -479,8 +470,7 @@ namespace SICA.Forms.Valija
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbFecha;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbCaja;
-        private System.Windows.Forms.CheckBox cbPagare;
+        private System.Windows.Forms.CheckBox cbCaja;
     }
 }

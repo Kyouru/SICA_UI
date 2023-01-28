@@ -34,9 +34,10 @@ namespace SICA.Forms.Valija
                 DataTable dt = new DataTable("Lista Departamento");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadepartamento");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
+                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                /*
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
@@ -46,7 +47,7 @@ namespace SICA.Forms.Valija
 
                     streamWriter.Write(json);
                 }
-
+                */
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -61,6 +62,94 @@ namespace SICA.Forms.Valija
                 cmbDepartamento.DisplayMember = "NOMBRE_DEPARTAMENTO";
                 cmbDepartamento.ValueMember = "ID_DEPARTAMENTO";
                 deshabilitarActualizacionDocumento = false;
+
+
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaclasificacion");
+                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                /*
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        token = Globals.Token
+                    });
+
+                    streamWriter.Write(json);
+                }
+                */
+                httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                        dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    }
+                }
+
+                cmbClasificacion.DataSource = dt;
+                cmbClasificacion.DisplayMember = "NOMBRE_CLASIFICACION";
+                cmbClasificacion.ValueMember = "ID_CLASIFICACION";
+
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listacentrocosto");
+                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                /*
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        token = Globals.Token
+                    });
+
+                    streamWriter.Write(json);
+                }
+                */
+                httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                        dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    }
+                }
+
+                cmbCentroCosto.DataSource = dt;
+                cmbCentroCosto.DisplayMember = "NOMBRE_CENTRO_COSTO";
+                cmbCentroCosto.ValueMember = "ID_CENTRO_COSTO";
+
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaproducto");
+                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                /*
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        token = Globals.Token
+                    });
+
+                    streamWriter.Write(json);
+                }
+                */
+                httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                        dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    }
+                }
+
+                cmbProducto.DataSource = dt;
+                cmbProducto.DisplayMember = "NOMBRE_PRODUCTO";
+                cmbProducto.ValueMember = "ID_PRODUCTO";
 
                 LoadingScreen.cerrarLoading();
             }
@@ -127,6 +216,7 @@ namespace SICA.Forms.Valija
                         HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/agregar");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         int iddepartamento = Int32.Parse(cmbDepartamento.SelectedValue.ToString());
                         int iddocumento = Int32.Parse(cmbDocumento.SelectedValue.ToString());
@@ -134,16 +224,13 @@ namespace SICA.Forms.Valija
                         int idcentrocosto = -1;
                         int idclasificacion = -1;
                         int idproducto = -1;
-                        int pagare = -1;
-
-                        if (cbPagare.Checked)
-                        {
-                            pagare = 1;
-                        }
 
                         try
                         {
-                            idcentrocosto = Int32.Parse(cmbCentroCosto.SelectedValue.ToString());
+                            if(cbCentroCosto.Checked)
+                            {
+                                idcentrocosto = Int32.Parse(cmbCentroCosto.SelectedValue.ToString());
+                            }
                         }
                         catch
                         {
@@ -151,7 +238,10 @@ namespace SICA.Forms.Valija
                         }
                         try
                         {
-                            idclasificacion = Int32.Parse(cmbClasificacion.SelectedValue.ToString());
+                            if (cbClasificacion.Checked)
+                            {
+                                idclasificacion = Int32.Parse(cmbClasificacion.SelectedValue.ToString());
+                            }
                         }
                         catch
                         {
@@ -159,20 +249,25 @@ namespace SICA.Forms.Valija
                         }
                         try
                         {
-                            idproducto = Int32.Parse(cmbProducto.SelectedValue.ToString());
+                            if (cbProducto.Checked)
+                            {
+                                idproducto = Int32.Parse(cmbProducto.SelectedValue.ToString());
+                            }
                         }
                         catch
                         {
                             idproducto = -1;
                         }
+                        string numerocaja = "";
+                        if (cbCaja.Checked)
+                        {
+                            numerocaja = tbCaja.Text;
+                        }
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idaux = Globals.IdUsernameSelect,
-                                idareaentrega = Globals.IdArea,
-                                idarearecibe = Globals.IdAreaSelect,
                                 idubicacionentrega = 2, //Usuario Externo
                                 idubicacionrecibe = 8, //Valija
                                 iddepartamento = iddepartamento,
@@ -181,11 +276,10 @@ namespace SICA.Forms.Valija
                                 idcentrocosto = idcentrocosto,
                                 idclasificacion = idclasificacion,
                                 idproducto = idproducto,
-                                numerocaja = tbCaja.Text,
+                                numerocaja = numerocaja,
                                 codigosocio = GlobalFunctions.lCadena(tbCodigoSocio.Text),
                                 nombresocio = GlobalFunctions.lCadena(tbNombreSocio.Text),
                                 numerosolicitud = GlobalFunctions.lCadena(tbNumeroSolicitud.Text),
-                                pagare = pagare,
                                 fecha = fecha,
                                 fechadesde = fechadesde,
                                 fechahasta = fechahasta,
@@ -251,12 +345,12 @@ namespace SICA.Forms.Valija
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadocumento");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         iddepartamento = cmbDepartamento.SelectedValue
                     });
 
@@ -291,12 +385,12 @@ namespace SICA.Forms.Valija
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadetalle");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         iddocumento = cmbDocumento.SelectedValue
                     });
 
@@ -324,42 +418,12 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             if (cbClasificacion.Checked)
             {
-                DataTable dt = new DataTable();
-                cmbClasificacion.Enabled = true;
-
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaclasificacion");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    string json = new JavaScriptSerializer().Serialize(new
-                    {
-                        token = Globals.Token
-                    });
-
-                    streamWriter.Write(json);
-                }
-
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                if (httpResponse.StatusCode == HttpStatusCode.OK)
-                {
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        string result = streamReader.ReadToEnd();
-                        dt = JsonConvert.DeserializeObject<DataTable>(result);
-                    }
-                }
-
-                cmbClasificacion.DataSource = dt;
-                cmbClasificacion.DisplayMember = "NOMBRE_CLASIFICACION";
-                cmbClasificacion.ValueMember = "ID_CLASIFICACION";
+                cmbClasificacion.Visible = true;
 
             }
             else
             {
-                cmbClasificacion.Enabled = false;
-                cmbClasificacion.DataSource = null;
+                cmbClasificacion.Visible = false;
             }
         }
 
@@ -368,41 +432,11 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             if (cbCentroCosto.Checked)
             {
-                DataTable dt = new DataTable();
-                cmbCentroCosto.Enabled = true;
-
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listacentrocosto");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    string json = new JavaScriptSerializer().Serialize(new
-                    {
-                        token = Globals.Token
-                    });
-
-                    streamWriter.Write(json);
-                }
-
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                if (httpResponse.StatusCode == HttpStatusCode.OK)
-                {
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        string result = streamReader.ReadToEnd();
-                        dt = JsonConvert.DeserializeObject<DataTable>(result);
-                    }
-                }
-
-                cmbCentroCosto.DataSource = dt;
-                cmbCentroCosto.DisplayMember = "NOMBRE_CENTRO_COSTO";
-                cmbCentroCosto.ValueMember = "ID_CENTRO_COSTO";
+                cmbCentroCosto.Visible = true;
             }
             else
             {
-                cmbCentroCosto.Enabled = false;
-                cmbCentroCosto.DataSource = null;
+                cmbCentroCosto.Visible = false;
             }
         }
 
@@ -411,41 +445,11 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             if (cbProducto.Checked)
             {
-                DataTable dt = new DataTable();
-                cmbProducto.Enabled = true;
-
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaproducto");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    string json = new JavaScriptSerializer().Serialize(new
-                    {
-                        token = Globals.Token
-                    });
-
-                    streamWriter.Write(json);
-                }
-
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                if (httpResponse.StatusCode == HttpStatusCode.OK)
-                {
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        string result = streamReader.ReadToEnd();
-                        dt = JsonConvert.DeserializeObject<DataTable>(result);
-                    }
-                }
-
-                cmbProducto.DataSource = dt;
-                cmbProducto.DisplayMember = "NOMBRE_PRODUCTO";
-                cmbProducto.ValueMember = "ID_PRODUCTO";
+                cmbProducto.Visible = true;
             }
             else
             {
-                cmbProducto.Enabled = false;
-                cmbProducto.DataSource = null;
+                cmbProducto.Visible = false;
             }
         }
     }

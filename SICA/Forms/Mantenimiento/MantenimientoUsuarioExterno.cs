@@ -35,12 +35,12 @@ namespace SICA.Forms.Mantenimiento
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarioexterno");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tiposeleccionarusuario = 1
                     });
 
@@ -90,7 +90,7 @@ namespace SICA.Forms.Mantenimiento
             GlobalFunctions.UltimaActividad();
             if (dgv.SelectedRows.Count == 1)
             {
-                Globals.IdUsernameSelect = Int32.Parse(dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells["ID_USUARIO_EXTERNO"].Value.ToString());
+                Globals.IdUsernameSelect = Int32.Parse(dgv.Rows[dgv.SelectedRows[0].Index].Cells["ID"].Value.ToString());
                 UsuarioExternoModificar vModificar = new UsuarioExternoModificar();
                 vModificar.ShowDialog(this);
                 MantenimientoCuenta_Load(sender, e);
@@ -109,5 +109,86 @@ namespace SICA.Forms.Mantenimiento
         {
 
         }
+
+        private void btOrderUp_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            if (dgv.SelectedRows.Count == 1)
+            {
+                if (dgv.SelectedRows[0].Index > 0)
+                {
+                    int prevrow = dgv.SelectedRows[0].Index - 1;
+                    UsuarioExternoOrden(-1);
+
+                    MantenimientoCuenta_Load(sender, e);
+                    dgv.Rows[prevrow].Selected = true;
+                }
+            }
+        }
+
+        private void btOrderDown_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            if (dgv.SelectedRows.Count == 1)
+            {
+                if (dgv.SelectedRows[0].Index < dgv.Rows.Count - 1)
+                {
+                    int nextrow = dgv.SelectedRows[0].Index + 1;
+
+                    UsuarioExternoOrden(1);
+
+                    MantenimientoCuenta_Load(sender, e);
+                    dgv.Rows[nextrow].Selected = true;
+                }
+            }
+        }
+
+        private void UsuarioExternoOrden(int ordendif)
+        {
+            try
+            {
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/UsuarioExternoOrden");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        idaux = dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells["ID"].Value.ToString(),
+                        ordendif = ordendif
+                    });
+
+                    streamWriter.Write(json);
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                if (!(ex.Response is null))
+                {
+                    using (var stream = ex.Response.GetResponseStream())
+                    using (var reader = new StreamReader(stream))
+                    {
+                        GlobalFunctions.casoError(ex, "Ordenar Usuario Externo\n" + reader.ReadToEnd());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                GlobalFunctions.casoError(ex, "Ordenar Usuario Externo\n");
+            }
+            
+        }
+
     }
 }

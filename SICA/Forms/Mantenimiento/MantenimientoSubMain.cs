@@ -28,9 +28,8 @@ namespace SICA.Forms.Mantenimiento
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btSocio.Visible = int2bool(Globals.auMantenimientoSocio);
-            btCredito.Visible = int2bool(Globals.auMantenimientoCredito);
-            btUsuarioExterno.Visible = int2bool(Globals.auMantenimientoUsuarioExterno);
+            btListas.Visible = int2bool(Globals.MantenimientoListas);
+            btUsuarioExterno.Visible = int2bool(Globals.MantenimientoUsuarioExterno);
         }
 
         private void OpenChildForm(Form childForm)
@@ -74,6 +73,7 @@ namespace SICA.Forms.Mantenimiento
                 topBorderBtn.Location = new Point(currentBtn.Location.X, 0);
                 topBorderBtn.Visible = true;
                 topBorderBtn.BringToFront();
+
                 //Current Child Form Icon
                 //iconCurrentChildForm.IconChar = currentBtn.IconChar;
                 //iconCurrentChildForm.IconColor = color;
@@ -116,6 +116,12 @@ namespace SICA.Forms.Mantenimiento
         }
 
         private void btUsuarioExterno_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new MantenimientoUsuarioExterno());
+        }
+
+        private void btListas_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
             OpenChildForm(new MantenimientoUsuarioExterno());

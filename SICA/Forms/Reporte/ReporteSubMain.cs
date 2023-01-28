@@ -26,7 +26,7 @@ namespace SICA.Forms.Reporte
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btCajas.Visible = int2bool(Globals.auReporteCajas);
+            btCajas.Visible = int2bool(Globals.ReporteCajas);
         }
         private void OpenChildForm(Form childForm)
         {

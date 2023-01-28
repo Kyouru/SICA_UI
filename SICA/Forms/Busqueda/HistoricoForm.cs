@@ -28,8 +28,7 @@ namespace SICA.Forms
         private void HistoricoForm_Load(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            btEditar.Visible = int2bool(Globals.auBusquedaEditar);
-            //btHistoricoEdicion.Visible = int2bool(Globals.auBusquedaEditar);
+            //btEditar.Visible = int2bool(Globals.BusquedaEditar);
         }
 
         private void btEditar_Click(object sender, EventArgs e)
@@ -108,6 +107,13 @@ namespace SICA.Forms
             childForm.BringToFront();
             childForm.Show();
             //lblTitleChildForm.Text = childForm.Text;
+        }
+
+        private void bnHistorico_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new HistoricoGeneral());
         }
     }
 }

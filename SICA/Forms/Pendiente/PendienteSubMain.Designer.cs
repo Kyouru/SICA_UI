@@ -30,8 +30,8 @@
         {
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btRegularizar = new FontAwesome.Sharp.IconButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,15 +53,6 @@
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 45);
             this.pnTop.TabIndex = 6;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(140, 44);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(908, 1);
-            this.panel1.TabIndex = 8;
             // 
             // btRegularizar
             // 
@@ -85,6 +76,15 @@
             this.btRegularizar.UseVisualStyleBackColor = false;
             this.btRegularizar.Click += new System.EventHandler(this.btRegularizar_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(140, 44);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(908, 1);
+            this.panel1.TabIndex = 12;
+            // 
             // PendienteSubMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,7 +104,7 @@
 
         private System.Windows.Forms.Panel pnSubMain;
         private System.Windows.Forms.Panel pnTop;
-        private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton btRegularizar;
+        private System.Windows.Forms.Panel panel1;
     }
 }

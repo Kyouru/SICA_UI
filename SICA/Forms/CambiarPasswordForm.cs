@@ -30,12 +30,12 @@ namespace SICA.Forms
                     HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Auth/actualizarpassword");
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                     using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            token = Globals.Token,
                             iduser = Globals.IdUsername,
                             password = tbPassword.Text
                         });

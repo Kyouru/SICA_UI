@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Globalization;
+using SICA.Forms.Busqueda;
 
 namespace SICA.Forms.Valija
 {
@@ -24,6 +25,12 @@ namespace SICA.Forms.Valija
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
+            dgv.DoubleBuffered(true);
+        }
+
+        private void ValijaValija_Load(object sender, EventArgs e)
+        {
+            btActualizar_Click(sender, e);
         }
 
         private void btActualizar_Click(object sender, EventArgs e)
@@ -38,12 +45,12 @@ namespace SICA.Forms.Valija
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/buscarvalija");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         idubicacion = 8
                     });
 
@@ -71,6 +78,7 @@ namespace SICA.Forms.Valija
                     chkOK.Name = "OK";
                     chkOK.ValueType = typeof(bool);
                     dgv.Columns.Add(chkOK);
+
                     DataGridViewCheckBoxColumn chkPen = new DataGridViewCheckBoxColumn();
                     chkPen.HeaderText = "PENDIENTE";
                     chkPen.Name = "PENDIENTE";
@@ -103,7 +111,14 @@ namespace SICA.Forms.Valija
         private void btExcel_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            GlobalFunctions.ExportarDGV(dgv, null);
+            if (dgv.Rows.Count > 0)
+            {
+                GlobalFunctions.ExportarDGV(dgv, null);
+            }
+            else
+            {
+                MessageBox.Show("No hay Registros");
+            }
         }
 
         private void btSiguiente_Click(object sender, EventArgs e)
@@ -174,6 +189,7 @@ namespace SICA.Forms.Valija
                             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/guardareditar");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
@@ -212,7 +228,6 @@ namespace SICA.Forms.Valija
                                 */
                                 string json = new JavaScriptSerializer().Serialize(new
                                 {
-                                    token = Globals.Token,
                                     idinventario = row.Cells["ID"].Value.ToString(),
                                     numerocaja = row.Cells["CAJA"].Value.ToString(),
                                     fechadesde = fechadesde,
@@ -259,15 +274,15 @@ namespace SICA.Forms.Valija
                     if (valijapendiente || valijaok)
                     {
                         existe = true;
-                        HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/ValijaMover");
+                        HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/recibir");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 //idubicacionentrega = 8, //VALIJA
                                 idubicacionrecibe = ubicacionrecibe,
                                 idestado = 1, //Custodiado
@@ -318,6 +333,71 @@ namespace SICA.Forms.Valija
                 LoadingScreen.cerrarLoading();
                 GlobalFunctions.casoError(ex, "Error Valija OK");
                 return;
+            }
+        }
+
+        private void btCajaMasivo_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            if (dgv.SelectedCells.Count > 1)
+            {
+                string numerocaja = Microsoft.VisualBasic.Interaction.InputBox("Escriba el numero de caja:", "Numero de Caja", "");
+                bool actualizado = false;
+                LoadingScreen.iniciarLoading();
+                foreach (DataGridViewRow row in dgv.SelectedRows)
+                {
+                    try
+                    {
+                        var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/guardareditar");
+                        httpWebRequest.ContentType = "application/json";
+                        httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+
+                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                        {
+                            string json = new JavaScriptSerializer().Serialize(new
+                            {
+                                idinventario = row.Cells["ID"].Value.ToString(),
+                                numerocaja = numerocaja,
+                                fechamodifica = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                            });
+                            streamWriter.Write(json);
+                        }
+
+                        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                        if (httpResponse.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                            {
+                                string result = streamReader.ReadToEnd();
+                                actualizado = true;
+                            }
+                        }
+                    }
+                    catch (WebException ex)
+                    {
+                        LoadingScreen.cerrarLoading();
+                        if (!(ex.Response is null))
+                        {
+                            using (var stream = ex.Response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
+                            {
+                                GlobalFunctions.casoError(ex, "Error Caja Masiva\n" + reader.ReadToEnd());
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LoadingScreen.cerrarLoading();
+                        GlobalFunctions.casoError(ex, "Error Caja Masiva");
+                    }
+                }
+                if (actualizado)
+                {
+                    LoadingScreen.cerrarLoading();
+                    MessageBox.Show("Actualizado");
+                    btActualizar_Click(sender, e);
+                }
             }
         }
     }

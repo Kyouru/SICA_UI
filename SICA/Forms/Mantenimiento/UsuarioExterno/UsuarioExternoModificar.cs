@@ -17,6 +17,7 @@ namespace SICA.Forms.Recibir
     public partial class UsuarioExternoModificar : Form
     {
         DataTable dt;
+        string nombreanterior;
         public UsuarioExternoModificar()
         {
             InitializeComponent(); 
@@ -35,12 +36,12 @@ namespace SICA.Forms.Recibir
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarioexterno");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tiposeleccionarusuario = 1
                     });
 
@@ -62,6 +63,7 @@ namespace SICA.Forms.Recibir
                     if (row["ID_USUARIO_EXTERNO"].ToString() == Globals.IdUsernameSelect.ToString())
                     {
                         tbNombreUsuario.Text = row["NOMBRE_USUARIO_EXTERNO"].ToString();
+                        nombreanterior = row["NOMBRE_USUARIO_EXTERNO"].ToString();
                         tbCorreo.Text = row["EMAIL"].ToString();
                         if (row["NOTIFICAR"].ToString() == "1")
                         {
@@ -112,10 +114,10 @@ namespace SICA.Forms.Recibir
                         {
                             foreach (DataRow row in dt.Rows)
                             {
-                                if (row["NOMBRE_USUARIO_EXTERNO"].ToString() == tbNombreUsuario.Text)
+                                if (row["NOMBRE_USUARIO_EXTERNO"].ToString() == tbNombreUsuario.Text && nombreanterior != tbNombreUsuario.Text)
                                 {
                                     MessageBox.Show("Nombre Duplicado");
-                                    break;
+                                    return;
                                 }
                             }
                             int notificar = 0;
@@ -127,12 +129,12 @@ namespace SICA.Forms.Recibir
                             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/modificarusuarioexterno");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = new JavaScriptSerializer().Serialize(new
                                 {
-                                    token = Globals.Token,
                                     idaux = Globals.IdUsernameSelect,
                                     nombreusuario = tbNombreUsuario.Text,
                                     correousuario = tbCorreo.Text,

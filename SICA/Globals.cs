@@ -11,9 +11,9 @@ namespace SICA
         public static Int32 SesionDuracion = 10;
         public static Int32 SesionAlerta = 3;
         public static DateTime UltimaActividad = DateTime.Now;
-
-        //public static string api = "http://sica.kyouru.com/api/";
-        public static string api = "http://localhost:5000/api/";
+        public static bool cerrando = false;
+        //public static string api = "https://sica.kyouru.com/api/";
+        public static string api = "https://localhost:5001/api/";
         public static String ExportarPath = Application.StartupPath + "\\Exportar\\";
         public static String strQueryArea = "";
 
@@ -24,39 +24,18 @@ namespace SICA
 
         public static Int32 TipoSeleccionarUsuario = -1;
         public static Int32 TipoSeleccionarUbicacion = -1;
-        public static Int32 IdArea = -1;
+
         public static Int32 IdInventario = -1;
         public static Int32 IdUsername = -1;
         public static String Username = "";
 
-        public static Int32 IdAreaSelect = -1;
         public static Int32 IdUbicacionSelect = -1;
         public static String UbicacionSelect = "";
         public static Int32 IdUsernameSelect = -1;
         public static String UsernameSelect = "";
-        public static bool EntregarConfirmacion = true;
 
         public static Int32 CantidadCarrito = 0;
         public static String CarritoSeleccionado = "";
-
-        public static Int32 IdAreaCustodia = 1;
-        public static Int32 IdIM = 2;
-        public static Int32 IdDC = 10;
-        public static Int32 IdAreaBoveda = 9;
-
-        public static Int32 IdExpediente = 1;
-
-        public static Int32 IdCustodiado = 1;
-        public static Int32 IdPrestado = 2;
-        public static Int32 IdMigrado = 3;
-        public static Int32 IdTransito = 4;
-        public static Int32 IdStandBy = 5;
-
-        public static String strIronMountainSolicitar = "IM_SOLICITAR";
-        public static String strIronMountainRecibir = "IM_RECIBIR";
-        public static String strIronMountainArmar = "IM_ARMAR";
-        public static String strIronMountainEnviar = "IM_ENVIAR";
-        public static String strIronMountainEntregar = "IM_ENTREGAR";
 
         public static String strValijaReingreso = "VALIJA_REINGRESO";
         public static String strValijaConfirmar = "VALIJA_CONFIRMAR";
@@ -69,19 +48,11 @@ namespace SICA
         public static String strMoverPagareSinDesembolsar = "MOVER_PAG_SIN";
         public static String strMoverEstado = "PRESTADO";
 
-        public static String strBovedaRetirarDOC = "BOVEDA_RETIRAR_DOC";
-        public static String strBovedaGuardarDOC = "BOVEDA_GUARDAR_DOC";
-        public static String strBovedaRetirarCAJA = "BOVEDA_RETIRAR_CAJA";
-        public static String strBovedaGuardarCAJA = "BOVEDA_GUARDAR_CAJA";
-
         public static String strPagareRecibir = "PAGARE_RECIBIR";
         public static String strPagareEntregar = "PAGARE_ENTREGAR";
 
         public static String strVerificarCAJA = "VERIFICAR_CAJA";
         public static String strnumeroCAJA = "";
-
-        public static String strDocuClassEntregar = "DOCUCLASS_ENTREGAR";
-        public static String strDocuClassRecibir = "DOCUCLASS_RECIBIR";
 
         public static String strLetrasReingreso = "LETRAS_REINGRESO";
         public static String strLetrasEntregar = "LETRAS_ENTREGAR";
@@ -92,55 +63,41 @@ namespace SICA
         public static String strSeleccionarUsuario = "";
 
         //Permisos
-        public static string auBusqueda = "0";
-        public static string auBusquedaHistorico = "0";
-        public static string auBusquedaEditar = "0";
-        public static string auMover = "0";
-        public static string auMoverExpediente = "0";
-        public static string auMoverDocumento = "0";
-        public static string auMoverMasivo = "0";
-        public static string auValija = "0";
-        public static string auValijaNuevo = "0";
-        public static string auValijaReingreso = "0";
-        public static string auValijaConfirmar = "0";
-        public static string auValijaManual = "0";
-        public static string auPagare = "0";
-        public static string auPagareBuscar = "0";
-        public static string auPagareRecibir = "0";
-        public static string auPagareEntregar = "0";
-        public static string auLetra = "0";
-        public static string auLetraNuevo = "0";
-        public static string auLetraEntregar = "0";
-        public static string auLetraReingreso = "0";
-        public static string auLetraBuscar = "0";
-        public static string auIronMountain = "0";
-        public static string auIronMountainSolicitar = "0";
-        public static string auIronMountainRecibir = "0";
-        public static string auIronMountainArmar = "0";
-        public static string auIronMountainEnviar = "0";
-        public static string auIronMountainEntregar = "0";
-        public static string auIronMountainCargo = "0";
-        public static string auBoveda = "0";
-        public static string auBovedaCajaRetirar = "0";
-        public static string auBovedaCajaGuardar = "0";
-        public static string auBovedaDocumentoRetirar = "0";
-        public static string auBovedaDocumentoGuardar = "0";
-        public static string auImportar = "0";
-        public static string auImportarActivas = "0";
-        public static string auImportarPasivas = "0";
-        public static string auMantenimiento = "0";
-        public static string auMantenimientoSocio = "0";
-        public static string auMantenimientoUsuarioExterno = "0";
-        public static string auMantenimientoCredito = "0";
-        public static string auReporte = "0";
-        public static string auReporteCajas = "0";
-        public static string auReportePrestado = "0";
-        public static string auReporteNoCustodiado = "0";
-        public static string auPendiente = "0";
-        public static string auPendienteRegularizar = "0";
-        public static string auPrestar = "0";
-        public static string auPrestarPrestar = "0";
-        public static string auPrestarRecibir = "0";
-        public static string auNivel = "0";
+        public static string Busqueda = "0";
+        public static string BusquedaHistorico = "0";
+        public static string BusquedaEditar = "0";
+        public static string Mover = "0";
+        public static string MoverExpediente = "0";
+        public static string MoverDocumento = "0";
+        public static string MoverMasivo = "0";
+        public static string Valija = "0";
+        public static string ValijaNuevo = "0";
+        public static string ValijaReingreso = "0";
+        public static string ValijaConfirmar = "0";
+        public static string ValijaManual = "0";
+        public static string Pagare = "0";
+        public static string PagareBuscar = "0";
+        public static string PagareRecibir = "0";
+        public static string PagareEntregar = "0";
+        public static string Letra = "0";
+        public static string LetraNuevo = "0";
+        public static string LetraEntregar = "0";
+        public static string LetraReingreso = "0";
+        public static string LetraBuscar = "0";
+        public static string Mantenimiento = "0";
+        public static string MantenimientoSocio = "0";
+        public static string MantenimientoUsuarioExterno = "0";
+        public static string MantenimientoCredito = "0";
+        public static string MantenimientoListas = "0";
+        public static string Reporte = "0";
+        public static string ReporteCajas = "0";
+        public static string ReportePrestado = "0";
+        public static string ReporteNoCustodiado = "0";
+        public static string Pendiente = "0";
+        public static string PendienteRegularizar = "0";
+        public static string Prestar = "0";
+        public static string PrestarPrestar = "0";
+        public static string PrestarRecibir = "0";
+        public static string Nivel = "0";
     }
 }

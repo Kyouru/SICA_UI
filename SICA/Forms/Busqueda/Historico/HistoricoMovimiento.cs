@@ -32,12 +32,12 @@ namespace SICA.Forms.Busqueda
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/historicomovimiento");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         idinventario = Globals.IdInventario
                     });
 

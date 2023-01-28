@@ -31,9 +31,8 @@
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
             this.btUsuarioExterno = new FontAwesome.Sharp.IconButton();
+            this.btListas = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btSocio = new FontAwesome.Sharp.IconButton();
-            this.btCredito = new FontAwesome.Sharp.IconButton();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,10 +47,9 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.pnTop.Controls.Add(this.btUsuarioExterno);
-            this.pnTop.Controls.Add(this.btSocio);
-            this.pnTop.Controls.Add(this.btCredito);
             this.pnTop.Controls.Add(this.panel1);
+            this.pnTop.Controls.Add(this.btListas);
+            this.pnTop.Controls.Add(this.btUsuarioExterno);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
@@ -71,67 +69,45 @@
             this.btUsuarioExterno.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btUsuarioExterno.IconSize = 30;
             this.btUsuarioExterno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btUsuarioExterno.Location = new System.Drawing.Point(280, 0);
+            this.btUsuarioExterno.Location = new System.Drawing.Point(0, 0);
             this.btUsuarioExterno.Name = "btUsuarioExterno";
             this.btUsuarioExterno.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btUsuarioExterno.Size = new System.Drawing.Size(205, 44);
+            this.btUsuarioExterno.Size = new System.Drawing.Size(205, 45);
             this.btUsuarioExterno.TabIndex = 10;
             this.btUsuarioExterno.Text = "Usuario Externo";
             this.btUsuarioExterno.UseVisualStyleBackColor = false;
             this.btUsuarioExterno.Click += new System.EventHandler(this.btUsuarioExterno_Click);
             // 
+            // btListas
+            // 
+            this.btListas.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btListas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btListas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btListas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btListas.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btListas.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btListas.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btListas.IconColor = System.Drawing.Color.Gainsboro;
+            this.btListas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btListas.IconSize = 30;
+            this.btListas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btListas.Location = new System.Drawing.Point(205, 0);
+            this.btListas.Name = "btListas";
+            this.btListas.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btListas.Size = new System.Drawing.Size(126, 45);
+            this.btListas.TabIndex = 13;
+            this.btListas.Text = "Listas";
+            this.btListas.UseVisualStyleBackColor = false;
+            this.btListas.Click += new System.EventHandler(this.btListas_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 44);
+            this.panel1.Location = new System.Drawing.Point(331, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1048, 1);
-            this.panel1.TabIndex = 8;
-            // 
-            // btSocio
-            // 
-            this.btSocio.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btSocio.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSocio.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSocio.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btSocio.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btSocio.IconColor = System.Drawing.Color.Gainsboro;
-            this.btSocio.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btSocio.IconSize = 30;
-            this.btSocio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btSocio.Location = new System.Drawing.Point(140, 0);
-            this.btSocio.Name = "btSocio";
-            this.btSocio.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btSocio.Size = new System.Drawing.Size(140, 44);
-            this.btSocio.TabIndex = 9;
-            this.btSocio.Text = "Socio";
-            this.btSocio.UseVisualStyleBackColor = false;
-            this.btSocio.Click += new System.EventHandler(this.btSocio_Click);
-            // 
-            // btCredito
-            // 
-            this.btCredito.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btCredito.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btCredito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCredito.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCredito.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btCredito.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btCredito.IconColor = System.Drawing.Color.Gainsboro;
-            this.btCredito.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btCredito.IconSize = 30;
-            this.btCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btCredito.Location = new System.Drawing.Point(0, 0);
-            this.btCredito.Name = "btCredito";
-            this.btCredito.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btCredito.Size = new System.Drawing.Size(140, 44);
-            this.btCredito.TabIndex = 4;
-            this.btCredito.Text = "Credito";
-            this.btCredito.UseVisualStyleBackColor = false;
-            this.btCredito.Click += new System.EventHandler(this.btCredito_Click);
+            this.panel1.Size = new System.Drawing.Size(717, 1);
+            this.panel1.TabIndex = 14;
             // 
             // MantenimientoSubMain
             // 
@@ -152,9 +128,8 @@
 
         private System.Windows.Forms.Panel pnSubMain;
         private System.Windows.Forms.Panel pnTop;
-        private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btSocio;
-        private FontAwesome.Sharp.IconButton btCredito;
         private FontAwesome.Sharp.IconButton btUsuarioExterno;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btListas;
     }
 }

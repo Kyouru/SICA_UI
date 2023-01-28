@@ -34,6 +34,7 @@
             this.pnBottom = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.pnTop = new System.Windows.Forms.Panel();
+            this.btCajaMasivo = new FontAwesome.Sharp.IconButton();
             this.btSiguiente = new FontAwesome.Sharp.IconButton();
             this.btExcel = new FontAwesome.Sharp.IconButton();
             this.btActualizar = new FontAwesome.Sharp.IconButton();
@@ -95,6 +96,7 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pnTop.Controls.Add(this.btCajaMasivo);
             this.pnTop.Controls.Add(this.btSiguiente);
             this.pnTop.Controls.Add(this.btExcel);
             this.pnTop.Controls.Add(this.btActualizar);
@@ -103,6 +105,22 @@
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 50);
             this.pnTop.TabIndex = 57;
+            // 
+            // btCajaMasivo
+            // 
+            this.btCajaMasivo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btCajaMasivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCajaMasivo.IconChar = FontAwesome.Sharp.IconChar.Box;
+            this.btCajaMasivo.IconColor = System.Drawing.Color.Gainsboro;
+            this.btCajaMasivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btCajaMasivo.IconSize = 30;
+            this.btCajaMasivo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btCajaMasivo.Location = new System.Drawing.Point(702, 6);
+            this.btCajaMasivo.Name = "btCajaMasivo";
+            this.btCajaMasivo.Size = new System.Drawing.Size(48, 38);
+            this.btCajaMasivo.TabIndex = 44;
+            this.btCajaMasivo.UseVisualStyleBackColor = true;
+            this.btCajaMasivo.Click += new System.EventHandler(this.btCajaMasivo_Click);
             // 
             // btSiguiente
             // 
@@ -153,7 +171,7 @@
             this.btActualizar.UseVisualStyleBackColor = true;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
-            // RecibirOK
+            // ValijaValija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,8 +179,9 @@
             this.ClientSize = new System.Drawing.Size(1048, 608);
             this.Controls.Add(this.pnBottom);
             this.Controls.Add(this.pnTop);
-            this.Name = "RecibirOK";
+            this.Name = "ValijaValija";
             this.Text = "ValijaConfirmar";
+            this.Load += new System.EventHandler(this.ValijaValija_Load);
             this.pnBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.pnTop.ResumeLayout(false);
@@ -178,5 +197,6 @@
         private FontAwesome.Sharp.IconButton btSiguiente;
         private FontAwesome.Sharp.IconButton btExcel;
         private FontAwesome.Sharp.IconButton btActualizar;
+        private FontAwesome.Sharp.IconButton btCajaMasivo;
     }
 }

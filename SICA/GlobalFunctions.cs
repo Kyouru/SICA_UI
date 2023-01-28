@@ -453,12 +453,12 @@ namespace SICA
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/agregarcarrito");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         idinventario = id_inventario,
                         idaux = id_aux,
                         caja = caja,
@@ -503,12 +503,12 @@ namespace SICA
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/cantidadcarrito");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tipocarrito = tipocarrito
                     });
 
@@ -592,12 +592,12 @@ namespace SICA
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiarcarrito");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tipocarrito = tipocarrito
                     });
 
@@ -660,12 +660,12 @@ namespace SICA
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/verificarcarrito");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         numerocaja = numero_caja
                     });
 
@@ -712,9 +712,10 @@ namespace SICA
             try
             {
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/pendienteconfirmarrecepcion");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
+                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                /*
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
@@ -724,7 +725,7 @@ namespace SICA
 
                     streamWriter.Write(json);
                 }
-
+                */
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
@@ -759,10 +760,11 @@ namespace SICA
         {
             try
             {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiartodocarrito");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiarcarrito");
+                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                /*
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
@@ -772,6 +774,7 @@ namespace SICA
 
                     streamWriter.Write(json);
                 }
+                */
             }
             catch (WebException ex)
             {
@@ -866,59 +869,44 @@ namespace SICA
                 {
                     var result = streamReader.ReadToEnd();
                     UserData usuario = JsonConvert.DeserializeObject<UserData>(result);
-                    Globals.IdArea = usuario.IdArea;
                     Globals.IdUsername = usuario.IdUser;
                     Globals.Token = usuario.Token;
 
-                    Globals.auBusqueda = usuario.auBusqueda.ToString();
-                    Globals.auBusquedaHistorico = usuario.auBusquedaHistorico.ToString();
-                    Globals.auBusquedaEditar = usuario.auBusquedaEditar.ToString();
-                    Globals.auMover = usuario.auMover.ToString();
-                    Globals.auMoverExpediente = usuario.auMoverExpediente.ToString();
-                    Globals.auMoverDocumento = usuario.auMoverDocumento.ToString();
-                    Globals.auMoverMasivo = usuario.auMoverMasivo.ToString();
-                    Globals.auValija = usuario.auValija.ToString();
-                    Globals.auValijaNuevo = usuario.auValijaNuevo.ToString();
-                    Globals.auValijaReingreso = usuario.auValijaReingreso.ToString();
-                    Globals.auValijaConfirmar = usuario.auValijaConfirmar.ToString();
-                    Globals.auValijaManual = usuario.auValijaManual.ToString();
-                    Globals.auPagare = usuario.auPagare.ToString();
-                    Globals.auPagareBuscar = usuario.auPagareBuscar.ToString();
-                    Globals.auPagareRecibir = usuario.auPagareRecibir.ToString();
-                    Globals.auPagareEntregar = usuario.auPagareEntregar.ToString();
-                    Globals.auLetra = usuario.auLetra.ToString();
-                    Globals.auLetraNuevo = usuario.auLetraNuevo.ToString();
-                    Globals.auLetraEntregar = usuario.auLetraEntregar.ToString();
-                    Globals.auLetraReingreso = usuario.auLetraReingreso.ToString();
-                    Globals.auLetraBuscar = usuario.auLetraBuscar.ToString();
-                    Globals.auIronMountain = usuario.auIronMountain.ToString();
-                    Globals.auIronMountainSolicitar = usuario.auIronMountainSolicitar.ToString();
-                    Globals.auIronMountainRecibir = usuario.auIronMountainRecibir.ToString();
-                    Globals.auIronMountainArmar = usuario.auIronMountainArmar.ToString();
-                    Globals.auIronMountainEnviar = usuario.auIronMountainEnviar.ToString();
-                    Globals.auIronMountainEntregar = usuario.auIronMountainEntregar.ToString();
-                    Globals.auIronMountainCargo = usuario.auIronMountainCargo.ToString();
-                    Globals.auBoveda = usuario.auBoveda.ToString();
-                    Globals.auBovedaCajaRetirar = usuario.auBovedaCajaRetirar.ToString();
-                    Globals.auBovedaCajaGuardar = usuario.auBovedaCajaGuardar.ToString();
-                    Globals.auBovedaDocumentoRetirar = usuario.auBovedaDocumentoRetirar.ToString();
-                    Globals.auBovedaDocumentoGuardar = usuario.auBovedaDocumentoGuardar.ToString();
-                    Globals.auImportar = usuario.auImportar.ToString();
-                    Globals.auImportarActivas = usuario.auImportarActivas.ToString();
-                    Globals.auImportarPasivas = usuario.auImportarPasivas.ToString();
-                    Globals.auMantenimiento = usuario.auMantenimiento.ToString();
-                    Globals.auMantenimientoUsuarioExterno = usuario.auMantenimientoUsuarioExterno.ToString();
-                    Globals.auMantenimientoCredito = usuario.auMantenimientoCredito.ToString();
-                    Globals.auMantenimientoSocio = usuario.auMantenimientoSocio.ToString();
-                    Globals.auPendiente = usuario.auPendiente.ToString();
-                    Globals.auPendienteRegularizar = usuario.auPendienteRegularizar.ToString();
-                    Globals.auReporte = usuario.auReporte.ToString();
-                    Globals.auReporteCajas = usuario.auReporteCajas.ToString();
-                    Globals.auPrestar = usuario.auPrestar.ToString();
-                    Globals.auPrestarPrestar = usuario.auPrestarPrestar.ToString();
-                    Globals.auPrestarRecibir = usuario.auPrestarRecibir.ToString();
+                    Globals.Busqueda = usuario.Busqueda.ToString();
+                    Globals.BusquedaHistorico = usuario.BusquedaHistorico.ToString();
+                    Globals.BusquedaEditar = usuario.BusquedaEditar.ToString();
+                    Globals.Mover = usuario.Mover.ToString();
+                    Globals.MoverExpediente = usuario.MoverExpediente.ToString();
+                    Globals.MoverDocumento = usuario.MoverDocumento.ToString();
+                    Globals.MoverMasivo = usuario.MoverMasivo.ToString();
+                    Globals.Valija = usuario.Valija.ToString();
+                    Globals.ValijaNuevo = usuario.ValijaNuevo.ToString();
+                    Globals.ValijaReingreso = usuario.ValijaReingreso.ToString();
+                    Globals.ValijaConfirmar = usuario.ValijaConfirmar.ToString();
+                    Globals.ValijaManual = usuario.ValijaManual.ToString();
+                    Globals.Pagare = usuario.Pagare.ToString();
+                    Globals.PagareBuscar = usuario.PagareBuscar.ToString();
+                    Globals.PagareRecibir = usuario.PagareRecibir.ToString();
+                    Globals.PagareEntregar = usuario.PagareEntregar.ToString();
+                    Globals.Letra = usuario.Letra.ToString();
+                    Globals.LetraNuevo = usuario.LetraNuevo.ToString();
+                    Globals.LetraEntregar = usuario.LetraEntregar.ToString();
+                    Globals.LetraReingreso = usuario.LetraReingreso.ToString();
+                    Globals.LetraBuscar = usuario.LetraBuscar.ToString();
+                    Globals.Mantenimiento = usuario.Mantenimiento.ToString();
+                    Globals.MantenimientoUsuarioExterno = usuario.MantenimientoUsuarioExterno.ToString();
+                    Globals.MantenimientoCredito = usuario.MantenimientoCredito.ToString();
+                    Globals.MantenimientoSocio = usuario.MantenimientoSocio.ToString();
+                    Globals.MantenimientoListas = usuario.MantenimientoListas.ToString();
+                    Globals.Pendiente = usuario.Pendiente.ToString();
+                    Globals.PendienteRegularizar = usuario.PendienteRegularizar.ToString();
+                    Globals.Reporte = usuario.Reporte.ToString();
+                    Globals.ReporteCajas = usuario.ReporteCajas.ToString();
+                    Globals.Prestar = usuario.Prestar.ToString();
+                    Globals.PrestarPrestar = usuario.PrestarPrestar.ToString();
+                    Globals.PrestarRecibir = usuario.PrestarRecibir.ToString();
 
-                    Globals.auNivel = usuario.auNivel.ToString();
+                    Globals.Nivel = usuario.Nivel.ToString();
                     Globals.Username = username;
                     //Acceso Permitido
                     if (usuario.CambiarPassword == 1 && usuario.AccesoPermitido == 1)
@@ -984,12 +972,12 @@ namespace SICA
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/obtenercarrito");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tipocarrito = tipocarrito
                     });
 
@@ -1029,106 +1017,9 @@ namespace SICA
         public static void UltimaActividad()
         {
             Globals.UltimaActividad = DateTime.Now;
+            //No registra en bd
         }
 
-        public static bool RecibirCarrito(string observacion, string tipocarrito)
-        {
-            string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            try
-            {
-                LoadingScreen.iniciarLoading();
-
-                System.Data.DataTable dt = GlobalFunctions.ObtenerCarrito(tipocarrito);
-
-                if (dt.Rows.Count > 0)
-                {
-                    bool confirmar = Globals.EntregarConfirmacion;
-                    HttpWebRequest httpWebRequest;
-                    HttpWebResponse httpResponse;
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/recibir");
-                        httpWebRequest.ContentType = "application/json";
-                        httpWebRequest.Method = "POST";
-
-                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                        {
-                            string json = new JavaScriptSerializer().Serialize(new
-                            {
-                                token = Globals.Token,
-                                idinventario = row["ID"].ToString(),
-                                idarearecibe = Globals.IdArea,
-                                fecha = fecha,
-                                observacion = observacion,
-                                confirmar = confirmar
-                            });
-
-                            streamWriter.Write(json);
-                        }
-
-                        httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                        if (httpResponse.StatusCode == HttpStatusCode.OK)
-                        {
-                            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                            {
-                                string result = streamReader.ReadToEnd();
-                            }
-                        }
-                    }
-
-                    httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiarcarrito");
-                    httpWebRequest.ContentType = "application/json";
-                    httpWebRequest.Method = "POST";
-
-                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                    {
-                        string json = new JavaScriptSerializer().Serialize(new
-                        {
-                            token = Globals.Token
-                        });
-
-                        streamWriter.Write(json);
-                    }
-
-                    httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                    if (httpResponse.StatusCode == HttpStatusCode.OK)
-                    {
-                        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                        {
-                            string result = streamReader.ReadToEnd();
-                        }
-                    }
-
-                    LoadingScreen.cerrarLoading();
-                    return true;
-                }
-                else
-                {
-                    LoadingScreen.cerrarLoading();
-                    MessageBox.Show("No hay Expediente en el Carrito " + tipocarrito);
-                    return false;
-                }
-            }
-            catch (WebException ex)
-            {
-                LoadingScreen.cerrarLoading();
-                if (!(ex.Response is null))
-                {
-                    using (var stream = ex.Response.GetResponseStream())
-                    using (var reader = new StreamReader(stream))
-                    {
-                        GlobalFunctions.casoError(ex, "Recibir Carrito\n" + reader.ReadToEnd());
-                    }
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                LoadingScreen.cerrarLoading();
-                GlobalFunctions.casoError(ex, "Recibir Carrito " + tipocarrito);
-                return false;
-            }
-        }
         public static bool IsValidEmail(string email)
         {
             try

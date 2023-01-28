@@ -49,10 +49,10 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pnTop.Controls.Add(this.panel1);
             this.pnTop.Controls.Add(this.btTransicion);
             this.pnTop.Controls.Add(this.btValija);
             this.pnTop.Controls.Add(this.btNuevo);
-            this.pnTop.Controls.Add(this.panel1);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
@@ -75,7 +75,7 @@
             this.btTransicion.Location = new System.Drawing.Point(280, 0);
             this.btTransicion.Name = "btTransicion";
             this.btTransicion.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btTransicion.Size = new System.Drawing.Size(140, 44);
+            this.btTransicion.Size = new System.Drawing.Size(140, 45);
             this.btTransicion.TabIndex = 10;
             this.btTransicion.Text = "Transicion";
             this.btTransicion.UseVisualStyleBackColor = false;
@@ -97,7 +97,7 @@
             this.btValija.Location = new System.Drawing.Point(140, 0);
             this.btValija.Name = "btValija";
             this.btValija.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btValija.Size = new System.Drawing.Size(140, 44);
+            this.btValija.Size = new System.Drawing.Size(140, 45);
             this.btValija.TabIndex = 5;
             this.btValija.Text = "Valija";
             this.btValija.UseVisualStyleBackColor = false;
@@ -119,7 +119,7 @@
             this.btNuevo.Location = new System.Drawing.Point(0, 0);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btNuevo.Size = new System.Drawing.Size(140, 44);
+            this.btNuevo.Size = new System.Drawing.Size(140, 45);
             this.btNuevo.TabIndex = 4;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
@@ -129,10 +129,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 44);
+            this.panel1.Location = new System.Drawing.Point(420, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1048, 1);
-            this.panel1.TabIndex = 8;
+            this.panel1.Size = new System.Drawing.Size(628, 1);
+            this.panel1.TabIndex = 11;
             // 
             // ValijaSubMain
             // 
@@ -154,9 +154,9 @@
 
         private System.Windows.Forms.Panel pnSubMain;
         private System.Windows.Forms.Panel pnTop;
-        private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton btValija;
         private FontAwesome.Sharp.IconButton btNuevo;
         private FontAwesome.Sharp.IconButton btTransicion;
+        private System.Windows.Forms.Panel panel1;
     }
 }

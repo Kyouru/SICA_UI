@@ -255,7 +255,7 @@
             this.icMain.Size = new System.Drawing.Size(200, 70);
             this.icMain.TabIndex = 0;
             this.icMain.TabStop = false;
-            this.icMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.icMain_MouseDown);
+            this.icMain.Click += new System.EventHandler(this.icMain_Click);
             // 
             // pnTop
             // 

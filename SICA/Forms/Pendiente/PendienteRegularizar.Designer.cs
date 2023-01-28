@@ -34,6 +34,7 @@
             this.pnBottom = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.pnTop = new System.Windows.Forms.Panel();
+            this.btCajaMasivo = new FontAwesome.Sharp.IconButton();
             this.btSiguiente = new FontAwesome.Sharp.IconButton();
             this.btExcel = new FontAwesome.Sharp.IconButton();
             this.btActualizar = new FontAwesome.Sharp.IconButton();
@@ -78,6 +79,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.GridColor = System.Drawing.Color.Gainsboro;
             this.dgv.Location = new System.Drawing.Point(0, 0);
@@ -92,6 +94,7 @@
             this.dgv.Size = new System.Drawing.Size(1048, 558);
             this.dgv.TabIndex = 25;
             this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_CellEnter);
+            this.dgv.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellValidated);
             this.dgv.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgv_CellValidating);
             this.dgv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DataError);
             this.dgv.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_EditingControlShowing);
@@ -99,6 +102,7 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pnTop.Controls.Add(this.btCajaMasivo);
             this.pnTop.Controls.Add(this.btSiguiente);
             this.pnTop.Controls.Add(this.btExcel);
             this.pnTop.Controls.Add(this.btActualizar);
@@ -107,6 +111,22 @@
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 50);
             this.pnTop.TabIndex = 59;
+            // 
+            // btCajaMasivo
+            // 
+            this.btCajaMasivo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btCajaMasivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCajaMasivo.IconChar = FontAwesome.Sharp.IconChar.Box;
+            this.btCajaMasivo.IconColor = System.Drawing.Color.Gainsboro;
+            this.btCajaMasivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btCajaMasivo.IconSize = 30;
+            this.btCajaMasivo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btCajaMasivo.Location = new System.Drawing.Point(702, 6);
+            this.btCajaMasivo.Name = "btCajaMasivo";
+            this.btCajaMasivo.Size = new System.Drawing.Size(48, 38);
+            this.btCajaMasivo.TabIndex = 61;
+            this.btCajaMasivo.UseVisualStyleBackColor = true;
+            this.btCajaMasivo.Click += new System.EventHandler(this.btCajaMasivo_Click);
             // 
             // btSiguiente
             // 
@@ -145,7 +165,7 @@
             // 
             this.btActualizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btActualizar.IconChar = FontAwesome.Sharp.IconChar.SyncAlt;
+            this.btActualizar.IconChar = FontAwesome.Sharp.IconChar.Rotate;
             this.btActualizar.IconColor = System.Drawing.Color.Gainsboro;
             this.btActualizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btActualizar.IconSize = 30;
@@ -183,5 +203,6 @@
         private FontAwesome.Sharp.IconButton btSiguiente;
         private FontAwesome.Sharp.IconButton btExcel;
         private FontAwesome.Sharp.IconButton btActualizar;
+        private FontAwesome.Sharp.IconButton btCajaMasivo;
     }
 }

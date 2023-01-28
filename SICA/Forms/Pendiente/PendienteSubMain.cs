@@ -28,7 +28,7 @@ namespace SICA.Forms.Pendiente
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btRegularizar.Visible = int2bool(Globals.auPendienteRegularizar);
+            btRegularizar.Visible = int2bool(Globals.PendienteRegularizar);
         }
         private void OpenChildForm(Form childForm)
         {
@@ -66,6 +66,7 @@ namespace SICA.Forms.Pendiente
                 //currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 //currentBtn.ImageAlign = ContentAlignment.MiddleRight;
 
+                topBorderBtn.Size = new Size(currentBtn.Width, 3);
                 topBorderBtn.BackColor = color;
                 topBorderBtn.Location = new Point(currentBtn.Location.X, 0);
                 topBorderBtn.Visible = true;

@@ -50,6 +50,7 @@
             this.ClientSize = new System.Drawing.Size(120, 42);
             this.Controls.Add(this.lbVersion);
             this.Name = "InfoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InfoForm";
             this.ResumeLayout(false);
             this.PerformLayout();

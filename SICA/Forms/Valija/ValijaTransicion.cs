@@ -22,12 +22,17 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
         }
+        private void ValijaTransicion_Load(object sender, EventArgs e)
+        {
+            btActualizar_Click(sender, e);
+        }
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
             try
             {
+                dgv.Columns.Clear();
                 LoadingScreen.iniciarLoading();
 
                 DataTable dt = new DataTable("BuscarValija");
@@ -35,12 +40,12 @@ namespace SICA.Forms.Valija
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/buscarvalija");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         idubicacion = 7
                     });
 
@@ -63,11 +68,19 @@ namespace SICA.Forms.Valija
                     dgv.DataSource = dt;
                     dgv.Columns["ID"].Visible = false;
                     dgv.Columns["CONCAT"].Visible = false;
+
                     DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
                     chk.HeaderText = "OK";
                     chk.Name = "OK";
                     chk.ValueType = typeof(bool);
                     dgv.Columns.Add(chk);
+
+                    DataGridViewCheckBoxColumn chkPen = new DataGridViewCheckBoxColumn();
+                    chkPen.HeaderText = "PENDIENTE";
+                    chkPen.Name = "PENDIENTE";
+                    chkPen.ValueType = typeof(bool);
+                    dgv.Columns.Add(chkPen);
+
                     dgv.ClearSelection();
                 }
 
@@ -95,7 +108,14 @@ namespace SICA.Forms.Valija
         private void btExcel_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            GlobalFunctions.ExportarDGV(dgv, null);
+            if (dgv.Rows.Count > 0)
+            {
+                GlobalFunctions.ExportarDGV(dgv, null);
+            }
+            else
+            {
+                MessageBox.Show("No hay Registros");
+            }
         }
 
 
@@ -140,12 +160,12 @@ namespace SICA.Forms.Valija
                             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Busqueda/guardareditar");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = new JavaScriptSerializer().Serialize(new
                                 {
-                                    token = Globals.Token,
                                     idinventario = row.Cells["ID"].Value.ToString(),
                                     numerocaja = row.Cells["CAJA"].Value.ToString(),
                                     fechadesde = fechadesde,
@@ -187,36 +207,52 @@ namespace SICA.Forms.Valija
                         }
                     }
 
+                    bool valijaok = false, valijapendiente = false;
+                    int ubicacionrecibe = 10; //BOVEDA 4
+
                     if (!(row.Cells["OK"].Value is null))
                     {
                         if (bool.Parse(row.Cells["OK"].Value.ToString()) == true)
                         {
-                            existe = true;
-                            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/ValijaMover");
-                            httpWebRequest.ContentType = "application/json";
-                            httpWebRequest.Method = "POST";
+                            valijaok = true;
+                            ubicacionrecibe = 10; //BOVEDA 4
+                        }
+                    }
 
-                            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                            {
-                                string json = new JavaScriptSerializer().Serialize(new
-                                {
-                                    token = Globals.Token,
-                                    //idubicacionentrega = 7, //TRANSICION
-                                    idubicacionrecibe = 10, //BOVEDA 4
-                                    idestado = 1, //Custodiado
-                                    fecha = fecha,
-                                    idinventario = row.Cells["ID"].Value.ToString()
-                                });
-                                streamWriter.Write(json);
-                            }
+                    if (!(row.Cells["PENDIENTE"].Value is null))
+                    {
+                        if (bool.Parse(row.Cells["PENDIENTE"].Value.ToString()) == true)
+                        {
+                            valijapendiente = true;
+                            ubicacionrecibe = 9; //PENDIENTE
+                        }
+                    }
+                    if (valijapendiente || valijaok)
+                    {
+                        existe = true;
+                        HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
+                        httpWebRequest.ContentType = "application/json";
+                        httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
-                            HttpWebResponse httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                            if (httpResponse.StatusCode == HttpStatusCode.OK)
+                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                        {
+                            string json = new JavaScriptSerializer().Serialize(new
                             {
-                                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                                {
-                                    string result = streamReader.ReadToEnd();
-                                }
+                                idubicacionrecibe = ubicacionrecibe,
+                                idestado = 1, //Custodiado
+                                fecha = fecha,
+                                idinventario = row.Cells["ID"].Value.ToString()
+                            });
+                            streamWriter.Write(json);
+                        }
+
+                        HttpWebResponse httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                        if (httpResponse.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                            {
+                                string result = streamReader.ReadToEnd();
                             }
                         }
                     }
@@ -225,7 +261,6 @@ namespace SICA.Forms.Valija
                 {
                     LoadingScreen.cerrarLoading();
                     dgv.Columns.Clear();
-                    //dgv.DataSource = null;
                     MessageBox.Show("Proceso Finalizado");
                     btActualizar_Click(sender, e);
                 }
@@ -254,5 +289,6 @@ namespace SICA.Forms.Valija
                 return;
             }
         }
+
     }
 }

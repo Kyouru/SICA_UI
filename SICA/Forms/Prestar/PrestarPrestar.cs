@@ -48,12 +48,12 @@ namespace SICA.Forms.Prestar
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Prestar/buscarprestar");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         busquedalibre = tbBusquedaLibre.Text
                     });
 
@@ -128,12 +128,12 @@ namespace SICA.Forms.Prestar
                             httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Prestar/prestar");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = new JavaScriptSerializer().Serialize(new
                                 {
-                                    token = Globals.Token,
                                     idusuariorecibe = Globals.IdUsernameSelect,
                                     tipocarrito = tipo_carrito,
                                     fecha = fecha,
@@ -153,9 +153,11 @@ namespace SICA.Forms.Prestar
                             }
 
                             httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiarcarrito");
-                            httpWebRequest.ContentType = "application/json";
-                            httpWebRequest.Method = "POST";
+                            //httpWebRequest.ContentType = "application/json";
+                            httpWebRequest.Method = "GET";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
+                            /*
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = new JavaScriptSerializer().Serialize(new
@@ -165,7 +167,7 @@ namespace SICA.Forms.Prestar
 
                                 streamWriter.Write(json);
                             }
-
+                            */
                             httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                             if (httpResponse.StatusCode == HttpStatusCode.OK)
                             {
@@ -253,12 +255,12 @@ namespace SICA.Forms.Prestar
                         var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/agregarcarrito");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idinventario = Int32.Parse(row.Cells["ID"].Value.ToString()),
                                 tipocarrito = tipo_carrito,
                                 numerocaja = row.Cells["CAJA"].Value.ToString()

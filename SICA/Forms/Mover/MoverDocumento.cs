@@ -48,12 +48,12 @@ namespace SICA.Forms.Entregar
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/buscar");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         busquedalibre = tbBusquedaLibre.Text
                     });
 
@@ -129,12 +129,12 @@ namespace SICA.Forms.Entregar
                                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
                                 httpWebRequest.ContentType = "application/json";
                                 httpWebRequest.Method = "POST";
+                                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                                 {
                                     string json = new JavaScriptSerializer().Serialize(new
                                     {
-                                        token = Globals.Token,
                                         idinventario = row["ID"].ToString(),
                                         idestado = 1, //Custodiado
                                         idubicacionrecibe = Globals.IdUbicacionSelect,
@@ -156,9 +156,10 @@ namespace SICA.Forms.Entregar
                             }
 
                             httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiarcarrito");
-                            httpWebRequest.ContentType = "application/json";
-                            httpWebRequest.Method = "POST";
-
+                            //httpWebRequest.ContentType = "application/json";
+                            httpWebRequest.Method = "GET";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+                            /*
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = new JavaScriptSerializer().Serialize(new
@@ -168,7 +169,7 @@ namespace SICA.Forms.Entregar
 
                                 streamWriter.Write(json);
                             }
-
+                            */
                             httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                             if (httpResponse.StatusCode == HttpStatusCode.OK)
                             {
@@ -223,7 +224,14 @@ namespace SICA.Forms.Entregar
         {
             GlobalFunctions.UltimaActividad();
             //GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
-            GlobalFunctions.ExportarDGV(dgv, null);
+            if (dgv.Rows.Count > 0)
+            {
+                GlobalFunctions.ExportarDGV(dgv, null);
+            }
+            else
+            {
+                MessageBox.Show("No hay Registros");
+            }
         }
 
         private void tbBusquedaLibre_KeyDown(object sender, KeyEventArgs e)
@@ -256,12 +264,12 @@ namespace SICA.Forms.Entregar
                         var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/agregarcarrito");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idinventario = Int32.Parse(row.Cells["ID"].Value.ToString()),
                                 tipocarrito = tipo_carrito,
                                 numerocaja = row.Cells["CAJA"].Value.ToString()

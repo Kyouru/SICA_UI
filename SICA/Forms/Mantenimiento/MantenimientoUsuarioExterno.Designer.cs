@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.pnTop = new System.Windows.Forms.Panel();
+            this.btOrderDown = new FontAwesome.Sharp.IconButton();
+            this.btOrderUp = new FontAwesome.Sharp.IconButton();
             this.btCrearUsuario = new FontAwesome.Sharp.IconButton();
             this.btModificarUsuario = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -84,6 +86,8 @@
             // pnTop
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pnTop.Controls.Add(this.btOrderDown);
+            this.pnTop.Controls.Add(this.btOrderUp);
             this.pnTop.Controls.Add(this.btCrearUsuario);
             this.pnTop.Controls.Add(this.btModificarUsuario);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -91,6 +95,38 @@
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 47);
             this.pnTop.TabIndex = 44;
+            // 
+            // btOrderDown
+            // 
+            this.btOrderDown.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btOrderDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btOrderDown.IconChar = FontAwesome.Sharp.IconChar.ArrowDown;
+            this.btOrderDown.IconColor = System.Drawing.Color.Gainsboro;
+            this.btOrderDown.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btOrderDown.IconSize = 30;
+            this.btOrderDown.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btOrderDown.Location = new System.Drawing.Point(535, 7);
+            this.btOrderDown.Name = "btOrderDown";
+            this.btOrderDown.Size = new System.Drawing.Size(39, 35);
+            this.btOrderDown.TabIndex = 34;
+            this.btOrderDown.UseVisualStyleBackColor = true;
+            this.btOrderDown.Click += new System.EventHandler(this.btOrderDown_Click);
+            // 
+            // btOrderUp
+            // 
+            this.btOrderUp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btOrderUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btOrderUp.IconChar = FontAwesome.Sharp.IconChar.ArrowUp;
+            this.btOrderUp.IconColor = System.Drawing.Color.Gainsboro;
+            this.btOrderUp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btOrderUp.IconSize = 30;
+            this.btOrderUp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btOrderUp.Location = new System.Drawing.Point(486, 7);
+            this.btOrderUp.Name = "btOrderUp";
+            this.btOrderUp.Size = new System.Drawing.Size(39, 35);
+            this.btOrderUp.TabIndex = 33;
+            this.btOrderUp.UseVisualStyleBackColor = true;
+            this.btOrderUp.Click += new System.EventHandler(this.btOrderUp_Click);
             // 
             // btCrearUsuario
             // 
@@ -151,5 +187,7 @@
         private System.Windows.Forms.Panel pnTop;
         private FontAwesome.Sharp.IconButton btCrearUsuario;
         private FontAwesome.Sharp.IconButton btModificarUsuario;
+        private FontAwesome.Sharp.IconButton btOrderDown;
+        private FontAwesome.Sharp.IconButton btOrderUp;
     }
 }

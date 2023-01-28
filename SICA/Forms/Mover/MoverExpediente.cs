@@ -150,7 +150,6 @@ namespace SICA.Forms.Entregar
                         string fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         if (dt.Rows.Count > 0)
                         {
-                            bool confirmar = Globals.EntregarConfirmacion;
                             HttpWebRequest httpWebRequest;
                             HttpWebResponse httpResponse;
                             foreach (DataRow row in dt.Rows)
@@ -167,11 +166,8 @@ namespace SICA.Forms.Entregar
                                         idaux = Globals.IdUsernameSelect,
                                         idinventario = row["ID"].ToString(),
                                         idestado = 1, //Custodiado
-                                        idareaentrega = Globals.IdArea,
-                                        idarearecibe = Globals.IdAreaSelect,
                                         fecha = fecha,
-                                        observacion = observacion,
-                                        confirmar = confirmar
+                                        observacion = observacion
                                     });
 
                                     streamWriter.Write(json);

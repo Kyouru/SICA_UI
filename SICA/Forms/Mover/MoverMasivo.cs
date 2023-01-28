@@ -166,11 +166,11 @@ namespace SICA.Forms.Entregar
                             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/validarubicacion");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
+                            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = new JavaScriptSerializer().Serialize(new
                                 {
-                                    token = Globals.Token,
                                     strubicacion = ubicacion
                                 });
 
@@ -193,11 +193,11 @@ namespace SICA.Forms.Entregar
                                         var httpWebRequest2 = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/obtenercaja");
                                         httpWebRequest2.ContentType = "application/json";
                                         httpWebRequest2.Method = "POST";
+                                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
                                         using (var streamWriter = new StreamWriter(httpWebRequest2.GetRequestStream()))
                                         {
                                             string json = new JavaScriptSerializer().Serialize(new
                                             {
-                                                token = Globals.Token,
                                                 numerocaja = numerocaja
                                             });
 
@@ -405,12 +405,12 @@ namespace SICA.Forms.Entregar
                     HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Entregar/entregar");
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                     using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            token = Globals.Token,
                             idinventario = row.Cells["ID"].Value.ToString(),
                             idestado = 1, //Custodiado
                             idubicacionrecibe = row.Cells["ID_UBICACIONDESTINO"].Value.ToString(),

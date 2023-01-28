@@ -25,9 +25,9 @@ namespace SICA.Forms.Pagare
             topBorderBtn.Size = new Size(250, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btBuscar.Visible = int2bool(Globals.auPagareBuscar);
-            btEntregar.Visible = int2bool(Globals.auPagareEntregar);
-            btRecibir.Visible = int2bool(Globals.auPagareRecibir);
+            btBuscar.Visible = int2bool(Globals.PagareBuscar);
+            btEntregar.Visible = int2bool(Globals.PagareEntregar);
+            btRecibir.Visible = int2bool(Globals.PagareRecibir);
 
         }
         private void OpenChildForm(Form childForm)

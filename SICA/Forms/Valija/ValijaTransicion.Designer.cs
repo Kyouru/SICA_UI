@@ -153,7 +153,7 @@
             this.btActualizar.UseVisualStyleBackColor = true;
             this.btActualizar.Click += new System.EventHandler(this.btActualizar_Click);
             // 
-            // RecibirPendiente
+            // ValijaTransicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,8 +161,9 @@
             this.ClientSize = new System.Drawing.Size(1048, 608);
             this.Controls.Add(this.pnBottom);
             this.Controls.Add(this.pnTop);
-            this.Name = "RecibirPendiente";
+            this.Name = "ValijaTransicion";
             this.Text = "ValijaConfirmar";
+            this.Load += new System.EventHandler(this.ValijaTransicion_Load);
             this.pnBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.pnTop.ResumeLayout(false);

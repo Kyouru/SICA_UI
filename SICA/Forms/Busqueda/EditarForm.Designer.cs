@@ -31,7 +31,6 @@ namespace SICA.Forms.Busqueda
         {
             this.label2 = new System.Windows.Forms.Label();
             this.cmbDepartamento = new System.Windows.Forms.ComboBox();
-            this.btGuadar = new FontAwesome.Sharp.IconButton();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.cbFecha = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,7 +57,8 @@ namespace SICA.Forms.Busqueda
             this.cbProducto = new System.Windows.Forms.CheckBox();
             this.cbClasificacion = new System.Windows.Forms.CheckBox();
             this.tbCaja = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btGuadar = new FontAwesome.Sharp.IconButton();
+            this.cbCaja = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label2
@@ -82,24 +82,6 @@ namespace SICA.Forms.Busqueda
             this.cmbDepartamento.Size = new System.Drawing.Size(284, 26);
             this.cmbDepartamento.TabIndex = 37;
             this.cmbDepartamento.SelectedIndexChanged += new System.EventHandler(this.cmbDepartamento_SelectedIndexChanged);
-            // 
-            // btGuadar
-            // 
-            this.btGuadar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btGuadar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btGuadar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btGuadar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btGuadar.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btGuadar.IconColor = System.Drawing.Color.Black;
-            this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btGuadar.IconSize = 16;
-            this.btGuadar.Location = new System.Drawing.Point(215, 487);
-            this.btGuadar.Name = "btGuadar";
-            this.btGuadar.Size = new System.Drawing.Size(119, 32);
-            this.btGuadar.TabIndex = 112;
-            this.btGuadar.Text = "Guardar";
-            this.btGuadar.UseVisualStyleBackColor = true;
-            this.btGuadar.Click += new System.EventHandler(this.btGuardar_Click);
             // 
             // dtpFechaDesde
             // 
@@ -290,6 +272,7 @@ namespace SICA.Forms.Busqueda
             this.cmbClasificacion.Name = "cmbClasificacion";
             this.cmbClasificacion.Size = new System.Drawing.Size(188, 26);
             this.cmbClasificacion.TabIndex = 102;
+            this.cmbClasificacion.Visible = false;
             // 
             // tbObservacion
             // 
@@ -320,6 +303,7 @@ namespace SICA.Forms.Busqueda
             this.cmbCentroCosto.Name = "cmbCentroCosto";
             this.cmbCentroCosto.Size = new System.Drawing.Size(284, 26);
             this.cmbCentroCosto.TabIndex = 106;
+            this.cmbCentroCosto.Visible = false;
             // 
             // cmbProducto
             // 
@@ -330,6 +314,7 @@ namespace SICA.Forms.Busqueda
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(188, 26);
             this.cmbProducto.TabIndex = 108;
+            this.cmbProducto.Visible = false;
             // 
             // cbCentroCosto
             // 
@@ -377,17 +362,38 @@ namespace SICA.Forms.Busqueda
             this.tbCaja.Name = "tbCaja";
             this.tbCaja.Size = new System.Drawing.Size(188, 24);
             this.tbCaja.TabIndex = 19;
+            this.tbCaja.Visible = false;
             // 
-            // label1
+            // btGuadar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(16, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 22);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Caja:";
+            this.btGuadar.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btGuadar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGuadar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btGuadar.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btGuadar.IconColor = System.Drawing.Color.Black;
+            this.btGuadar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btGuadar.IconSize = 16;
+            this.btGuadar.Location = new System.Drawing.Point(215, 487);
+            this.btGuadar.Name = "btGuadar";
+            this.btGuadar.Size = new System.Drawing.Size(119, 32);
+            this.btGuadar.TabIndex = 112;
+            this.btGuadar.Text = "Guardar";
+            this.btGuadar.UseVisualStyleBackColor = true;
+            this.btGuadar.Click += new System.EventHandler(this.btGuardar_Click);
+            // 
+            // cbCaja
+            // 
+            this.cbCaja.AutoSize = true;
+            this.cbCaja.Font = new System.Drawing.Font("Arial", 14F);
+            this.cbCaja.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbCaja.Location = new System.Drawing.Point(17, 15);
+            this.cbCaja.Name = "cbCaja";
+            this.cbCaja.Size = new System.Drawing.Size(67, 26);
+            this.cbCaja.TabIndex = 113;
+            this.cbCaja.Text = "Caja";
+            this.cbCaja.UseVisualStyleBackColor = true;
+            this.cbCaja.CheckedChanged += new System.EventHandler(this.cbCaja_CheckedChanged);
             // 
             // EditarForm
             // 
@@ -395,6 +401,7 @@ namespace SICA.Forms.Busqueda
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(549, 531);
+            this.Controls.Add(this.cbCaja);
             this.Controls.Add(this.btGuadar);
             this.Controls.Add(this.cbClasificacion);
             this.Controls.Add(this.cbProducto);
@@ -423,7 +430,6 @@ namespace SICA.Forms.Busqueda
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbFecha);
             this.Controls.Add(this.dtpFechaDesde);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tbCaja);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditarForm";
@@ -465,6 +471,6 @@ namespace SICA.Forms.Busqueda
         private System.Windows.Forms.CheckBox cbProducto;
         private System.Windows.Forms.CheckBox cbClasificacion;
         private System.Windows.Forms.TextBox tbCaja;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbCaja;
     }
 }

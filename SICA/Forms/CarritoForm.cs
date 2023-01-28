@@ -26,12 +26,12 @@ namespace SICA.Forms
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/buscar");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
                         tipocarrito = Globals.CarritoSeleccionado,
                         numerocaja = Globals.strnumeroCAJA
                     });
@@ -94,12 +94,12 @@ namespace SICA.Forms
                         var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/eliminar");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token,
                                 idaux = dgvCarrito.SelectedRows[0].Cells["ID"].Value.ToString()
                             });
 

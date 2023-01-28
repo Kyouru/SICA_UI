@@ -21,19 +21,50 @@ namespace SICA.Forms
         private void SeleccionarUsuarioForm_Load(object sender, EventArgs e)
         {
             Globals.IdUsernameSelect = -1;
+            buscarUsuarios();
+            mostrarUsuarios();
+        }
+
+
+        private void btSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count == 1)
+            {
+                Globals.IdUsernameSelect = Int32.Parse(dgv.SelectedRows[0].Cells["ID"].Value.ToString());
+                Globals.UsernameSelect = dgv.SelectedRows[0].Cells["NOMBRE_USUARIO_EXTERNO"].Value.ToString();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("No ha seleccionar un usuario");
+            }
+        }
+
+        private void tbBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                buscarUsuarios();
+                mostrarUsuarios();
+            }
+        }
+        private void buscarUsuarios()
+        {
             //Globals.EntregarConfirmacion = true;
             try
             {
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarioexterno");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token,
-                        tiposeleccionarusuario = Globals.TipoSeleccionarUsuario
+                        tiposeleccionarusuario = Globals.TipoSeleccionarUsuario,
+                        busquedalibre = tbBuscar.Text
                         //1: Externos
                     });
 
@@ -47,12 +78,8 @@ namespace SICA.Forms
                     {
                         string result = streamReader.ReadToEnd();
                         dtUsuarios = JsonConvert.DeserializeObject<DataTable>(result);
-                        cmbUsuario.DataSource = dtUsuarios;
-                        cmbUsuario.ValueMember = "ID_USUARIO_EXTERNO";
-                        cmbUsuario.DisplayMember = "NOMBRE_USUARIO_EXTERNO";
                     }
                 }
-
             }
             catch (WebException ex)
             {
@@ -62,36 +89,28 @@ namespace SICA.Forms
                     using (var stream = ex.Response.GetResponseStream())
                     using (var reader = new StreamReader(stream))
                     {
-                        GlobalFunctions.casoError(ex, "Error Seleccionar Usuario Load\n" + reader.ReadToEnd());
+                        GlobalFunctions.casoError(ex, "Error Buscar Usuario Load\n" + reader.ReadToEnd());
                     }
                 }
             }
             catch (Exception ex)
             {
                 LoadingScreen.cerrarLoading();
-                GlobalFunctions.casoError(ex, "Error Seleccionar Usuario Load");
+                GlobalFunctions.casoError(ex, "Error Buscar Usuario Load");
             }
         }
 
-        private void btSeleccionar_Click(object sender, EventArgs e)
+        private void mostrarUsuarios()
         {
-            if (cmbUsuario.SelectedIndex >= 0)
+            dgv.DataSource = dtUsuarios;
+            if (dgv.Rows.Count > 0)
             {
-                Globals.IdUsernameSelect = Int32.Parse((cmbUsuario.SelectedItem as DataRowView)["ID_USUARIO_EXTERNO"].ToString());
-                Globals.UsernameSelect = cmbUsuario.Text.Trim();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("No ha seleccionar un usuario");
+                dgv.Columns["ID"].Visible = false;
+                dgv.Columns["EMAIL"].Visible = false;
+                dgv.Columns["NOTIFICAR"].Visible = false;
+                dgv.Columns["NOMBRE_USUARIO_EXTERNO"].Width = 200;
+                dgv.Columns["NOMBRE_USUARIO_EXTERNO"].HeaderText = "NOMBRE";
             }
         }
-
-        private void cmbUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar >= 'a' && e.KeyChar <= 'z')
-                e.KeyChar -= (char)32;
-        }
-
     }
 }

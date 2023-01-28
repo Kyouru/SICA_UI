@@ -26,8 +26,8 @@ namespace SICA.Forms.Entregar
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btExpediente.Visible = int2bool(Globals.auMoverExpediente);
-            btDocumento.Visible = int2bool(Globals.auMoverDocumento);
+            btExpediente.Visible = int2bool(Globals.MoverExpediente);
+            btDocumento.Visible = int2bool(Globals.MoverDocumento);
         }
         private void OpenChildForm(Form childForm)
         {
