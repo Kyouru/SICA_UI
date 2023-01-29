@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,12 @@ namespace SICA.Forms
 {
     public partial class HistoricoForm : Form
     {
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         private IconButton currentBtn;
         private Form currentChildForm;
 
@@ -23,6 +30,11 @@ namespace SICA.Forms
         {
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
+
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         private void HistoricoForm_Load(object sender, EventArgs e)
@@ -109,11 +121,26 @@ namespace SICA.Forms
             //lblTitleChildForm.Text = childForm.Text;
         }
 
-        private void bnHistorico_Click(object sender, EventArgs e)
+        private void btHistorico_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
             ActivateButton(sender, RGBColors.color4);
             OpenChildForm(new HistoricoGeneral());
+        }
+
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void moverVentana()
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pnTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            moverVentana();
         }
     }
 }

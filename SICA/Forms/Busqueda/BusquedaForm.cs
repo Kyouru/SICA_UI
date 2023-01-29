@@ -87,17 +87,18 @@ namespace SICA
                         dt = JsonConvert.DeserializeObject<DataTable>(result);
                     }
                 }
-                LoadingScreen.cerrarLoading();
                 if (dt.Rows.Count > 0)
                 {
                     dgvBusqueda.DataSource = dt;
                     dgvBusqueda.AutoResizeColumns();
                     dgvBusqueda.Columns[0].Visible = false;
+                    LoadingScreen.cerrarLoading();
                     //Formatos
                     //dgvBusqueda.Columns["DESC_1"].Width = 250;
                 }
                 else
                 {
+                    LoadingScreen.cerrarLoading();
                     dgvBusqueda.DataSource = null;
                     MessageBox.Show("No hay coincidencias");
                 }

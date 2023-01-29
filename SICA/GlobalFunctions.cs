@@ -18,6 +18,7 @@ using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Drawing;
 using System.Net.Mail;
+using Oracle.ManagedDataAccess.Client;
 
 namespace SICA
 {
@@ -1030,6 +1031,55 @@ namespace SICA
             catch
             {
                 return false;
+            }
+        }
+
+        public static string PrestamoDatos(int periodo, int numero)
+        {
+            string ambiente = "DESA";
+            string strconn = "";
+            string res = "";
+            string strSQL = "SELECT * FROM TABLE(PKG_CUSTODIA.F_OBT_DATOSCREDITO(" + periodo + ", " + numero  + "))";
+            try
+            {
+                Globals.SisgoCIP = "";
+                Globals.SisgoNOMBRE = "";
+                Globals.SisgoTIPO_PERSONA = "";
+                Globals.SisgoPRODUCTO = "";
+                strconn = ds.getString(ambiente);
+
+                using (OracleConnection con = new OracleConnection(strconn))
+                {
+                    con.Open();
+                    using (OracleCommand command = new OracleCommand(strSQL, con))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            //Validar que el query ha devuelto alguna fila
+                            if (reader.HasRows)
+                            {
+                                Globals.SisgoCIP = reader.GetString(0);
+                                Globals.SisgoNOMBRE = reader.GetString(1);
+                                Globals.SisgoTIPO_PERSONA = reader.GetString(2);
+                                Globals.SisgoPRODUCTO = reader.GetString(3);
+                                res = "OK";
+                            }
+                            else
+                            {
+                                res = "NO EXISTE";
+                            }
+                        }
+                        command.Dispose();
+                    }
+                    con.Close();
+                    con.Dispose();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                return "error:" + ex.Message + res;
             }
         }
     }

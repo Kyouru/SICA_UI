@@ -18,6 +18,10 @@ namespace SICA
         public static String strQueryArea = "";
 
         public static String mostrarSQL = "";
+        public static String SisgoCIP = "";
+        public static String SisgoNOMBRE = "";
+        public static String SisgoTIPO_PERSONA = "";
+        public static String SisgoPRODUCTO = "";
 
         public static String Token = "";
         public static String NombreCargo = "";

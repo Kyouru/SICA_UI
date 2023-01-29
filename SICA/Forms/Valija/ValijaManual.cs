@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -22,6 +23,26 @@ namespace SICA.Forms.Valija
         public ValijaManual()
         {
             InitializeComponent();
+
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
+
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void pnTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            moverVentana();
+        }
+        private void moverVentana()
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         private void RecibirManual_Load(object sender, EventArgs e)
@@ -450,6 +471,35 @@ namespace SICA.Forms.Valija
             else
             {
                 cmbProducto.Visible = false;
+            }
+        }
+
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btValidarSolicitud_Click(object sender, EventArgs e)
+        {
+            string strperiodo = tbNumeroSolicitud.Text.Substring(0, 4).Trim();
+            string strnumero = tbNumeroSolicitud.Text.Substring(4).Replace("-", "").Trim();
+            int periodo = 0, numero = 0;
+            try
+            {
+                periodo = Int32.Parse(strperiodo);
+                numero = Int32.Parse(strnumero);
+                string res = GlobalFunctions.PrestamoDatos(periodo, numero);
+                cbClasificacion.Checked = true;
+                cbProducto.Checked = true;
+                tbCodigoSocio.Text = Globals.SisgoCIP;
+                tbNombreSocio.Text = Globals.SisgoNOMBRE;
+                cmbClasificacion.Text = Globals.SisgoTIPO_PERSONA;
+                cmbProducto.Text = Globals.SisgoPRODUCTO;
+                MessageBox.Show(res);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
