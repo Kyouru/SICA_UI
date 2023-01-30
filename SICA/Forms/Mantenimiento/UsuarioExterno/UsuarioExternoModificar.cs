@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -20,7 +21,26 @@ namespace SICA.Forms.Recibir
         string nombreanterior;
         public UsuarioExternoModificar()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void moverVentana()
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        private void pnTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            moverVentana();
         }
 
         private void UsuarioExternoModificar_Load(object sender, EventArgs e)
@@ -30,10 +50,34 @@ namespace SICA.Forms.Recibir
                 GlobalFunctions.UltimaActividad();
                 LoadingScreen.iniciarLoading();
 
+                this.Activate();
+                DataTable dtarea = new DataTable("Lista Area");
+
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaarea");
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                        dtarea = JsonConvert.DeserializeObject<DataTable>(result);
+                    }
+                }
+
+                if (dtarea.Rows.Count > 0)
+                {
+                    cmbArea.DataSource = dtarea;
+                    cmbArea.DisplayMember = "NOMBRE_AREA";
+                    cmbArea.ValueMember = "ID_AREA";
+                }
+
                 //Lista Usuarios
                 dt = new DataTable("Lista Usuarios");
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarioexterno");
+                httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listausuarioexterno");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
@@ -48,7 +92,7 @@ namespace SICA.Forms.Recibir
                     streamWriter.Write(json);
                 }
 
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
                     using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
@@ -60,11 +104,16 @@ namespace SICA.Forms.Recibir
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    if (row["ID_USUARIO_EXTERNO"].ToString() == Globals.IdUsernameSelect.ToString())
+                    if (row["ID"].ToString() == Globals.IdUsernameSelect.ToString())
                     {
                         tbNombreUsuario.Text = row["NOMBRE_USUARIO_EXTERNO"].ToString();
                         nombreanterior = row["NOMBRE_USUARIO_EXTERNO"].ToString();
                         tbCorreo.Text = row["EMAIL"].ToString();
+                        if (dtarea.Rows.Count > 0)
+                        {
+                            cmbArea.SelectedValue = row["ID_AREA_FK"].ToString();
+                        }
+                        
                         if (row["NOTIFICAR"].ToString() == "1")
                         {
                             cbNotificar.Checked = true;
@@ -73,8 +122,8 @@ namespace SICA.Forms.Recibir
                     }
                 }
 
-                LoadingScreen.cerrarLoading();
                 this.Activate();
+                LoadingScreen.cerrarLoading();
             }
             catch (WebException ex)
             {
@@ -138,6 +187,7 @@ namespace SICA.Forms.Recibir
                                     idaux = Globals.IdUsernameSelect,
                                     nombreusuario = tbNombreUsuario.Text,
                                     correousuario = tbCorreo.Text,
+                                    idarea = cmbArea.SelectedValue,
                                     notificar = notificar
                                 });
 
@@ -182,6 +232,11 @@ namespace SICA.Forms.Recibir
             {
                 MessageBox.Show("Falta Nombre Usuario");
             }
+        }
+
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

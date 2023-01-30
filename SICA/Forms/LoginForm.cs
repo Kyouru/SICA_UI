@@ -11,6 +11,7 @@ using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using SICA.Clases;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Configuration;
 
 namespace SICA
 {
@@ -109,7 +110,7 @@ namespace SICA
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            
+            Globals.api = ConfigurationManager.AppSettings["apiUrl"].ToString();
         }
 
         private void tbUsername_TextChanged(object sender, EventArgs e)

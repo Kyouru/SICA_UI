@@ -16,5 +16,10 @@ namespace SICA.Forms.Mantenimiento
         {
             InitializeComponent();
         }
+
+        private void MantenimientoSocio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

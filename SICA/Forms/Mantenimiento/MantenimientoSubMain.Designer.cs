@@ -30,9 +30,9 @@
         {
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
-            this.btUsuarioExterno = new FontAwesome.Sharp.IconButton();
-            this.btListas = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btListas = new FontAwesome.Sharp.IconButton();
+            this.btUsuarioExterno = new FontAwesome.Sharp.IconButton();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,38 @@
             this.pnTop.Size = new System.Drawing.Size(1048, 45);
             this.pnTop.TabIndex = 6;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(331, 44);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(717, 1);
+            this.panel1.TabIndex = 14;
+            // 
+            // btListas
+            // 
+            this.btListas.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btListas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btListas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btListas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btListas.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btListas.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btListas.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btListas.IconColor = System.Drawing.Color.Gainsboro;
+            this.btListas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btListas.IconSize = 30;
+            this.btListas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btListas.Location = new System.Drawing.Point(205, 0);
+            this.btListas.Name = "btListas";
+            this.btListas.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btListas.Size = new System.Drawing.Size(126, 45);
+            this.btListas.TabIndex = 13;
+            this.btListas.Text = "Listas";
+            this.btListas.UseVisualStyleBackColor = false;
+            this.btListas.Visible = false;
+            this.btListas.Click += new System.EventHandler(this.btListas_Click);
+            // 
             // btUsuarioExterno
             // 
             this.btUsuarioExterno.BackColor = System.Drawing.Color.MidnightBlue;
@@ -78,37 +110,6 @@
             this.btUsuarioExterno.UseVisualStyleBackColor = false;
             this.btUsuarioExterno.Click += new System.EventHandler(this.btUsuarioExterno_Click);
             // 
-            // btListas
-            // 
-            this.btListas.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btListas.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btListas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btListas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btListas.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btListas.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btListas.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btListas.IconColor = System.Drawing.Color.Gainsboro;
-            this.btListas.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btListas.IconSize = 30;
-            this.btListas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btListas.Location = new System.Drawing.Point(205, 0);
-            this.btListas.Name = "btListas";
-            this.btListas.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btListas.Size = new System.Drawing.Size(126, 45);
-            this.btListas.TabIndex = 13;
-            this.btListas.Text = "Listas";
-            this.btListas.UseVisualStyleBackColor = false;
-            this.btListas.Click += new System.EventHandler(this.btListas_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(331, 44);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(717, 1);
-            this.panel1.TabIndex = 14;
-            // 
             // MantenimientoSubMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +120,7 @@
             this.Controls.Add(this.pnTop);
             this.Name = "MantenimientoSubMain";
             this.Text = "MantenimientoSubMain";
+            this.Load += new System.EventHandler(this.MantenimientoSubMain_Load);
             this.pnTop.ResumeLayout(false);
             this.ResumeLayout(false);
 

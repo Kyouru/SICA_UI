@@ -539,6 +539,7 @@ namespace SICA.Forms.Busqueda
                 cmbDocumento.DataSource = dt;
                 cmbDocumento.DisplayMember = "NOMBRE_DOCUMENTO";
                 cmbDocumento.ValueMember = "ID_DOCUMENTO";
+
                 deshabilitarActualizacionDetalle = false;
                 cmbDocumento_SelectedIndexChanged(sender, e);
                 //cmbDetalle.DataSource = null;

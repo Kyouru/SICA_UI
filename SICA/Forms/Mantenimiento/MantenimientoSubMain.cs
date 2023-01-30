@@ -124,7 +124,12 @@ namespace SICA.Forms.Mantenimiento
         private void btListas_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new MantenimientoUsuarioExterno());
+            OpenChildForm(new MantenimientoListas());
+        }
+
+        private void MantenimientoSubMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(1048, 608);
             this.Name = "MantenimientoSocio";
             this.Text = "MantenimientoSocio";
+            this.Load += new System.EventHandler(this.MantenimientoSocio_Load);
             this.ResumeLayout(false);
 
         }
