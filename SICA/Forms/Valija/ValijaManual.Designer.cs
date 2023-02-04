@@ -386,6 +386,7 @@ namespace SICA.Forms.Valija
             this.cbCaja.TabIndex = 143;
             this.cbCaja.Text = "Caja:";
             this.cbCaja.UseVisualStyleBackColor = true;
+            this.cbCaja.CheckedChanged += new System.EventHandler(this.cbCaja_CheckedChanged);
             // 
             // pnTop
             // 

@@ -50,26 +50,57 @@ namespace SICA.Forms.Recibir
 
             DataTable dt = new DataTable("Lista Area");
 
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaarea");
-            httpWebRequest.Method = "GET";
-            httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            try
             {
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaarea");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
-                    string result = streamReader.ReadToEnd();
-                    dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        anulado = 0
+                    });
+
+                    streamWriter.Write(json);
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        string result = streamReader.ReadToEnd();
+                        dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    }
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    cmbArea.DataSource = dt;
+                    cmbArea.DisplayMember = "NOMBRE_AREA";
+                    cmbArea.ValueMember = "ID_AREA";
+                }
+                this.Activate();
+            }
+            catch (WebException ex)
+            {
+                LoadingScreen.cerrarLoading();
+                if (!(ex.Response is null))
+                {
+                    using (var stream = ex.Response.GetResponseStream())
+                    using (var reader = new StreamReader(stream))
+                    {
+                        GlobalFunctions.casoError(ex, "CuentaNueva_Load" + reader.ReadToEnd());
+                    }
                 }
             }
-            if (dt.Rows.Count > 0)
+            catch (Exception ex)
             {
-                cmbArea.DataSource = dt;
-                cmbArea.DisplayMember = "NOMBRE_AREA";
-                cmbArea.ValueMember = "ID_AREA";
+                GlobalFunctions.casoError(ex, "CuentaNueva_Load");
             }
-            this.Activate();
+            
         }
 
         private void btRegistrar_Click(object sender, EventArgs e)

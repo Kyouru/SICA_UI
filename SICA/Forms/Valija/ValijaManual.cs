@@ -55,20 +55,20 @@ namespace SICA.Forms.Valija
                 DataTable dt = new DataTable("Lista Departamento");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadepartamento");
-                //httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -86,20 +86,20 @@ namespace SICA.Forms.Valija
 
 
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaclasificacion");
-                //httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -115,20 +115,20 @@ namespace SICA.Forms.Valija
                 cmbClasificacion.ValueMember = "ID_CLASIFICACION";
 
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listacentrocosto");
-                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -144,20 +144,20 @@ namespace SICA.Forms.Valija
                 cmbCentroCosto.ValueMember = "ID_CENTRO_COSTO";
 
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaproducto");
-                //httpWebRequest.ContentType = "application/json";
+                httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -500,6 +500,19 @@ namespace SICA.Forms.Valija
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbCaja_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalFunctions.UltimaActividad();
+            if (cbCaja.Checked)
+            {
+                tbCaja.Visible = true;
+            }
+            else
+            {
+                tbCaja.Visible = false;
             }
         }
     }

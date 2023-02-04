@@ -76,9 +76,8 @@ namespace SICA
         public static string MoverMasivo = "0";
         public static string Valija = "0";
         public static string ValijaNuevo = "0";
-        public static string ValijaReingreso = "0";
-        public static string ValijaConfirmar = "0";
-        public static string ValijaManual = "0";
+        public static string ValijaValija = "0";
+        public static string ValijaTransicion = "0";
         public static string Pagare = "0";
         public static string PagareBuscar = "0";
         public static string PagareRecibir = "0";

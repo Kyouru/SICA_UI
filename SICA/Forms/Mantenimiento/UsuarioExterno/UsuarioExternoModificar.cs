@@ -54,8 +54,19 @@ namespace SICA.Forms.Recibir
                 DataTable dtarea = new DataTable("Lista Area");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaarea");
-                httpWebRequest.Method = "GET";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        anulado = 0
+                    });
+
+                    streamWriter.Write(json);
+                }
 
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)

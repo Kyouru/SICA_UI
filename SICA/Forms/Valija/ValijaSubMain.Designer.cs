@@ -30,10 +30,10 @@
         {
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btTransicion = new FontAwesome.Sharp.IconButton();
             this.btValija = new FontAwesome.Sharp.IconButton();
             this.btNuevo = new FontAwesome.Sharp.IconButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,15 @@
             this.pnTop.Size = new System.Drawing.Size(1048, 45);
             this.pnTop.TabIndex = 2;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(420, 44);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(628, 1);
+            this.panel1.TabIndex = 11;
+            // 
             // btTransicion
             // 
             this.btTransicion.BackColor = System.Drawing.Color.MidnightBlue;
@@ -79,6 +88,7 @@
             this.btTransicion.TabIndex = 10;
             this.btTransicion.Text = "Transicion";
             this.btTransicion.UseVisualStyleBackColor = false;
+            this.btTransicion.Visible = false;
             this.btTransicion.Click += new System.EventHandler(this.btTransicion_Click);
             // 
             // btValija
@@ -124,15 +134,6 @@
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
             this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(420, 44);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 1);
-            this.panel1.TabIndex = 11;
             // 
             // ValijaSubMain
             // 

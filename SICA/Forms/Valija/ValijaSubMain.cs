@@ -28,7 +28,8 @@ namespace SICA.Forms.Recibir
             pnTop.Controls.Add(topBorderBtn);
 
             btNuevo.Visible = int2bool(Globals.ValijaNuevo);
-            btValija.Visible = int2bool(Globals.ValijaReingreso);
+            btValija.Visible = int2bool(Globals.ValijaValija);
+            btTransicion.Visible = int2bool(Globals.ValijaTransicion);
         }
         private void OpenChildForm(Form childForm)
         {

@@ -19,6 +19,7 @@ using System.Linq;
 using System.Drawing;
 using System.Net.Mail;
 using Oracle.ManagedDataAccess.Client;
+using System.Configuration;
 
 namespace SICA
 {
@@ -762,20 +763,8 @@ namespace SICA
             try
             {
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Carrito/limpiarcarrito");
-                //httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    string json = new JavaScriptSerializer().Serialize(new
-                    {
-                        token = Globals.Token
-                    });
-
-                    streamWriter.Write(json);
-                }
-                */
             }
             catch (WebException ex)
             {
@@ -882,9 +871,8 @@ namespace SICA
                     Globals.MoverMasivo = usuario.MoverMasivo.ToString();
                     Globals.Valija = usuario.Valija.ToString();
                     Globals.ValijaNuevo = usuario.ValijaNuevo.ToString();
-                    Globals.ValijaReingreso = usuario.ValijaReingreso.ToString();
-                    Globals.ValijaConfirmar = usuario.ValijaConfirmar.ToString();
-                    Globals.ValijaManual = usuario.ValijaManual.ToString();
+                    Globals.ValijaValija = usuario.ValijaValija.ToString();
+                    Globals.ValijaTransicion = usuario.ValijaTransicion.ToString();
                     Globals.Pagare = usuario.Pagare.ToString();
                     Globals.PagareBuscar = usuario.PagareBuscar.ToString();
                     Globals.PagareRecibir = usuario.PagareRecibir.ToString();
@@ -896,8 +884,6 @@ namespace SICA
                     Globals.LetraBuscar = usuario.LetraBuscar.ToString();
                     Globals.Mantenimiento = usuario.Mantenimiento.ToString();
                     Globals.MantenimientoUsuarioExterno = usuario.MantenimientoUsuarioExterno.ToString();
-                    Globals.MantenimientoCredito = usuario.MantenimientoCredito.ToString();
-                    Globals.MantenimientoSocio = usuario.MantenimientoSocio.ToString();
                     Globals.MantenimientoListas = usuario.MantenimientoListas.ToString();
                     Globals.Pendiente = usuario.Pendiente.ToString();
                     Globals.PendienteRegularizar = usuario.PendienteRegularizar.ToString();
@@ -907,7 +893,6 @@ namespace SICA
                     Globals.PrestarPrestar = usuario.PrestarPrestar.ToString();
                     Globals.PrestarRecibir = usuario.PrestarRecibir.ToString();
 
-                    Globals.Nivel = usuario.Nivel.ToString();
                     Globals.Username = username;
                     //Acceso Permitido
                     if (usuario.CambiarPassword == 1 && usuario.AccesoPermitido == 1)
@@ -1036,7 +1021,7 @@ namespace SICA
 
         public static string PrestamoDatos(int periodo, int numero)
         {
-            string ambiente = "DESA";
+            string ambiente = ConfigurationManager.AppSettings["ambienteSISGO"].ToString();
             string strconn = "";
             string res = "";
             string strSQL = "SELECT * FROM TABLE(PKG_CUSTODIA.F_OBT_DATOSCREDITO(" + periodo + ", " + numero  + "))";

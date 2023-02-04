@@ -39,6 +39,13 @@ namespace SICA.Forms.Entregar
         {
 
             GlobalFunctions.UltimaActividad();
+            if (tbBusquedaLibre.Text.Trim() == "") // + tbUsuario.Text == "")
+            {
+                dgv.DataSource = null;
+                MessageBox.Show("Filtro Vacio");
+                return;
+            }
+
             LoadingScreen.iniciarLoading();
 
             try

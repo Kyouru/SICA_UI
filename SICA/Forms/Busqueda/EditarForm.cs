@@ -74,20 +74,19 @@ namespace SICA.Forms.Busqueda
                 DataTable dt = new DataTable("Lista Departamento");
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listadepartamento");
-                //httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
-                /*
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
+
                     streamWriter.Write(json);
                 }
-                */
 
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
@@ -107,20 +106,19 @@ namespace SICA.Forms.Busqueda
 
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaclasificacion");
                 httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
 
-                /*
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -137,19 +135,19 @@ namespace SICA.Forms.Busqueda
 
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listacentrocosto");
                 httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
@@ -166,19 +164,19 @@ namespace SICA.Forms.Busqueda
 
                 httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaproducto");
                 httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
+                httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                /*
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        token = Globals.Token
+                        anulado = 0
                     });
 
                     streamWriter.Write(json);
                 }
-                */
+
                 httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {

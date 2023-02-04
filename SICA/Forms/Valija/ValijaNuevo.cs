@@ -21,7 +21,7 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             InitializeComponent();
 
-            btIngresoManual.Visible = int2bool(Globals.ValijaManual);
+            btIngresoManual.Visible = int2bool(Globals.ValijaNuevo);
         }
 
         private void btBuscarCargo_Click(object sender, EventArgs e)
