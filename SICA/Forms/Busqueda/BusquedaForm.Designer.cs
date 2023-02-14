@@ -269,7 +269,7 @@
             this.btRecibir.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.btRecibir.Size = new System.Drawing.Size(48, 38);
             this.btRecibir.TabIndex = 22;
-            this.toolTip1.SetToolTip(this.btRecibir, "Recibir");
+            this.toolTip1.SetToolTip(this.btRecibir, "Recibir/Mover");
             this.btRecibir.UseVisualStyleBackColor = true;
             this.btRecibir.Click += new System.EventHandler(this.btRecibir_Click);
             // 

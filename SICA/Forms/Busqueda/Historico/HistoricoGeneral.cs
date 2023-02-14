@@ -59,8 +59,9 @@ namespace SICA.Forms.Busqueda.Historico
                 
                 dgv.DataSource = dt;
                 dgv.AutoResizeColumns();
-                dgv.Columns[0].Width = 0;
-                
+                dgv.Columns["ID"].Visible = false;
+                dgv.Columns["PRIORIDAD"].Visible = false;
+
             }
             catch (WebException ex)
             {

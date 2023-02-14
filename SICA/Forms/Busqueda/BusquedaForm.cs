@@ -254,7 +254,7 @@ namespace SICA
                             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                             {
                                 string result = streamReader.ReadToEnd();
-                                MessageBox.Show("Entregado");
+                                //MessageBox.Show("Entregado");
                                 btBuscar_Click(sender, e);
                                 dgvBusqueda.ClearSelection();
                                 dgvBusqueda.Rows[selectedrow].Selected = true;
@@ -329,7 +329,7 @@ namespace SICA
                             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                             {
                                 string result = streamReader.ReadToEnd();
-                                MessageBox.Show("Recibido");
+                                //MessageBox.Show("Procesado");
                                 btBuscar_Click(sender, e);
                                 dgvBusqueda.ClearSelection();
                                 dgvBusqueda.Rows[selectedrow].Selected = true;

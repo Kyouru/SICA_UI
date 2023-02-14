@@ -434,7 +434,6 @@ namespace SICA.Forms.Busqueda
                         using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                         {
                             string result = streamReader.ReadToEnd();
-                            MessageBox.Show(result);
                         }
                         MessageBox.Show("Actualizado");
                         this.Close();

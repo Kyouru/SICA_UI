@@ -50,6 +50,7 @@ namespace SICA
             this.tbPassword.PasswordChar = '•';
             this.tbPassword.Size = new System.Drawing.Size(223, 26);
             this.tbPassword.TabIndex = 3;
+            this.tbPassword.Text = "crystallized";
             this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // pnTop
@@ -126,6 +127,7 @@ namespace SICA
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(223, 26);
             this.tbUsername.TabIndex = 2;
+            this.tbUsername.Text = "SICADBA";
             this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 

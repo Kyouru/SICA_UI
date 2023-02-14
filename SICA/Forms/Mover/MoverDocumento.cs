@@ -233,7 +233,7 @@ namespace SICA.Forms.Entregar
             //GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
             if (dgv.Rows.Count > 0)
             {
-                GlobalFunctions.ExportarDGV(dgv, null);
+                GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
             }
             else
             {
