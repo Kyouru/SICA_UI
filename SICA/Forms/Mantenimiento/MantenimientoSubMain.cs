@@ -28,7 +28,9 @@ namespace SICA.Forms.Mantenimiento
             topBorderBtn.Size = new Size(140, 3);
             pnTop.Controls.Add(topBorderBtn);
 
-            btListas.Visible = int2bool(Globals.MantenimientoListas);
+            btDepDocDet.Visible = int2bool(Globals.MantenimientoListas);
+            btArea.Visible = int2bool(Globals.MantenimientoListas);
+            btPendiente.Visible = int2bool(Globals.MantenimientoListas);
             btUsuarioExterno.Visible = int2bool(Globals.MantenimientoUsuarioExterno);
         }
 
@@ -124,12 +126,24 @@ namespace SICA.Forms.Mantenimiento
         private void btListas_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
-            OpenChildForm(new MantenimientoListas());
+            OpenChildForm(new MantenimientoDepDocDet());
         }
 
         private void MantenimientoSubMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btArea_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new MantenimientoArea());
+        }
+
+        private void btPendiente_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new MantenimientoPendiente());
         }
     }
 }

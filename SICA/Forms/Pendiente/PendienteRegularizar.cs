@@ -99,20 +99,20 @@ namespace SICA.Forms.Pendiente
                     {
 
                         httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listapendientes");
-                        //httpWebRequest.ContentType = "application/json";
-                        httpWebRequest.Method = "GET";
+                        httpWebRequest.ContentType = "application/json";
+                        httpWebRequest.Method = "POST";
                         httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-                        /*
+                        
                         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                token = Globals.Token
+                                anulado = 0
                             });
 
                             streamWriter.Write(json);
                         }
-                        */
+                        
                         httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                         if (httpResponse.StatusCode == HttpStatusCode.OK)
                         {
@@ -267,7 +267,6 @@ namespace SICA.Forms.Pendiente
                                 fecha = fecha,
                                 pendienteok = pendienteok,
                                 modificado = modificado,
-                                idubicacionentrega = 9, //PENDIENTE
                                 idubicacionrecibe = ubicacionrecibe,  //TRANSICION 7 o PENDIENTE 9
                                 idinventario = row.Cells["ID"].Value.ToString(),
                                 numerocaja = row.Cells["CAJA"].Value.ToString(),

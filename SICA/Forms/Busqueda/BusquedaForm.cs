@@ -136,7 +136,7 @@ namespace SICA
             GlobalFunctions.UltimaActividad();
             if (dgvBusqueda.Rows.Count > 0)
             {
-                GlobalFunctions.ExportarDataGridViewCSV(dgvBusqueda, null);
+                GlobalFunctions.ExportarDataGridViewCSV(dgvBusqueda, null, true);
             }
             else
             {
@@ -217,7 +217,6 @@ namespace SICA
         {
             if (dgvBusqueda.SelectedRows.Count == 1)
             {
-                Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                 suf.ShowDialog();
                 if (Globals.IdUsernameSelect > 0)

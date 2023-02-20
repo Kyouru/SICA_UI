@@ -63,9 +63,7 @@ namespace SICA.Forms
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        tiposeleccionarusuario = Globals.TipoSeleccionarUsuario,
-                        busquedalibre = tbBuscar.Text
-                        //1: Externos
+                        nombreusuarioexterno = tbBuscar.Text
                     });
 
                     streamWriter.Write(json);

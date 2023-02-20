@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace SICA.Forms.Mantenimiento
 {
-    public partial class MantenimientoListas : Form
+    public partial class MantenimientoDepDocDet : Form
     {
-        public MantenimientoListas()
+        public MantenimientoDepDocDet()
         {
             InitializeComponent();
         }

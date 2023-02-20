@@ -277,7 +277,7 @@ namespace SICA
             }
         }
 
-        public static void ExportarDataGridViewCSV(DataGridView dgv, string fileName)
+        public static string ExportarDataGridViewCSV(DataGridView dgv, string fileName, bool start)
         {
             LoadingScreen.iniciarLoading();
 
@@ -295,7 +295,6 @@ namespace SICA
                 string[] outputCsv = new string[dgv.Rows.Count + 1];
                 string columnNames = "";
                 outputCsv = new string[dgv.Rows.Count + 1];
-
                 for (int i = 0; i < dgv.Columns.Count; i++)
                 {
                     columnNames += dgv.Columns[i].HeaderText.ToString() + System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
@@ -307,23 +306,27 @@ namespace SICA
                 {
                     for (int j = 0; j < dgv.Columns.Count; j++)
                     {
-                        if (dgv.Rows[i - 1].Cells[j] != null)
+                        if (dgv.Rows[i - 1].Cells[j].Value != null)
                         {
-                            outputCsv[i] += dgv.Rows[i - 1].Cells[j].Value.ToString() + System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
+                            outputCsv[i] += dgv.Rows[i - 1].Cells[j].Value.ToString();
                         }
+                        outputCsv[i] += System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
                     }
                 }
                 File.WriteAllLines(fileName, outputCsv, Encoding.UTF8);
 
-                Process.Start(fileName);
+                if (start)
+                {
+                    Process.Start(fileName);
+                }
 
                 LoadingScreen.cerrarLoading();
-
+                return fileName;
             }
             catch (Exception ex)
             {
                 GlobalFunctions.casoError(ex, "");
-                return;
+                return "Error";
             }
         }
 

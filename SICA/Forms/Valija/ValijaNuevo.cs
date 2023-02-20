@@ -703,7 +703,6 @@ namespace SICA.Forms.Valija
         private void btCargarValido_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            Globals.TipoSeleccionarUsuario = 1;
             SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
             suf.ShowDialog();
             if (Globals.IdUsernameSelect > 0)
@@ -732,9 +731,9 @@ namespace SICA.Forms.Valija
                         {
                             string json = new JavaScriptSerializer().Serialize(new
                             {
-                                idaux = Globals.IdUsernameSelect,
+                                idusuarioentrega = Globals.IdUsernameSelect,
                                 idubicacionentrega = 2, //Usuario Externo
-                                idubicacionrecibe = 8, //Valija
+                                //idubicacionrecibe = 8, //Valija
                                 iddocumento = row.Cells["IDDOCUMENTO"].Value.ToString(),
                                 iddepartamento = row.Cells["IDDEPARTAMENTO"].Value.ToString(),
                                 iddetalle = row.Cells["IDDETALLE"].Value.ToString(),

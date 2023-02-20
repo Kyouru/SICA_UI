@@ -133,7 +133,6 @@ namespace SICA.Forms.Entregar
             GlobalFunctions.UltimaActividad();
             if (lbCantidad.Text != "(0)")
             {
-                Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                 suf.ShowDialog();
                 if (Globals.IdUsernameSelect > 0)
@@ -252,8 +251,7 @@ namespace SICA.Forms.Entregar
         private void btExcel_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            //GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
-            GlobalFunctions.ExportarDGV(dgv, null);
+            GlobalFunctions.ExportarDataGridViewCSV(dgv, null, true);
         }
 
         private void btLimpiarCarrito_Click(object sender, EventArgs e)

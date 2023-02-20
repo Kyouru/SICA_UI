@@ -230,10 +230,9 @@ namespace SICA.Forms.Entregar
         private void btExcel_Click(object sender, EventArgs e)
         {
             GlobalFunctions.UltimaActividad();
-            //GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
             if (dgv.Rows.Count > 0)
             {
-                GlobalFunctions.ExportarDataGridViewCSV(dgv, null);
+                GlobalFunctions.ExportarDataGridViewCSV(dgv, null, true);
             }
             else
             {

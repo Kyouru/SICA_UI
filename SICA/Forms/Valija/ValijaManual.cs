@@ -219,7 +219,6 @@ namespace SICA.Forms.Valija
 
             if (correcto)
             {
-                Globals.TipoSeleccionarUsuario = 1;
                 SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                 suf.ShowDialog();
                 if (Globals.IdUsernameSelect > 0)

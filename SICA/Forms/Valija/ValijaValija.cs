@@ -43,19 +43,8 @@ namespace SICA.Forms.Valija
                 DataTable dt = new DataTable("BuscarValija");
 
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Recibir/buscarvalija");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
+                httpWebRequest.Method = "GET";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
-
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    string json = new JavaScriptSerializer().Serialize(new
-                    {
-                        idubicacion = 8
-                    });
-
-                    streamWriter.Write(json);
-                }
 
                 HttpWebResponse httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
@@ -113,7 +102,7 @@ namespace SICA.Forms.Valija
             GlobalFunctions.UltimaActividad();
             if (dgv.Rows.Count > 0)
             {
-                GlobalFunctions.ExportarDGV(dgv, null);
+                GlobalFunctions.ExportarDataGridViewCSV(dgv, null, true);
             }
             else
             {

@@ -26,7 +26,6 @@ namespace SICA
         public static String Token = "";
         public static String NombreCargo = "";
 
-        public static Int32 TipoSeleccionarUsuario = -1;
         public static Int32 TipoSeleccionarUbicacion = -1;
 
         public static Int32 IdInventario = -1;

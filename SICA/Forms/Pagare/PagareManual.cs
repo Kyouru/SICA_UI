@@ -33,7 +33,6 @@ namespace SICA.Forms.Pagare
                 {
                     if (tbNombre.Text != "")
                     {
-                        Globals.TipoSeleccionarUsuario = 1;
                         SeleccionarUsuarioForm suf = new SeleccionarUsuarioForm();
                         suf.ShowDialog();
                         if (Globals.IdUsernameSelect > 0)
