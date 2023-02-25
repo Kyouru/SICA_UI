@@ -60,7 +60,11 @@ namespace SICA.Forms.Mantenimiento
                 if (dt.Rows.Count > 0)
                 {
                     dgv.DataSource = dt;
-                    dgv.Columns[0].Visible = false;
+                    dgv.Columns["ID"].Visible = false;
+                    dgv.Columns["ID_AREA_FK"].Visible = false;
+                    dgv.Columns["NOMBRE_USUARIO_EXTERNO"].HeaderText = "NOMBRE";
+                    dgv.Columns["NOMBRE_AREA"].HeaderText = "AREA";
+                    dgv.AutoResizeColumns();
                     dgv.ClearSelection();
                 }
                 LoadingScreen.cerrarLoading();

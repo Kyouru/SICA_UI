@@ -75,21 +75,21 @@ namespace SICA.Forms.Mantenimiento
                 {
                     //NOMBRE 1
                     DataTable nombre = new DataTable("Pendientes Nombre");
-                    nombre.Columns.Add("ID_LPENDIENTE");
+                    nombre.Columns.Add("ID_PENDIENTE");
                     nombre.Columns.Add("NOMBRE");
                     nombre.Columns.Add("ORDEN");
                     nombre.Columns.Add("ANULADO");
 
                     //DETALLE 2
                     DataTable detalle = new DataTable("Pendientes Detalle");
-                    detalle.Columns.Add("ID_LPENDIENTE");
+                    detalle.Columns.Add("ID_PENDIENTE");
                     detalle.Columns.Add("NOMBRE");
                     detalle.Columns.Add("ORDEN");
                     detalle.Columns.Add("ANULADO");
 
                     //BANCA 3
                     DataTable banca = new DataTable("Pendientes Banca");
-                    banca.Columns.Add("ID_LPENDIENTE");
+                    banca.Columns.Add("ID_PENDIENTE");
                     banca.Columns.Add("NOMBRE");
                     banca.Columns.Add("ORDEN");
                     banca.Columns.Add("ANULADO");
@@ -103,7 +103,7 @@ namespace SICA.Forms.Mantenimiento
                         if (row["TIPO"].ToString() == "1")
                         {
                             DataRow drNombre = nombre.NewRow();
-                            drNombre["ID_LPENDIENTE"] = row["ID_LPENDIENTE"];
+                            drNombre["ID_PENDIENTE"] = row["ID_PENDIENTE"];
                             drNombre["NOMBRE"] = row["NOMBRE"];
                             drNombre["ORDEN"] = row["ORDEN"];
                             drNombre["ANULADO"] = row["ANULADO"];
@@ -112,7 +112,7 @@ namespace SICA.Forms.Mantenimiento
                         else if (row["TIPO"].ToString() == "2")
                         {
                             DataRow drDetalle = detalle.NewRow();
-                            drDetalle["ID_LPENDIENTE"] = row["ID_LPENDIENTE"];
+                            drDetalle["ID_PENDIENTE"] = row["ID_PENDIENTE"];
                             drDetalle["NOMBRE"] = row["NOMBRE"];
                             drDetalle["ORDEN"] = row["ORDEN"];
                             drDetalle["ANULADO"] = row["ANULADO"];
@@ -121,7 +121,7 @@ namespace SICA.Forms.Mantenimiento
                         else if (row["TIPO"].ToString() == "3")
                         {
                             DataRow drBanca = banca.NewRow();
-                            drBanca["ID_LPENDIENTE"] = row["ID_LPENDIENTE"];
+                            drBanca["ID_PENDIENTE"] = row["ID_PENDIENTE"];
                             drBanca["NOMBRE"] = row["NOMBRE"];
                             drBanca["ORDEN"] = row["ORDEN"];
                             drBanca["ANULADO"] = row["ANULADO"];
@@ -130,34 +130,49 @@ namespace SICA.Forms.Mantenimiento
                     }
 
                     dgvNombre.DataSource = nombre;
-                    dgvNombre.Columns["ID_LPENDIENTE"].Visible = false;
+                    dgvNombre.Columns["ID_PENDIENTE"].Visible = false;
                     dgvNombre.Columns["ORDEN"].Visible = false;
                     dgvNombre.Columns["ANULADO"].Visible = false;
                     dgvNombre.Columns["NOMBRE"].Width = dgvNombre.Width - 2;
 
                     dgvDetalle.DataSource = detalle;
-                    dgvDetalle.Columns["ID_LPENDIENTE"].Visible = false;
+                    dgvDetalle.Columns["ID_PENDIENTE"].Visible = false;
                     dgvDetalle.Columns["ORDEN"].Visible = false;
                     dgvDetalle.Columns["ANULADO"].Visible = false;
-                    dgvDetalle.Columns["NOMBRE"].Width = dgvDetalle.Width - 2;
+                    dgvDetalle.Columns["NOMBRE"].Width = dgvDetalle.Width - 25;
 
                     dgvBanca.DataSource = banca;
-                    dgvBanca.Columns["ID_LPENDIENTE"].Visible = false;
+                    dgvBanca.Columns["ID_PENDIENTE"].Visible = false;
                     dgvBanca.Columns["ORDEN"].Visible = false;
                     dgvBanca.Columns["ANULADO"].Visible = false;
                     dgvBanca.Columns["NOMBRE"].Width = dgvBanca.Width - 2;
 
-                    if (dgvNombre.SelectedRows.Count > index && index >= 0)
+                    if (dgvNombre.Rows.Count > index && index >= 0)
                     {
-                        dgvNombre.Rows[index + 1].Selected = true;
+                        //MessageBox.Show(index.ToString());
+                        dgvNombre.Rows[index].Selected = true;
+                        if (index > Globals.ListaScrollLimite)
+                        {
+                            dgvNombre.FirstDisplayedScrollingRowIndex = dgvNombre.SelectedRows[0].Index;
+                        }
                     }
-                    if (dgvDetalle.SelectedRows.Count > index2 && index2 >= 0)
+                    if (dgvDetalle.Rows.Count > index2 && index2 >= 0)
                     {
+                        //MessageBox.Show(index2.ToString());
                         dgvDetalle.Rows[index2].Selected = true;
+                        if (index2 > Globals.ListaScrollLimite)
+                        {
+                            dgvDetalle.FirstDisplayedScrollingRowIndex = dgvDetalle.SelectedRows[0].Index;
+                        }
                     }
-                    if (dgvBanca.SelectedRows.Count > index3 && index3 >= 0)
+                    if (dgvBanca.Rows.Count > index3 && index3 >= 0)
                     {
+                        //MessageBox.Show(index3.ToString());
                         dgvBanca.Rows[index3].Selected = true;
+                        if (index3 > Globals.ListaScrollLimite)
+                        {
+                            dgvBanca.FirstDisplayedScrollingRowIndex = dgvBanca.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -237,12 +252,17 @@ namespace SICA.Forms.Mantenimiento
             {
                 if (dgvNombre.SelectedRows[0].Index > 0)
                 {
+                    int prevrow = dgvNombre.SelectedRows[0].Index - 1;
                     PendienteOrden(dgvNombre, 1, -1);
 
                     PendienteLoad();
                     if (dgvNombre.SelectedRows.Count > 0)
                     {
-                        dgvNombre.Rows[dgvNombre.SelectedRows[0].Index - 1].Selected = true;
+                        dgvNombre.Rows[prevrow].Selected = true;
+                        if (prevrow > Globals.ListaScrollLimite)
+                        {
+                            dgvNombre.FirstDisplayedScrollingRowIndex = dgvNombre.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -254,12 +274,17 @@ namespace SICA.Forms.Mantenimiento
             {
                 if (dgvNombre.SelectedRows[0].Index < dgvNombre.Rows.Count - 1)
                 {
+                    int prevrow = dgvNombre.SelectedRows[0].Index + 1;
                     PendienteOrden(dgvNombre, 1, 1);
 
                     PendienteLoad();
                     if (dgvNombre.SelectedRows.Count > 0)
                     {
-                        dgvNombre.Rows[dgvNombre.SelectedRows[0].Index + 1].Selected = true;
+                        dgvNombre.Rows[prevrow].Selected = true;
+                        if (prevrow > Globals.ListaScrollLimite)
+                        {
+                            dgvNombre.FirstDisplayedScrollingRowIndex = dgvNombre.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -280,7 +305,7 @@ namespace SICA.Forms.Mantenimiento
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            idpendiente = dgvNombre.SelectedRows[0].Cells["ID_LPENDIENTE"].Value
+                            idpendiente = dgvNombre.SelectedRows[0].Cells["ID_PENDIENTE"].Value
                         });
 
                         streamWriter.Write(json);
@@ -373,12 +398,17 @@ namespace SICA.Forms.Mantenimiento
             {
                 if (dgvDetalle.SelectedRows[0].Index > 0)
                 {
+                    int prevrow = dgvDetalle.SelectedRows[0].Index - 1;
                     PendienteOrden(dgvDetalle, 2, -1);
 
                     PendienteLoad();
                     if (dgvDetalle.SelectedRows.Count > 0)
                     {
-                        dgvDetalle.Rows[dgvDetalle.SelectedRows[0].Index - 1].Selected = true;
+                        dgvDetalle.Rows[prevrow].Selected = true;
+                        if (prevrow > Globals.ListaScrollLimite)
+                        {
+                            dgvDetalle.FirstDisplayedScrollingRowIndex = dgvDetalle.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -390,11 +420,16 @@ namespace SICA.Forms.Mantenimiento
             {
                 if (dgvDetalle.SelectedRows[0].Index < dgvDetalle.Rows.Count - 1)
                 {
+                    int prevrow = dgvDetalle.SelectedRows[0].Index + 1;
                     PendienteOrden(dgvDetalle, 2, 1);
                     PendienteLoad();
                     if (dgvDetalle.SelectedRows.Count > 0)
                     {
-                        dgvDetalle.Rows[dgvDetalle.SelectedRows[0].Index + 1].Selected = true;
+                        dgvDetalle.Rows[prevrow].Selected = true;
+                        if (prevrow > Globals.ListaScrollLimite)
+                        {
+                            dgvDetalle.FirstDisplayedScrollingRowIndex = dgvDetalle.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -415,7 +450,7 @@ namespace SICA.Forms.Mantenimiento
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            idpendiente = dgvDetalle.SelectedRows[0].Cells["ID_LPENDIENTE"].Value
+                            idpendiente = dgvDetalle.SelectedRows[0].Cells["ID_PENDIENTE"].Value
                         });
 
                         streamWriter.Write(json);
@@ -507,12 +542,17 @@ namespace SICA.Forms.Mantenimiento
             {
                 if (dgvBanca.SelectedRows[0].Index > 0)
                 {
+                    int prevrow = dgvBanca.SelectedRows[0].Index - 1;
                     PendienteOrden(dgvBanca, 2, -1);
 
                     PendienteLoad();
                     if (dgvBanca.SelectedRows.Count > 0)
                     {
-                        dgvBanca.Rows[dgvBanca.SelectedRows[0].Index - 1].Selected = true;
+                        dgvBanca.Rows[prevrow].Selected = true;
+                        if (prevrow > Globals.ListaScrollLimite)
+                        {
+                            dgvBanca.FirstDisplayedScrollingRowIndex = dgvBanca.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -524,11 +564,16 @@ namespace SICA.Forms.Mantenimiento
             {
                 if (dgvBanca.SelectedRows[0].Index < dgvBanca.Rows.Count - 1)
                 {
+                    int prevrow = dgvBanca.SelectedRows[0].Index + 1;
                     PendienteOrden(dgvBanca, 2, 1);
                     PendienteLoad();
                     if (dgvBanca.SelectedRows.Count > 0)
                     {
-                        dgvBanca.Rows[dgvBanca.SelectedRows[0].Index + 1].Selected = true;
+                        dgvBanca.Rows[prevrow].Selected = true;
+                        if (prevrow > Globals.ListaScrollLimite)
+                        {
+                            dgvBanca.FirstDisplayedScrollingRowIndex = dgvBanca.SelectedRows[0].Index;
+                        }
                     }
                 }
             }
@@ -549,7 +594,7 @@ namespace SICA.Forms.Mantenimiento
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            idpendiente = dgvBanca.SelectedRows[0].Cells["ID_LPENDIENTE"].Value
+                            idpendiente = dgvBanca.SelectedRows[0].Cells["ID_PENDIENTE"].Value
                         });
 
                         streamWriter.Write(json);
@@ -587,7 +632,7 @@ namespace SICA.Forms.Mantenimiento
         {
             try
             {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/PendienteOrden");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/pendienteorden");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
@@ -596,7 +641,7 @@ namespace SICA.Forms.Mantenimiento
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        idpendiente = dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells["ID_LPENDIENTE"].Value.ToString(),
+                        idpendiente = dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells["ID_PENDIENTE"].Value.ToString(),
                         ordendif = ordendif,
                         tipo = tipo
                     });

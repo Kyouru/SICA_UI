@@ -27,6 +27,7 @@ namespace SICA
         public static String NombreCargo = "";
 
         public static Int32 TipoSeleccionarUbicacion = -1;
+        public static Int32 ListaScrollLimite = 15;
 
         public static Int32 IdInventario = -1;
         public static Int32 IdUsername = -1;

@@ -11,27 +11,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SICA.Forms.Mantenimiento
 {
-    public partial class MantenimientoArea : Form
+    public partial class MantenimientoProducto : Form
     {
-        public MantenimientoArea()
+        public MantenimientoProducto()
         {
             InitializeComponent();
         }
 
         private void MantenimientoListas_Load(object sender, EventArgs e)
         {
-            AreaLoad();
+            ProductoLoad();
         }
-        private void AreaLoad()
+        private void ProductoLoad()
         {
             try
             {
-                DataTable dt = new DataTable("Lista Area");
+                DataTable dt = new DataTable("Lista Producto");
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaarea");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Common/listaproducto");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
@@ -58,16 +59,16 @@ namespace SICA.Forms.Mantenimiento
                 }
                 if (dt.Rows.Count > 0)
                 {
-                    dgvArea.DataSource = dt;
-                    dgvArea.Columns["ORDEN"].Visible = false;
-                    dgvArea.Columns["ANULADO"].Visible = false;
-                    dgvArea.Columns["ID_AREA"].Visible = false;
-                    dgvArea.Columns["NOMBRE_Area"].Width = dgvArea.Width - 2;
+                    dgvProducto.DataSource = dt;
+                    dgvProducto.Columns["ORDEN"].Visible = false;
+                    dgvProducto.Columns["ANULADO"].Visible = false;
+                    dgvProducto.Columns["ID_PRODUCTO"].Visible = false;
+                    dgvProducto.Columns["NOMBRE_PRODUCTO"].Width = dgvProducto.Width - 25;
                     foreach (DataRow dr in dt.Rows)
                     {
                         if (dr["ANULADO"].ToString() == "1")
                         {
-                            dr["NOMBRE_AREA"] = dr["NOMBRE_AREA"].ToString() + " (ANULADO)";
+                            dr["NOMBRE_PRODUCTO"] = dr["NOMBRE_PRODUCTO"].ToString() + " (ANULADO)";
                         }
                     }
                 }
@@ -80,21 +81,21 @@ namespace SICA.Forms.Mantenimiento
                     using (var stream = ex.Response.GetResponseStream())
                     using (var reader = new StreamReader(stream))
                     {
-                        GlobalFunctions.casoError(ex, "Cargar Area\n" + reader.ReadToEnd());
+                        GlobalFunctions.casoError(ex, "Cargar Producto\n" + reader.ReadToEnd());
                     }
                 }
             }
             catch (Exception ex)
             {
-                GlobalFunctions.casoError(ex, "Cargar Area\n");
+                GlobalFunctions.casoError(ex, "Cargar Producto\n");
             }
         }
 
-        private void AreaOrden(int ordendif)
+        private void ProductoOrden(int ordendif)
         {
             try
             {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/AreaOrden");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/productoorden");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
@@ -103,7 +104,7 @@ namespace SICA.Forms.Mantenimiento
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
-                        idarea = dgvArea.Rows[dgvArea.SelectedCells[0].RowIndex].Cells["ID_AREA"].Value.ToString(),
+                        idproducto = dgvProducto.Rows[dgvProducto.SelectedCells[0].RowIndex].Cells["ID_PRODUCTO"].Value.ToString(),
                         ordendif = ordendif
                     });
 
@@ -126,31 +127,31 @@ namespace SICA.Forms.Mantenimiento
                     using (var stream = ex.Response.GetResponseStream())
                     using (var reader = new StreamReader(stream))
                     {
-                        GlobalFunctions.casoError(ex, "Ordenar Area\n" + reader.ReadToEnd());
+                        GlobalFunctions.casoError(ex, "Ordenar Producto\n" + reader.ReadToEnd());
                     }
                 }
             }
             catch (Exception ex)
             {
-                GlobalFunctions.casoError(ex, "Ordenar Area\n");
+                GlobalFunctions.casoError(ex, "Ordenar Producto\n");
             }
 
         }
 
-        private void btAgregarArea_Click(object sender, EventArgs e)
+        private void btAgregarProducto_Click(object sender, EventArgs e)
         {
-            string nombrearea = Microsoft.VisualBasic.Interaction.InputBox("Escriba el nombre del Area:", "Nombre Area", "");
-            if (nombrearea != null)
+            string nombreproducto = Microsoft.VisualBasic.Interaction.InputBox("Escriba el nombre del Producto:", "Nombre Producto", "");
+            if (nombreproducto != null)
             {
-                nombrearea = nombrearea.ToUpper();
+                nombreproducto = nombreproducto.ToUpper();
                 try
                 {
                     int index = -1;
-                    if (dgvArea.SelectedRows.Count > 0)
+                    if (dgvProducto.SelectedRows.Count > 0)
                     {
-                        index = dgvArea.SelectedRows[0].Index;
+                        index = dgvProducto.SelectedRows[0].Index;
                     }
-                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/areaagregar");
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/productoagregar");
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
                     httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
@@ -159,7 +160,7 @@ namespace SICA.Forms.Mantenimiento
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            strarea = nombrearea
+                            strproducto = nombreproducto
                         });
 
                         streamWriter.Write(json);
@@ -170,10 +171,14 @@ namespace SICA.Forms.Mantenimiento
                         using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                         {
                             string result = streamReader.ReadToEnd();
-                            AreaLoad();
+                            ProductoLoad();
                             if (index >= 0)
                             {
-                                dgvArea.Rows[index].Selected = true;
+                                dgvProducto.Rows[index].Selected = true;
+                                if (index > Globals.ListaScrollLimite)
+                                {
+                                    dgvProducto.FirstDisplayedScrollingRowIndex = dgvProducto.SelectedRows[0].Index;
+                                }
                             }
                         }
                     }
@@ -186,57 +191,64 @@ namespace SICA.Forms.Mantenimiento
                         using (var stream = ex.Response.GetResponseStream())
                         using (var reader = new StreamReader(stream))
                         {
-                            GlobalFunctions.casoError(ex, "Agregar Area\n" + reader.ReadToEnd());
+                            GlobalFunctions.casoError(ex, "Agregar Producto\n" + reader.ReadToEnd());
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    GlobalFunctions.casoError(ex, "Agregar Area\n");
+                    GlobalFunctions.casoError(ex, "Agregar Producto\n");
                 }
             }
         }
 
-        private void btOrderUpArea_Click(object sender, EventArgs e)
+        private void btOrderUpProducto_Click(object sender, EventArgs e)
         {
-            if (dgvArea.SelectedRows.Count > 0)
+            if (dgvProducto.SelectedRows.Count > 0)
             {
-                if (dgvArea.SelectedRows[0].Index > 0)
+                if (dgvProducto.SelectedRows[0].Index > 0)
                 {
-                    int prevrow = dgvArea.SelectedRows[0].Index - 1;
-                    AreaOrden(-1);
+                    int prevrow = dgvProducto.SelectedRows[0].Index - 1;
+                    ProductoOrden(-1);
 
-                    AreaLoad();
-                    dgvArea.Rows[prevrow].Selected = true;
+                    ProductoLoad();
+                    dgvProducto.Rows[prevrow].Selected = true;
+                    if (prevrow > Globals.ListaScrollLimite)
+                    {
+                        dgvProducto.FirstDisplayedScrollingRowIndex = dgvProducto.SelectedRows[0].Index;
+                    }
                 }
             }
         }
 
-        private void btOrderDownArea_Click(object sender, EventArgs e)
+        private void btOrderDownProducto_Click(object sender, EventArgs e)
         {
-            if (dgvArea.SelectedRows.Count > 0)
+            if (dgvProducto.SelectedRows.Count > 0)
             {
-                if (dgvArea.SelectedRows[0].Index < dgvArea.Rows.Count - 1)
+                if (dgvProducto.SelectedRows[0].Index < dgvProducto.Rows.Count - 1)
                 {
-                    int nextrow = dgvArea.SelectedRows[0].Index + 1;
+                    int nextrow = dgvProducto.SelectedRows[0].Index + 1;
 
-                    AreaOrden(1);
+                    ProductoOrden(1);
 
-                    AreaLoad();
-                    dgvArea.Rows[nextrow].Selected = true;
+                    ProductoLoad();
+                    dgvProducto.Rows[nextrow].Selected = true;
+                    if (nextrow > Globals.ListaScrollLimite)
+                    {
+                        dgvProducto.FirstDisplayedScrollingRowIndex = dgvProducto.SelectedRows[0].Index;
+                    }
                 }
             }
         }
 
-        private void btAnularArea_Click(object sender, EventArgs e)
+        private void btAnularProducto_Click(object sender, EventArgs e)
         {
-
-            if (dgvArea.SelectedRows.Count > 0)
+            if (dgvProducto.SelectedRows.Count > 0)
             {
                 try
                 {
-                    int index = dgvArea.SelectedRows[0].Index;
-                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/areaanular");
+                    int index = dgvProducto.SelectedRows[0].Index;
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Globals.api + "Mantenimiento/productoanular");
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
                     httpWebRequest.Headers.Add("Authorization", "Bearer " + Globals.Token);
@@ -245,7 +257,7 @@ namespace SICA.Forms.Mantenimiento
                     {
                         string json = new JavaScriptSerializer().Serialize(new
                         {
-                            idarea = dgvArea.SelectedRows[0].Cells["ID_AREA"].Value
+                            idproducto = dgvProducto.SelectedRows[0].Cells["ID_PRODUCTO"].Value
                         });
 
                         streamWriter.Write(json);
@@ -256,8 +268,12 @@ namespace SICA.Forms.Mantenimiento
                         using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                         {
                             string result = streamReader.ReadToEnd();
-                            AreaLoad();
-                            dgvArea.Rows[index].Selected = true;
+                            ProductoLoad();
+                            dgvProducto.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            {
+                                dgvProducto.FirstDisplayedScrollingRowIndex = dgvProducto.SelectedRows[0].Index;
+                            }
                         }
                     }
                 }
@@ -269,13 +285,13 @@ namespace SICA.Forms.Mantenimiento
                         using (var stream = ex.Response.GetResponseStream())
                         using (var reader = new StreamReader(stream))
                         {
-                            GlobalFunctions.casoError(ex, "Anular Area\n" + reader.ReadToEnd());
+                            GlobalFunctions.casoError(ex, "Anular Producto\n" + reader.ReadToEnd());
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    GlobalFunctions.casoError(ex, "Anular Area\n");
+                    GlobalFunctions.casoError(ex, "Anular Producto\n");
                 }
             }
         }

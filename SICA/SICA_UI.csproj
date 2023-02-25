@@ -345,6 +345,18 @@
     <Compile Include="Forms\CarritoForm.Designer.cs">
       <DependentUpon>CarritoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoCentroCosto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoCentroCosto.Designer.cs">
+      <DependentUpon>MantenimientoCentroCosto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\MantenimientoProducto.Designer.cs">
+      <DependentUpon>MantenimientoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Mantenimiento\MantenimientoArea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -595,6 +607,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CarritoForm.resx">
       <DependentUpon>CarritoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoCentroCosto.resx">
+      <DependentUpon>MantenimientoCentroCosto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoProducto.resx">
+      <DependentUpon>MantenimientoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mantenimiento\MantenimientoArea.resx">
       <DependentUpon>MantenimientoArea.cs</DependentUpon>

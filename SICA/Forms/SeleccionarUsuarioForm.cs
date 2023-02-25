@@ -106,6 +106,7 @@ namespace SICA.Forms
                 dgv.Columns["ID"].Visible = false;
                 dgv.Columns["EMAIL"].Visible = false;
                 dgv.Columns["NOTIFICAR"].Visible = false;
+                dgv.Columns["ID_AREA_FK"].Visible = false;
                 dgv.Columns["NOMBRE_USUARIO_EXTERNO"].Width = 200;
                 dgv.Columns["NOMBRE_USUARIO_EXTERNO"].HeaderText = "NOMBRE";
             }

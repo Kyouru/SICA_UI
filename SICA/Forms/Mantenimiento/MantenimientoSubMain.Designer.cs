@@ -30,10 +30,12 @@
         {
             this.pnSubMain = new System.Windows.Forms.Panel();
             this.pnTop = new System.Windows.Forms.Panel();
+            this.btPendiente = new FontAwesome.Sharp.IconButton();
+            this.btArea = new FontAwesome.Sharp.IconButton();
             this.btDepDocDet = new FontAwesome.Sharp.IconButton();
             this.btUsuarioExterno = new FontAwesome.Sharp.IconButton();
-            this.btArea = new FontAwesome.Sharp.IconButton();
-            this.btPendiente = new FontAwesome.Sharp.IconButton();
+            this.btProducto = new FontAwesome.Sharp.IconButton();
+            this.btCentroCosto = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnTop.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +52,8 @@
             // 
             this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.pnTop.Controls.Add(this.panel1);
+            this.pnTop.Controls.Add(this.btCentroCosto);
+            this.pnTop.Controls.Add(this.btProducto);
             this.pnTop.Controls.Add(this.btPendiente);
             this.pnTop.Controls.Add(this.btArea);
             this.pnTop.Controls.Add(this.btDepDocDet);
@@ -59,6 +63,52 @@
             this.pnTop.Name = "pnTop";
             this.pnTop.Size = new System.Drawing.Size(1048, 45);
             this.pnTop.TabIndex = 6;
+            // 
+            // btPendiente
+            // 
+            this.btPendiente.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btPendiente.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btPendiente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btPendiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPendiente.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPendiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btPendiente.IconColor = System.Drawing.Color.Gainsboro;
+            this.btPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btPendiente.IconSize = 30;
+            this.btPendiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPendiente.Location = new System.Drawing.Point(442, 0);
+            this.btPendiente.Name = "btPendiente";
+            this.btPendiente.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btPendiente.Size = new System.Drawing.Size(130, 45);
+            this.btPendiente.TabIndex = 16;
+            this.btPendiente.Text = "Pendiente";
+            this.btPendiente.UseVisualStyleBackColor = false;
+            this.btPendiente.Visible = false;
+            this.btPendiente.Click += new System.EventHandler(this.btPendiente_Click);
+            // 
+            // btArea
+            // 
+            this.btArea.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btArea.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btArea.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btArea.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btArea.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btArea.IconColor = System.Drawing.Color.Gainsboro;
+            this.btArea.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btArea.IconSize = 30;
+            this.btArea.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btArea.Location = new System.Drawing.Point(354, 0);
+            this.btArea.Name = "btArea";
+            this.btArea.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btArea.Size = new System.Drawing.Size(88, 45);
+            this.btArea.TabIndex = 15;
+            this.btArea.Text = "Area";
+            this.btArea.UseVisualStyleBackColor = false;
+            this.btArea.Visible = false;
+            this.btArea.Click += new System.EventHandler(this.btArea_Click);
             // 
             // btDepDocDet
             // 
@@ -73,7 +123,7 @@
             this.btDepDocDet.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btDepDocDet.IconSize = 30;
             this.btDepDocDet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDepDocDet.Location = new System.Drawing.Point(205, 0);
+            this.btDepDocDet.Location = new System.Drawing.Point(187, 0);
             this.btDepDocDet.Name = "btDepDocDet";
             this.btDepDocDet.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.btDepDocDet.Size = new System.Drawing.Size(167, 45);
@@ -99,66 +149,66 @@
             this.btUsuarioExterno.Location = new System.Drawing.Point(0, 0);
             this.btUsuarioExterno.Name = "btUsuarioExterno";
             this.btUsuarioExterno.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btUsuarioExterno.Size = new System.Drawing.Size(205, 45);
+            this.btUsuarioExterno.Size = new System.Drawing.Size(187, 45);
             this.btUsuarioExterno.TabIndex = 10;
             this.btUsuarioExterno.Text = "Usuario Externo";
             this.btUsuarioExterno.UseVisualStyleBackColor = false;
             this.btUsuarioExterno.Click += new System.EventHandler(this.btUsuarioExterno_Click);
             // 
-            // btArea
+            // btProducto
             // 
-            this.btArea.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btArea.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btArea.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btArea.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btArea.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btArea.IconColor = System.Drawing.Color.Gainsboro;
-            this.btArea.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btArea.IconSize = 30;
-            this.btArea.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btArea.Location = new System.Drawing.Point(372, 0);
-            this.btArea.Name = "btArea";
-            this.btArea.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btArea.Size = new System.Drawing.Size(114, 45);
-            this.btArea.TabIndex = 15;
-            this.btArea.Text = "Area";
-            this.btArea.UseVisualStyleBackColor = false;
-            this.btArea.Visible = false;
-            this.btArea.Click += new System.EventHandler(this.btArea_Click);
+            this.btProducto.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btProducto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btProducto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btProducto.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btProducto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btProducto.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btProducto.IconColor = System.Drawing.Color.Gainsboro;
+            this.btProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btProducto.IconSize = 30;
+            this.btProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btProducto.Location = new System.Drawing.Point(572, 0);
+            this.btProducto.Name = "btProducto";
+            this.btProducto.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btProducto.Size = new System.Drawing.Size(130, 45);
+            this.btProducto.TabIndex = 18;
+            this.btProducto.Text = "Producto";
+            this.btProducto.UseVisualStyleBackColor = false;
+            this.btProducto.Visible = false;
+            this.btProducto.Click += new System.EventHandler(this.btProducto_Click);
             // 
-            // btPendiente
+            // btCentroCosto
             // 
-            this.btPendiente.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btPendiente.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btPendiente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btPendiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btPendiente.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPendiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btPendiente.IconColor = System.Drawing.Color.Gainsboro;
-            this.btPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btPendiente.IconSize = 30;
-            this.btPendiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btPendiente.Location = new System.Drawing.Point(486, 0);
-            this.btPendiente.Name = "btPendiente";
-            this.btPendiente.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.btPendiente.Size = new System.Drawing.Size(130, 45);
-            this.btPendiente.TabIndex = 16;
-            this.btPendiente.Text = "Pendiente";
-            this.btPendiente.UseVisualStyleBackColor = false;
-            this.btPendiente.Visible = false;
-            this.btPendiente.Click += new System.EventHandler(this.btPendiente_Click);
+            this.btCentroCosto.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btCentroCosto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btCentroCosto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btCentroCosto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCentroCosto.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCentroCosto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btCentroCosto.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btCentroCosto.IconColor = System.Drawing.Color.Gainsboro;
+            this.btCentroCosto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btCentroCosto.IconSize = 30;
+            this.btCentroCosto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btCentroCosto.Location = new System.Drawing.Point(702, 0);
+            this.btCentroCosto.Name = "btCentroCosto";
+            this.btCentroCosto.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btCentroCosto.Size = new System.Drawing.Size(147, 45);
+            this.btCentroCosto.TabIndex = 20;
+            this.btCentroCosto.Text = "Centro Costo";
+            this.btCentroCosto.UseVisualStyleBackColor = false;
+            this.btCentroCosto.Visible = false;
+            this.btCentroCosto.Click += new System.EventHandler(this.btCentroCosto_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(616, 44);
+            this.panel1.Location = new System.Drawing.Point(849, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 1);
-            this.panel1.TabIndex = 17;
+            this.panel1.Size = new System.Drawing.Size(199, 1);
+            this.panel1.TabIndex = 21;
             // 
             // MantenimientoSubMain
             // 
@@ -182,8 +232,10 @@
         private System.Windows.Forms.Panel pnTop;
         private FontAwesome.Sharp.IconButton btUsuarioExterno;
         private FontAwesome.Sharp.IconButton btDepDocDet;
-        private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton btPendiente;
         private FontAwesome.Sharp.IconButton btArea;
+        private FontAwesome.Sharp.IconButton btProducto;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btCentroCosto;
     }
 }

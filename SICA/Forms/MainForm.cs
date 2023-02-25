@@ -23,7 +23,9 @@ namespace SICA
         public MainForm()
         {
             InitializeComponent();
-
+            TimeSpan diff;
+            diff = Globals.UltimaActividad.AddMinutes(Globals.SesionDuracion).Subtract(DateTime.Now);
+            lbTiempoSesion.Text = diff.ToString("mm':'ss");
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             pnLeft.Controls.Add(leftBorderBtn);

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SICA.Forms.Mantenimiento
 {
@@ -286,6 +287,10 @@ namespace SICA.Forms.Mantenimiento
                             string result = streamReader.ReadToEnd();
                             DepartamentoLoad();
                             dgvDepartamento.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            {
+                                dgvDepartamento.FirstDisplayedScrollingRowIndex = dgvDepartamento.SelectedRows[0].Index;
+                            }
                         }
                     }
                 }
@@ -319,6 +324,10 @@ namespace SICA.Forms.Mantenimiento
 
                     DepartamentoLoad();
                     dgvDepartamento.Rows[prevrow].Selected = true;
+                    if (prevrow > Globals.ListaScrollLimite)
+                    {
+                        dgvDepartamento.FirstDisplayedScrollingRowIndex = dgvDepartamento.SelectedRows[0].Index;
+                    }
                 }
             }
         }
@@ -335,6 +344,10 @@ namespace SICA.Forms.Mantenimiento
 
                     DepartamentoLoad();
                     dgvDepartamento.Rows[nextrow].Selected = true;
+                    if (nextrow > Globals.ListaScrollLimite)
+                    {
+                        dgvDepartamento.FirstDisplayedScrollingRowIndex = dgvDepartamento.SelectedRows[0].Index;
+                    }
                 }
             }
         }
@@ -368,6 +381,10 @@ namespace SICA.Forms.Mantenimiento
                             string result = streamReader.ReadToEnd();
                             DepartamentoLoad();
                             dgvDepartamento.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            {
+                                dgvDepartamento.FirstDisplayedScrollingRowIndex = dgvDepartamento.SelectedRows[0].Index;
+                            }
                         }
                     }
                 }
@@ -469,6 +486,10 @@ namespace SICA.Forms.Mantenimiento
                             string result = streamReader.ReadToEnd();
                             DocumentoLoad();
                             dgvDepartamento.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            {
+                                dgvDepartamento.FirstDisplayedScrollingRowIndex = dgvDepartamento.SelectedRows[0].Index;
+                            }
                         }
                     }
                 }
@@ -502,6 +523,10 @@ namespace SICA.Forms.Mantenimiento
 
                     DocumentoLoad();
                     dgvDocumento.Rows[prevrow].Selected = true;
+                    if (prevrow > Globals.ListaScrollLimite)
+                    {
+                        dgvDocumento.FirstDisplayedScrollingRowIndex = dgvDocumento.SelectedRows[0].Index;
+                    }
                 }
             }
         }
@@ -565,6 +590,10 @@ namespace SICA.Forms.Mantenimiento
 
                     DocumentoLoad();
                     dgvDocumento.Rows[nextrow].Selected = true;
+                    if (nextrow > Globals.ListaScrollLimite)
+                    {
+                        dgvDocumento.FirstDisplayedScrollingRowIndex = dgvDocumento.SelectedRows[0].Index;
+                    }
                 }
             }
         }
@@ -597,7 +626,11 @@ namespace SICA.Forms.Mantenimiento
                         {
                             string result = streamReader.ReadToEnd();
                             DocumentoLoad();
-                            dgvDepartamento.Rows[index].Selected = true;
+                            dgvDocumento.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            {
+                                dgvDocumento.FirstDisplayedScrollingRowIndex = dgvDocumento.SelectedRows[0].Index;
+                            }
                         }
                     }
                 }
@@ -652,6 +685,10 @@ namespace SICA.Forms.Mantenimiento
                             string result = streamReader.ReadToEnd();
                             DocumentoLoad();
                             dgvDocumento.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            {
+                                dgvDocumento.FirstDisplayedScrollingRowIndex = dgvDocumento.SelectedRows[0].Index;
+                            }
                         }
                     }
                 }
@@ -685,6 +722,10 @@ namespace SICA.Forms.Mantenimiento
 
                     DetalleLoad();
                     dgvDetalle.Rows[prevrow].Selected = true;
+                    if (prevrow > Globals.ListaScrollLimite)
+                    {
+                        dgvDetalle.FirstDisplayedScrollingRowIndex = dgvDetalle.SelectedRows[0].Index;
+                    }
                 }
             }
         }
@@ -748,6 +789,10 @@ namespace SICA.Forms.Mantenimiento
 
                     DetalleLoad();
                     dgvDetalle.Rows[nextrow].Selected = true;
+                    if (nextrow > Globals.ListaScrollLimite)
+                    {
+                        dgvDetalle.FirstDisplayedScrollingRowIndex = dgvDetalle.SelectedRows[0].Index;
+                    }
                 }
             }
         }
@@ -780,7 +825,11 @@ namespace SICA.Forms.Mantenimiento
                         {
                             string result = streamReader.ReadToEnd();
                             DetalleLoad();
-                            dgvDepartamento.Rows[index].Selected = true;
+                            dgvDetalle.Rows[index].Selected = true;
+                            if (index > Globals.ListaScrollLimite)
+                            { 
+                                dgvDetalle.FirstDisplayedScrollingRowIndex = dgvDetalle.SelectedRows[0].Index; 
+                            }
                         }
                     }
                 }

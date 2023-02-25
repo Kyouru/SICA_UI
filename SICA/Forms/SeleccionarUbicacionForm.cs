@@ -33,7 +33,6 @@ namespace SICA.Forms
                     string json = new JavaScriptSerializer().Serialize(new
                     {
                         tiposeleccionarubicacion = Globals.TipoSeleccionarUbicacion
-                        //1: Externos
                     });
 
                     streamWriter.Write(json);

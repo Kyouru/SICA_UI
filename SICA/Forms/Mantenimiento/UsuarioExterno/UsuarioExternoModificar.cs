@@ -120,7 +120,7 @@ namespace SICA.Forms.Recibir
                         tbNombreUsuario.Text = row["NOMBRE_USUARIO_EXTERNO"].ToString();
                         nombreanterior = row["NOMBRE_USUARIO_EXTERNO"].ToString();
                         tbCorreo.Text = row["EMAIL"].ToString();
-                        if (dtarea.Rows.Count > 0)
+                        if (dtarea.Rows.Count > 0 && row["ID_AREA_FK"].ToString() != "")
                         {
                             cmbArea.SelectedValue = row["ID_AREA_FK"].ToString();
                         }

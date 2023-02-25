@@ -31,6 +31,8 @@ namespace SICA.Forms.Mantenimiento
             btDepDocDet.Visible = int2bool(Globals.MantenimientoListas);
             btArea.Visible = int2bool(Globals.MantenimientoListas);
             btPendiente.Visible = int2bool(Globals.MantenimientoListas);
+            btProducto.Visible = int2bool(Globals.MantenimientoListas);
+            btCentroCosto.Visible = int2bool(Globals.MantenimientoListas);
             btUsuarioExterno.Visible = int2bool(Globals.MantenimientoUsuarioExterno);
         }
 
@@ -144,6 +146,18 @@ namespace SICA.Forms.Mantenimiento
         {
             ActivateButton(sender, RGBColors.color4);
             OpenChildForm(new MantenimientoPendiente());
+        }
+
+        private void btProducto_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new MantenimientoProducto());
+        }
+
+        private void btCentroCosto_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new MantenimientoCentroCosto());
         }
     }
 }
